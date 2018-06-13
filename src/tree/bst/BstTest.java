@@ -6,7 +6,7 @@ import java.util.Queue;
 import java.util.Stack;
 
 /**
- * @author Narendra Jha.
+ * @author Narendra Jha
  *
  */
 public class BstTest {
