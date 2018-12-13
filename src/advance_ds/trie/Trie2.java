@@ -1,4 +1,4 @@
-package advance_ds;
+package advance_ds.trie;
 
 /**
  * @author Narendra Jha

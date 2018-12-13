@@ -1,4 +1,4 @@
-package advance_ds;
+package advance_ds.trie;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,7 +10,7 @@ import java.util.Map;
  */
 public class Trie {
 	
-	private class TrieNode {
+	class TrieNode {
 		Map<Character, TrieNode> children;
 		boolean isEndOfWord;
 		
@@ -20,7 +20,7 @@ public class Trie {
 		}
 	}
 	
-	private final TrieNode root;
+	TrieNode root;
 	
 	public Trie() {
 		root = new TrieNode();
