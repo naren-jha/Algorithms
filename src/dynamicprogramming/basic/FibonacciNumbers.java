@@ -57,6 +57,19 @@ public class FibonacciNumbers {
 			}
 			return b;
 		}
+		
+		// bottom-up tabulation (space optimized) method
+		// uses only two variables
+		public int fibBottomUpSpaceOptimized2Variables(int n) {
+			int a = 0, b = 1;
+			if (n == 0)
+				return a;
+			for (int i = 2; i <= n; i++) {
+				b = a + b;
+				a = b - a;
+			}
+			return b;
+		}
 	}
 	
 	private class ConstantTimeAndSpaceSolution {
@@ -66,16 +79,18 @@ public class FibonacciNumbers {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(new FibonacciNumbers().new SimpleButInefficientSolution().fib(5));
+		int n = 25;
+		System.out.println(new FibonacciNumbers().new SimpleButInefficientSolution().fib(n));
 		
-		int[] fib = new int[46]; // 1 extra to handle n = 0 case
+		int[] fib = new int[n+1]; // 1 extra to handle n = 0 case
 		Arrays.fill(fib, -1);
-		System.out.println(new FibonacciNumbers().new DPSolution().fibMemoized(45, fib));
+		System.out.println(new FibonacciNumbers().new DPSolution().fibMemoized(n, fib));
 		
-		System.out.println(new FibonacciNumbers().new DPSolution().fibBottomUp(45));
-		System.out.println(new FibonacciNumbers().new DPSolution().fibBottomUpSpaceOptimized(45));
+		System.out.println(new FibonacciNumbers().new DPSolution().fibBottomUp(n));
+		System.out.println(new FibonacciNumbers().new DPSolution().fibBottomUpSpaceOptimized(n));
+		System.out.println(new FibonacciNumbers().new DPSolution().fibBottomUpSpaceOptimized2Variables(n));
 		
-		System.out.println(new FibonacciNumbers().new ConstantTimeAndSpaceSolution().fib(45));
+		System.out.println(new FibonacciNumbers().new ConstantTimeAndSpaceSolution().fib(n));
 	}
 
 }
