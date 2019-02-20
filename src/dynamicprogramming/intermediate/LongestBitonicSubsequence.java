@@ -1,4 +1,4 @@
-package dynamicprogramming.basic;
+package dynamicprogramming.intermediate;
 
 // https://www.geeksforgeeks.org/longest-bitonic-subsequence-dp-15/
 
