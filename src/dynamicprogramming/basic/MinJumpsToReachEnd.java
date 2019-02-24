@@ -102,7 +102,7 @@ public class MinJumpsToReachEnd {
 				
 				else {
 					int min = Integer.MAX_VALUE;
-					for (int j = i+1; j <= i + a[i] && j < n; j++) {
+					for (int j = i+1; j <= i + a[i] && j < n-1; j++) {
 						if (res[j] != Integer.MAX_VALUE && res[j] + 1 < min)
 							min = res[j] + 1;
 					}

@@ -8,130 +8,105 @@ import java.util.Arrays;
 public class CoinChangeProblem {
 
 	private class SimpleRecursiveSolution {
-		public int coinChange(int[] coins, int m, int n) {
-			if (n == 0)
+		// T(n) = Exp
+		public int coinChange(int[] coins, int n, int sum) {
+			if (sum == 0)
 				return 1;
-			if (n < 0)
+			if (sum < 0)
 				return 0;
-			if (m == 0)
+			if (n == 0)
 				return 0;
 			
-			return coinChange(coins, m, n-coins[m-1]) + coinChange(coins, m-1, n);
+			return coinChange(coins, n, sum-coins[n-1]) + coinChange(coins, n-1, sum);
 		}
 	}
 	
 	private class DPSolution {
-		
-		/* 
-		 * This will not work, because solution for a particular value 
-		 * of 'n' will change depending on different values of 'm'. so we 
-		 * cannot be dependent on just the value of n. we can solve it by 
-		 * storing result in an nxm matrix, for all different combinations 
-		 * of 'm' and 'n'. see the next solution with nxm matrix.
-		 * 
-		 * public int coinChangeMemoized(int[] coins, int m, int n, int[] combinations) {
-			if (n == 0)
-				return 1;
-			if (n < 0)
-				return 0;
-			if (m == 0)
-				return 0;
-			
-			if (combinations[n] != -1)
-				return combinations[n];
-			
-			combinations[n] = coinChangeMemoized(coins, m, n-coins[m-1], combinations) 
-								+ coinChangeMemoized(coins, m-1, n, combinations);
-			return combinations[n];
-		}*/
-		
 		// top-to-bottom memoization
-		// T(n) = O(mn), as we are solving total m*n different problems.
-		// S(n) = O(mn)
-		public int coinChangeMemoized(int[] coins, int m, int n, int[][] combinations) {
-			if (n == 0)
+		// T(n) = O(n*sum), S(n) = O(n*sum)
+		public int coinChangeMemoized(int[] coins, int n, int sum, int[][] res) {
+			if (sum == 0)
 				return 1;
-			if (n < 0)
+			if (sum < 0)
 				return 0;
-			if (m == 0)
+			if (n == 0)
 				return 0;
 			
-			if (combinations[n][m] != -1)
-				return combinations[n][m];
+			if (res[n][sum] != -1)
+				return res[n][sum];
 			
-			combinations[n][m] = coinChangeMemoized(coins, m, n-coins[m-1], combinations) 
-									+ coinChangeMemoized(coins, m-1, n, combinations);
-			return combinations[n][m];
+			res[n][sum] = coinChangeMemoized(coins, n, sum-coins[n-1], res) 
+									+ coinChangeMemoized(coins, n-1, sum, res);
+			return res[n][sum];
 		}
 		
 		// bottom-up tabulation
-		// T(n) = O(mn)
-		// S(n) = O(mn)
-		public int coinChangeBottomUp(int[] coins, int n) {
-			int m = coins.length;
-			int[][] combinations = new int[m][n+1];
+		// T(n) = O(n*sum), S(n) = O(n*sum)
+		public int coinChangeBottomUp(int[] coins, int sum) {
+			int n = coins.length;
+			int[][] res = new int[n][sum+1];
 			
-			for (int i = 0; i < m; i++) {
-				Arrays.fill(combinations[i], 0); // redundant in java
+			for (int i = 0; i < n; i++) {
+				Arrays.fill(res[i], 0); // redundant in java
 				
-				combinations[i][0] = 1; // whenever we reach amount  
+				res[i][0] = 1; // whenever we reach amount 
 				// zero while calculating results, that means we have
 				// found a combination, so we should return 1 for that.
 			}
 			
-			for (int i = 0; i < m; i++) {
-				for (int j = 1; j <= n; j++) {
+			for (int i = 0; i < n; i++) {
+				for (int j = 1; j <= sum; j++) {
 					if (i > 0)
-						combinations[i][j] = combinations[i-1][j];
+						res[i][j] = res[i-1][j];
 					if (j >= coins[i])
-						combinations[i][j] += combinations[i][j-coins[i]];
+						res[i][j] += res[i][j-coins[i]];
 				}
 			}
-			return combinations[m-1][n];
+			return res[n-1][sum];
 		}
 		
 		/*
 		 * For bottom up tabulation method, in every iteration of inner for loop,
 		 * since we only need the elements on/before the current element, we can
-		 * solve this in O(n) space.
+		 * solve this in O(sum) space. See solution below.
 		 */
 		// bottom-up tabulation, space optimized
-		// T(n) = O(mn)
-		// S(n) = O(n)
+		// T(n) = O(n*sum), S(n) = O(sum)
 		// Advantage: better space complexity, cleaner solution.
-		public int coinChange(int[] coins, int n) {
-			int[] combinations = new int[n+1];
-			Arrays.fill(combinations, 0); // redundant in java
+		public int coinChange(int[] coins, int sum) {
+			int[] res = new int[sum+1];
+			Arrays.fill(res, 0); // redundant in java
 			
-			combinations[0] = 1; // whenever we reach zero while calculating results 
+			res[0] = 1; // whenever we reach zero while calculating results 
 			// in innermost 'for' loop below, that simply means that we have 
 			// found a combination that sums to current amount (j) 
 			// so we should return 1 to count that combination.
+			
 			for (int i = 0; i < coins.length; i++) {
-				for (int j = coins[i]; j <= n; j++) {
-					combinations[j] += combinations[j-coins[i]];
+				for (int j = coins[i]; j <= sum; j++) {
+					res[j] += res[j-coins[i]];
 				}
 			}
-			return combinations[n];
+			return res[sum];
 		}
 	}
 	
 	public static void main(String[] args) {
-		int[] coins = {1, 2, 5}; 
-        int m = coins.length;
-        int n = 12;
+		int[] coins = {1, 2, 5};
+        int n = coins.length;
+        int sum = 12;
         
         CoinChangeProblem obj = new CoinChangeProblem();
-        System.out.println(obj.new SimpleRecursiveSolution().coinChange(coins, m, n)); // 13
+        System.out.println(obj.new SimpleRecursiveSolution().coinChange(coins, n, sum)); // 13
         
-        int[][] combinations = new int[n+1][m+1]; // (n+1) x (m+1)
-        for (int[] combination : combinations)
-        	Arrays.fill(combination, -1);
-        System.out.println(obj.new DPSolution().coinChangeMemoized(coins, m, n, combinations)); // 13
+        int[][] res = new int[n+1][sum+1]; // (n+1) x (sum+1)
+        for (int[] r : res)
+        	Arrays.fill(r, -1);
+        System.out.println(obj.new DPSolution().coinChangeMemoized(coins, n, sum, res)); // 13
         
-        System.out.println(obj.new DPSolution().coinChangeBottomUp(coins, n)); // 13
+        System.out.println(obj.new DPSolution().coinChangeBottomUp(coins, sum)); // 13
         
-        System.out.println(obj.new DPSolution().coinChange(coins, n)); // 13
+        System.out.println(obj.new DPSolution().coinChange(coins, sum)); // 13
 	}
 
 }
