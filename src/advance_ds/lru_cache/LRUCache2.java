@@ -7,6 +7,13 @@ import java.util.Map;
 /**
  * Implementation of Least Recently Used (LRU) Cache data structure
  * 
+ * WARNING: DO NOT USE THIS METHOD
+ * ===============================
+ * THIS APPROACH IS NOT EFFICIENT AS GET AND PUT OPERATIONS USING
+ * THIS APPORACH WILL TAKE O(n) TIME DUE TO REMOVE() METHOD USED
+ * ON LINKED LIST
+ * 
+ * 
  * Second approach:
  * We use a Hashtable (built in Java HashMap) and a Doubly Linked 
  * List (built in Java Linked List) to implement LRUCache. 
@@ -36,7 +43,7 @@ public class LRUCache2<K, V> {
 			V val = map.get(key);
 			
 			// Mark the entry as most recently used entry
-			linkedList.remove(key); // Remove node from linked list
+			linkedList.remove(key); // Remove node from linked list. // WILL TAKE O(n)
 			linkedList.offerFirst(key); // Then add it to the Head of the linked list
 			return val;
 		}
@@ -49,7 +56,7 @@ public class LRUCache2<K, V> {
 			map.put(key, value); // update value
 			
 			// Mark the entry as most recently used entry
-			linkedList.remove(key); // Remove node from linked list
+			linkedList.remove(key); // Remove node from linked list. // WILL TAKE O(n)
 			linkedList.offerFirst(key); // Then add it to the Head of the linked list
 		}
 		else {
