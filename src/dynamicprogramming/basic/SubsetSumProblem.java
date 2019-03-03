@@ -10,7 +10,7 @@ public class SubsetSumProblem {
 			// Base conditions
 			if (sum == 0)
 				return true;
-			if (sum != 0 && n== 0)
+			if (sum != 0 && n == 0)
 				return false;
 			
 			// when last number cannot be included
@@ -26,34 +26,34 @@ public class SubsetSumProblem {
 		// T(n) = O(n*sum)
 		// S(n) = O(n*sum)
 		public boolean isSubsetSum(int[] a, int n, int sum) {
-			boolean[][] resTable = new boolean[n+1][sum+1];
+			boolean[][] res = new boolean[n+1][sum+1];
 			
 			// when sum == 0
 			for (int i = 0; i <= n; i++)
-				resTable[i][0] = true;
+				res[i][0] = true;
 			
 			// when (sum != 0 && n == 0)
 			for (int j = 1; j <= sum; j++)
-				resTable[0][j] = false; // redundant in Java
+				res[0][j] = false; // redundant in Java
 			
 			for (int i = 1; i <= n; i++) {
 				for (int j = 1; j <= sum; j++) {
 					if (a[i-1] > j) // when last number cannot be included
-						resTable[i][j] = resTable[i-1][j];
+						res[i][j] = res[i-1][j];
 					else
-						resTable[i][j] = resTable[i-1][j] || resTable[i-1][j-a[i-1]];
+						res[i][j] = res[i-1][j] || res[i-1][j-a[i-1]];
 				}
 			}
 			
 			// print complete result table
 			/*for (int i = 0; i <= n; i++) {
 				for (int j = 0; j <= sum; j++) {
-					System.out.print(resTable[i][j] + " ");
+					System.out.print(res[i][j] + " ");
 				}
 				System.out.println();
 			}*/
 			
-			return resTable[n][sum];
+			return res[n][sum];
 		}
 		
 		/*
@@ -67,27 +67,27 @@ public class SubsetSumProblem {
 		// T(n) = O(n*sum)
 		// S(n) = O(sum)
 		public boolean isSubsetSumSpaceOptimized(int[] a, int n, int sum) {
-			boolean[][] resTable = new boolean[2][sum+1];
+			boolean[][] res = new boolean[2][sum+1];
 			
 			// when sum == 0
-			resTable[0][0] = true;
-			resTable[1][0] = true;
+			res[0][0] = true;
+			res[1][0] = true;
 			
 			// when (sum != 0 && n == 0)
 			for (int j = 1; j <= sum; j++)
-				resTable[0][j] = false; // redundant in Java
+				res[0][j] = false; // redundant in Java
 			
 			for (int i = 1; i <= n; i++) {
 				for (int j = 1; j <= sum; j++) {
 					if (a[i-1] > j) // when last number cannot be included
-						resTable[i % 2][j] = resTable[(i-1) % 2][j];
+						res[i % 2][j] = res[(i-1) % 2][j];
 					else
-						resTable[i % 2][j] = resTable[(i-1) % 2][j] 
-													|| resTable[(i-1) % 2][j-a[i-1]];
+						res[i % 2][j] = res[(i-1) % 2][j] 
+													|| res[(i-1) % 2][j-a[i-1]];
 				}
 			}
 			
-			return resTable[n % 2][sum];
+			return res[n % 2][sum];
 		}
 	}
 

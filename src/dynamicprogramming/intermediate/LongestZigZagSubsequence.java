@@ -1,6 +1,7 @@
 package dynamicprogramming.intermediate;
 
 // https://www.geeksforgeeks.org/longest-zig-zag-subsequence/
+// https://www.geeksforgeeks.org/longest-alternating-subsequence/
 
 public class LongestZigZagSubsequence {
 
@@ -50,7 +51,7 @@ public class LongestZigZagSubsequence {
 	 * property because in Z[j][0] last element is bigger than its previous one 
 	 * and A[i] is greater than A[j] which will break the alternating property 
 	 * if we update. So above fact derives first recurrence relation, similar 
-	 * argument can be made for second recurrence relation also.
+	 * argument can be made for second recurrence relation as well.
 	 */
 	
 	public static void main(String[] args) {

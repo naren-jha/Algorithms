@@ -7,6 +7,8 @@ import java.util.List;
 
 public class PerfectSumProblem {
 
+	// This problem is mainly an extension of SubsetSumProblem
+	
 	// T(n): O(sum*n) + O(sum+n) = O(sum*n)
 	public void printAllSubsets(int[] a, int n, int sum) {
 		boolean[][] resTable = new boolean[n+1][sum+1];
