@@ -2,9 +2,11 @@ package dynamicprogramming.basic;
 
 // https://www.geeksforgeeks.org/largest-sum-contiguous-subarray/
 
-// Not sure if this problem should be tagged under dynamic programming.
+// Not sure if this problem should be tagged under dynamic programming
 
-public class LargestSumContiguousSubarray {
+// Kadane’s Algorithm
+
+public class MaximumSumSubarray {
 
 	// returns largest sum of a continuous subarray
 	public static int maxSubArraySum(int[] a) {
@@ -47,11 +49,33 @@ public class LargestSumContiguousSubarray {
 		System.out.println("largest sum continuous subarray is:");
 		for (int i = start; i <= end; i++)
 			System.out.print(a[i] + " ");
+		System.out.println();
+	}
+	
+	// first approach can be simplified as below
+	public static int maxSubArraySum_m2(int[] a) {
+		int maxSoFar = Integer.MIN_VALUE;
+		int maxEndingHere = 0;
+		
+		for (int i = 0; i < a.length; i++) {
+			maxEndingHere = Math.max(a[i], maxEndingHere + a[i]);
+			maxSoFar = Math.max(maxSoFar, maxEndingHere);
+		}
+		
+		return maxSoFar;
 	}
 	
 	public static void main(String[] args) {
 		int[] a = {-2, -3, 4, -1, -2, 1, 5, -3};
 		System.out.println(maxSubArraySum(a)); // 7
+		
 		printMaxSumSubArray(a);
+		/*
+		 * largest sum is: 7
+		 * largest sum continuous subarray is:
+		 * 4 -1 -2 1 5 
+		 */
+		
+		System.out.println(maxSubArraySum_m2(a)); // 7
 	}
 }
