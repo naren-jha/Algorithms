@@ -19,10 +19,9 @@ public class Test {
 	}
 
 	public static void main(String[] args) {
-		int m[][] = { { 5, 4, 2 }, 
-                { 9, 2, 1 }, 
-                { 2, 5, 9 }, 
-                { 1, 3, 11 } }; 
-		System.out.println(f(m, m.length-1, m[0].length-1));
+		int[] a = {1, 2, 3, 4, 5};
+		System.out.println(Arrays.toString(Arrays.copyOfRange(a, 1, 3)));
+		
+		
 	}
 }

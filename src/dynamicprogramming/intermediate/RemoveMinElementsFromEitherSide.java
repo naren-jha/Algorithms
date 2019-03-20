@@ -45,8 +45,8 @@ public class RemoveMinElementsFromEitherSide {
 		public int removeMinElements(int[] a) {
 			int n = a.length;
 			
-			RangeMinimumQuery rMimQ = new RangeMinimumQuery();
-			int[] minTree = rMimQ.createSegmentTree(a);
+			RangeMinimumQuery rMinQ = new RangeMinimumQuery();
+			int[] minTree = rMinQ.createSegmentTree(a);
 			
 			RangeMaximumQuery rMaxQ = new RangeMaximumQuery();
 			int[] maxTree = rMaxQ.createSegmentTree(a);
@@ -56,7 +56,7 @@ public class RemoveMinElementsFromEitherSide {
 			int maxValidLen = 0;
 			
 			while (end < n) {
-				min = rMimQ.rangeMinimumQuery(minTree, start, end, n);
+				min = rMinQ.rangeMinimumQuery(minTree, start, end, n);
 				max = rMaxQ.rangeMaximumQuery(maxTree, start, end, n);
 				if (2*min <= max)
 					start++;

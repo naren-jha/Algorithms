@@ -1,6 +1,7 @@
 package dynamicprogramming.intermediate;
 
 // https://www.geeksforgeeks.org/egg-dropping-puzzle-dp-11/
+// https://www.youtube.com/watch?v=iOaRjDT0vjc
 
 public class EggDropping {
 
