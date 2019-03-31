@@ -1,5 +1,6 @@
 package dynamicprogramming.basic;
 
+// CLRS 15.4
 // https://www.geeksforgeeks.org/longest-common-subsequence-dp-4/
 // https://www.geeksforgeeks.org/printing-longest-common-subsequence/
 // https://www.geeksforgeeks.org/printing-longest-common-subsequence-set-2-printing/
@@ -77,6 +78,23 @@ public class LongestCommonSubsequence {
 				printLcsUtil(res, i-1, j, x, y, lcs);
 			else 
 				printLcsUtil(res, i, j-1, x, y, lcs);
+		}
+		
+		// Another approach for above recursive util method
+		// Change 1: it does not use a string builder
+		// Change 2: it does not require both input string
+		private void printLcsUtil2(int[][] res, int i, int j, char[] x) {
+			if (i == 0 || j == 0)
+				return;
+			
+			if (res[i][j] == res[i-1][j-1] + 1) {
+				printLcsUtil2(res, i-1, j-1, x);
+				System.out.print(x[i-1]);
+			}
+			else if (res[i-1][j] >= res[i][j-1])
+				printLcsUtil2(res, i-1, j, x);
+			else 
+				printLcsUtil2(res, i, j-1, x);
 		}
 		
 		// We can also print all the possible LCS. see solution below.
@@ -159,7 +177,9 @@ public class LongestCommonSubsequence {
 		int m = x.length, n = y.length;
 		
 		LongestCommonSubsequence obj = new LongestCommonSubsequence();
+		
 		System.out.println(obj.new SimpleRecursiveSolution().lcs(x, y, m, n)); // 4
+		
 		System.out.println(obj.new DPSolution().lcs(x, y)); // 4
 		
 		obj.new DPSolution().printLcs(x, y); // BCBA

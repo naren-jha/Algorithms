@@ -1,6 +1,7 @@
 package dynamicprogramming.intermediate;
 
 // https://www.geeksforgeeks.org/remove-minimum-elements-either-side-2min-max/
+// https://www.geeksforgeeks.org/remove-minimum-elements-from-either-side-such-that-2min-becomes-more-than-max-set-2/
 
 public class RemoveMinElementsFromEitherSide {
 

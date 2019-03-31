@@ -2,6 +2,7 @@ package dynamicprogramming.basic;
 
 import java.util.Arrays;
 
+// CLRS 15.1
 // https://www.geeksforgeeks.org/cutting-a-rod-dp-13/
 
 public class RodCuttingProblem {

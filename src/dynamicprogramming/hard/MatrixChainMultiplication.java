@@ -1,8 +1,12 @@
 package dynamicprogramming.hard;
 
-// https://www.geeksforgeeks.org/matrix-chain-multiplication-dp-8/
-// https://www.geeksforgeeks.org/printing-brackets-matrix-chain-multiplication-problem/
-
+/**
+ * @author Narendra Jha
+ *
+ * CLRS 15.2
+ * https://www.geeksforgeeks.org/matrix-chain-multiplication-dp-8/
+ * https://www.geeksforgeeks.org/printing-brackets-matrix-chain-multiplication-problem/
+ */
 public class MatrixChainMultiplication {
 	
 	class SimpleRecursiveSolution {
@@ -54,7 +58,7 @@ public class MatrixChainMultiplication {
 		}
 		
 		/*
-		 * We can extend above solution to print matrix product parenthesization
+		 * We can extend above solution to print optimal matrix product parenthesization
 		 */
 		public void printOptimalParenthesis(int[] p) {
 			int n = p.length - 1; // Number of matrices being multiplied
@@ -105,7 +109,7 @@ public class MatrixChainMultiplication {
 		
 		/*
 		 * Below is an algorithm to actually multiply a given matrix chain in optimal way
-		 * CLRS: Exercise - 15.2.2
+		 * CLRS: Exercise 15.2-2
 		 * 
 		 * BELOW CODE IS NOT TESTED
 		 */

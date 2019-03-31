@@ -79,6 +79,6 @@ public class RegularExpressionMatcher {
 		
 		System.out.println(isMatch("abdc", ".*dc")); // true
 		System.out.println(isMatch("abdc", ".*fc")); // false
-		System.out.println(isMatch("abf", ".*f")); // true
+		System.out.println(isMatch("mississippi", "mis*is*p*.")); // true
 	}
 }
