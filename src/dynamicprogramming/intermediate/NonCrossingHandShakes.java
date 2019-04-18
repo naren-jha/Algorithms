@@ -22,8 +22,8 @@ public class NonCrossingHandShakes {
 	we have to leave even number of pairs (otherwise handshakes gonna cross)
 	
 	Considering 1 we can draw lines in following manner:
-	1-2 this devides problem into 0 and 3 pairs.
-	1-4 this devides problem into 1 and 2 pairs.
+	1-2 this divides problem into 0 and 3 pairs.
+	1-4 this divides problem into 1 and 2 pairs.
 	1-6 into 2 and 1 pairs.
 	1-8 into 3 and 0 pairs.
 	

@@ -1,10 +1,7 @@
 package dynamicprogramming.basic;
 
 // https://www.geeksforgeeks.org/largest-sum-contiguous-subarray/
-
-// Not sure if this problem should be tagged under dynamic programming
-
-// Kadane’s Algorithm
+// Kadane's Algorithm
 
 public class MaximumSumSubarray {
 
@@ -52,7 +49,8 @@ public class MaximumSumSubarray {
 		System.out.println();
 	}
 	
-	// first approach can be simplified as below
+	// first approach can be simplified as below 
+	// handles all negative number case as well
 	public static int maxSubArraySum_m2(int[] a) {
 		int maxSoFar = Integer.MIN_VALUE;
 		int maxEndingHere = 0;
@@ -60,6 +58,38 @@ public class MaximumSumSubarray {
 		for (int i = 0; i < a.length; i++) {
 			maxEndingHere = Math.max(a[i], maxEndingHere + a[i]);
 			maxSoFar = Math.max(maxSoFar, maxEndingHere);
+		}
+		
+		return maxSoFar;
+	}
+	
+	// Another modified approach which handles all negative number case as well
+	private static int kadane(int[] a) {
+		int maxSoFar = Integer.MIN_VALUE;
+		int maxEndingHere = 0;
+		boolean isPositive = false;
+		
+		for (int i = 0; i < a.length; i++) {
+			maxEndingHere += a[i];
+			if (maxEndingHere < 0) {
+				maxEndingHere = 0;
+			}
+			else if (maxSoFar < maxEndingHere) {
+				maxSoFar = maxEndingHere;
+				isPositive = true;
+			}			
+		}
+		
+		// System.out.println(isPositive);
+		// there is at least one positive number
+		if (isPositive)
+			return maxSoFar;
+		
+		// Special case: when all numbers in array a[] are negative
+		maxSoFar = a[0];
+		for (int i = 0; i < a.length; i++) {
+			if (maxSoFar < a[i])
+				maxSoFar = a[i];
 		}
 		
 		return maxSoFar;
@@ -77,5 +107,7 @@ public class MaximumSumSubarray {
 		 */
 		
 		System.out.println(maxSubArraySum_m2(a)); // 7
+		
+		System.out.println(kadane(a)); // 7
 	}
 }
