@@ -8,12 +8,12 @@ package basic.stack;
  * any time.  This class inherits from the Stack class and uses an 
  * auxiliary stack that holds minimum elements
  */
-public class SpecialStack extends Stack {
+public class SpecialStack extends Stack2 {
 
-	private Stack min; // auxiliary stack
+	private Stack2 min; // auxiliary stack
 	
 	public SpecialStack() {
-		min = new Stack();
+		min = new Stack2();
 	}
 	
 	/* SpecialStack's member method to insert an element to it. 

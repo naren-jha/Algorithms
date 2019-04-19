@@ -8,8 +8,7 @@ import java.util.PriorityQueue;
  *
  * Stack using priority queue
  */
-class Stack {
-	
+class Stack2 {
 	// template for stack element entry in priority queue
 	private class Entry {
 		int data;
@@ -39,7 +38,7 @@ class Stack {
 	private int count;
 	
 	// constructor
-	public Stack() {
+	public Stack2() {
 		count = 0;
 	}
 	
@@ -69,13 +68,12 @@ class Stack {
 	public boolean isEmpty() {
 		return pq.isEmpty();
 	}
-	
 }
 
 public class StackUsingPriorityQueue {
 
 	public static void main(String[] args) {
-		Stack s = new Stack();
+		Stack2 s = new Stack2();
 	    s.push(10);
 	    s.push(20);
 	    s.push(30);

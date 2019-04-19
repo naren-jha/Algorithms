@@ -97,19 +97,17 @@ public class MaximumSubsquareWithSidesAsX {
 		                  {'X','0','0','X','X','0'},
 		                  {'X','0','X','X','X','0'}};
 		
-		char [][] input2 = {{'0', '0', '0', '0', '0', 'X'},
+		char[][] input2 = {{'0', '0', '0', '0', '0', 'X'},
 		                    {'0', 'X', '0', 'X', 'X', 'X'},
 		                    {'0', 'X', '0', 'X', '0', 'X'},
 		                    {'0', 'X', 'X', 'X', 'X', 'X'},
-		                    {'0', '0', '0', '0', '0', '0'},
-		};
+		                    {'0', '0', '0', '0', '0', '0'}};
 		
-		char [][] input3 = {{'0', '0', 'X', '0', 'X'},
+		char[][] input3 = {{'0', '0', 'X', '0', 'X'},
 		                    {'0', 'X', 'X', '0', 'X'},
 		                    {'0', 'X', '0', 'X', 'X'},
 		                    {'X', 'X', 'X', 'X', 'X'},
-		                    {'0', 'X', 'X', 'X', '0'},
-        };
+		                    {'0', 'X', 'X', 'X', '0'}};
 		
 		MaximumSubsquareWithSidesAsX obj = new MaximumSubsquareWithSidesAsX();
 		System.out.println(obj.maxSubSquraeMatrix(input1)); // 2
