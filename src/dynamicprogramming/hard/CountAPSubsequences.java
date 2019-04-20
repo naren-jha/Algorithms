@@ -77,7 +77,7 @@ public class CountAPSubsequences {
 	 * terms of space somplexity because of this.
 	 */
 	
-	// T(n): O(n^2), S(n): O(Max(n, max))
+	// T(n): O(n), S(n): O(Max(n, max))
 	public static int countAP_Fast(int[] a) {
 		int n = a.length;
 		int max = Integer.MIN_VALUE, min = Integer.MAX_VALUE;
