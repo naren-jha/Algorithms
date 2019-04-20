@@ -74,7 +74,7 @@ public class CountAPSubsequences {
 	 * all the APs with last element value as 'x'. i.e., it stores sum of all 
 	 * the dp's where last element in AP was 'x'. Doing this we get rid of the 
 	 * 'j' loop, which leads to O(n) time solution. Ofcourse we may do badly in 
-	 * terms of space somplexity because of this.
+	 * terms of space complexity because of this.
 	 */
 	
 	// T(n): O(n), S(n): O(Max(n, max))
