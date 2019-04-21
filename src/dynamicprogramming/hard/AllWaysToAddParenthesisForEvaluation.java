@@ -7,7 +7,7 @@ import java.util.List;
 
 public class AllWaysToAddParenthesisForEvaluation {
 
-	// This problem is similar to Matrix Chain Multiplication and MinAndMaxValueOfExpr problem
+	// This problem is similar to MatrixChainMultiplication and MinAndMaxValueOfExpr problem
 
 	// T(n): O(n^3), S(n): O(n^2)
 	public static List<String> calculateAllPossibleValuesOfExpr(String expr) {
@@ -65,8 +65,8 @@ public class AllWaysToAddParenthesisForEvaluation {
 							calc[i][j] += " ";
 						}
 					}
-					calc[i][j] = calc[i][j].substring(0, calc[i][j].length()-1); // remove last space
-					
+					// remove last space
+					calc[i][j] = calc[i][j].substring(0, calc[i][j].length()-1);
 				}
 				if (len == n)
 					result.add(calc[i][j]);

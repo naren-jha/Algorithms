@@ -23,11 +23,11 @@ public class CountAPSubsequences {
 	 *    
 	 * 5. Keep adding all such AP counts into a variable. 
 	 * 
-	 * 6. In the end add 'n' to count for all single element AP, and add 1 to 
+	 * 6. In the end, add 'n' to count for all single element AP, and add 1 to 
 	 *    count empty set.
 	 *    
 	 * Considering that outer most loop for 'd' goes through some constant number of times,
-	 * this algorithm takes O(n^2) time. We can improve this algorithm to O(n) time.
+	 * this algorithm takes O(n^2) time.
 	 */
 
 	// T(n): O(n^2), S(n): O(n)
@@ -70,7 +70,7 @@ public class CountAPSubsequences {
 	
 	/*
 	 * We can optimize above solution to linear time. 
-	 * What we can do is maintain a sum[] array where sum[x] stores count of 
+	 * What we can do is maintain a sum[] array, where sum[x] stores count of 
 	 * all the APs with last element value as 'x'. i.e., it stores sum of all 
 	 * the dp's where last element in AP was 'x'. Doing this we get rid of the 
 	 * 'j' loop, which leads to O(n) time solution. Ofcourse we may do badly in 
