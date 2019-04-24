@@ -1,6 +1,7 @@
 package dynamicprogramming.intermediate;
 
 // https://leetcode.com/problems/range-sum-query-2d-immutable/
+// https://www.geeksforgeeks.org/submatrix-sum-queries/
 
 // https://leetcode.com/problems/range-sum-query-2d-immutable/solution/
 // https://youtu.be/PwDqpOMwg6U
