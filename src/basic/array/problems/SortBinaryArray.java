@@ -6,20 +6,22 @@ import java.util.Arrays;
 
 public class SortBinaryArray {
 
+	// T(n): O(n), S(n): O(1)
 	public static void sort(int[] a) {
 		int i = 0, j = a.length-1;
 		while (i < j) {
-			if (a[i] == 1) {
-				while (i < j && a[j] == 1)
-					j--;
-				if (i < j) {
-					// swap
-					a[i] = 0;
-					a[j] = 1;
-					j--;
-				}
+			if (a[i] == 1 && a[j] == 0) {
+				// swap
+				a[i] = 0;
+				a[j] = 1;
+				i++; j--;
 			}
-			i++;
+			else {
+				if (a[i] == 0)
+					i++;
+				if (a[j] == 1)
+					j--;
+			}
 		}
 	}
 	
