@@ -6,31 +6,31 @@ import java.util.List;
 import java.util.Queue;
 import java.util.Stack;
 
-public class TolologicalSorting extends Graph {
+public class TopologicalSorting extends Graph {
     
-    public TolologicalSorting(int numberOfVertices) {
+    public TopologicalSorting(int numberOfVertices) {
         super(numberOfVertices);
     }
     
-    public void topologicalSort() {
+    public void topSort() {
         Stack<Integer> stack = new Stack<Integer>();
         boolean[] visited = new boolean[numberOfVertices];
         
         for (int vn = 0; vn < numberOfVertices; ++vn) {
             if (!visited[vn])
-                topologicalSortUtil(vn, visited, stack);
+                topSortUtil(vn, visited, stack);
         }
         
         while (!stack.isEmpty())
             System.out.print(stack.pop() + " ");
     }
 
-    private void topologicalSortUtil(int v, boolean[] visited, Stack<Integer> stack) {
+    private void topSortUtil(int v, boolean[] visited, Stack<Integer> stack) {
         visited[v] = true;
         
         for (Integer adjNode : adjList.get(v)) {
             if (!visited[adjNode])
-                topologicalSortUtil(adjNode, visited, stack);
+                topSortUtil(adjNode, visited, stack);
         }
         
         stack.push(v);
@@ -81,7 +81,7 @@ public class TolologicalSorting extends Graph {
     }
     
     /* All topological sorting of a DAG */
-    public void allTopologicalSort() {
+    public void allTopSort() {
         boolean[] visited = new boolean[numberOfVertices];
         
         int[] indegree = new int[numberOfVertices];
@@ -90,10 +90,10 @@ public class TolologicalSorting extends Graph {
                 indegree[dest]++;
         
         List<Integer> result = new ArrayList<Integer>();
-        allTopologicalSortUtil(visited, indegree, result);
+        allTopSortUtil(visited, indegree, result);
     }
 
-    private void allTopologicalSortUtil(boolean[] visited, int[] indegree, List<Integer> result) {
+    private void allTopSortUtil(boolean[] visited, int[] indegree, List<Integer> result) {
         boolean flag = false;
         for (int vn = 0; vn < numberOfVertices; ++vn) {
             if (indegree[vn] == 0 && !visited[vn]) {
@@ -102,7 +102,7 @@ public class TolologicalSorting extends Graph {
                 for (Integer dest : adjList.get(vn))
                     indegree[dest]--;
                 
-                allTopologicalSortUtil(visited, indegree, result);
+                allTopSortUtil(visited, indegree, result);
                 
                 visited[vn] = false;
                 result.remove(result.size()-1);
@@ -120,7 +120,7 @@ public class TolologicalSorting extends Graph {
     }
 
     public static void main(String[] args) {
-        TolologicalSorting graph = new TolologicalSorting(6);
+        TopologicalSorting graph = new TopologicalSorting(6);
         graph.addEdge(5, 2, false);
         graph.addEdge(5, 0, false);
         graph.addEdge(4, 0, false);
@@ -128,13 +128,13 @@ public class TolologicalSorting extends Graph {
         graph.addEdge(2, 3, false);
         graph.addEdge(3, 1, false);
         
-        graph.topologicalSort(); // 5 4 2 3 1 0 
+        graph.topSort(); // 5 4 2 3 1 0 
         System.out.println();
         
         graph.kahnsTopSort(); // 4 5 0 2 3 1 
         System.out.println();
         
-        graph.allTopologicalSort();
+        graph.allTopSort();
         /*
          * 4 5 0 2 3 1 
          * 4 5 2 0 3 1 
