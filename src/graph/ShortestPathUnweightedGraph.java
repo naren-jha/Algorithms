@@ -37,7 +37,8 @@ public class ShortestPathUnweightedGraph extends Graph {
         visited[s] = true;
         while (!q.isEmpty()) {
             int v = q.poll();
-            for (Integer adjNode : adjList.get(v)) {
+            for (Edge edge : adjList.get(v)) {
+                int adjNode = edge.dv;
                 if (!visited[adjNode]) {
                     q.add(adjNode);
                     visited[adjNode] = true;
@@ -71,13 +72,10 @@ public class ShortestPathUnweightedGraph extends Graph {
         graph.addEdge(1, 2);
         
         graph.shortestPath(0, 2);
-        /*
-         * Shortest path length is: 3
-         * Shortest path is: ->0->1->2
-         */
+        // Shortest path length is: 3
+        // Shortest path is: ->0->1->2
+        
         graph.shortestPath(0, 3);
-        /*
-         * There is no path from given source to destination
-         */
+        // There is no path from given source to destination
     }
 }

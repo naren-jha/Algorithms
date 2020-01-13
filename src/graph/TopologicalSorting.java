@@ -25,10 +25,11 @@ public class TopologicalSorting extends Graph {
             System.out.print(stack.pop() + " ");
     }
 
-    private void topSortUtil(int v, boolean[] visited, Stack<Integer> stack) {
+    protected void topSortUtil(int v, boolean[] visited, Stack<Integer> stack) {
         visited[v] = true;
         
-        for (Integer adjNode : adjList.get(v)) {
+        for (Edge edge : adjList.get(v)) {
+            int adjNode = edge.dv;
             if (!visited[adjNode])
                 topSortUtil(adjNode, visited, stack);
         }
@@ -41,8 +42,8 @@ public class TopologicalSorting extends Graph {
         // calculate indegrees of all nodes: O(V+E)
         int[] indegree = new int[numberOfVertices];
         for (int vn = 0; vn < numberOfVertices; ++vn)
-            for (Integer dest : adjList.get(vn))
-                indegree[dest]++;
+            for (Edge edge : adjList.get(vn))
+                indegree[edge.dv]++;
         
         // enqueue all nodes with 0 indegrees to a queue
         Queue<Integer> q = new LinkedList<Integer>();
@@ -57,7 +58,8 @@ public class TopologicalSorting extends Graph {
             int v = q.poll();
             topOrder.add(v);
             
-            for (Integer dest : adjList.get(v)) {
+            for (Edge edge : adjList.get(v)) {
+                int dest = edge.dv;
                 indegree[dest]--;
                 if (indegree[dest] == 0)
                     q.add(dest);
@@ -86,8 +88,8 @@ public class TopologicalSorting extends Graph {
         
         int[] indegree = new int[numberOfVertices];
         for (int vn = 0; vn < numberOfVertices; ++vn)
-            for (Integer dest : adjList.get(vn))
-                indegree[dest]++;
+            for (Edge edge : adjList.get(vn))
+                indegree[edge.dv]++;
         
         List<Integer> result = new ArrayList<Integer>();
         allTopSortUtil(visited, indegree, result);
@@ -99,15 +101,15 @@ public class TopologicalSorting extends Graph {
             if (indegree[vn] == 0 && !visited[vn]) {
                 visited[vn] = true;
                 result.add(vn);
-                for (Integer dest : adjList.get(vn))
-                    indegree[dest]--;
+                for (Edge edge : adjList.get(vn))
+                    indegree[edge.dv]--;
                 
                 allTopSortUtil(visited, indegree, result);
                 
                 visited[vn] = false;
                 result.remove(result.size()-1);
-                for (Integer dest : adjList.get(vn))
-                    indegree[dest]++;
+                for (Edge edge : adjList.get(vn))
+                    indegree[edge.dv]++;
                 flag = true;
             }
         }

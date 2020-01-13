@@ -9,29 +9,55 @@ import java.util.List;
 public class Graph {
 
     protected int numberOfVertices;
-    protected List<LinkedList<Integer>> adjList;
+    protected List<LinkedList<Edge>> adjList;
     
-    public Graph(int numberOfVertices) {
-        this.numberOfVertices = numberOfVertices;
-        adjList = new ArrayList<LinkedList<Integer>>();
+    protected class Edge {
+        int dv; // destination vertex
+        int wt; // weight
         
-        // create a new linked list for each vertex
-        for (int i = 0; i < numberOfVertices; ++i) {
-            adjList.add(new LinkedList<Integer>());
+        Edge(int dv, int wt) {
+            this.dv = dv;
+            this.wt = wt;
+        }
+        
+        @Override
+        public boolean equals(Object obj) {
+            return ((Edge) obj).dv == this.dv;
+        }
+        
+        @Override
+        public String toString() {
+            return "{" + dv + ", " + wt + "}";
         }
     }
     
-    public void addEdge(int src, int dest) {
-        addEdge(src, dest, true);
+    public Graph(int numberOfVertices) {
+        this.numberOfVertices = numberOfVertices;
+        adjList = new ArrayList<LinkedList<Edge>>();
+        
+        // create a new linked list for each vertex
+        for (int i = 0; i < numberOfVertices; ++i) {
+            adjList.add(new LinkedList<Edge>());
+        }
     }
     
+    // adds an unweighted edge
     public void addEdge(int src, int dest, boolean isUndirected) {
+        addEdge(src, dest, isUndirected, 0);
+    }
+    
+    // adds undirected and unweighted edge
+    public void addEdge(int src, int dest) {
+        addEdge(src, dest, true, 0);
+    }
+    
+    public void addEdge(int src, int dest, boolean isUndirected, int weight) {
         validateSourceAndDestinationVertices(src, dest);
         
         // add to the beginning of the linked list
-        adjList.get(src).addFirst(dest);
+        adjList.get(src).addFirst(new Edge(dest, weight));
         if (isUndirected)
-            adjList.get(dest).addFirst(src);
+            adjList.get(dest).addFirst(new Edge(src, weight));
     }
     
     public void removeEdge(int src, int dest) {
@@ -40,28 +66,37 @@ public class Graph {
     
     public void removeEdge(int src, int dest, boolean isUndirected) {
         validateSourceAndDestinationVertices(src, dest);
-        adjList.get(src).remove(Integer.valueOf(dest));
+        adjList.get(src).remove(new Edge(dest, 0));
         if (isUndirected)
-            adjList.get(dest).remove(Integer.valueOf(src));
+            adjList.get(dest).remove(new Edge(src, 0));
     }
     
     public boolean areNeighbor(int src, int dest) {
-        for (Integer adjNode : adjList.get(src)) {
-            if (adjNode == dest)
+        for (Edge edge : adjList.get(src)) {
+            if (edge.dv == dest)
                 return true;
         }
         return false;
     }
     
-    public List<Integer> neighborsOf(int src) {
+    public List<Edge> neighborsOf(int src) {
         return adjList.get(src);
     }
+    
+    public void addVertex() {
+        adjList.add(new LinkedList<Edge>());
+    }
 
-    private void validateSourceAndDestinationVertices(int src, int dest) {
+    protected void validateSourceAndDestinationVertices(int src, int dest) {
         if (src < 0 || src >= numberOfVertices)
-            throw new IllegalArgumentException("invalid source vertex");
+            throw new IllegalArgumentException("Invalid source vertex");
         if (dest < 0 || dest >= numberOfVertices)
-            throw new IllegalArgumentException("invalid destination vertex");
+            throw new IllegalArgumentException("Invalid destination vertex");
+    }
+    
+    protected void validateVerticex(int v) {
+        if (v < 0 || v >= numberOfVertices)
+            throw new IllegalArgumentException("Given vertex is invalid");
     }
     
     @Override
@@ -69,8 +104,8 @@ public class Graph {
         StringBuilder graph = new StringBuilder();
         for(int i = 0; i < numberOfVertices; i++) {
             graph.append("V" + i);
-            for (Integer adjNode : adjList.get(i)) {
-                graph.append(" -> " + adjNode);
+            for (Edge edge : adjList.get(i)) {
+                graph.append(" -> " + edge.dv);
             }
             graph.append("\n");
         }
@@ -105,7 +140,7 @@ public class Graph {
         System.out.println(graph.areNeighbor(2, 0)); // false
         System.out.println();
         
-        System.out.print(graph.neighborsOf(1)); // [4, 3, 2, 0]
+        System.out.print(graph.neighborsOf(1)); // [{4, 0}, {3, 0}, {2, 0}, {0, 0}]
         System.out.println("\n");
         
         graph.removeEdge(1, 3);

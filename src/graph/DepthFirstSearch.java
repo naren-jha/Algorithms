@@ -20,7 +20,8 @@ public class DepthFirstSearch extends Graph {
         System.out.print(s + " ");
         visited[s] = true;
         
-        for (Integer adjNode : adjList.get(s)) {
+        for (Edge edge : adjList.get(s)) {
+            int adjNode = edge.dv;
             if (!visited[adjNode])
                 DFSUtil(adjNode, visited);
         }
@@ -48,7 +49,8 @@ public class DepthFirstSearch extends Graph {
             Integer v = stack.pop();
             System.out.print(v + " ");
             
-            for (Integer adjNode : adjList.get(v)) {
+            for (Edge edge : adjList.get(v)) {
+                int adjNode = edge.dv;
                 if (!visited[adjNode]) {
                     stack.push(adjNode);
                     visited[adjNode] = true;
@@ -70,7 +72,8 @@ public class DepthFirstSearch extends Graph {
                     Integer v = stack.pop();
                     System.out.print(v + " ");
                     
-                    for (Integer adjNode : adjList.get(v)) {
+                    for (Edge edge : adjList.get(v)) {
+                        int adjNode = edge.dv;
                         if (!visited[adjNode]) {
                             stack.push(adjNode);
                             visited[adjNode] = true;

@@ -16,7 +16,7 @@ public class CycleInDirectedGraph extends Graph {
         boolean[] stackFlag = new boolean[numberOfVertices];
         
         for (int vn = 0; vn < numberOfVertices; ++vn) {
-            if (hasCycleUtil(vn, visited, stackFlag)) {
+            if (!visited[vn] && hasCycleUtil(vn, visited, stackFlag)) {
                 return true;
             }
         }
@@ -25,7 +25,8 @@ public class CycleInDirectedGraph extends Graph {
     
     private boolean hasCycleUtil(int v, boolean[] visited,  boolean[] stackFlag) {
         stackFlag[v] = true;
-        for (Integer adjNode : adjList.get(v)) {
+        for (Edge edge : adjList.get(v)) {
+            int adjNode = edge.dv;
             if (visited[adjNode])
                 continue;
             
