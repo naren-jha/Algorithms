@@ -46,4 +46,4 @@ Repo to host code for learning Data Structures and Algorithms
 
 
 
-## [Notes on Google Drive](https://drive.google.com/drive/folders/0B1EMPyM0E8hzR093NjEyYm8zdjA?usp=sharing)
+* [:blue_book:](https://drive.google.com/drive/folders/0B1EMPyM0E8hzR093NjEyYm8zdjA?usp=sharing)
