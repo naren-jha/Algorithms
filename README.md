@@ -1,11 +1,11 @@
 # Data Structures and Algorithms 
 Repo to host code for learning Data Structures and Algorithms 
 
-* LinkedLists
-** [SinglyLinkedList](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/singly/SinglyLinkedList.java)
-** [CircularSinglyLinkedList](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/singly/CircularSinglyLinkedList.java)
-** [DoublyLinkedList](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/doubly/DoublyLinkedList.java)
-** [CircularDoublyLinkedList](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/doubly/CircularDoublyLinkedList.java)
+* LinkedLists(https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/)
+  - [SinglyLinkedList](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/singly/SinglyLinkedList.java)
+  - [CircularSinglyLinkedList](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/singly/CircularSinglyLinkedList.java)
+  - [DoublyLinkedList](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/doubly/DoublyLinkedList.java)
+  - [CircularDoublyLinkedList](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/doubly/CircularDoublyLinkedList.java)
 
 ## Stack
 * [Using Array](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/stack/usingarray/StackTest.java)
