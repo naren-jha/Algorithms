@@ -44,7 +44,7 @@ Repo to host code for learning Data Structures and Algorithms
   * [Merge Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/MergeSort.java) **- O(nlgn)**
   * [Heap Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/HeapSort.java) **- O(nlgn)**
   * [QuickSort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/QuickSort.java) **- Θ(nlgn)**
-  * [Shell Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/Shell.java)
+  * [Shell Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/Shell.java) **- O(n<sup>2</sup>)**
   * [Counting Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/CountingSort.java) **- O(n + k)**
   * [Bucket Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/BucketSort.java) **- Θ(n + k)**
   * [Radix Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/RadixSort.java) **- O(d\*n)**
