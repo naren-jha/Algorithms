@@ -10,9 +10,11 @@ Repo to host code for learning Data Structures and Algorithms
 * [Stack](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/stack/)
   - [Using Array](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/stack/usingarray/StackTest.java)
   - [Using LinkedLinked](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/stack/using_linkedlist/StackTest.java)
+  - [Using Queue](https://github.com/njha-collab/DS_Algo/tree/master/src/basic/queue)
 * [Queue](https://github.com/njha-collab/DS_Algo/tree/master/src/basic/queue/)
   - [Using Array](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/queue/usingarray/QueueTest.java)
   - [Using LinkedLinked](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/queue/using_linkedlist/QueueTest.java)
+  - [Using Stack](https://github.com/njha-collab/DS_Algo/tree/master/src/basic/queue)
 * [Deque](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/queue/)
   - [Using Array](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/queue/usingarray/DequeTest.java)
   - [Using LinkedLinked](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/queue/using_linkedlist/DequeTest.java)
@@ -45,7 +47,7 @@ Repo to host code for learning Data Structures and Algorithms
   * [Shell Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/Shell.java)
   * [Counting Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/CountingSort.java) **- O(n + k)**
   * [Bucket Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/BucketSort.java) **- Θ(n + k)**
-  * [Radix Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/RadixSort.java) **- O(d\*n) **
+  * [Radix Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/RadixSort.java) **- O(d\*n)**
 
 ## Graph Theory
   * [AdjacencyList Representation](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/Graph.java)
