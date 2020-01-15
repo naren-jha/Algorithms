@@ -23,12 +23,11 @@ Repo to host code for learning Data Structures and Algorithms
   - [Chaining](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/hashing/chaining/HashTableTest.java)
   - [Open Addressing](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/hashing/openaddressing/HashTableTest.java)
 
-* [Binary Search Tree - Implementation, Traversals, & other important algorithms](https://github.com/njha-collab/DS_Algo/blob/master/src/tree/bst/BstTest.java)
+* [Binary Search Tree](https://github.com/njha-collab/DS_Algo/blob/master/src/tree/bst/BstTest.java)
 
-* Heap
+* [Heap](https://github.com/njha-collab/DS_Algo/blob/master/src/tree/heap/)
   - [Max Heap](https://github.com/njha-collab/DS_Algo/blob/master/src/tree/heap/MaxHeapTest.java)
   - [Min Heap](https://github.com/njha-collab/DS_Algo/blob/master/src/tree/heap/MinHeapTest.java)
-  - [Problems](https://github.com/njha-collab/DS_Algo/tree/master/src/tree/heap/problems)
 
 * [Sorting Algorithms](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/)
   - [Bubble Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/BubbleSort.java)
