@@ -44,6 +44,12 @@ Repo to host code for learning Data Structures and Algorithms
   - [AVL Tree](https://github.com/njha-collab/DS_Algo/blob/master/src/advance_ds/AVLTree.java)
   - [Red-Black Tree](https://github.com/njha-collab/DS_Algo/blob/master/src/advance_ds/RedBlackTree.java)
 
+* [Trie](https://github.com/njha-collab/DS_Algo/tree/master/src/advance_ds/trie)
 
+* [Segment Tree](https://github.com/njha-collab/DS_Algo/tree/master/src/advance_ds/segment_tree)
 
-* [:blue_book:](https://drive.google.com/drive/folders/0B1EMPyM0E8hzR093NjEyYm8zdjA?usp=sharing)
+* [Fenwick Tree](https://github.com/njha-collab/DS_Algo/blob/master/src/advance_ds/BinaryIndexedTree.java)
+
+* [LRU Cache](https://github.com/njha-collab/DS_Algo/blob/master/src/advance_ds/lru_cache/LRUCache.java)
+
+* [:notebook:](https://drive.google.com/drive/folders/0B1EMPyM0E8hzR093NjEyYm8zdjA?usp=sharing)
