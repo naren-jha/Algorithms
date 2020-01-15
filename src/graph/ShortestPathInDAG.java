@@ -7,16 +7,14 @@ import java.util.Stack;
 
 public class ShortestPathInDAG extends TopologicalSorting {
     
-    private static final int INF = Integer.MAX_VALUE;
-
     public ShortestPathInDAG(int numberOfVertices) {
         super(numberOfVertices);
     }
     
     public void shortestPath(int s) {
         validateVerticex(s);
-        int[] dist = new int[numberOfVertices];
-        Arrays.fill(dist, INF);
+        double[] dist = new double[numberOfVertices];
+        Arrays.fill(dist, Double.POSITIVE_INFINITY);
         dist[s] = 0;
         
         Stack<Integer> stack = new Stack<Integer>();
@@ -30,7 +28,7 @@ public class ShortestPathInDAG extends TopologicalSorting {
         while (!stack.isEmpty()) {
             int v = stack.pop();
             
-            if (dist[v] != INF) {
+            if (dist[v] != Double.POSITIVE_INFINITY) {
                 for (Edge edge : adjList.get(v)) {
                     if (dist[v] + edge.wt < dist[edge.dv])
                         dist[edge.dv] = dist[v] + edge.wt;
@@ -40,7 +38,7 @@ public class ShortestPathInDAG extends TopologicalSorting {
         
         System.out.println("Following are shortest distances from source " + s);
         for (int vn = 0; vn < numberOfVertices; ++vn) {
-            if (dist[vn] == INF)
+            if (dist[vn] == Double.POSITIVE_INFINITY)
                 System.out.print("INF ");
             else
                 System.out.print(dist[vn] + " ");
@@ -63,6 +61,6 @@ public class ShortestPathInDAG extends TopologicalSorting {
         
         graph.shortestPath(1);
         // Following are shortest distances from source 1
-        // INF 0 2 6 5 3 
+        // INF 0.0 2.0 6.0 5.0 3.0 
     }
 }

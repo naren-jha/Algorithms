@@ -13,9 +13,9 @@ public class Graph {
     
     protected class Edge {
         int dv; // destination vertex
-        int wt; // weight
+        double wt; // weight
         
-        Edge(int dv, int wt) {
+        Edge(int dv, double wt) {
             this.dv = dv;
             this.wt = wt;
         }
@@ -51,7 +51,7 @@ public class Graph {
         addEdge(src, dest, true, 0);
     }
     
-    public void addEdge(int src, int dest, boolean isUndirected, int weight) {
+    public void addEdge(int src, int dest, boolean isUndirected, double weight) {
         validateSourceAndDestinationVertices(src, dest);
         
         // add to the beginning of the linked list

@@ -5,16 +5,14 @@ import java.util.Stack;
 
 public class LongestPathInDAG extends TopologicalSorting {
     
-    private static final int NINF = Integer.MIN_VALUE;
-
     public LongestPathInDAG(int numberOfVertices) {
         super(numberOfVertices);
     }
     
     public void longestPath(int s) {
         validateVerticex(s);
-        int[] dist = new int[numberOfVertices];
-        Arrays.fill(dist, NINF);
+        double[] dist = new double[numberOfVertices];
+        Arrays.fill(dist, Double.NEGATIVE_INFINITY);
         dist[s] = 0;
         
         Stack<Integer> stack = new Stack<Integer>();
@@ -28,7 +26,7 @@ public class LongestPathInDAG extends TopologicalSorting {
         while (!stack.isEmpty()) {
             int v = stack.pop();
             
-            if (dist[v] != NINF) {
+            if (dist[v] != Double.NEGATIVE_INFINITY) {
                 for (Edge edge : adjList.get(v)) {
                     if (dist[v] + edge.wt > dist[edge.dv])
                         dist[edge.dv] = dist[v] + edge.wt;
@@ -38,7 +36,7 @@ public class LongestPathInDAG extends TopologicalSorting {
         
         System.out.println("Following are longest distances from source " + s);
         for (int vn = 0; vn < numberOfVertices; ++vn) {
-            if (dist[vn] == NINF)
+            if (dist[vn] == Double.NEGATIVE_INFINITY)
                 System.out.print("INF ");
             else
                 System.out.print(dist[vn] + " ");
@@ -61,6 +59,6 @@ public class LongestPathInDAG extends TopologicalSorting {
         
         graph.longestPath(1);
         // Following are shortest distances from source 1
-        // INF 0 2 6 5 3 
+        // INF 0.0 2.0 9.0 8.0 6.0 
     }
 }
