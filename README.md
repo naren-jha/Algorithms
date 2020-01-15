@@ -1,11 +1,11 @@
 # Data Structures and Algorithms 
-Repo to host code for learning DS and Algo
+Repo to host code for learning Data Structures and Algorithms 
 
-## LinkedLists
-* [SinglyLinkedList](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/singly/SinglyLinkedList.java)
-* [CircularSinglyLinkedList](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/singly/CircularSinglyLinkedList.java)
-* [DoublyLinkedList](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/doubly/DoublyLinkedList.java)
-* [CircularDoublyLinkedList](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/doubly/CircularDoublyLinkedList.java)
+* LinkedLists
+** [SinglyLinkedList](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/singly/SinglyLinkedList.java)
+** [CircularSinglyLinkedList](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/singly/CircularSinglyLinkedList.java)
+** [DoublyLinkedList](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/doubly/DoublyLinkedList.java)
+** [CircularDoublyLinkedList](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/doubly/CircularDoublyLinkedList.java)
 
 ## Stack
 * [Using Array](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/stack/usingarray/StackTest.java)
@@ -25,7 +25,7 @@ Repo to host code for learning DS and Algo
 * [Chaining](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/hashing/chaining/HashTableTest.java)
 * [Open Addressing](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/hashing/openaddressing/HashTableTest.java)
 
-## BST
+## Binary Search Tree
 * [Implementation, Traversals, & other important algorithms](https://github.com/njha-collab/DS_Algo/blob/master/src/tree/bst/BstTest.java)
 
 ## Heap
@@ -43,5 +43,11 @@ Repo to host code for learning DS and Algo
 * [Counting Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/CountingSort.java)
 * [Bucket Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/BucketSort.java)
 * [Radix Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/RadixSort.java)
+
+## Balanced Trees
+* [AVL Tree](https://github.com/njha-collab/DS_Algo/blob/master/src/advance_ds/AVLTree.java)
+* [Red-Black Tree](https://github.com/njha-collab/DS_Algo/blob/master/src/advance_ds/RedBlackTree.java)
+
+
 
 ## [Notes on Google Drive](https://drive.google.com/drive/folders/0B1EMPyM0E8hzR093NjEyYm8zdjA?usp=sharing)
