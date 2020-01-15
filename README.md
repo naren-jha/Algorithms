@@ -1,7 +1,6 @@
 # Data Structures and Algorithms 
 Repo to host code for learning DS and Algo
 
-# Data Structures
 ## LinkedLists
 * [SinglyLinkedList](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/singly/SinglyLinkedList.java)
 * [CircularSinglyLinkedList](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/singly/CircularSinglyLinkedList.java)
@@ -11,13 +10,38 @@ Repo to host code for learning DS and Algo
 ## Stack
 * [Using Array](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/stack/usingarray/StackTest.java)
 * [Using LinkedLinked](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/stack/using_linkedlist/StackTest.java)
+* [Problems](https://github.com/njha-collab/DS_Algo/tree/master/src/basic/stack)
 
 ## Queue
 * [Using Array](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/queue/usingarray/QueueTest.java)
 * [Using LinkedLinked](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/queue/using_linkedlist/QueueTest.java)
+* [Problems](https://github.com/njha-collab/DS_Algo/tree/master/src/basic/queue)
 
 ## Deque
 * [Using Array](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/queue/usingarray/DequeTest.java)
 * [Using LinkedLinked](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/queue/using_linkedlist/DequeTest.java)
 
-## [My Notes on Google Drive](https://drive.google.com/drive/folders/0B1EMPyM0E8hzR093NjEyYm8zdjA?usp=sharing)
+## Hashtable
+* [Chaining](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/hashing/chaining/HashTableTest.java)
+* [Open Addressing](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/hashing/openaddressing/HashTableTest.java)
+
+## BST
+* [Implementation, Traversals, & other important algorithms](https://github.com/njha-collab/DS_Algo/blob/master/src/tree/bst/BstTest.java)
+
+## Heap
+* [Max Heap](https://github.com/njha-collab/DS_Algo/blob/master/src/tree/heap/MaxHeapTest.java)
+* [Min Heap](https://github.com/njha-collab/DS_Algo/blob/master/src/tree/heap/MinHeapTest.java)
+* [Problems](https://github.com/njha-collab/DS_Algo/tree/master/src/tree/heap/problems)
+
+## Sorting Algorithms
+* [Bubble Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/BubbleSort.java)
+* [Insertion Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/InsertionSort.java)
+* [Merge Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/MergeSort.java)
+* [Heap Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/HeapSort.java)
+* [QuickSort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/QuickSort.java)
+* [Shell Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/Shell.java)
+* [Counting Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/CountingSort.java)
+* [Bucket Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/BucketSort.java)
+* [Radix Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/RadixSort.java)
+
+## [Notes on Google Drive](https://drive.google.com/drive/folders/0B1EMPyM0E8hzR093NjEyYm8zdjA?usp=sharing)
