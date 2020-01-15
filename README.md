@@ -39,15 +39,15 @@ Repo to host code for learning Data Structures and Algorithms
     - [TransitiveClosure](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/TransitiveClosure.java)
   - [Topological Sorting](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/TopologicalSorting.java)
 * [Sorting Algorithms](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/)
-  - [Bubble Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/BubbleSort.java)**- O(n<sup>2</sup>)**
+  - [Bubble Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/BubbleSort.java) **- O(n<sup>2</sup>)**
   - [Insertion Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/InsertionSort.java)**- O(n<sup>2</sup>)**
-  - [Merge Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/MergeSort.java)**- O(nlog(n))**
-  - [Heap Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/HeapSort.java)**- O(nlog(n))**
-  - [QuickSort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/QuickSort.java)**- O(nlog(n))**
+  - [Merge Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/MergeSort.java) **- O(nlgn)**
+  - [Heap Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/HeapSort.java) **- O(nlgn)**
+  - [QuickSort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/QuickSort.java) **- Θ(nlgn)**
   - [Shell Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/Shell.java)
-  - [Counting Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/CountingSort.java)
-  - [Bucket Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/BucketSort.java)
-  - [Radix Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/RadixSort.java)
+  - [Counting Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/CountingSort.java) **- O(n + k)**
+  - [Bucket Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/BucketSort.java) **- Θ(n + k)**
+  - [Radix Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/RadixSort.java) **- O(d\*n) **
 * [Dynamic Programming](https://github.com/njha-collab/DS_Algo/tree/master/src/dynamicprogramming/)
   - [Easy Problems](https://github.com/njha-collab/DS_Algo/tree/master/src/dynamicprogramming/basic/)
   - [Intermediate Problems](https://github.com/njha-collab/DS_Algo/tree/master/src/dynamicprogramming/intermediate/)
