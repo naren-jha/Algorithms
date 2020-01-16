@@ -1,4 +1,4 @@
-# [:ledger:](https://drive.google.com/drive/folders/0B1EMPyM0E8hzR093NjEyYm8zdjA?usp=sharing)Data Structures and Algorithms:ledger:
+# [:blue_book:](https://drive.google.com/drive/folders/0B1EMPyM0E8hzR093NjEyYm8zdjA?usp=sharing)Data Structures and Algorithms
 Repo to host code for learning Data Structures and Algorithms 
 
 ## Data Structures
