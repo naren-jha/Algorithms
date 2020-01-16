@@ -4,8 +4,8 @@ Repo to host code for learning Data Structures and Algorithms
 ## Data Structures
 * [LinkedLists](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/)
   - [SinglyLinkedList](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/singly/SinglyLinkedList.java)
-  - [CircularSinglyLinkedList](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/singly/CircularSinglyLinkedList.java)
   - [DoublyLinkedList](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/doubly/DoublyLinkedList.java)
+  - [CircularSinglyLinkedList](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/singly/CircularSinglyLinkedList.java)
   - [CircularDoublyLinkedList](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/doubly/CircularDoublyLinkedList.java)
 * [Stack](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/stack/)
   - [Using Array](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/stack/usingarray/StackTest.java)
