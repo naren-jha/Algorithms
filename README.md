@@ -1,4 +1,4 @@
-# [:notebook:](https://drive.google.com/drive/folders/0B1EMPyM0E8hzR093NjEyYm8zdjA?usp=sharing)Data Structures and Algorithms[:notebook:] 
+# [:notebook:](https://drive.google.com/drive/folders/0B1EMPyM0E8hzR093NjEyYm8zdjA?usp=sharing)Data Structures and Algorithms:notebook:
 Repo to host code for learning Data Structures and Algorithms 
 
 ## Data Structures
@@ -46,7 +46,7 @@ Repo to host code for learning Data Structures and Algorithms
   * [10. Subset Sum Problem](https://github.com/njha-collab/DS_Algo/blob/master/src/dynamicprogramming/basic/SubsetSumProblem.java)
   * [11. Perfect Sum Problem](https://github.com/njha-collab/DS_Algo/blob/master/src/dynamicprogramming/basic/PerfectSumProblem.java)
   * [12. Subset Sum Divisible By M](https://github.com/njha-collab/DS_Algo/blob/master/src/dynamicprogramming/basic/SubsetSumDivisibleByM.java)
-  * [13. DUPLICATE OF 91 - Largest Divisible Pair Subset](https://github.com/njha-collab/DS_Algo/blob/master/src/dynamicprogramming/basic/LargestDivisiblePairSubset.java)
+  * [13. Largest Divisible Pair Subset (DUPLICATE OF 91)](https://github.com/njha-collab/DS_Algo/blob/master/src/dynamicprogramming/basic/LargestDivisiblePairSubset.java)
   * [14. Rod Cutting Problem](https://github.com/njha-collab/DS_Algo/blob/master/src/dynamicprogramming/basic/RodCuttingProblem.java)
   * [15. Tiling With Dominoes](https://github.com/njha-collab/DS_Algo/blob/master/src/dynamicprogramming/basic/TilingWithDominoes.java)
   * [16. Painting Fence Problem](https://github.com/njha-collab/DS_Algo/blob/master/src/dynamicprogramming/basic/PaintingFenceProblem.java)
@@ -67,8 +67,8 @@ Repo to host code for learning Data Structures and Algorithms
   * [31. Maximum Sum No Three Adjacent](https://github.com/njha-collab/DS_Algo/blob/master/src/dynamicprogramming/basic/MaximumSumNoThreeAdjacent.java)
   * [32. Longest Subseq Adjacent Diff1](https://github.com/njha-collab/DS_Algo/blob/master/src/dynamicprogramming/basic/LongestSubseqAdjacentDiff1.java)
   * [33. Max Length Chain Pairs](https://github.com/njha-collab/DS_Algo/blob/master/src/dynamicprogramming/basic/MaxLengthChainPairs.java)
-  * []()
-  * []()
+  * [34. Path With Maximum Average Value](https://github.com/njha-collab/DS_Algo/blob/master/src/dynamicprogramming/basic/PathWithMaximumAverageValue.java)
+  * [35. Min Cost Path](https://github.com/njha-collab/DS_Algo/blob/master/src/dynamicprogramming/basic/MinCostPath.java)
   * []()
   * []()
   * []()
@@ -195,6 +195,7 @@ Repo to host code for learning Data Structures and Algorithms
   * [Merge Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/MergeSort.java) **- O(nlgn)**
   * [Heap Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/HeapSort.java) **- O(nlgn)**
   * [QuickSort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/QuickSort.java) **- Θ(nlgn)**
+  * [Tim Sort:notebook:](https://njha-collab.github.io/blogs/understanding-tim-sort) **- O(nlgn)**
   * [Shell Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/Shell.java) **- O(n<sup>2</sup>)**
   * [Counting Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/CountingSort.java) **- O(n + k)**
   * [Bucket Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/BucketSort.java) **- Θ(n + k)**
