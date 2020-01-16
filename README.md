@@ -1,4 +1,4 @@
-# [:notebook_with_decorative_cover:](https://drive.google.com/drive/folders/0B1EMPyM0E8hzR093NjEyYm8zdjA?usp=sharing)Data Structures and Algorithms:notebook_with_decorative_cover:
+# [:ledger:](https://drive.google.com/drive/folders/0B1EMPyM0E8hzR093NjEyYm8zdjA?usp=sharing)Data Structures and Algorithms:ledger:
 Repo to host code for learning Data Structures and Algorithms 
 
 ## Data Structures
@@ -195,7 +195,7 @@ Repo to host code for learning Data Structures and Algorithms
   * [Merge Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/MergeSort.java) **- O(nlgn)**
   * [Heap Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/HeapSort.java) **- O(nlgn)**
   * [QuickSort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/QuickSort.java) **- Θ(nlgn)**
-  * [Tim Sort:notebook_with_decorative_cover:](https://njha-collab.github.io/blogs/understanding-tim-sort) **- O(nlgn)**
+  * [Tim Sort:blue_book:](https://njha-collab.github.io/blogs/understanding-tim-sort) **- O(nlgn)**
   * [Shell Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/Shell.java) **- O(n<sup>2</sup>)**
   * [Counting Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/CountingSort.java) **- O(n + k)**
   * [Bucket Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/BucketSort.java) **- Θ(n + k)**
