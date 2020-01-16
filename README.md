@@ -1,4 +1,4 @@
-# [:notebook:](https://drive.google.com/drive/folders/0B1EMPyM0E8hzR093NjEyYm8zdjA?usp=sharing)Data Structures and Algorithms:notebook:
+# [:blue_book:](https://drive.google.com/drive/folders/0B1EMPyM0E8hzR093NjEyYm8zdjA?usp=sharing)Data Structures and Algorithms:blue_book:
 Repo to host code for learning Data Structures and Algorithms 
 
 ## Data Structures
