@@ -3,9 +3,9 @@ package graph;
 import java.util.Arrays;
 import java.util.LinkedList;
 
-public class BellmanForm extends Graph {
+public class BellmanFord extends Graph {
 
-    public BellmanForm(int numberOfVertices) {
+    public BellmanFord(int numberOfVertices) {
         super(numberOfVertices);
     }
     
@@ -37,7 +37,7 @@ public class BellmanForm extends Graph {
     }
     
     public static void main(String[] args) {
-        BellmanForm graph = new BellmanForm(9);
+        BellmanFord graph = new BellmanFord(9);
         graph.addEdge(0, 1, false, 1);
         graph.addEdge(1, 2, false, 1);
         graph.addEdge(2, 4, false, 1);
