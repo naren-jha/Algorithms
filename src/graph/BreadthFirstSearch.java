@@ -24,7 +24,7 @@ public class BreadthFirstSearch extends Graph {
             System.out.print(v + " ");
             
             for (Edge edge : adjList.get(v)) {
-                int adjNode = edge.dv;
+                int adjNode = edge.to;
                 if (!visited[adjNode]) {
                     q.add(adjNode);
                     visited[adjNode] = true;
@@ -47,7 +47,7 @@ public class BreadthFirstSearch extends Graph {
                     System.out.print(v + " ");
                     
                     for (Edge edge : adjList.get(v)) {
-                        int adjNode = edge.dv;
+                        int adjNode = edge.to;
                         if (!visited[adjNode]) {
                             q.add(adjNode);
                             visited[adjNode] = true;

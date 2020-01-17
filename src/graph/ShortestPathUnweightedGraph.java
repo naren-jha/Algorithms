@@ -38,7 +38,7 @@ public class ShortestPathUnweightedGraph extends Graph {
         while (!q.isEmpty()) {
             int v = q.poll();
             for (Edge edge : adjList.get(v)) {
-                int adjNode = edge.dv;
+                int adjNode = edge.to;
                 if (!visited[adjNode]) {
                     q.add(adjNode);
                     visited[adjNode] = true;

@@ -30,8 +30,8 @@ public class ShortestPathInDAG extends TopologicalSorting {
             
             if (dist[v] != Double.POSITIVE_INFINITY) {
                 for (Edge edge : adjList.get(v)) {
-                    if (dist[v] + edge.wt < dist[edge.dv])
-                        dist[edge.dv] = dist[v] + edge.wt;
+                    if (dist[v] + edge.wt < dist[edge.to])
+                        dist[edge.to] = dist[v] + edge.wt;
                 }
             }
         }

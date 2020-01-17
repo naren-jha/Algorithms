@@ -25,7 +25,7 @@ public class TransitiveClosure extends Graph {
         tc[s][d] = true;
         
         for (Edge edge : adjList.get(d)) {
-            int dest = edge.dv;
+            int dest = edge.to;
             if (!tc[s][dest])
                 DFSUtil(s, dest, tc);
         }

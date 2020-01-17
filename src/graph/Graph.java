@@ -12,22 +12,24 @@ public class Graph {
     protected List<LinkedList<Edge>> adjList;
     
     protected class Edge {
-        int dv; // destination vertex
+        int from; // source vertex
+        int to; // destination vertex
         double wt; // weight
         
-        Edge(int dv, double wt) {
-            this.dv = dv;
+        Edge(int from, int to, double wt) {
+            this.from = from;
+            this.to = to;
             this.wt = wt;
         }
         
         @Override
         public boolean equals(Object obj) {
-            return ((Edge) obj).dv == this.dv;
+            return ((Edge) obj).to == this.to;
         }
         
         @Override
         public String toString() {
-            return "{" + dv + ", " + wt + "}";
+            return String.format("{from=%d, to=%d, weight=%.2f}", from, to, wt);
         }
     }
     
@@ -55,9 +57,9 @@ public class Graph {
         validateSourceAndDestinationVertices(src, dest);
         
         // add to the beginning of the linked list
-        adjList.get(src).addFirst(new Edge(dest, weight));
+        adjList.get(src).addFirst(new Edge(src, dest, weight));
         if (isUndirected)
-            adjList.get(dest).addFirst(new Edge(src, weight));
+            adjList.get(dest).addFirst(new Edge(dest, src, weight));
     }
     
     public void removeEdge(int src, int dest) {
@@ -66,14 +68,14 @@ public class Graph {
     
     public void removeEdge(int src, int dest, boolean isUndirected) {
         validateSourceAndDestinationVertices(src, dest);
-        adjList.get(src).remove(new Edge(dest, 0));
+        adjList.get(src).remove(new Edge(src, dest, 0));
         if (isUndirected)
-            adjList.get(dest).remove(new Edge(src, 0));
+            adjList.get(dest).remove(new Edge(src, dest, 0));
     }
     
     public boolean areNeighbor(int src, int dest) {
         for (Edge edge : adjList.get(src)) {
-            if (edge.dv == dest)
+            if (edge.to == dest)
                 return true;
         }
         return false;
@@ -105,7 +107,7 @@ public class Graph {
         for(int i = 0; i < numberOfVertices; i++) {
             graph.append("V" + i);
             for (Edge edge : adjList.get(i)) {
-                graph.append(" -> " + edge.dv);
+                graph.append(" -> " + edge.to);
             }
             graph.append("\n");
         }
@@ -140,7 +142,11 @@ public class Graph {
         System.out.println(graph.areNeighbor(2, 0)); // false
         System.out.println();
         
-        System.out.print(graph.neighborsOf(1)); // [{4, 0}, {3, 0}, {2, 0}, {0, 0}]
+        System.out.print(graph.neighborsOf(1)); 
+        /*
+         * [{from=1, to=4, weight=0.00}, {from=1, to=3, weight=0.00}, 
+         * {from=1, to=2, weight=0.00}, {from=1, to=0, weight=0.00}]
+         */
         System.out.println("\n");
         
         graph.removeEdge(1, 3);

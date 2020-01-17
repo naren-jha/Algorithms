@@ -29,7 +29,7 @@ public class TopologicalSorting extends Graph {
         visited[v] = true;
         
         for (Edge edge : adjList.get(v)) {
-            int adjNode = edge.dv;
+            int adjNode = edge.to;
             if (!visited[adjNode])
                 topSortUtil(adjNode, visited, stack);
         }
@@ -43,7 +43,7 @@ public class TopologicalSorting extends Graph {
         int[] indegree = new int[numberOfVertices];
         for (int vn = 0; vn < numberOfVertices; ++vn)
             for (Edge edge : adjList.get(vn))
-                indegree[edge.dv]++;
+                indegree[edge.to]++;
         
         // enqueue all nodes with 0 indegrees to a queue
         Queue<Integer> q = new LinkedList<Integer>();
@@ -59,7 +59,7 @@ public class TopologicalSorting extends Graph {
             topOrder.add(v);
             
             for (Edge edge : adjList.get(v)) {
-                int dest = edge.dv;
+                int dest = edge.to;
                 indegree[dest]--;
                 if (indegree[dest] == 0)
                     q.add(dest);
@@ -89,7 +89,7 @@ public class TopologicalSorting extends Graph {
         int[] indegree = new int[numberOfVertices];
         for (int vn = 0; vn < numberOfVertices; ++vn)
             for (Edge edge : adjList.get(vn))
-                indegree[edge.dv]++;
+                indegree[edge.to]++;
         
         List<Integer> result = new ArrayList<Integer>();
         allTopSortUtil(visited, indegree, result);
@@ -102,14 +102,14 @@ public class TopologicalSorting extends Graph {
                 visited[vn] = true;
                 result.add(vn);
                 for (Edge edge : adjList.get(vn))
-                    indegree[edge.dv]--;
+                    indegree[edge.to]--;
                 
                 allTopSortUtil(visited, indegree, result);
                 
                 visited[vn] = false;
                 result.remove(result.size()-1);
                 for (Edge edge : adjList.get(vn))
-                    indegree[edge.dv]++;
+                    indegree[edge.to]++;
                 flag = true;
             }
         }

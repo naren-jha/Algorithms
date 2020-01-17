@@ -26,7 +26,7 @@ public class CycleInDirectedGraph extends Graph {
     private boolean hasCycleUtil(int v, boolean[] visited,  boolean[] stackFlag) {
         stackFlag[v] = true;
         for (Edge edge : adjList.get(v)) {
-            int adjNode = edge.dv;
+            int adjNode = edge.to;
             if (visited[adjNode])
                 continue;
             
