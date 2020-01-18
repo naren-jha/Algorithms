@@ -2,7 +2,7 @@
 Repo to host code for learning Data Structures and Algorithms 
 
 ## Data Structures
-* [LinkedLists](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/)
+* [LinkedLists](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/) [:blue_book:](https://drive.google.com/file/d/1iWbtK-zaWp-dlt-8pJBKGO3pPMquAnxp/view?usp=sharing)
   - [SinglyLinkedList](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/singly/SinglyLinkedList.java)
   - [DoublyLinkedList](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/doubly/DoublyLinkedList.java)
   - [CircularSinglyLinkedList](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/singly/CircularSinglyLinkedList.java)
