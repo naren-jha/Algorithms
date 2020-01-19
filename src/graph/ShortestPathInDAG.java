@@ -12,7 +12,7 @@ public class ShortestPathInDAG extends TopologicalSorting {
     }
     
     public void shortestPath(int s) {
-        validateVerticex(s);
+        validateVertex(s);
         double[] dist = new double[numberOfVertices];
         Arrays.fill(dist, Double.POSITIVE_INFINITY);
         dist[s] = 0;

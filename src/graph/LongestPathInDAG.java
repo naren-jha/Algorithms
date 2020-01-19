@@ -10,7 +10,7 @@ public class LongestPathInDAG extends TopologicalSorting {
     }
     
     public void longestPath(int s) {
-        validateVerticex(s);
+        validateVertex(s);
         double[] dist = new double[numberOfVertices];
         Arrays.fill(dist, Double.NEGATIVE_INFINITY);
         dist[s] = 0;

@@ -96,7 +96,7 @@ public class Graph {
             throw new IllegalArgumentException("Invalid destination vertex");
     }
     
-    protected void validateVerticex(int v) {
+    protected void validateVertex(int v) {
         if (v < 0 || v >= numberOfVertices)
             throw new IllegalArgumentException("Given vertex is invalid");
     }

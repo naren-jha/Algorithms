@@ -3,6 +3,13 @@ package graph;
 import java.util.Arrays;
 import java.util.LinkedList;
 
+/*
+ * https://youtu.be/09_LlHjoEiY?t=6647 
+ * https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm 
+ * https://brilliant.org/wiki/bellman-ford-algorithm/
+ * https://www.youtube.com/watch?v=Ttezuzs39nk
+ */
+
 public class BellmanFord extends Graph {
 
     public BellmanFord(int numberOfVertices) {
@@ -10,6 +17,7 @@ public class BellmanFord extends Graph {
     }
     
     public void shortestPath(int s) {
+        validateVertex(s);
         double[] dist = new double[numberOfVertices];
         Arrays.fill(dist, Double.POSITIVE_INFINITY);
         dist[s] = 0;
@@ -17,7 +25,7 @@ public class BellmanFord extends Graph {
         for (int vn = 0; vn < numberOfVertices - 1; ++vn) {
             for (LinkedList<Edge> edges : adjList) {
                 for (Edge edge : edges) {
-                    if (dist[edge.to] > dist[edge.from] + edge.wt)
+                    if (dist[edge.to] > dist[edge.from] + edge.wt) // relaxation
                         dist[edge.to] = dist[edge.from] + edge.wt;
                 }
             }
