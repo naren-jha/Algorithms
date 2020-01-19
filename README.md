@@ -199,4 +199,9 @@ Repo to host code for learning Data Structures and Algorithms
     - [ConnectedComponents](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/ConnectedComponents.java) **- O(V+E)**
     - [TransitiveClosure](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/TransitiveClosure.java) **- O(V+E)**
   * [Topological Sorting](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/TopologicalSorting.java) **- O(V+E)**
+  * [Single-Source Shortest Paths]
+    - [The Bellman-Ford Algorithm](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/BellmanFord.java)
+    - [Dijkstra's Algorithm](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/DijkstrasShortestPath.java)
+    - [Shortest path in a DAG](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/ShortestPathInDAG.java)
+    - [Longest path in a DAG](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/LongestPathInDAG.java)
 
