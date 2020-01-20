@@ -200,8 +200,8 @@ Repo to host code for learning Data Structures and Algorithms
     - [TransitiveClosure](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/TransitiveClosure.java) **- O(V+E)**
   * [Topological Sorting](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/TopologicalSorting.java) **- O(V+E)**
   * Single-Source Shortest Paths Algorithms
-    - [The Bellman-Ford Algorithm](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/BellmanFord.java)
-    - [Dijkstra's Algorithm](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/DijkstrasShortestPath.java)
-    - [Shortest path in a DAG](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/ShortestPathInDAG.java)
-    - [Longest path in a DAG](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/LongestPathInDAG.java)
+    - [The Bellman-Ford Algorithm](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/BellmanFord.java) **- O(VE)**
+    - [Dijkstra's Algorithm](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/DijkstrasShortestPath.java) **- O((E+V)\*lgV)**
+    - [Shortest path in a DAG](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/ShortestPathInDAG.java) **- O(V+E)**
+    - [Longest path in a DAG](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/LongestPathInDAG.java) **- O(V+E)**
 
