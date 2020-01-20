@@ -3,6 +3,13 @@ package graph;
 import java.util.Arrays;
 import java.util.PriorityQueue;
 
+/*
+ * https://youtu.be/09_LlHjoEiY?t=4776
+ * https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
+ * https://brilliant.org/wiki/dijkstras-short-path-finder/
+ * https://www.youtube.com/watch?v=XB4MIexjvY0
+ */
+
 public class DijkstrasShortestPath extends Graph {
 
     public DijkstrasShortestPath(int numberOfVertices) {
@@ -105,6 +112,9 @@ public class DijkstrasShortestPath extends Graph {
             int vn = entry.vn;
             visited[vn] = true;
             
+            // is destination node found
+            if (vn == d) break;
+            
             // We already found a better path before we got to
             // process this QueueEntry so we can ignore this entry
             if (dist[vn] < entry.dist) continue;
@@ -124,9 +134,6 @@ public class DijkstrasShortestPath extends Graph {
                     prev[dest] = src;
                 }
             }
-            
-            // is destination node found
-            if (vn == d) break;
         }
         
         System.out.printf("The cost to get from node %d to %d is %.2f\n", s, d, dist[d]);

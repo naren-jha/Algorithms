@@ -3,24 +3,6 @@ package sorting;
 import java.util.Scanner;
 
 public class MergeSort {
-
-	public static void main(String[] args) {
-		System.out.println("Enter array elements separated by space:");
-		Scanner in = new Scanner(System.in);
-		String[] input = in.nextLine().split(" ");
-		in.close();
-		int[] elements = new int[input.length];
-		for(int i=0; i<input.length; i++)
-			elements[i] = Integer.parseInt(input[i]);
-		
-		long st = System.currentTimeMillis();
-		mergeSort(elements);
-		System.out.println( "For input size " + elements.length + " time taken by merge sort is " + (System.currentTimeMillis()-st) + "ms" );
-		
-		System.out.println("Sorted elements are:");
-		for(int e : elements)
-			System.out.print(e + " ");
-	}
 	
 	// to simplify mergeSort method call
 	public static void mergeSort(int[] a) {
@@ -59,5 +41,23 @@ public class MergeSort {
 			}
 		}
 	}
+	
+	public static void main(String[] args) {
+        System.out.println("Enter array elements separated by space:");
+        Scanner in = new Scanner(System.in);
+        String[] input = in.nextLine().split(" ");
+        in.close();
+        int[] elements = new int[input.length];
+        for(int i=0; i<input.length; i++)
+            elements[i] = Integer.parseInt(input[i]);
+        
+        long st = System.currentTimeMillis();
+        mergeSort(elements);
+        System.out.println( "For input size " + elements.length + " time taken by merge sort is " + (System.currentTimeMillis()-st) + "ms" );
+        
+        System.out.println("Sorted elements are:");
+        for(int e : elements)
+            System.out.print(e + " ");
+    }
 
 }

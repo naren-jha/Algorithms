@@ -9,17 +9,6 @@ import java.util.Stack;
 public class CheckBalancedExpression {
 	
 	public static char[][] PARENTHESES = {{'(', ')'}, {'{', '}'}, {'[', ']'}};
-
-	public static void main(String[] args) {
-		System.out.println(isBalanced("()")); // true
-		System.out.println(isBalanced("{()}")); // true
-		System.out.println(isBalanced("{()+()}")); // true
-		System.out.println(isBalanced("{(A + B)*(C + D)}")); // true
-		System.out.println(isBalanced("{(X + Y) * (Z)")); // false
-		System.out.println(isBalanced("[2*3] + (A)]")); // false
-		System.out.println(isBalanced(")(")); // false
-		System.out.println(isBalanced("{a + z)")); // false
-	}
 	
 	private static boolean isBalanced(String expr) {
 		char[] c = expr.toCharArray();
@@ -67,5 +56,16 @@ public class CheckBalancedExpression {
 		}
 		return false;
 	}
+	
+	public static void main(String[] args) {
+        System.out.println(isBalanced("()")); // true
+        System.out.println(isBalanced("{()}")); // true
+        System.out.println(isBalanced("{()+()}")); // true
+        System.out.println(isBalanced("{(A + B)*(C + D)}")); // true
+        System.out.println(isBalanced("{(X + Y) * (Z)")); // false
+        System.out.println(isBalanced("[2*3] + (A)]")); // false
+        System.out.println(isBalanced(")(")); // false
+        System.out.println(isBalanced("{a + z)")); // false
+    }
 
 }

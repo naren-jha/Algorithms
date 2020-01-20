@@ -5,20 +5,6 @@ package basic.stack.using_linkedlist;
  *
  * Stack using LinkedList
  */
-public class StackTest {
-
-	public static void main(String[] args) {
-		Stack s = new Stack();
-		s.push(2);s.push(5);s.push(3);s.push(7);
-		System.out.println(s); // [7, 3, 5, 2]
-		System.out.println(s.pop()); // 7
-		System.out.println(s); // [3, 5, 2]
-		System.out.println(s.peek()); // 3
-		System.out.println(s); // [3, 5, 2]
-	}
-
-}
-
 class Stack {
 	
 	// Template for node in LinkedList
@@ -80,4 +66,18 @@ class Stack {
 		result.append("]");
 		return result.toString();
 	}
+}
+
+public class StackTest {
+
+    public static void main(String[] args) {
+        Stack s = new Stack();
+        s.push(2);s.push(5);s.push(3);s.push(7);
+        System.out.println(s); // [7, 3, 5, 2]
+        System.out.println(s.pop()); // 7
+        System.out.println(s); // [3, 5, 2]
+        System.out.println(s.peek()); // 3
+        System.out.println(s); // [3, 5, 2]
+    }
+
 }

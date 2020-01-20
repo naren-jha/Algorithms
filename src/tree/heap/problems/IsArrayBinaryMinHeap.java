@@ -2,16 +2,6 @@ package tree.heap.problems;
 
 public class IsArrayBinaryMinHeap {
 	
-	public static void main(String[] args) {
-		int[] a = {10, 15, 14, 25, 30};
-		System.out.println(isMinHeap(a)); // true
-		System.out.println(isMinHeap(a, 0)); // true
-		
-		int[] b = {30, 56, 22, 49, 30, 51, 2, 67};
-		System.out.println(isMinHeap(b)); // false
-		System.out.println(isMinHeap(b, 0)); // false
-	}
-	
 	// Iterative method to check if a given array
 	// represents a binary min-heap or not
 	public static boolean isMinHeap(int[] a) {
@@ -65,5 +55,15 @@ public class IsArrayBinaryMinHeap {
 		
 		return res;
 	}
+	
+	public static void main(String[] args) {
+        int[] a = {10, 15, 14, 25, 30};
+        System.out.println(isMinHeap(a)); // true
+        System.out.println(isMinHeap(a, 0)); // true
+        
+        int[] b = {30, 56, 22, 49, 30, 51, 2, 67};
+        System.out.println(isMinHeap(b)); // false
+        System.out.println(isMinHeap(b, 0)); // false
+    }
 	
 }

@@ -5,24 +5,6 @@ import java.util.Scanner;
 
 public class QuickSort {
 
-	public static void main(String[] args) {
-		System.out.println("Enter array elements separated by space:");
-		Scanner in = new Scanner(System.in);
-		String[] input = in.nextLine().split(" ");
-		in.close();
-		int[] elements = new int[input.length];
-		for(int i=0; i<input.length; i++)
-			elements[i] = Integer.parseInt(input[i]);
-		
-		long st = System.currentTimeMillis();
-		randomizedQuickSort(elements);
-		System.out.println( "For input size " + elements.length + " time taken by quick sort is " + (System.currentTimeMillis()-st) + "ms" );
-		
-		System.out.println("Sorted elements are:");
-		for(int e : elements)
-			System.out.print(e + " ");
-	}
-
 	public static void randomizedQuickSort(int[] a) {
 		randomizedQuickSort(a,0,a.length-1);
 	}
@@ -68,5 +50,23 @@ public class QuickSort {
 		Random rand = new Random();
 		return lowerBound + rand.nextInt((upperBound - lowerBound) + 1);
 	}
+	
+	public static void main(String[] args) {
+        System.out.println("Enter array elements separated by space:");
+        Scanner in = new Scanner(System.in);
+        String[] input = in.nextLine().split(" ");
+        in.close();
+        int[] elements = new int[input.length];
+        for(int i=0; i<input.length; i++)
+            elements[i] = Integer.parseInt(input[i]);
+        
+        long st = System.currentTimeMillis();
+        randomizedQuickSort(elements);
+        System.out.println( "For input size " + elements.length + " time taken by quick sort is " + (System.currentTimeMillis()-st) + "ms" );
+        
+        System.out.println("Sorted elements are:");
+        for(int e : elements)
+            System.out.print(e + " ");
+    }
 
 }

@@ -4,23 +4,6 @@ import java.util.Scanner;
 
 public class HeapSort {
 	private static int heapSize;
-	public static void main(String[] args) {
-		System.out.println("Enter array elements separated by space:");
-		Scanner in = new Scanner(System.in);
-		String[] input = in.nextLine().split(" ");
-		in.close();
-		int[] elements = new int[input.length];
-		for(int i=0; i<input.length; i++)
-			elements[i] = Integer.parseInt(input[i]);
-		
-		long st = System.currentTimeMillis();
-		heapSort(elements);
-		System.out.println( "For input size " + elements.length + " time taken by heap sort is " + (System.currentTimeMillis()-st) + "ms" );
-		
-		System.out.println("Sorted elements are:");
-		for(int e : elements)
-			System.out.print(e + " ");
-	}
 
 	public static void heapSort(int[] a) {
 		buildMaxHeap(a);
@@ -71,4 +54,22 @@ public class HeapSort {
 	public static int getRightIndex(int i) {
 		return (2*i + 1);
 	}
+	
+	public static void main(String[] args) {
+        System.out.println("Enter array elements separated by space:");
+        Scanner in = new Scanner(System.in);
+        String[] input = in.nextLine().split(" ");
+        in.close();
+        int[] elements = new int[input.length];
+        for(int i=0; i<input.length; i++)
+            elements[i] = Integer.parseInt(input[i]);
+        
+        long st = System.currentTimeMillis();
+        heapSort(elements);
+        System.out.println( "For input size " + elements.length + " time taken by heap sort is " + (System.currentTimeMillis()-st) + "ms" );
+        
+        System.out.println("Sorted elements are:");
+        for(int e : elements)
+            System.out.print(e + " ");
+    }
 }

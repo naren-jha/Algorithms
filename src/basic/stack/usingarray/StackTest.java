@@ -5,22 +5,6 @@ package basic.stack.usingarray;
  * 
  * Stack using array
  */
-public class StackTest {
-
-	public static void main(String[] args) {
-		Stack s = new Stack();
-		s.push(5);
-		s.push(8);
-		s.push(9);
-		System.out.println(s); // [5, 8, 9]
-		System.out.println(s.pop()); // 9
-		System.out.println(s); // [5, 8]
-		System.out.println(s.peek()); // 8
-		System.out.println(s); // [5, 8]
-	}
-
-}
-
 class Stack {
 	int[] elements;
 	int top;
@@ -87,4 +71,20 @@ class Stack {
 		return result.toString();
 	}
 	
+}
+
+public class StackTest {
+
+    public static void main(String[] args) {
+        Stack s = new Stack();
+        s.push(5);
+        s.push(8);
+        s.push(9);
+        System.out.println(s); // [5, 8, 9]
+        System.out.println(s.pop()); // 9
+        System.out.println(s); // [5, 8]
+        System.out.println(s.peek()); // 8
+        System.out.println(s); // [5, 8]
+    }
+
 }

@@ -9,180 +9,6 @@ import java.util.Stack;
  * @author Narendra Jha
  *
  */
-public class BstTest {
-
-	public static void main(String[] args) {
-		BinarySearchTree tree = new BinarySearchTree();
-		tree.insert3(15);tree.insert3(10);tree.insert3(20);
-		tree.insert3(8);tree.insert3(12);tree.insert3(17);
-		tree.insert3(25);
-		tree.inorder(); // 8 10 12 15 17 20 25 
-		
-		System.out.println(tree.search2(10) != null); // true
-		System.out.println(tree.search2(14) != null); // false
-		
-		BinarySearchTree tree2 = new BinarySearchTree();
-		tree2.insert2(15);tree2.insert2(10);tree2.insert2(20);
-		tree2.insert2(8);tree2.insert2(12);tree2.insert2(17);
-		tree2.insert2(25);
-		tree2.inorder(); // 8 10 12 15 17 20 25
-		
-		System.out.println(tree2.search(10) != null); // true
-		System.out.println(tree2.search(14) != null); // false
-		
-		tree.insert(23);tree.insert(27);
-		System.out.println("Before delete:");
-		tree.levelOrder(); // 15 10 20 8 12 17 25 23 27
-		tree.delete(20);
-		System.out.println("After delete:");
-		tree.levelOrder(); // 15 10 23 8 12 17 25 27
-		
-		System.out.println("Minimum in tree is " + tree2.min()); // 8
-		System.out.println("Minimum in tree is " + tree2.min2()); // 8
-		System.out.println("Maximum in tree is " + tree2.max()); // 25
-		System.out.println("Maximum in tree is " + tree2.max2()); // 25
-		
-		tree2.insert2(19);
-		System.out.println("Height: " + tree2.height()); // 3
-		System.out.println("Height Iterative: " + tree2.heightItr()); // 3
-		
-		System.out.print("Level order: ");
-		tree2.levelOrder(); // 15 10 20 8 12 17 25 19
-		System.out.print("Preorder: ");
-		tree2.preorder(); // 15 10 8 12 20 17 19 25
-		System.out.print("Postorder: ");
-		tree2.postorder(); // 8 12 10 19 17 25 20 15
-		
-		System.out.print("Preorder Iterative: ");
-		tree2.preorderItr(); // 15 10 8 12 20 17 19 25
-		System.out.print("Inorder Iterative: ");
-		tree2.inorderItr(); // 8 10 12 15 17 19 20 25
-		System.out.print("Postorder Iterative: ");
-		tree2.postorderItr(); // 8 12 10 19 17 25 20 15
-		System.out.print("Postorder Iterative Using One Stack: ");
-		tree2.postorderItrOneStack(); // 8 12 10 19 17 25 20 15
-		
-		System.out.print("Morris Inorder: ");
-		tree2.morrisInorder(); // 8 10 12 15 17 19 20 25
-		//System.out.print("Morris Inorder - approach2: ");
-		//tree2.morrisInorder2(); // 8 10 12 15 17 19 20 25
-		System.out.print("Morris Preorder: ");
-		tree2.morrisPreorder(); // 15 10 8 12 20 17 19 25
-		System.out.print("Morris Postorder: ");
-		tree2.morrisPostorder(); // 8 12 10 19 17 25 20 15
-		
-		System.out.print("Reverse level order: ");
-		tree2.levelOrderInReverse(); // 19 8 12 17 25 10 20 15
-		
-		System.out.println("Spiral level order: ");
-		tree2.spiralUsingTwoStack(); // 15 20 10 8 12 17 25 19
-		tree2.spiralUsingOneDequeAndDelimiter(); // 15 20 10 8 12 17 25 19
-		tree2.spiralUsingOneDequeAndDelimiter(); // 15 20 10 8 12 17 25 19
-		
-		System.out.println("Level by level printing: ");
-		/* 15
-		 * 10 20
-		 * 8 12 17 25
-		 * 19
-		 */
-		tree2.levelByLevelTwoQueue();
-		System.out.println("-----------------");
-		tree2.levelByLevelOneQueueAndDelimiter();
-		System.out.println("-----------------");
-		tree2.levelByLevelOneQueueAndCounter();
-		
-		System.out.print("Inorder Successor - approach2: ");
-		System.out.println(tree2.inorderSuccessor(19).key); // 20
-		System.out.print("Inorder Successor - approach3: ");
-		System.out.println(tree2.inorderSuccessor2(19).key); // 20
-		
-		System.out.print("Inorder Predecessor - approach2: ");
-		System.out.println(tree2.inorderPredecessor(17).key); // 15
-		System.out.print("Inorder Predecessor - approach3: ");
-		System.out.println(tree2.inorderPredecessor2(17).key); // 15
-		
-		// Test if a binary tree is binary search tree or not
-		BinarySearchTree tree3 = new BinarySearchTree();
-		tree3.root = tree3.new Node(12); // create root node
-		tree3.root.left = tree3.new Node(16); // left is bigger
-		tree3.root.right = tree3.new Node(20);
-		System.out.println(tree3.isBST()); // false
-		System.out.println(tree3.isBST2()); // false
-		tree3.root.left = tree3.new Node(8); // left is smaller
-		System.out.println(tree3.isBST()); // true
-		System.out.println(tree3.isBST2()); // true
-		tree3.root.left.left = tree3.new Node(10); // left is bigger
-		System.out.println(tree3.isBST()); // false
-		System.out.println(tree3.isBST2()); // false
-		
-		// Same binary tree test
-		BinarySearchTree tree4 = new BinarySearchTree();
-		tree4.insert3(15);tree4.insert3(10);tree4.insert3(20);
-		tree4.insert3(8);tree4.insert3(12);tree4.insert3(17);
-		tree4.insert3(25);tree4.insert3(19);
-		System.out.println(tree4.isSameBinaryTree(tree2)); // true
-		System.out.println(tree4.isSameBinaryTree(tree)); // false
-		System.out.println(tree4.isSameBinaryTreeItr(tree2)); // true
-		System.out.println(tree4.isSameBinaryTreeItr(tree)); // false
-		
-		// Size test
-		System.out.println(tree4.size()); // 8
-		System.out.println(tree4.sizeItr()); // 8
-		
-		// rootToLeafSum test
-		System.out.println(tree4.rootToLeafSum(71)); // 19<-17<-20<-15<-true
-		System.out.println(tree4.rootToLeafSum(57)); // false
-		
-		// rootToLeafMaxSum test
-		System.out.println(tree4.rootToLeafMaxSum()); // 71
-		System.out.println(tree4.rootToLeafMinSum()); // 33
-		
-		// lowest common ancestor test
-		System.out.println(tree4.lca(19, 25).key); // 20
-		System.out.println(tree4.lcaItr(19, 25).key); // 20
-		System.out.println(tree4.lcaBinaryTree(19, 25).key); // 20
-		
-		// largest BST test
-		// When complete tree is BST
-		System.out.println("Size of largest BST is " + tree4.largestBST()); // 8
-		// When complete tree is not BST
-		/* construct following Binary Tree
-		          50
-		        /    \
-		      10      60
-		     /  \    /  \
-		    5   20  55   70
-				   /    /  \
-				  45   65   80
-		*/
-		BinarySearchTree tree5 = new BinarySearchTree();
-		tree5.root = tree5.new Node(50);
-        tree5.root.left = tree5.new Node(10);
-        tree5.root.right = tree5.new Node(60);
-        tree5.root.left.left = tree5.new Node(5);
-        tree5.root.left.right = tree5.new Node(20);
-        tree5.root.right.left = tree5.new Node(55);
-        tree5.root.right.left.left = tree5.new Node(45);
-        tree5.root.right.right = tree5.new Node(70);
-        tree5.root.right.right.left = tree5.new Node(65);
-        tree5.root.right.right.right = tree5.new Node(80);
-        
-        /* The complete tree is not BST as 45 is in right subtree of 50.
-        The following subtree is the largest BST
-	            60
-	           /  \
-	         55    70
-	         /     /  \
-	       45     65   80
-       */
-        System.out.println("Size of largest BST is " + tree5.largestBST()); // 6
-        
-        // Diameter test
-        System.out.println("Diameter of tree is " + tree5.diameter()); // 6
-        System.out.println("Diameter of tree is " + tree5.diameterOpt()); // 6
-	}
-}
-
 class BinarySearchTree {
 	
 	/* Template for Node in BST*/
@@ -1623,5 +1449,179 @@ class BinarySearchTree {
     	
     	return i;
     	
+    }
+}
+
+public class BstTest {
+
+    public static void main(String[] args) {
+        BinarySearchTree tree = new BinarySearchTree();
+        tree.insert3(15);tree.insert3(10);tree.insert3(20);
+        tree.insert3(8);tree.insert3(12);tree.insert3(17);
+        tree.insert3(25);
+        tree.inorder(); // 8 10 12 15 17 20 25 
+        
+        System.out.println(tree.search2(10) != null); // true
+        System.out.println(tree.search2(14) != null); // false
+        
+        BinarySearchTree tree2 = new BinarySearchTree();
+        tree2.insert2(15);tree2.insert2(10);tree2.insert2(20);
+        tree2.insert2(8);tree2.insert2(12);tree2.insert2(17);
+        tree2.insert2(25);
+        tree2.inorder(); // 8 10 12 15 17 20 25
+        
+        System.out.println(tree2.search(10) != null); // true
+        System.out.println(tree2.search(14) != null); // false
+        
+        tree.insert(23);tree.insert(27);
+        System.out.println("Before delete:");
+        tree.levelOrder(); // 15 10 20 8 12 17 25 23 27
+        tree.delete(20);
+        System.out.println("After delete:");
+        tree.levelOrder(); // 15 10 23 8 12 17 25 27
+        
+        System.out.println("Minimum in tree is " + tree2.min()); // 8
+        System.out.println("Minimum in tree is " + tree2.min2()); // 8
+        System.out.println("Maximum in tree is " + tree2.max()); // 25
+        System.out.println("Maximum in tree is " + tree2.max2()); // 25
+        
+        tree2.insert2(19);
+        System.out.println("Height: " + tree2.height()); // 3
+        System.out.println("Height Iterative: " + tree2.heightItr()); // 3
+        
+        System.out.print("Level order: ");
+        tree2.levelOrder(); // 15 10 20 8 12 17 25 19
+        System.out.print("Preorder: ");
+        tree2.preorder(); // 15 10 8 12 20 17 19 25
+        System.out.print("Postorder: ");
+        tree2.postorder(); // 8 12 10 19 17 25 20 15
+        
+        System.out.print("Preorder Iterative: ");
+        tree2.preorderItr(); // 15 10 8 12 20 17 19 25
+        System.out.print("Inorder Iterative: ");
+        tree2.inorderItr(); // 8 10 12 15 17 19 20 25
+        System.out.print("Postorder Iterative: ");
+        tree2.postorderItr(); // 8 12 10 19 17 25 20 15
+        System.out.print("Postorder Iterative Using One Stack: ");
+        tree2.postorderItrOneStack(); // 8 12 10 19 17 25 20 15
+        
+        System.out.print("Morris Inorder: ");
+        tree2.morrisInorder(); // 8 10 12 15 17 19 20 25
+        //System.out.print("Morris Inorder - approach2: ");
+        //tree2.morrisInorder2(); // 8 10 12 15 17 19 20 25
+        System.out.print("Morris Preorder: ");
+        tree2.morrisPreorder(); // 15 10 8 12 20 17 19 25
+        System.out.print("Morris Postorder: ");
+        tree2.morrisPostorder(); // 8 12 10 19 17 25 20 15
+        
+        System.out.print("Reverse level order: ");
+        tree2.levelOrderInReverse(); // 19 8 12 17 25 10 20 15
+        
+        System.out.println("Spiral level order: ");
+        tree2.spiralUsingTwoStack(); // 15 20 10 8 12 17 25 19
+        tree2.spiralUsingOneDequeAndDelimiter(); // 15 20 10 8 12 17 25 19
+        tree2.spiralUsingOneDequeAndDelimiter(); // 15 20 10 8 12 17 25 19
+        
+        System.out.println("Level by level printing: ");
+        /* 15
+         * 10 20
+         * 8 12 17 25
+         * 19
+         */
+        tree2.levelByLevelTwoQueue();
+        System.out.println("-----------------");
+        tree2.levelByLevelOneQueueAndDelimiter();
+        System.out.println("-----------------");
+        tree2.levelByLevelOneQueueAndCounter();
+        
+        System.out.print("Inorder Successor - approach2: ");
+        System.out.println(tree2.inorderSuccessor(19).key); // 20
+        System.out.print("Inorder Successor - approach3: ");
+        System.out.println(tree2.inorderSuccessor2(19).key); // 20
+        
+        System.out.print("Inorder Predecessor - approach2: ");
+        System.out.println(tree2.inorderPredecessor(17).key); // 15
+        System.out.print("Inorder Predecessor - approach3: ");
+        System.out.println(tree2.inorderPredecessor2(17).key); // 15
+        
+        // Test if a binary tree is binary search tree or not
+        BinarySearchTree tree3 = new BinarySearchTree();
+        tree3.root = tree3.new Node(12); // create root node
+        tree3.root.left = tree3.new Node(16); // left is bigger
+        tree3.root.right = tree3.new Node(20);
+        System.out.println(tree3.isBST()); // false
+        System.out.println(tree3.isBST2()); // false
+        tree3.root.left = tree3.new Node(8); // left is smaller
+        System.out.println(tree3.isBST()); // true
+        System.out.println(tree3.isBST2()); // true
+        tree3.root.left.left = tree3.new Node(10); // left is bigger
+        System.out.println(tree3.isBST()); // false
+        System.out.println(tree3.isBST2()); // false
+        
+        // Same binary tree test
+        BinarySearchTree tree4 = new BinarySearchTree();
+        tree4.insert3(15);tree4.insert3(10);tree4.insert3(20);
+        tree4.insert3(8);tree4.insert3(12);tree4.insert3(17);
+        tree4.insert3(25);tree4.insert3(19);
+        System.out.println(tree4.isSameBinaryTree(tree2)); // true
+        System.out.println(tree4.isSameBinaryTree(tree)); // false
+        System.out.println(tree4.isSameBinaryTreeItr(tree2)); // true
+        System.out.println(tree4.isSameBinaryTreeItr(tree)); // false
+        
+        // Size test
+        System.out.println(tree4.size()); // 8
+        System.out.println(tree4.sizeItr()); // 8
+        
+        // rootToLeafSum test
+        System.out.println(tree4.rootToLeafSum(71)); // 19<-17<-20<-15<-true
+        System.out.println(tree4.rootToLeafSum(57)); // false
+        
+        // rootToLeafMaxSum test
+        System.out.println(tree4.rootToLeafMaxSum()); // 71
+        System.out.println(tree4.rootToLeafMinSum()); // 33
+        
+        // lowest common ancestor test
+        System.out.println(tree4.lca(19, 25).key); // 20
+        System.out.println(tree4.lcaItr(19, 25).key); // 20
+        System.out.println(tree4.lcaBinaryTree(19, 25).key); // 20
+        
+        // largest BST test
+        // When complete tree is BST
+        System.out.println("Size of largest BST is " + tree4.largestBST()); // 8
+        // When complete tree is not BST
+        /* construct following Binary Tree
+                  50
+                /    \
+              10      60
+             /  \    /  \
+            5   20  55   70
+                   /    /  \
+                  45   65   80
+        */
+        BinarySearchTree tree5 = new BinarySearchTree();
+        tree5.root = tree5.new Node(50);
+        tree5.root.left = tree5.new Node(10);
+        tree5.root.right = tree5.new Node(60);
+        tree5.root.left.left = tree5.new Node(5);
+        tree5.root.left.right = tree5.new Node(20);
+        tree5.root.right.left = tree5.new Node(55);
+        tree5.root.right.left.left = tree5.new Node(45);
+        tree5.root.right.right = tree5.new Node(70);
+        tree5.root.right.right.left = tree5.new Node(65);
+        tree5.root.right.right.right = tree5.new Node(80);
+        
+        /* The complete tree is not BST as 45 is in right subtree of 50.
+        The following subtree is the largest BST
+                60
+               /  \
+             55    70
+             /     /  \
+           45     65   80
+       */
+        System.out.println("Size of largest BST is " + tree5.largestBST()); // 6
+        
+        // Diameter test
+        System.out.println("Diameter of tree is " + tree5.diameter()); // 6
+        System.out.println("Diameter of tree is " + tree5.diameterOpt()); // 6
     }
 }

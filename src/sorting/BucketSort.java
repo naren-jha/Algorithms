@@ -5,18 +5,6 @@ import java.util.Scanner;
 
 public class BucketSort {
 
-	public static void main(String[] args) {
-		System.out.println("Enter values in the interval [0,1) separated by space:");
-		Scanner in = new Scanner(System.in);
-		String[] input = in.nextLine().split(" ");
-		in.close();
-		double[] elements = new double[input.length];
-		for(int i=0; i<input.length; i++)
-			elements[i] = Double.parseDouble(input[i]);
-		
-		bucketSort(elements);		
-	}
-
 	public static void bucketSort(double[] a) {
 		long st = System.currentTimeMillis();
 		
@@ -51,4 +39,16 @@ public class BucketSort {
 			a[i+1] = key;
 		}
 	}
+	
+	public static void main(String[] args) {
+        System.out.println("Enter values in the interval [0,1) separated by space:");
+        Scanner in = new Scanner(System.in);
+        String[] input = in.nextLine().split(" ");
+        in.close();
+        double[] elements = new double[input.length];
+        for(int i=0; i<input.length; i++)
+            elements[i] = Double.parseDouble(input[i]);
+        
+        bucketSort(elements);       
+    }
 }

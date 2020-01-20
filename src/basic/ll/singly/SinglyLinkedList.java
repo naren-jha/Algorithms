@@ -4,41 +4,6 @@ package basic.ll.singly;
  * @author Narendra Jha
  *
  */
-public class SinglyLinkedList {
-
-	public static void main(String[] args) {
-		
-		LinkedList l = new LinkedList();
-		l.add(4);l.add(10);l.add(8);l.add(2,3);l.addFirst(20);
-		//l.remove(1);l.remove(0);
-		//l.reverse();
-		//l.reverse(l.head);
-		System.out.println(l); // [10, 4, 10, 3, 8]
-		System.out.println(l.get(1)); // 10
-		
-		//l.clear();
-		//System.out.println(l);
-		//l.clear();
-		
-		//System.out.println(l.contains(8));
-		//System.out.println(l.indexOf(10));
-		//l.add(3);System.out.println(l.lastIndexOf(3));
-		
-		//Object e = 10;
-		//System.out.println(l.remove(e));
-		//System.out.println(l);
-		
-		//l.print(l.head);
-		//l.printReverse(l.head);
-		
-		l.introduceLoop(2);
-		if(l.hasLoop())
-			l.fixLoop();
-		l.hasLoop();
-	}
-
-}
-
 class LinkedList {
 	
 	// Template for node in LinkedList
@@ -440,3 +405,39 @@ class LinkedList {
 	}
 	
 }
+
+public class SinglyLinkedList {
+
+    public static void main(String[] args) {
+        
+        LinkedList l = new LinkedList();
+        l.add(4);l.add(10);l.add(8);l.add(2,3);l.addFirst(20);
+        //l.remove(1);l.remove(0);
+        //l.reverse();
+        //l.reverse(l.head);
+        System.out.println(l); // [10, 4, 10, 3, 8]
+        System.out.println(l.get(1)); // 10
+        
+        //l.clear();
+        //System.out.println(l);
+        //l.clear();
+        
+        //System.out.println(l.contains(8));
+        //System.out.println(l.indexOf(10));
+        //l.add(3);System.out.println(l.lastIndexOf(3));
+        
+        //Object e = 10;
+        //System.out.println(l.remove(e));
+        //System.out.println(l);
+        
+        //l.print(l.head);
+        //l.printReverse(l.head);
+        
+        l.introduceLoop(2);
+        if(l.hasLoop())
+            l.fixLoop();
+        l.hasLoop();
+    }
+
+}
+

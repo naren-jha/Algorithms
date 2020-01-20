@@ -5,20 +5,6 @@ package basic.queue.usingarray;
  *
  * Queue using array
  */
-public class QueueTest {
-
-	public static void main(String[] args) {
-		Queue q = new Queue();
-		q.enqueue(2);q.enqueue(4);q.enqueue(6);q.enqueue(8);
-		System.out.println(q); // [2, 4, 6, 8]
-		System.out.println(q.dequeue()); // 2
-		System.out.println(q); // [4, 6, 8]
-		System.out.println(q.front()); // 4
-		System.out.println(q); // [4, 6, 8]
-	}
-
-}
-
 class Queue {
 	private int[] a;
 	private int front;
@@ -88,4 +74,18 @@ class Queue {
 		return result.toString();
 	}
 	
+}
+
+public class QueueTest {
+
+    public static void main(String[] args) {
+        Queue q = new Queue();
+        q.enqueue(2);q.enqueue(4);q.enqueue(6);q.enqueue(8);
+        System.out.println(q); // [2, 4, 6, 8]
+        System.out.println(q.dequeue()); // 2
+        System.out.println(q); // [4, 6, 8]
+        System.out.println(q.front()); // 4
+        System.out.println(q); // [4, 6, 8]
+    }
+
 }

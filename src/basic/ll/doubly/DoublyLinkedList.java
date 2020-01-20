@@ -4,22 +4,6 @@ package basic.ll.doubly;
  * @author Narendra Jha
  *
  */
-public class DoublyLinkedList {
-
-	public static void main(String[] args) {
-		LinkedList l = new LinkedList();
-		l.add(4);l.add(10);l.add(8);l.add(2,3);l.add(0,3);l.addFirst(20);
-		//l.remove(1);l.remove(0);
-		System.out.println(l);
-		System.out.println(l.get(1));
-		
-		Object e = 10;
-		System.out.println(l.remove(e));
-		System.out.println(l);
-	}
-
-}
-
 class LinkedList {
 	
 	// Template for node in LinkedList
@@ -221,4 +205,20 @@ class LinkedList {
 		return result.toString();
 	}
 	
+}
+
+public class DoublyLinkedList {
+
+    public static void main(String[] args) {
+        LinkedList l = new LinkedList();
+        l.add(4);l.add(10);l.add(8);l.add(2,3);l.add(0,3);l.addFirst(20);
+        //l.remove(1);l.remove(0);
+        System.out.println(l);
+        System.out.println(l.get(1));
+        
+        Object e = 10;
+        System.out.println(l.remove(e));
+        System.out.println(l);
+    }
+
 }

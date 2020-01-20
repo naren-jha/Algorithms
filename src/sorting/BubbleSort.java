@@ -4,21 +4,6 @@ import java.util.Scanner;
 
 public class BubbleSort {
 
-	public static void main(String[] args) {
-		System.out.println("Enter array elements separated by space:");
-		Scanner in = new Scanner(System.in);
-		String[] input = in.nextLine().split(" ");
-		in.close();
-		int[] elements = new int[input.length];
-		for(int i=0; i<input.length; i++)
-			elements[i] = Integer.parseInt(input[i]);
-		
-		bubbleSort(elements);
-		System.out.println("Sorted elements are:");
-		for(int e : elements)
-			System.out.print(e + " ");
-	}
-
 	private static void bubbleSort(int[] a) {
 		long st = System.currentTimeMillis();
 		
@@ -35,6 +20,22 @@ public class BubbleSort {
 				}
 			}
 		}
+		
 		System.out.println( "For input size " + a.length + " time taken by buuble sort is " + (System.currentTimeMillis()-st) + "ms" );
 	}
+	
+	public static void main(String[] args) {
+        System.out.println("Enter array elements separated by space:");
+        Scanner in = new Scanner(System.in);
+        String[] input = in.nextLine().split(" ");
+        in.close();
+        int[] elements = new int[input.length];
+        for(int i=0; i<input.length; i++)
+            elements[i] = Integer.parseInt(input[i]);
+        
+        bubbleSort(elements);
+        System.out.println("Sorted elements are:");
+        for(int e : elements)
+            System.out.print(e + " ");
+    }
 }

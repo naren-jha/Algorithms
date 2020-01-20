@@ -1,16 +1,6 @@
 package tree.heap.problems;
 
 public class IsArrayBinaryMaxHeap {
-
-	public static void main(String[] args) {
-		int[] a = {90, 15, 10, 7, 12, 2, 7, 3};
-		System.out.println(isMaxHeap(a)); // true
-		System.out.println(isMaxHeap(a, 0)); // true
-		
-		int[] b = {90, 15, 10, 16, 12, 2, 7, 3};
-		System.out.println(isMaxHeap(b)); // false
-		System.out.println(isMaxHeap(b, 0)); // false
-	}
 	
 	// Iterative method to check if a given array
 	// represents a binary max-heap or not
@@ -65,5 +55,15 @@ public class IsArrayBinaryMaxHeap {
 		
 		return res;
 	}
+	
+	public static void main(String[] args) {
+        int[] a = {90, 15, 10, 7, 12, 2, 7, 3};
+        System.out.println(isMaxHeap(a)); // true
+        System.out.println(isMaxHeap(a, 0)); // true
+        
+        int[] b = {90, 15, 10, 16, 12, 2, 7, 3};
+        System.out.println(isMaxHeap(b)); // false
+        System.out.println(isMaxHeap(b, 0)); // false
+    }
 
 }
