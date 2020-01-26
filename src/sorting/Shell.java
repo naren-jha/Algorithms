@@ -16,7 +16,7 @@ public class Shell {
           
         // Start with a big gap, then reduce the gap 
         for (int gap = n/2; gap > 0; gap /= 2) {
-        	
+            
             // Do a gapped insertion sort for this gap size. 
             // The first gap elements a[0..gap-1] are already 
             // in gapped order keep adding one more element 
