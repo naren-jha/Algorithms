@@ -6,7 +6,7 @@ import java.util.Random;
 /**
  * Implementation of Quick Sort
  * 
- * @author Narendra Jha
+ * @author Narendra Jha, njha.sde@gmail.com
  * 
  */
 public class QuickSort {
@@ -51,10 +51,10 @@ public class QuickSort {
         return i+1;
     }
     
-    static Random RANDOM = new Random();
+    private static Random RANDOM = new Random();
     
     // Returns a random number b/w lower and upper bound
-    static int randInt(int min, int max) {
+    private static int randInt(int min, int max) {
         return RANDOM.nextInt((max - min) + 1) + min;
     }
     

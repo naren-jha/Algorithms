@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * Implementation of Counting Sort
  * 
- * @author Narendra Jha
+ * @author Narendra Jha, njha.sde@gmail.com
  * 
  */
 public class CountingSort {

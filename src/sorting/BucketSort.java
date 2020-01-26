@@ -5,7 +5,7 @@ import java.util.LinkedList;
 /**
  * Implementation of Bucket Sort
  * 
- * @author Narendra Jha
+ * @author Narendra Jha, njha.sde@gmail.com
  * 
  */
 public class BucketSort {
@@ -32,10 +32,10 @@ public class BucketSort {
     }
     
     public static void insertionSort(double[] a) {
-        for(int j=1; j<a.length; j++) {
+        for(int j = 1; j < a.length; j++) {
             double key = a[j];
-            int i=j-1;
-            while(i>=0 && a[i]>key) {
+            int i = j-1;
+            while(i >= 0 && a[i] > key) {
                 a[i+1] = a[i];
                 i--;
             }
