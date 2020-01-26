@@ -1,14 +1,21 @@
 package sorting;
 
-import java.util.Scanner;
+import java.util.Arrays;
+import java.util.Random;
 
+/**
+ * Implementation of Shell Sort
+ * 
+ * @author Narendra Jha
+ * 
+ */
 public class Shell {
     
     public static void sort(int[] a) {
         int n = a.length; 
           
         // Start with a big gap, then reduce the gap 
-        for (int gap = n/3; gap > 0; gap /= 3) {
+        for (int gap = n/2; gap > 0; gap /= 2) {
         	
             // Do a gapped insertion sort for this gap size. 
             // The first gap elements a[0..gap-1] are already 
@@ -29,23 +36,39 @@ public class Shell {
             }
         }
     }
-
+    
     public static void main(String[] args) {
-        System.out.println("Enter array elements separated by space:");
-        Scanner in = new Scanner(System.in);
-        String[] input = in.nextLine().split(" ");
-        in.close();
-        int[] elements = new int[input.length];
-        for(int i = 0; i < input.length; i++)
-            elements[i] = Integer.parseInt(input[i]);
+        int[] array = {10, 4, 6, 8, 13, 2, 3};
+        sort(array);
+        System.out.println(Arrays.toString(array));
         
-        long st = System.currentTimeMillis();
-        sort(elements);
-        System.out.println("For input size " + elements.length + " time taken by shell sort is " + (System.currentTimeMillis() - st) + "ms" );
-        
-        System.out.println("Sorted elements are:");
-        for (int e : elements)
-            System.out.print(e + " ");
+        // TODO: move to javatests/...
+        runTests();
+    }
+    
+    static Random RANDOM = new Random();
+
+    public static void runTests() {
+        final int NUM_TESTS = 1000;
+        for (int i = 1; i <= NUM_TESTS; i++) {
+
+            int[] array = new int[i];
+            for (int j = 0; j < i; j++) array[j] = randInt(-1000000, +1000000);
+            int[] arrayCopy = array.clone();
+    
+            sort(array);
+            Arrays.sort(arrayCopy);
+    
+            if (!Arrays.equals(array, arrayCopy)) {
+                System.err.println("ERROR");
+                System.out.println("Actual: " + Arrays.toString(array));
+                System.out.println("Expected: " + Arrays.toString(arrayCopy));
+            }
+        }
+    }
+
+    static int randInt(int min, int max) {
+        return RANDOM.nextInt((max - min) + 1) + min;
     }
     
 }

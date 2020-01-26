@@ -1,21 +1,25 @@
 package sorting;
 
 import java.util.LinkedList;
-import java.util.Scanner;
 
+/**
+ * Implementation of Bucket Sort
+ * 
+ * @author Narendra Jha
+ * 
+ */
 public class BucketSort {
 
 	public static void bucketSort(double[] a) {
-		long st = System.currentTimeMillis();
-		
 		int n = a.length;
 		LinkedList<Double>[] b = new LinkedList[n];
-		for(int i=0; i<n; i++)
+		for (int i = 0; i < n; i++)
 			b[i] = new LinkedList<Double>();
-		for(int i=0; i<n; i++)
-			b[(int) Math.floor(n*a[i])].add(new Double(a[i]));
-		System.out.println("Sorted elements are:");
-		for(int i=0; i<n; i++){
+		for (int i = 0; i < n; i++)
+			b[(int) Math.floor(n*a[i])].add(a[i]);
+		
+		System.out.print("Sorted elements are: ");
+		for (int i = 0; i < n; i++){
 			double[] tempArray = new double[b[i].size()];
 			int j = 0;
 			for(Double d : b[i]) {
@@ -25,7 +29,6 @@ public class BucketSort {
 			for(double e : tempArray)
 				System.out.print(e + " ");
 		}
-		System.out.println( "\nFor input size " + a.length + " time taken by bucket sort is " + (System.currentTimeMillis()-st) + "ms" );
 	}
 	
 	public static void insertionSort(double[] a) {
@@ -41,14 +44,8 @@ public class BucketSort {
 	}
 	
 	public static void main(String[] args) {
-        System.out.println("Enter values in the interval [0,1) separated by space:");
-        Scanner in = new Scanner(System.in);
-        String[] input = in.nextLine().split(" ");
-        in.close();
-        double[] elements = new double[input.length];
-        for(int i=0; i<input.length; i++)
-            elements[i] = Double.parseDouble(input[i]);
-        
-        bucketSort(elements);       
+        double[] elements = {0.8, 0.9, 0.2, 0.4, 0.11, 0.12, 0.25};
+        bucketSort(elements);
+        // Sorted elements are: 0.11 0.12 0.2 0.25 0.4 0.8 0.9 
     }
 }
