@@ -3,6 +3,12 @@ package graph;
 import java.util.Arrays;
 import java.util.Stack;
 
+/**
+ * Longest Path In Directed Acyclic Graph (DAG)
+ * 
+ * @author Narendra Jha, njha.sde@gmail.com
+ * 
+ */
 public class LongestPathInDAG extends TopologicalSorting {
     
     public LongestPathInDAG(int numberOfVertices) {

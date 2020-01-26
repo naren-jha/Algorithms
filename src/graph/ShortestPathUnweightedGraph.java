@@ -4,8 +4,15 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
-// https://youtu.be/09_LlHjoEiY?t=2208
-// https://www.geeksforgeeks.org/shortest-path-unweighted-graph/
+/**
+ * Shortest Path In Unweighted Graph
+ * 
+ * https://youtu.be/09_LlHjoEiY?t=2208
+ * https://www.geeksforgeeks.org/shortest-path-unweighted-graph/
+ * 
+ * @author Narendra Jha, njha.sde@gmail.com
+ * 
+ */
 
 public class ShortestPathUnweightedGraph extends Graph {
 

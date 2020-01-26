@@ -3,13 +3,16 @@ package graph;
 import java.util.Arrays;
 import java.util.LinkedList;
 
-/*
+
+/**
  * https://youtu.be/09_LlHjoEiY?t=6647 
  * https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm 
  * https://brilliant.org/wiki/bellman-ford-algorithm/
  * https://www.youtube.com/watch?v=Ttezuzs39nk
+ * 
+ * @author Narendra Jha, njha.sde@gmail.com
+ * 
  */
-
 public class BellmanFord extends Graph {
 
     public BellmanFord(int numberOfVertices) {

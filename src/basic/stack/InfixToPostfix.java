@@ -3,7 +3,7 @@ package basic.stack;
 import java.util.Stack;
 
 /**
- * @author Narendra Jha
+ * @author Narendra Jha, njha.sde@gmail.com
  *
  */
 public class InfixToPostfix {

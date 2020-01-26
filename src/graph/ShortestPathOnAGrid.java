@@ -3,9 +3,15 @@ package graph;
 import java.util.ArrayDeque;
 import java.util.Queue;
 
-// https://youtu.be/09_LlHjoEiY?t=2426 
-// https://www.geeksforgeeks.org/shortest-distance-two-cells-matrix-grid/
-
+/**
+ * Shortest Path On A Grid
+ * 
+ * https://youtu.be/09_LlHjoEiY?t=2426
+ * https://www.geeksforgeeks.org/shortest-distance-two-cells-matrix-grid/
+ * 
+ * @author Narendra Jha, njha.sde@gmail.com
+ * 
+ */
 public class ShortestPathOnAGrid {
     
     // direction vectors

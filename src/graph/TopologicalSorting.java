@@ -6,6 +6,12 @@ import java.util.List;
 import java.util.Queue;
 import java.util.Stack;
 
+/**
+ * Implementation of Topological Sorting
+ * 
+ * @author Narendra Jha, njha.sde@gmail.com
+ * 
+ */
 public class TopologicalSorting extends Graph {
     
     public TopologicalSorting(int numberOfVertices) {

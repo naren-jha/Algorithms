@@ -54,58 +54,58 @@ public class MaxOfAllSubarray {
     
     // fill maximum from left to right
     for (int i = 0; i < n; i++) {
-    	if (i % k == 0) // start of the block
-    		LR[i] = a[i];
-    	else
-    		LR[i] = Math.max(LR[i-1], a[i]);
+        if (i % k == 0) // start of the block
+            LR[i] = a[i];
+        else
+            LR[i] = Math.max(LR[i-1], a[i]);
     }
     
     // fill maximum from right to left
     for (int i = n-1; i >= 0; i--) {
-    	if (i == n-1)
-    		RL[i] = a[i];
-    	else if (i % k == (k-1))
-    		RL[i] = a[i];
-    	else
-    		RL[i] = Math.max(RL[i+1], a[i]);
+        if (i == n-1)
+            RL[i] = a[i];
+        else if (i % k == (k-1))
+            RL[i] = a[i];
+        else
+            RL[i] = Math.max(RL[i+1], a[i]);
     }
     
     // get maximum for every window
     for (int i = 0; i <= n-k; i++)
-    	System.out.print(Math.max(LR[i+k-1], RL[i]) + " ");
+        System.out.print(Math.max(LR[i+k-1], RL[i]) + " ");
   }
   
   // Approach 4: using queue: most widely used approach for this problem
   // TC: O(n), SC: O(n)
   public static void printMax_A4(int[] a, int k) {
-	int n = a.length;
+    int n = a.length;
     Deque<Integer> dq = new LinkedList<Integer>();
     
     for (int i = 0; i < k; i++) {
-    	// remove smaller elements (than current element) from back of queue, 
-    	// to keep the queue sorted, and make sure that maximum in each window 
-    	// is at the front of the queue
-    	while (!dq.isEmpty() && a[dq.peekLast()] <= a[i])
-    		dq.removeLast();
-    	dq.addLast(i);
+        // remove smaller elements (than current element) from back of queue, 
+        // to keep the queue sorted, and make sure that maximum in each window 
+        // is at the front of the queue
+        while (!dq.isEmpty() && a[dq.peekLast()] <= a[i])
+            dq.removeLast();
+        dq.addLast(i);
     }
     
     System.out.print(a[dq.peekFirst()] + " ");
     
     for (int i = k; i < n; i++) {
-    	// remove front of the queue, if it is out of current window
-    	// (in each iteration only one element can go out of window)
-    	if (dq.peekFirst() == i-k)
-    		dq.removeFirst();
-    	
-    	// remove smaller elements (than current element) from back of queue, 
-    	// to keep the queue sorted, and make sure that maximum in each window 
-    	// is at the front of the queue
-    	while (!dq.isEmpty() && a[dq.peekLast()] <= a[i])
-    		dq.removeLast();
-    	dq.addLast(i);
-    	
-    	System.out.print(a[dq.peekFirst()] + " ");
+        // remove front of the queue, if it is out of current window
+        // (in each iteration only one element can go out of window)
+        if (dq.peekFirst() == i-k)
+            dq.removeFirst();
+        
+        // remove smaller elements (than current element) from back of queue, 
+        // to keep the queue sorted, and make sure that maximum in each window 
+        // is at the front of the queue
+        while (!dq.isEmpty() && a[dq.peekLast()] <= a[i])
+            dq.removeLast();
+        dq.addLast(i);
+        
+        System.out.print(a[dq.peekFirst()] + " ");
     }
   }
   

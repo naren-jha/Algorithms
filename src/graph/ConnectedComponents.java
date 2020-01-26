@@ -1,13 +1,15 @@
 package graph;
 
-/*
+/**
+ *  
+ * Connected Components For Undirected Graph
+ * =========================================
+ * Given an undirected graph, print all connected components line by line
+ * 
  * https://www.geeksforgeeks.org/connected-components-in-an-undirected-graph/
  * https://youtu.be/09_LlHjoEiY?t=1703
  * 
- * Connected Components For Undirected Graph
- * =========================================
- * 
- * Given an undirected graph, print all connected components line by line
+ * @author Narendra Jha, njha.sde@gmail.com
  * 
  */
 public class ConnectedComponents extends DepthFirstSearch {

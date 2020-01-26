@@ -3,9 +3,13 @@ package graph;
 import java.util.LinkedList;
 import java.util.Queue;
 
-// Graph Traversal - BFS
-// https://youtu.be/09_LlHjoEiY?t=1998
-
+/**
+ * IGraph Traversal - BFS
+ * https://youtu.be/09_LlHjoEiY?t=1998
+ * 
+ * @author Narendra Jha, njha.sde@gmail.com
+ * 
+ */
 public class BreadthFirstSearch extends Graph {
     
     public BreadthFirstSearch(int numberOfVetices) {

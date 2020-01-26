@@ -3,8 +3,14 @@ package graph;
 import java.util.Arrays;
 import java.util.Stack;
 
-// https://www.geeksforgeeks.org/shortest-path-for-directed-acyclic-graphs/
-
+/**
+ * Shortest Path In Directed Acyclic Graph (DAG)
+ * 
+ * https://www.geeksforgeeks.org/shortest-path-for-directed-acyclic-graphs/
+ * 
+ * @author Narendra Jha, njha.sde@gmail.com
+ * 
+ */
 public class ShortestPathInDAG extends TopologicalSorting {
     
     public ShortestPathInDAG(int numberOfVertices) {

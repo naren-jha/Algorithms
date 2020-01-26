@@ -3,7 +3,7 @@ package basic.stack;
 import java.util.Stack;
 
 /**
- * @author Narendra Jha
+ * @author Narendra Jha, njha.sde@gmail.com
  * 
  * sorting stack using another stack
  */
@@ -13,10 +13,10 @@ public class SortStackUsingAnotherStack extends Stack<Integer> {
     public Stack<Integer> sortStack() {
         Stack<Integer> tmpStack = new Stack<Integer>();
         while (!isEmpty()) {
-        	int x = pop();
-        	while (!tmpStack.isEmpty() && tmpStack.peek() > x)
-        		push(tmpStack.pop());
-        	tmpStack.push(x);
+            int x = pop();
+            while (!tmpStack.isEmpty() && tmpStack.peek() > x)
+                push(tmpStack.pop());
+            tmpStack.push(x);
         }
         
         return tmpStack;
@@ -24,7 +24,7 @@ public class SortStackUsingAnotherStack extends Stack<Integer> {
  
     // driver method
     public static void main(String[] args) {
-    	SortStackUsingAnotherStack s = new SortStackUsingAnotherStack();
+        SortStackUsingAnotherStack s = new SortStackUsingAnotherStack();
         s.add(34);
         s.add(3);
         s.add(31);

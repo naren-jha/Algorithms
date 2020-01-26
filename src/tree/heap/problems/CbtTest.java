@@ -3,27 +3,27 @@ import java.util.LinkedList;
 import java.util.Queue;
  
 class BinaryTree {
-	/* Template for Node in BT*/
-	class Node {
-		int key;
-		Node left, right;
-		
-		public Node(int key) {
-			this.key = key;
-			left = right = null;
-		}
-	}
-	
-	// Root of BT
-	Node root;
-	
-	// Constructor
-	public BinaryTree() {
-		root = null;
-	}
+    /* Template for Node in BT*/
+    class Node {
+        int key;
+        Node left, right;
+        
+        public Node(int key) {
+            this.key = key;
+            left = right = null;
+        }
+    }
+    
+    // Root of BT
+    Node root;
+    
+    // Constructor
+    public BinaryTree() {
+        root = null;
+    }
      
     // Iterative method to check if a binary tree is a
-	// complete binary tree or not
+    // complete binary tree or not
     public boolean isCompleteBT(Node root) {
         // Base Case: An empty tree is complete Binary Tree
         if (root == null)
@@ -84,7 +84,7 @@ class BinaryTree {
     }
   
     // Recursive method to check if a binary tree is a
- 	// complete binary tree or not
+     // complete binary tree or not
     public boolean isCompleteBT(Node root, int index, int numberOfNodes) {
         // An empty tree is complete
         if (root == null)        
@@ -103,32 +103,32 @@ class BinaryTree {
     // Method to check heap property in the tree
     public boolean isMaxHeapUtil(Node root) {
         //  Base case : single node satisfies property 
-    	if (root.left == null && root.right == null)
-    		return true;
-    	
-    	// There can be one such node in second last level
-    	if (root.right == null) {
-    	    //  check heap property at Node
+        if (root.left == null && root.right == null)
+            return true;
+        
+        // There can be one such node in second last level
+        if (root.right == null) {
+            //  check heap property at Node
             //  No recursive call , because no need to check last level
-    		return root.key >= root.left.key;
-    	}
-    	else {
-    	    //  Check heap property at Node and recursively
+            return root.key >= root.left.key;
+        }
+        else {
+            //  Check heap property at Node and recursively
             //  check heap property for left and right subtrees
-    		if (root.key >= root.left.key && root.key >= root.right.key)
-    			return isMaxHeapUtil(root.left) && isMaxHeapUtil(root.right);
-    		else
-    			return false;
-    	}
+            if (root.key >= root.left.key && root.key >= root.right.key)
+                return isMaxHeapUtil(root.left) && isMaxHeapUtil(root.right);
+            else
+                return false;
+        }
     }
     
     // Method to check if a binary tree is a max-heap or not
     public boolean isMaxHeap(Node root) {
-    	if (root == null)
-    		return true;
-    	int numberOfNodes = countNodes(root);
-    	return isCompleteBT(root, 0, numberOfNodes)
-    			&& isMaxHeapUtil(root);
+        if (root == null)
+            return true;
+        int numberOfNodes = countNodes(root);
+        return isCompleteBT(root, 0, numberOfNodes)
+                && isMaxHeapUtil(root);
     }
      
 }
@@ -144,7 +144,7 @@ public class CbtTest {
            4   5     6
         */
       
-    	BinaryTree bt = new BinaryTree();
+        BinaryTree bt = new BinaryTree();
         bt.root = bt.new Node(1);
         bt.root.left = bt.new Node(2);
         bt.root.right = bt.new Node(3);
@@ -165,8 +165,8 @@ public class CbtTest {
 }
 
 class MaxHeapTest {
-	public static void main(String[] args) {
-		BinaryTree bt = new BinaryTree();
+    public static void main(String[] args) {
+        BinaryTree bt = new BinaryTree();
         
         bt.root = bt.new Node(10);
         bt.root.left = bt.new Node(9);
@@ -183,5 +183,5 @@ class MaxHeapTest {
             System.out.println("Given binary tree is a Max-Heap");
         else
             System.out.println("Given binary tree is not a Max-Heap");
-	}
+    }
 }

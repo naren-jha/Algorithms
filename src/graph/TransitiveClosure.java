@@ -1,5 +1,11 @@
 package graph;
 
+/**
+ * TransitiveClosure Of A Graph
+ * 
+ * @author Narendra Jha, njha.sde@gmail.com
+ * 
+ */
 public class TransitiveClosure extends Graph {
 
     public TransitiveClosure(int numberOfVertices) {

@@ -3,9 +3,13 @@ package graph;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-
-// Adjacency list representation of Graph
-
+ 
+/**
+ * Adjacency list representation of Graph
+ * 
+ * @author Narendra Jha, njha.sde@gmail.com
+ * 
+ */
 public class Graph {
 
     protected int numberOfVertices;

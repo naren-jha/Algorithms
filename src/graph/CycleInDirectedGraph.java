@@ -1,8 +1,14 @@
 package graph;
 
-// https://youtu.be/rKQaZuoUR4M 
-// https://www.geeksforgeeks.org/detect-cycle-in-a-graph/
-
+/**
+ * FInd Cycles In Directed Graph
+ * 
+ * https://youtu.be/rKQaZuoUR4M
+ * https://www.geeksforgeeks.org/detect-cycle-in-a-graph/
+ * 
+ * @author Narendra Jha, njha.sde@gmail.com
+ * 
+ */
 public class CycleInDirectedGraph extends Graph {
     
     public CycleInDirectedGraph(int numberOfVertices) {

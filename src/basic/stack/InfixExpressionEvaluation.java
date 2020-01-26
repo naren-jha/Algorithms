@@ -3,14 +3,14 @@ package basic.stack;
 import java.util.Stack;
 
 /**
- * @author Narendra Jha
+ * @author Narendra Jha, njha.sde@gmail.com
  * 
  * Infix expression evaluation
  */
 public class InfixExpressionEvaluation {
-	
-	public static int evaluate(String expr) {
-		char[] e = expr.toCharArray();
+    
+    public static int evaluate(String expr) {
+        char[] e = expr.toCharArray();
         Stack<Character> operators = new Stack<Character>();
         Stack<Integer> values = new Stack<Integer>();
         
@@ -20,29 +20,29 @@ public class InfixExpressionEvaluation {
                 continue;
             
             if (isOperand(e[i])) {
-            	int operand = 0;
-				// Keep incrementing 'i' as long as 
-				// you are getting a numeric digit. 
-				while (i < e.length && isOperand(e[i])) {
-					/* For a number with more than one digits, 
-					 * as we are scanning from left to right. 
-					 * Everytime, we get a digit towards right, 
-					 * we can multiply current total in operand 
-					 * by 10 and add the new digit. 
-					 */
-					int opNum = Character.getNumericValue(e[i]);
-					operand = (operand * 10) + opNum;
-					i++;
-				}
-				/* Finally, you will come out of while loop with 'i' 
-				 * set to a non-numeric character or end of string
-				 * decrement 'i' as it will be incremented in 
-				 * increment section of for loop once again. 
-				 * We do not want to skip the non-numeric character 
-				 * by incrementing 'i' twice. 
-				 */
-				i--;
-				values.push(operand);
+                int operand = 0;
+                // Keep incrementing 'i' as long as 
+                // you are getting a numeric digit. 
+                while (i < e.length && isOperand(e[i])) {
+                    /* For a number with more than one digits, 
+                     * as we are scanning from left to right. 
+                     * Everytime, we get a digit towards right, 
+                     * we can multiply current total in operand 
+                     * by 10 and add the new digit. 
+                     */
+                    int opNum = Character.getNumericValue(e[i]);
+                    operand = (operand * 10) + opNum;
+                    i++;
+                }
+                /* Finally, you will come out of while loop with 'i' 
+                 * set to a non-numeric character or end of string
+                 * decrement 'i' as it will be incremented in 
+                 * increment section of for loop once again. 
+                 * We do not want to skip the non-numeric character 
+                 * by incrementing 'i' twice. 
+                 */
+                i--;
+                values.push(operand);
             }
             
             else if (isOperator(e[i])) {
@@ -57,12 +57,12 @@ public class InfixExpressionEvaluation {
             }
             
             else if (isOpeningParentheses(e[i])) {
-            	operators.push(e[i]);
+                operators.push(e[i]);
             }
             
             else if (isClosingParentheses(e[i])) {
                 while (!operators.empty() && !isOpeningParentheses(operators.peek())) {
-                	int operand2 = values.pop();
+                    int operand2 = values.pop();
                     int operand1 = values.pop();
                     char operator = operators.pop();
                     values.push(performOperation(operator, operand1, operand2));
@@ -70,21 +70,21 @@ public class InfixExpressionEvaluation {
                 if (operators.empty())
                     throw new IllegalArgumentException("Invalid Expression");
                 else
-                	operators.pop();
+                    operators.pop();
             }
         }
         
         while (!operators.empty()) {
-        	int operand2 = values.pop();
+            int operand2 = values.pop();
             int operand1 = values.pop();
             char operator = operators.pop();
             values.push(performOperation(operator, operand1, operand2));
         }
         
         return values.pop();
-	}
-	
-	// Method to verify whether a character is an operand or not
+    }
+    
+    // Method to verify whether a character is an operand or not
     private static boolean isOperand(char c) {
         return c >= '0' && c <= '9';
     }
@@ -149,25 +149,25 @@ public class InfixExpressionEvaluation {
         return weight;
     }
     
-	// Method to perform an operation and return result. 
-	private static int performOperation(char operator, int op1, int op2) {
-		switch(operator) {
-			case '+': return op1 + op2;
-			case '-': return op1 - op2;
-			case '*': return op1 * op2;
-			case '/': return op1 / op2;
-			case '^': return (int) Math.pow(op1, op2);
-			default: return 0;
-		}
-	}
+    // Method to perform an operation and return result. 
+    private static int performOperation(char operator, int op1, int op2) {
+        switch(operator) {
+            case '+': return op1 + op2;
+            case '-': return op1 - op2;
+            case '*': return op1 * op2;
+            case '/': return op1 / op2;
+            case '^': return (int) Math.pow(op1, op2);
+            default: return 0;
+        }
+    }
 
-	public static void main(String[] args) {
-		System.out.println(evaluate("3 ^ 2 ^ 2")); // 81
-		System.out.println(evaluate("10 ^ 2 + 6")); // 106
-		System.out.println(evaluate("10 + 2 * 6")); // 22
+    public static void main(String[] args) {
+        System.out.println(evaluate("3 ^ 2 ^ 2")); // 81
+        System.out.println(evaluate("10 ^ 2 + 6")); // 106
+        System.out.println(evaluate("10 + 2 * 6")); // 22
         System.out.println(evaluate("100 * 2 + 12")); // 212
         System.out.println(evaluate("100 * (2 + 12)")); // 1400
         System.out.println(evaluate("100 * (2 + 12) / 14")); // 100
-	}
+    }
 
 }

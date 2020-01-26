@@ -2,7 +2,12 @@ package graph;
 
 import java.util.Stack;
 
-// Graph Traversal - DFS
+/**
+ * Graph Traversal - DFS
+ * 
+ * @author Narendra Jha, njha.sde@gmail.com
+ * 
+ */
 
 public class DepthFirstSearch extends Graph {
 

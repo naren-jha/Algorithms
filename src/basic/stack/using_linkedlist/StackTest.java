@@ -1,71 +1,71 @@
 package basic.stack.using_linkedlist;
 
 /**
- * @author Narendra Jha
+ * @author Narendra Jha, njha.sde@gmail.com
  *
  * Stack using LinkedList
  */
 class Stack {
-	
-	// Template for node in LinkedList
-	class Node {
-		private int data;
-		private Node link;
-		
-		// Constructor
-		public Node(int data) {
-			this.data = data;
-			this.link = null;
-		}
-	}
-	
-	private Node top; // head is top of stack
-	
-	public Stack() {
-		this.top = null;
-	}
-	
-	public void push(int val) {
-		Node node = new Node(val);
-		node.link = top;
-		top = node;
-	}
-	
-	public int pop() {
-		if(top == null) {
-			// when stack is empty
-			throw new IllegalStateException("Stack is empty.");
-		}
-		Node targetNode = top;
-		top = top.link;
-		return targetNode.data;
-	}
-	
-	public int peek() {
-		if(top == null) {
-			// when stack is empty
-			throw new IllegalStateException("Stack is empty.");
-		}
-		return top.data;
-	}
-	
-	public boolean isEmpty() {
-		return top == null;
-	}
-	
-	@Override
-	public String toString() {
-		StringBuilder result = new StringBuilder("[");
-		Node pntr = top;
-		while (pntr != null) {
-			result.append(pntr.data).append(", ");
-			pntr = pntr.link;
-		}
-		if (result.indexOf(",") != -1)
-			result.delete(result.lastIndexOf(","), result.length());
-		result.append("]");
-		return result.toString();
-	}
+    
+    // Template for node in LinkedList
+    class Node {
+        private int data;
+        private Node link;
+        
+        // Constructor
+        public Node(int data) {
+            this.data = data;
+            this.link = null;
+        }
+    }
+    
+    private Node top; // head is top of stack
+    
+    public Stack() {
+        this.top = null;
+    }
+    
+    public void push(int val) {
+        Node node = new Node(val);
+        node.link = top;
+        top = node;
+    }
+    
+    public int pop() {
+        if(top == null) {
+            // when stack is empty
+            throw new IllegalStateException("Stack is empty.");
+        }
+        Node targetNode = top;
+        top = top.link;
+        return targetNode.data;
+    }
+    
+    public int peek() {
+        if(top == null) {
+            // when stack is empty
+            throw new IllegalStateException("Stack is empty.");
+        }
+        return top.data;
+    }
+    
+    public boolean isEmpty() {
+        return top == null;
+    }
+    
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder("[");
+        Node pntr = top;
+        while (pntr != null) {
+            result.append(pntr.data).append(", ");
+            pntr = pntr.link;
+        }
+        if (result.indexOf(",") != -1)
+            result.delete(result.lastIndexOf(","), result.length());
+        result.append("]");
+        return result.toString();
+    }
 }
 
 public class StackTest {

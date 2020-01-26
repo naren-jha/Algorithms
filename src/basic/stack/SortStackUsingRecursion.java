@@ -3,18 +3,18 @@ package basic.stack;
 import java.util.Stack;
 
 /**
- * @author Narendra Jha
+ * @author Narendra Jha, njha.sde@gmail.com
  * 
  * sorting stack using recursion
  */
 public class SortStackUsingRecursion extends Stack<Integer> {
      
-	// recursive Method to insert an item x in sorted way
+    // recursive Method to insert an item x in sorted way
     public void sortedInsert(int x) {
  
-    	// Base case: Either stack is empty or newly inserted
+        // Base case: Either stack is empty or newly inserted
         // item is greater than top of stack (which means it is
-    	// greater than all existing elements in stack)
+        // greater than all existing elements in stack)
         if (isEmpty() || x > peek()) {
             push(x);
             return;
@@ -44,8 +44,8 @@ public class SortStackUsingRecursion extends Stack<Integer> {
  
     // driver method
     public static void main(String[] args) {
-    	SortStackUsingRecursion s = new SortStackUsingRecursion();
-    	s.push(30);
+        SortStackUsingRecursion s = new SortStackUsingRecursion();
+        s.push(30);
         s.push(-5);
         s.push(18);
         s.push(14);

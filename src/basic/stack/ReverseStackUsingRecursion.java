@@ -3,7 +3,7 @@ package basic.stack;
 import java.util.Stack;
 
 /**
- * @author Narendra Jha
+ * @author Narendra Jha, njha.sde@gmail.com
  * 
  * reversing stack using recursion
  */
@@ -11,7 +11,7 @@ public class ReverseStackUsingRecursion extends Stack<Integer> {
      
     // a recursive method to insert an element at the bottom of a stack.
     public void insertAtBottom(int x) {
-    	// Base case
+        // Base case
         if (isEmpty()) {
             push(x);
             return;
@@ -47,8 +47,8 @@ public class ReverseStackUsingRecursion extends Stack<Integer> {
  
     // driver method
     public static void main(String[] args) {
-    	ReverseStackUsingRecursion st = new ReverseStackUsingRecursion();
-    	
+        ReverseStackUsingRecursion st = new ReverseStackUsingRecursion();
+        
         // push elements into the stack
         st.push(1);
         st.push(2);
