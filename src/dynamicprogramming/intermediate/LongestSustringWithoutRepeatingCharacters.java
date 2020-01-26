@@ -9,7 +9,7 @@ import java.util.Set;
  */
 public class LongestSustringWithoutRepeatingCharacters {
 
-	public static int len(String s) {
+    public static int len(String s) {
         int maxLength = 0;
         Set<Character> set = new HashSet<Character>();
         
@@ -27,8 +27,8 @@ public class LongestSustringWithoutRepeatingCharacters {
         }
         return maxLength;
     }
-	
-	public static void main(String[] args) {
-		System.out.println(len("ABDEFGABEF")); // 6
-	}
+    
+    public static void main(String[] args) {
+        System.out.println(len("ABDEFGABEF")); // 6
+    }
 }
