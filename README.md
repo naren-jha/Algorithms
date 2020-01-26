@@ -178,7 +178,7 @@ Repo to host code for learning Data Structures and Algorithms
 141. [All Ways To Add Parenthesis For Evaluation](https://github.com/njha-collab/DS_Algo/blob/master/src/dynamicprogramming/hard/AllWaysToAddParenthesisForEvaluation.java)
 142. [Minimum Cost To Sort Strings Using Reversals](https://github.com/njha-collab/DS_Algo/blob/master/src/dynamicprogramming/hard/MinimumCostToSortStringsUsingReversal.java)
 
-## Sorting Algorithms
+## Sorting Algorithms [:blue_book:](https://drive.google.com/drive/folders/1BYykgpfMi810rDtnZc605GP0KAo59TE4?usp=sharing)
   * [Bubble Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/BubbleSort.java) **- O(n<sup>2</sup>)**
   * [Insertion Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/InsertionSort.java) **- O(n<sup>2</sup>)**
   * [Merge Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/MergeSort.java) **- O(nlgn)**
