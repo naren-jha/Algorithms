@@ -56,10 +56,10 @@ public class CycleInDirectedGraph extends Graph {
         graph.addEdge(3, 4, false);
         graph.addEdge(4, 0, false);
         
-        System.out.println(graph.hasCycle()); // true;
+        System.out.println(graph.hasCycle()); // true
         
         graph.removeEdge(4, 0, false);
-        System.out.println(graph.hasCycle()); // false;
+        System.out.println(graph.hasCycle()); // false
     }
 
 }

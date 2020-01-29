@@ -18,7 +18,7 @@ public class ShortestPathOnAGrid {
     private static final int[] dr = {-1, +1, 0, 0}; // direction row
     private static final int[] dc = {0, 0, -1, +1}; // direction column
     
-    private static final char BLOCK = '#'; // block symbol
+    private static final char BLOCKED = '#'; // block symbol
     private static final char END = 'E'; // end symbol
     
     public int shortestPath(char[][] grid, int sr, int sc) {
@@ -74,7 +74,7 @@ public class ShortestPathOnAGrid {
                 continue;
             
             // Skip visited locations or blocked cells
-            if (visited[rr][cc] || grid[rr][cc] == BLOCK)
+            if (visited[rr][cc] || grid[rr][cc] == BLOCKED)
                 continue;
             
             rq.add(rr);

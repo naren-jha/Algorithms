@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 /**
- * IGraph Traversal - BFS
+ * Graph Traversal - BFS
  * https://youtu.be/09_LlHjoEiY?t=1998
  * 
  * @author Narendra Jha, njha.sde@gmail.com

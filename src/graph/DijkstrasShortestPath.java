@@ -8,6 +8,8 @@ import java.util.PriorityQueue;
  * https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
  * https://brilliant.org/wiki/dijkstras-short-path-finder/
  * https://www.youtube.com/watch?v=XB4MIexjvY0
+ * 
+ * @author Narendra Jha, njha.sde@gmail.com
  */
 
 public class DijkstrasShortestPath extends Graph {
