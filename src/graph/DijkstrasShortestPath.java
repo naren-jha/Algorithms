@@ -22,8 +22,8 @@ public class DijkstrasShortestPath extends Graph {
         int vn; // vertex number
         double dist; // distance
         
-        QueueEntry(int dv, double dist) {
-            this.vn = dv;
+        QueueEntry(int vn, double dist) {
+            this.vn = vn;
             this.dist = dist;
         }
         

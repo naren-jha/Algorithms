@@ -1,6 +1,7 @@
 package graph;
 
 import java.util.ArrayDeque;
+import java.util.LinkedList;
 import java.util.Queue;
 
 /**
@@ -86,6 +87,73 @@ public class ShortestPathOnAGrid {
         return nodesInNextLayer;
     }
     
+    // Second Approach: Use a delimiter in queue to identify next layer
+    public int shortestPathA2(char[][] grid, int sr, int sc) {
+        int R = grid.length;
+        if (R == 0) 
+            throw new IllegalStateException("empty grid");
+        int C = grid[0].length;
+        
+        boolean[][] visited = new boolean[R][C];
+        // Lets use LinkedList implementation of queue as ArrayDeque
+        // implementation does not allow null insertions
+        Queue<Integer> rq = new LinkedList<Integer>(); // row queue
+        Queue<Integer> cq = new LinkedList<Integer>(); // column queue
+        
+        rq.add(sr);
+        cq.add(sc);
+        visited[sr][sc] = true;
+        
+        rq.add(null);
+        cq.add(null);
+        
+        int moveCount = 0;
+        boolean reachedEnd = false;
+        
+        while (!rq.isEmpty() && !cq.isEmpty()) {
+            Integer r = rq.poll();
+            Integer c = cq.poll();
+            
+            if (r == null || c == null) {
+                ++moveCount;
+                rq.add(null);
+                cq.add(null);
+                continue;
+            }
+            
+            if (grid[r][c] == END) {
+                reachedEnd = true;
+                break;
+            }
+             
+            exploreNeighboursA2(grid, R, C, visited, rq, cq, r, c);
+        }
+        
+        return reachedEnd ? moveCount : -1;
+    }
+    
+    private void exploreNeighboursA2(char[][] grid, int R, int C, boolean[][] visited, 
+            Queue<Integer> rq, Queue<Integer> cq, int r, int c) {
+        for (int i = 0; i < dr.length; i++) {
+            int rr = r + dr[i];
+            int cc = c + dc[i];
+            
+            // Skip out of bounds locations
+            if (rr < 0 || rr >= R)
+                continue;
+            if (cc < 0 || cc >= C)
+                continue;
+            
+            // Skip visited locations or blocked cells
+            if (visited[rr][cc] || grid[rr][cc] == BLOCKED)
+                continue;
+            
+            rq.add(rr);
+            cq.add(cc);
+            visited[rr][cc] = true;
+        }
+    }
+    
     public static void main(String[] args) {
         char[][] grid = { { 'S', '.', '.', '.' }, 
                           { '.', '#', '.', '.' }, 
@@ -94,6 +162,9 @@ public class ShortestPathOnAGrid {
                         };
         ShortestPathOnAGrid graph = new ShortestPathOnAGrid();
         int shortestPath = graph.shortestPath(grid, 0, 0);
+        System.out.println(shortestPath); // 8
+        
+        shortestPath = graph.shortestPathA2(grid, 0, 0);
         System.out.println(shortestPath); // 8
     }
 }
