@@ -1,8 +1,12 @@
 package graph;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
+import java.util.StringJoiner;
 
 /**
  * Shortest Path In Unweighted Graph
@@ -62,14 +66,17 @@ public class ShortestPathUnweightedGraph extends Graph {
     }
     
     private void reconstructPath(int d, int[] prev) {
-        StringBuilder path = new StringBuilder();
-        int len = 0;
-        for (int v = d; v != -1; v = prev[v]) {
-            path.insert(0, "->" + v);
-            ++len;
+        List<Integer> path = new ArrayList<Integer>();
+        for (int v = d; v != -1; v = prev[v])
+            path.add(v);
+        Collections.reverse(path);
+        
+        StringJoiner joiner = new StringJoiner("->");
+        for (Integer item : path) {
+            joiner.add(item.toString());
         }
-        System.out.println("Shortest path length is: " + len);
-        System.out.println("Shortest path is: " + path);
+        System.out.println("Shortest path length is: " + path.size());
+        System.out.println("Shortest path is: " + joiner);
     }
 
     public static void main(String[] args) {
@@ -80,7 +87,7 @@ public class ShortestPathUnweightedGraph extends Graph {
         
         graph.shortestPath(0, 2);
         // Shortest path length is: 3
-        // Shortest path is: ->0->1->2
+        // Shortest path is: 0->1->2
         
         graph.shortestPath(0, 3);
         // There is no path from given source to destination
