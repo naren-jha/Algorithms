@@ -1,7 +1,11 @@
 package graph;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.PriorityQueue;
+import java.util.StringJoiner;
 
 /*
  * https://youtu.be/09_LlHjoEiY?t=4776
@@ -145,16 +149,22 @@ public class DijkstrasShortestPath extends Graph {
     public void reconstructPath(int src, int dest, int[] prev, double dist) {
         validateSourceAndDestinationVertices(src, dest);
         
-        StringBuilder path = new StringBuilder();
         if (dist == Double.POSITIVE_INFINITY) {
             System.out.println("No path found from " + src + " to " + dest);
             return;
         }
         
-        for (int vn = dest; vn != 0; vn = prev[vn]) path.insert(0, "->"+vn);
+        List<Integer> path = new ArrayList<Integer>();
+        for (int vn = dest; vn != src; vn = prev[vn]) 
+            path.add(vn);
+        path.add(src);
+        Collections.reverse(path);
         
-        path.insert(0, src);
-        System.out.println("Shortest path is: " + path.toString());
+        StringJoiner joiner = new StringJoiner("->");
+        for (Integer item : path)
+            joiner.add(item.toString());
+        
+        System.out.println("Shortest path is: " + joiner);
     }
     
     public static void main(String[] args) {

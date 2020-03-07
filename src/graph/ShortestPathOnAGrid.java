@@ -49,7 +49,7 @@ public class ShortestPathOnAGrid {
                 break;
             }
              
-            nodesInNextLayer = exploreNeighbours(grid, R, C, visited, rq, cq, r, c, nodesInNextLayer);
+            nodesInNextLayer += exploreNeighbours(grid, R, C, visited, rq, cq, r, c);
             
             --nodesLeftInLayer;
             if (nodesLeftInLayer == 0) {
@@ -63,7 +63,8 @@ public class ShortestPathOnAGrid {
     }
 
     private int exploreNeighbours(char[][] grid, int R, int C, boolean[][] visited, Queue<Integer> rq,
-            Queue<Integer> cq, int r, int c, int nodesInNextLayer) {
+            Queue<Integer> cq, int r, int c) {
+        int discoveredNodes = 0;
         for (int i = 0; i < dr.length; i++) {
             int rr = r + dr[i];
             int cc = c + dc[i];
@@ -81,10 +82,10 @@ public class ShortestPathOnAGrid {
             rq.add(rr);
             cq.add(cc);
             visited[rr][cc] = true;
-            ++nodesInNextLayer;
+            ++discoveredNodes;
         }
         
-        return nodesInNextLayer;
+        return discoveredNodes;
     }
     
     // Second Approach: Use a delimiter in queue to identify next layer

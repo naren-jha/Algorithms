@@ -62,5 +62,16 @@ public class BellmanFord extends Graph {
         
         int start = 0;
         graph.shortestPath(start);
+        /*
+         * The cost to get from node 0 to 0 is 0.00
+         * The cost to get from node 0 to 1 is 1.00
+         * The cost to get from node 0 to 2 is -Infinity
+         * The cost to get from node 0 to 3 is -Infinity
+         * The cost to get from node 0 to 4 is -Infinity
+         * The cost to get from node 0 to 5 is 5.00
+         * The cost to get from node 0 to 6 is 5.00
+         * The cost to get from node 0 to 7 is 8.00
+         * The cost to get from node 0 to 8 is Infinity
+         */
     }
 }
