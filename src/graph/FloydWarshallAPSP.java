@@ -1,10 +1,19 @@
 package graph;
 
+import static java.lang.Double.NEGATIVE_INFINITY;
+import static java.lang.Double.POSITIVE_INFINITY;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.StringJoiner;
 
+/**
+ * Floyd-Warshall Algorithm for all-pair shortest path
+ * 
+ * @author Narendra Jha, njha.sde@gmail.com
+ *
+ */
 public class FloydWarshallAPSP {
     
     private static final int REACHED_NEGATIVE_CYCLE = -1;
@@ -41,7 +50,7 @@ public class FloydWarshallAPSP {
             for (int i = 0; i < n; ++i) {
                 for (int j = 0; j < n; ++j) {
                     if (dp[i][k] + dp[k][j] < dp[i][j]) {
-                        dp[i][j] = Double.NEGATIVE_INFINITY;
+                        dp[i][j] = NEGATIVE_INFINITY;
                         next[i][j] = REACHED_NEGATIVE_CYCLE;
                     }
                 }
@@ -54,7 +63,7 @@ public class FloydWarshallAPSP {
         for (int i = 0; i < n; ++i) {
             for (int j = 0; j < n; ++j) {
                 dp[i][j] = m[i][j];
-                if (m[i][j] != Double.POSITIVE_INFINITY)
+                if (m[i][j] != POSITIVE_INFINITY)
                     next[i][j] = j;
             }
         }
@@ -71,7 +80,7 @@ public class FloydWarshallAPSP {
     
     private List<Integer> reconstructPath(int start, int end,  double[][] dp, int[][] next) {
         List<Integer> path = new ArrayList<Integer>();
-        if (dp[start][end] == Double.POSITIVE_INFINITY) return path;
+        if (dp[start][end] == POSITIVE_INFINITY) return path;
         int at = start;
         for (; at != end; at = next[at][end]) {
             if (at == REACHED_NEGATIVE_CYCLE) return null;
@@ -87,7 +96,7 @@ public class FloydWarshallAPSP {
         int n = 7;
         double[][] m = new double[n][n];
         for (int i = 0; i < n ; ++i) {
-            Arrays.fill(m[i], Double.POSITIVE_INFINITY);
+            Arrays.fill(m[i], POSITIVE_INFINITY);
             m[i][i] = 0;
         }
         // edges in graph
@@ -121,45 +130,7 @@ public class FloydWarshallAPSP {
             Shortest path length from node 1 to 0 is Infinity 
             Shortest path length from node 1 to 1 is 0.00 
             Shortest path length from node 1 to 2 is 2.00 
-            Shortest path length from node 1 to 3 is Infinity 
-            Shortest path length from node 1 to 4 is -Infinity 
-            Shortest path length from node 1 to 5 is -Infinity 
-            Shortest path length from node 1 to 6 is 4.00 
-            Shortest path length from node 2 to 0 is Infinity 
-            Shortest path length from node 2 to 1 is Infinity 
-            Shortest path length from node 2 to 2 is 0.00 
-            Shortest path length from node 2 to 3 is Infinity 
-            Shortest path length from node 2 to 4 is -Infinity 
-            Shortest path length from node 2 to 5 is -Infinity 
-            Shortest path length from node 2 to 6 is 2.00 
-            Shortest path length from node 3 to 0 is Infinity 
-            Shortest path length from node 3 to 1 is Infinity 
-            Shortest path length from node 3 to 2 is Infinity 
-            Shortest path length from node 3 to 3 is 0.00 
-            Shortest path length from node 3 to 4 is Infinity 
-            Shortest path length from node 3 to 5 is Infinity 
-            Shortest path length from node 3 to 6 is Infinity 
-            Shortest path length from node 4 to 0 is Infinity 
-            Shortest path length from node 4 to 1 is Infinity 
-            Shortest path length from node 4 to 2 is Infinity 
-            Shortest path length from node 4 to 3 is Infinity 
-            Shortest path length from node 4 to 4 is -Infinity 
-            Shortest path length from node 4 to 5 is -Infinity 
-            Shortest path length from node 4 to 6 is Infinity 
-            Shortest path length from node 5 to 0 is Infinity 
-            Shortest path length from node 5 to 1 is Infinity 
-            Shortest path length from node 5 to 2 is Infinity 
-            Shortest path length from node 5 to 3 is Infinity 
-            Shortest path length from node 5 to 4 is -Infinity 
-            Shortest path length from node 5 to 5 is -Infinity 
-            Shortest path length from node 5 to 6 is Infinity 
-            Shortest path length from node 6 to 0 is Infinity 
-            Shortest path length from node 6 to 1 is Infinity 
-            Shortest path length from node 6 to 2 is Infinity 
-            Shortest path length from node 6 to 3 is Infinity 
-            Shortest path length from node 6 to 4 is -Infinity 
-            Shortest path length from node 6 to 5 is -Infinity 
-            Shortest path length from node 6 to 6 is 0.00 
+            .....
          */
         
         // reconstruct path
@@ -193,45 +164,7 @@ public class FloydWarshallAPSP {
             sp(1, 0) DOES NOT EXIST 
             sp(1, 1) = [1] 
             sp(1, 2) = [1->2] 
-            sp(1, 3) DOES NOT EXIST 
-            sp(1, 4) has infinite number of solutions (due to -ve cycle) 
-            sp(1, 5) has infinite number of solutions (due to -ve cycle) 
-            sp(1, 6) = [1->2->6] 
-            sp(2, 0) DOES NOT EXIST 
-            sp(2, 1) DOES NOT EXIST 
-            sp(2, 2) = [2] 
-            sp(2, 3) DOES NOT EXIST 
-            sp(2, 4) has infinite number of solutions (due to -ve cycle) 
-            sp(2, 5) has infinite number of solutions (due to -ve cycle) 
-            sp(2, 6) = [2->6] 
-            sp(3, 0) DOES NOT EXIST 
-            sp(3, 1) DOES NOT EXIST 
-            sp(3, 2) DOES NOT EXIST 
-            sp(3, 3) = [3] 
-            sp(3, 4) DOES NOT EXIST 
-            sp(3, 5) DOES NOT EXIST 
-            sp(3, 6) DOES NOT EXIST 
-            sp(4, 0) DOES NOT EXIST 
-            sp(4, 1) DOES NOT EXIST 
-            sp(4, 2) DOES NOT EXIST 
-            sp(4, 3) DOES NOT EXIST 
-            sp(4, 4) has infinite number of solutions (due to -ve cycle) 
-            sp(4, 5) has infinite number of solutions (due to -ve cycle) 
-            sp(4, 6) DOES NOT EXIST 
-            sp(5, 0) DOES NOT EXIST 
-            sp(5, 1) DOES NOT EXIST 
-            sp(5, 2) DOES NOT EXIST 
-            sp(5, 3) DOES NOT EXIST 
-            sp(5, 4) has infinite number of solutions (due to -ve cycle) 
-            sp(5, 5) has infinite number of solutions (due to -ve cycle) 
-            sp(5, 6) DOES NOT EXIST 
-            sp(6, 0) DOES NOT EXIST 
-            sp(6, 1) DOES NOT EXIST 
-            sp(6, 2) DOES NOT EXIST 
-            sp(6, 3) DOES NOT EXIST 
-            sp(6, 4) has infinite number of solutions (due to -ve cycle) 
-            sp(6, 5) has infinite number of solutions (due to -ve cycle) 
-            sp(6, 6) = [6]
+            .....
          */
     }
 }

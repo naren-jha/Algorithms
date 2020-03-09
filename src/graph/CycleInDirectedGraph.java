@@ -1,7 +1,7 @@
 package graph;
 
 /**
- * FInd Cycles In Directed Graph
+ * Finding Cycle In Directed Graph
  * 
  * https://youtu.be/rKQaZuoUR4M
  * https://www.geeksforgeeks.org/detect-cycle-in-a-graph/

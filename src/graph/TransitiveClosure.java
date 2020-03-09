@@ -1,5 +1,9 @@
 package graph;
 
+import static java.lang.Double.POSITIVE_INFINITY;
+
+import java.util.Arrays;
+
 /**
  * TransitiveClosure Of A Graph
  * 
@@ -37,6 +41,31 @@ public class TransitiveClosure extends Graph {
         }
     }
     
+    // Approach 2: using Floyd-Warshall Algorithm
+    public void transitiveClosureUsingFW(double[][] m) {
+        int n = m.length;
+        boolean[][] tc = new boolean[n][n];
+        for (int i = 0; i < n; ++i) {
+            for (int j = 0; j < n; ++j) {
+                tc[i][j] = m[i][j] != Double.POSITIVE_INFINITY;
+            }
+        }
+        
+        for (int k = 0; k < n; ++k) {
+            for (int i = 0; i < n; ++i) {
+                for (int j = 0; j < n; ++j) {
+                    tc[i][j] = tc[i][j] || (tc[i][k] && tc[k][j]);
+                }
+            }
+        }
+        
+        for (int i = 0; i < n; ++i) {
+            for (int j = 0; j < n; ++j)
+                System.out.print(tc[i][j] ? "1 " : "0 ");
+            System.out.println();
+        }
+    }
+    
     public static void main(String[] args) {
         TransitiveClosure graph = new TransitiveClosure(5);
         graph.addEdge(0, 1, false); // directed graph
@@ -54,6 +83,34 @@ public class TransitiveClosure extends Graph {
          * 0 0 1 1 1 
          * 0 0 0 1 1 
          * 0 0 0 0 1 
+         */
+        
+        // Test second approach (using Floyd-Warshall Algorithm)
+        int n = 7;
+        double[][] m = new double[n][n];
+        for (int i = 0; i < n ; ++i) {
+            Arrays.fill(m[i], POSITIVE_INFINITY);
+            m[i][i] = 0;
+        }
+        // edges in graph
+        m[0][1] = 2;
+        m[0][2] = 5;
+        m[0][6] = 10;
+        m[1][2] = 2;
+        m[1][4] = 11;
+        m[2][6] = 2;
+        m[6][5] = 11;
+        m[4][5] = 1;
+        m[5][4] = -2;
+        graph.transitiveClosureUsingFW(m);
+        /*
+         *  1 1 1 0 1 1 1 
+            0 1 1 0 1 1 1 
+            0 0 1 0 1 1 1 
+            0 0 0 1 0 0 0 
+            0 0 0 0 1 1 0 
+            0 0 0 0 1 1 0 
+            0 0 0 0 1 1 1 
          */
     }
 }
