@@ -113,6 +113,21 @@ public class ArticulationPoints extends Graph {
          * Node 3 is an articulation point 
          * Node 5 is an articulation point 
          */
+        
+        // TESTCASE 2: 
+        // Tests a graph with 3 nodes in a line: A - B - C
+        // Only node 'B' should be an articulation point.
+        ArticulationPoints graph2 = new ArticulationPoints(3);
+        graph2.addEdge(0, 1);
+        graph2.addEdge(1, 2);
+        articulationPoints = graph2.findArticulationPoints();
+        for (int i = 0; i < articulationPoints.length; ++i) {
+            if (articulationPoints[i]) 
+                System.out.printf("Node %d is an articulation point \n", i);
+        }
+        /* Output:
+         * Node 1 is an articulation point 
+         */
     }
     
 }
