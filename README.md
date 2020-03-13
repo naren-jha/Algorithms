@@ -205,3 +205,5 @@ Repo to host code for learning Data Structures and Algorithms
     - [Shortest path in a DAG](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/ShortestPathInDAG.java) **- O(V+E)**
     - [Longest path in a DAG](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/LongestPathInDAG.java) **- O(V+E)**
   * [All-Pair Shortest Path: Floyd-Warshall Algorithm](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/FloydWarshallAPSP.java) **- O(V<sup>3</sup>)**
+  * [Bridges In Undirected Graph](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/Bridges.java) **- O(V+E)**
+  * [Articulation Points In Undirected Graph](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/ArticulationPoints.java) **- O(V+E)**
