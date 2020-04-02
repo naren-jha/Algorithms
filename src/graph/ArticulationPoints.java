@@ -92,7 +92,6 @@ public class ArticulationPoints extends Graph {
         ArticulationPoints graph = new ArticulationPoints(9);
         
         graph.addEdge(0, 1);
-        graph.addEdge(0, 1);
         graph.addEdge(0, 2);
         graph.addEdge(1, 2);
         graph.addEdge(2, 3);
@@ -116,7 +115,7 @@ public class ArticulationPoints extends Graph {
         
         // TESTCASE 2: 
         // Tests a graph with 3 nodes in a line: A - B - C
-        // Only node 'B' should be an articulation point.
+        // Only node 'B' should be an articulation point
         ArticulationPoints graph2 = new ArticulationPoints(3);
         graph2.addEdge(0, 1);
         graph2.addEdge(1, 2);

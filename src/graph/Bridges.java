@@ -85,7 +85,6 @@ public class Bridges extends Graph {
         Bridges graph = new Bridges(9);
         
         graph.addEdge(0, 1);
-        graph.addEdge(0, 1);
         graph.addEdge(0, 2);
         graph.addEdge(1, 2);
         graph.addEdge(2, 3);
