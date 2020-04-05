@@ -115,6 +115,37 @@ public class TarjansAlgorithmForSCC extends Graph {
          * Nodes: [3, 7] form a Strongly Connected Component
          * Nodes: [4, 5, 6] form a Strongly Connected Component
          */
+        
+        // TEST 2:
+        graph = new TarjansAlgorithmForSCC(11);
+        // add directed edges
+        graph.addEdge(0, 1, false);
+        graph.addEdge(1, 2, false);
+        graph.addEdge(2, 0, false);
+        graph.addEdge(1, 3, false);
+        graph.addEdge(3, 4, false);
+        graph.addEdge(4, 5, false);
+        graph.addEdge(5, 3, false);
+        graph.addEdge(6, 7, false);
+        graph.addEdge(7, 8, false);
+        graph.addEdge(8, 9, false);
+        graph.addEdge(9, 6, false);
+        graph.addEdge(9, 10, false);
+        graph.addEdge(6, 5, false);
+        
+        sccs = graph.findSCCs();
+        System.out.printf("Number of Strongly Connected Components: %d \n", sccs.size());
+        for (List<Integer> scc : sccs) {
+            System.out.println("Nodes: " + scc + " form a Strongly Connected Component");
+        }
+        
+        /* Outputs:
+         * Number of Strongly Connected Components: 4 
+         * Nodes: [0, 1, 2] form a Strongly Connected Component
+         * Nodes: [3, 4, 5] form a Strongly Connected Component
+         * Nodes: [6, 7, 8, 9] form a Strongly Connected Component
+         * Nodes: [10] form a Strongly Connected Component
+         */
     }
 
 }

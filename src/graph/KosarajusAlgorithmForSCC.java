@@ -33,6 +33,7 @@ public class KosarajusAlgorithmForSCC extends Graph {
         visited = new boolean[n];
         stack = new ArrayDeque<Integer>();
         
+        // First pass of DFS on the original graph
         for (int vn = 0; vn < n; ++vn) {
             if (!visited[vn])
                 dfs(vn);
@@ -42,6 +43,7 @@ public class KosarajusAlgorithmForSCC extends Graph {
         Arrays.fill(visited, false);
         List<List<Integer>> sccs = new ArrayList<>();
         
+        // Second pass of DFS based on order of elements in stack
         while (!stack.isEmpty()) {
             int v = stack.pop();
             if (!visited[v]) {
@@ -111,6 +113,37 @@ public class KosarajusAlgorithmForSCC extends Graph {
          * Nodes: [3, 7] form a Strongly Connected Component
          * Nodes: [5, 4, 6] form a Strongly Connected Component
          * Nodes: [0, 2, 1] form a Strongly Connected Component
+         */
+        
+        // TEST 2:
+        graph = new KosarajusAlgorithmForSCC(11);
+        // add directed edges
+        graph.addEdge(0, 1, false);
+        graph.addEdge(1, 2, false);
+        graph.addEdge(2, 0, false);
+        graph.addEdge(1, 3, false);
+        graph.addEdge(3, 4, false);
+        graph.addEdge(4, 5, false);
+        graph.addEdge(5, 3, false);
+        graph.addEdge(6, 7, false);
+        graph.addEdge(7, 8, false);
+        graph.addEdge(8, 9, false);
+        graph.addEdge(9, 6, false);
+        graph.addEdge(9, 10, false);
+        graph.addEdge(6, 5, false);
+        
+        sccs = graph.findSCCs();
+        System.out.printf("Number of Strongly Connected Components: %d \n", sccs.size());
+        for (List<Integer> scc : sccs) {
+            System.out.println("Nodes: " + scc + " form a Strongly Connected Component");
+        }
+        
+        /* Outputs:
+         * Number of Strongly Connected Components: 4 
+         * Nodes: [6, 9, 8, 7] form a Strongly Connected Component
+         * Nodes: [10] form a Strongly Connected Component
+         * Nodes: [0, 2, 1] form a Strongly Connected Component
+         * Nodes: [3, 5, 4] form a Strongly Connected Component
          */
     }
 
