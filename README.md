@@ -33,8 +33,8 @@ Repo to host code for learning Data Structures and Algorithms
 * [Fenwick Tree](https://github.com/njha-collab/DS_Algo/blob/master/src/advance_ds/BinaryIndexedTree.java) [:blue_book:](https://drive.google.com/file/d/1ukomS6h8jmPIKm1QdYTpCboRs5_0EWyS/view?usp=sharing)
 * [LRU Cache](https://github.com/njha-collab/DS_Algo/blob/master/src/advance_ds/lru_cache/LRUCache.java) [:blue_book:](https://drive.google.com/file/d/1VBlLHwhinuFRMXBL-jDT7ZVzB42SBSlf/view?usp=sharing)
 
-## Dynamic Programming - Problems
-(Sorted from easy to hard; some related problems are kept together for better learning)
+## Dynamic Programming [Problems]
+(Sorted: Easy To Hard)
 1. [Ugly Numbers](https://github.com/njha-collab/DS_Algo/blob/master/src/dynamicprogramming/basic/UglyNumbers.java)
 2. [Super Ugly Numbers](https://github.com/njha-collab/DS_Algo/blob/master/src/dynamicprogramming/intermediate/SuperUglyNumbers.java)
 3. [Fibonacci Numbers](https://github.com/njha-collab/DS_Algo/blob/master/src/dynamicprogramming/basic/FibonacciNumbers.java)
@@ -207,3 +207,6 @@ Repo to host code for learning Data Structures and Algorithms
   * [All-Pair Shortest Path: Floyd-Warshall Algorithm](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/FloydWarshallAPSP.java) **- O(V<sup>3</sup>)**
   * [Bridges In Undirected Graph](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/Bridges.java) **- O(V+E)**
   * [Articulation Points In Undirected Graph](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/ArticulationPoints.java) **- O(V+E)**
+  * Strongly Connected Components 
+    - [Tarjan’s Algorithm](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/TarjansAlgorithmForSCC.java) **- O(V+E)**
+    - [Kosaraju’s Algorithm](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/KosarajusAlgorithmForSCC.java) **- O(V+E)**
