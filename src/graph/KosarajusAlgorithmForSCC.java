@@ -33,7 +33,7 @@ public class KosarajusAlgorithmForSCC extends Graph {
         visited = new boolean[n];
         stack = new ArrayDeque<Integer>();
         
-        // First pass of DFS on the original graph
+        // 1st pass of DFS on the original graph
         for (int vn = 0; vn < n; ++vn) {
             if (!visited[vn])
                 dfs(vn);
@@ -43,7 +43,7 @@ public class KosarajusAlgorithmForSCC extends Graph {
         Arrays.fill(visited, false);
         List<List<Integer>> sccs = new ArrayList<>();
         
-        // Second pass of DFS based on order of elements in stack
+        // 2nd pass of DFS on transpose graph based on order of elements in stack
         while (!stack.isEmpty()) {
             int v = stack.pop();
             if (!visited[v]) {
