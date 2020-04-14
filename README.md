@@ -193,10 +193,10 @@ Repo to host code for learning Data Structures and Algorithms
 ## Graph Theory
 | Algorithm | Time | Space |
 | --- | --- | --- |
-| * [AdjacencyList Representation](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/Graph.java) |  |  |
-| * [BFS](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/BreadthFirstSearch.java) | **O(V+E)** |  |
-|   - [Shortest Path In Unweighted Graph](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/ShortestPathUnweightedGraph.java) | **O(V+E)** |  |
-|   - [Shortest Path On A Grid](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/ShortestPathOnAGrid.java) | **O(V+E)** |  |
+|  * [AdjacencyList Representation](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/Graph.java) |  |  |
+|  * [BFS](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/BreadthFirstSearch.java) | **O(V+E)** |  |
+|    - [Shortest Path In Unweighted Graph](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/ShortestPathUnweightedGraph.java) | **O(V+E)** |  |
+|    - [Shortest Path On A Grid](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/ShortestPathOnAGrid.java) | **O(V+E)** |  |
   * [DFS](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/DepthFirstSearch.java) **- O(V+E)**
     - [ConnectedComponents](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/ConnectedComponents.java) **- O(V+E)**
     - [TransitiveClosure](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/TransitiveClosure.java) **- O(V+E)**
