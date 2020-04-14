@@ -5,9 +5,7 @@ import java.util.Arrays;
 /**
  * Solution of Traveling Salesman Problem using Brute-Force approach
  * 
- * Time Complexity: O(n!)
- * 
- * Since it takes O(n!) time, it is not suitable for n > 12
+ * Time Complexity: O(n!) [not suitable for n > 12]
  * 
  * https://youtu.be/09_LlHjoEiY?t=12011
  *
@@ -47,10 +45,15 @@ public class TspBruteForce {
             cost += m[from][to];
         }
         
+        // Compute the cost to return to the starting city
+        int from = permutation[n-1]; // last node
+        int to = permutation[0]; // first node
+        cost += m[from][to];
         return cost;
     }
     
-    // Generates next ordered permutation for the given current sequence in-place
+    // Generates next ordered permutation for the given current sequence 
+    // Generation of next sequence is in-place, i.e., it repopulates 'permutation' array
     // Returns 'true' if next permutation is available, else returns 'false'
     private boolean nextPermutation(int[] currSeq) {
         // find valid 'from' index
@@ -60,7 +63,7 @@ public class TspBruteForce {
         // then there is no more permutation available
         if (from == -1) return false;
         
-        // find valid 'to' index
+        // find valid 'to' index and then swap
         int to = currSeq.length - 1;
         while (currSeq[from] >= currSeq[to]) 
             --to;
@@ -80,7 +83,9 @@ public class TspBruteForce {
       }
 
       private int getFrom(int[] sequence) {
-        for (int i = sequence.length - 2; i >= 0; --i) if (sequence[i] < sequence[i + 1]) return i;
+        for (int i = sequence.length - 2; i >= 0; --i) 
+            if (sequence[i] < sequence[i + 1]) 
+                return i;
         return -1;
       }
 
@@ -104,9 +109,10 @@ public class TspBruteForce {
           matrix[optimalTour[i]][optimalTour[i + 1]] = dist;
 
         int[] bestTour = obj.tsp(matrix);
-        System.out.println(Arrays.toString(bestTour));
+        System.out.println(Arrays.toString(bestTour)); 
+        // [0, 2, 7, 6, 1, 9, 8, 5, 3, 4]
 
         double tourCost = obj.computeTourCost(bestTour, matrix, matrix.length);
-        System.out.println("Tour cost: " + tourCost);
+        System.out.println("Tour cost: " + tourCost); // Tour cost: 50.0
     }
 }

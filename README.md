@@ -191,50 +191,22 @@ Repo to host code for learning Data Structures and Algorithms
   * [Radix Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/RadixSort.java) **- O(d\*n)**
 
 ## Graph Theory
-
-| Algorithm | Time | Space |
-| --- | --- | --- |
-| [AdjacencyList Representation](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/Graph.java) |  |  |
-
-| Algorithm | Time | Space |
-| --- | --- | --- |
-| [BFS](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/BreadthFirstSearch.java) | **O(V+E)** |  |
-| [Shortest Path In Unweighted Graph](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/ShortestPathUnweightedGraph.java) | **O(V+E)** |  |
-| [Shortest Path On A Grid](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/ShortestPathOnAGrid.java) | **O(V+E)** |  |
-
-| Algorithm | Time | Space |
-| --- | --- | --- |
-| [DFS](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/DepthFirstSearch.java) | **O(V+E)** |  |
-| [ConnectedComponents](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/ConnectedComponents.java) | **O(V+E)** |  |
-| [TransitiveClosure](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/TransitiveClosure.java) | **O(V+E)** |  |
-| [Topological Sorting](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/TopologicalSorting.java) | **O(V+E)** |  |
-
-| Algorithm | Time | Space |
-| --- | --- | --- |
-| Single-Source Shortest Paths Algorithms |
-| [The Bellman-Ford Algorithm](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/BellmanFord.java) | **O(VE)** |  |
-| [Dijkstra's Algorithm](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/DijkstrasShortestPath.java) | **O((E+V)\*lgV)** |  |
-| [Shortest path in a DAG](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/ShortestPathInDAG.java) | **O(V+E)** |  |
-| [Longest path in a DAG](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/LongestPathInDAG.java) | **O(V+E)** |  |
-
-| Algorithm | Time | Space |
-| --- | --- | --- |
-| [All-Pair Shortest Path: Floyd-Warshall Algorithm](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/FloydWarshallAPSP.java) | **O(V<sup>3</sup>)** |  |
-
-| Algorithm | Time | Space |
-| --- | --- | --- |
-| [Bridges In Undirected Graph](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/Bridges.java) | **O(V+E)** |  |
-| [Articulation Points In Undirected Graph](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/ArticulationPoints.java) | **O(V+E)** |  |
-
-| Algorithm | Time | Space |
-| --- | --- | --- |
-| Strongly Connected Components |
-| [Tarjan’s Algorithm](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/TarjansAlgorithmForSCC.java) | **O(V+E)** |  |
-| [Kosaraju’s Algorithm](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/KosarajusAlgorithmForSCC.java) | **O(V+E)** |  |
-
-| Algorithm | Time | Space |
-| --- | --- | --- |
-| Traveling Salesman Problem |
-| [Brute-Force Approach](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/TspBruteForce.java) | **O(n!)** |  |
-| [DP Iterative Approach]() | **O(n<sup>2</sup>2<sup>n</sup>)** |  |
-| [DP Recursive Approach]() | **O(n<sup>2</sup>2<sup>n</sup>)** |  |
+  * [AdjacencyList Representation](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/Graph.java)
+  * [BFS](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/BreadthFirstSearch.java) **- O(V+E)**
+    - [Shortest Path In Unweighted Graph](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/ShortestPathUnweightedGraph.java) **- O(V+E)**
+    - [Shortest Path On A Grid](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/ShortestPathOnAGrid.java) **- O(V+E)**
+  * [DFS](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/DepthFirstSearch.java) **- O(V+E)**
+    - [ConnectedComponents](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/ConnectedComponents.java) **- O(V+E)**
+    - [TransitiveClosure](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/TransitiveClosure.java) **- O(V+E)**
+  * [Topological Sorting](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/TopologicalSorting.java) **- O(V+E)**
+  * Single-Source Shortest Paths Algorithms
+    - [The Bellman-Ford Algorithm](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/BellmanFord.java) **- O(VE)**
+    - [Dijkstra's Algorithm](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/DijkstrasShortestPath.java) **- O((E+V)\*lgV)**
+    - [Shortest path in a DAG](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/ShortestPathInDAG.java) **- O(V+E)**
+    - [Longest path in a DAG](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/LongestPathInDAG.java) **- O(V+E)**
+  * [All-Pair Shortest Path: Floyd-Warshall Algorithm](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/FloydWarshallAPSP.java) **- O(V<sup>3</sup>)**
+  * [Bridges In Undirected Graph](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/Bridges.java) **- O(V+E)**
+  * [Articulation Points In Undirected Graph](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/ArticulationPoints.java) **- O(V+E)**
+  * Strongly Connected Components 
+    - [Tarjan’s Algorithm](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/TarjansAlgorithmForSCC.java) **- O(V+E)**
+    - [Kosaraju’s Algorithm](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/KosarajusAlgorithmForSCC.java) **- O(V+E)**
