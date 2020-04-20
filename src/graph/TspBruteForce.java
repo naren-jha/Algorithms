@@ -96,7 +96,7 @@ public class TspBruteForce {
       }
 
     public static void main(String[] args) {
-        TspBruteForce obj = new TspBruteForce();
+        TspBruteForce solver = new TspBruteForce();
         
         int n = 10;
         double[][] matrix = new double[n][n];
@@ -108,11 +108,11 @@ public class TspBruteForce {
         for (int i = 0; i < optimalTour.length - 1; i++)
           matrix[optimalTour[i]][optimalTour[i + 1]] = dist;
 
-        int[] bestTour = obj.tsp(matrix);
+        int[] bestTour = solver.tsp(matrix);
         System.out.println(Arrays.toString(bestTour)); 
         // [0, 2, 7, 6, 1, 9, 8, 5, 3, 4]
 
-        double tourCost = obj.computeTourCost(bestTour, matrix, matrix.length);
+        double tourCost = solver.computeTourCost(bestTour, matrix, matrix.length);
         System.out.println("Tour cost: " + tourCost); // Tour cost: 50.0
     }
 }
