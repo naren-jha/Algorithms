@@ -102,20 +102,20 @@ public class TspDynamicProgrammingRecursive {
 
     public static void main(String[] args) {
         // Create adjacency matrix
-        int n = 5;
-        double[][] dist = new double[n][n];
-        for (double[] row : dist) 
-            Arrays.fill(row, 100);
-     
-        // Assume matrix is symmetric for simplicity.
-        dist[1][3] = dist[3][1] = 1;
-        dist[3][0] = dist[0][3] = 2;
-        dist[0][2] = dist[2][0] = 3;
-        dist[2][4] = dist[4][2] = 4;
-        dist[4][1] = dist[1][4] = 5;
+        int n = 6;
+        double[][] distanceMatrix = new double[n][n];
+        for (double[] row : distanceMatrix) 
+            Arrays.fill(row, 10000);
+        
+        distanceMatrix[0][3] = 8;
+        distanceMatrix[3][2] = 6;
+        distanceMatrix[2][4] = 4;
+        distanceMatrix[4][1] = 2;
+        distanceMatrix[1][5] = 12;
+        distanceMatrix[5][0] = 10;
         
         TspDynamicProgrammingRecursive solver = 
-                new TspDynamicProgrammingRecursive(dist);
+                new TspDynamicProgrammingRecursive(distanceMatrix);
         
         solver.tsp();
         
