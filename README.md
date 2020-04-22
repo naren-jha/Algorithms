@@ -210,3 +210,7 @@ Repo to host code for learning Data Structures and Algorithms
   * Strongly Connected Components 
     - [Tarjan’s Algorithm](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/TarjansAlgorithmForSCC.java) **- O(V+E)**
     - [Kosaraju’s Algorithm](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/KosarajusAlgorithmForSCC.java) **- O(V+E)**
+  * Travelling Salesman Problem 
+    - [Brute-Force Approach](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/TspBruteForce.java) **- O(n!)**
+    - [DP Iterative Approach](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/TspDynamicProgrammingIterative.java) **- O(n<sup>2</sup>2<sup>n</sup>)**
+    - [DP Recursive Approach](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/TspDynamicProgrammingRecursive.java) **- O(n<sup>2</sup>2<sup>n</sup>)**
