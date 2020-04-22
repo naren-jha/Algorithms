@@ -11,6 +11,8 @@ import java.util.StringJoiner;
  * 
  * Time Complexity: O(n^2 * 2^n)
  * Space Complexity: O(n * 2^n)
+ * 
+ * https://youtu.be/09_LlHjoEiY?t=12011
  *
  * @author Narendra Jha, njha.sde@gmail.com
  *
@@ -29,7 +31,7 @@ public class TspDynamicProgrammingIterative {
     public TspDynamicProgrammingIterative(int start, double[][] m) {
         N = m.length;
 
-        //if (N <= 2) throw new IllegalStateException("N <= 2 is not yet supported.");
+        if (N <= 2) throw new IllegalStateException("What on earth are you doing!");
         if (start < 0 || start >= N) throw new IllegalArgumentException("Invalid start node.");
         if (N != m[0].length) throw new IllegalArgumentException("Square matric required.");
         if (N > 32) throw new IllegalArgumentException("Matrix too large for computation");
@@ -58,6 +60,9 @@ public class TspDynamicProgrammingIterative {
         for (int i = N-1; i >= 1; --i) {
             int index = -1;
             for (int j = 0; j < N; ++j) {
+                // ignore start node and already visited nodes
+                if (j == S || notIn(j, state)) continue;
+                
                 if (index == -1) index = j;
                 double prevDist = dp[index][state] + m[index][lastIndex];
                 double newDist = dp[j][state] + m[j][lastIndex];
@@ -133,7 +138,7 @@ public class TspDynamicProgrammingIterative {
         int numElementsLeft = n - at;
         if (numElementsLeft < l) return;
         
-        // valid set found. so add to list and return
+        // Valid set found. so add to list and return
         if (l == 0) {
             subsets.add(set);
             return;
