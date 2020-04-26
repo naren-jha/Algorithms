@@ -2,36 +2,36 @@
 Repo to host code for learning Data Structures and Algorithms 
 
 ## Data Structures
-* [LinkedLists](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/) [:blue_book:](https://drive.google.com/file/d/1iWbtK-zaWp-dlt-8pJBKGO3pPMquAnxp/view?usp=sharing)
+* [:blue_book:](https://drive.google.com/file/d/1iWbtK-zaWp-dlt-8pJBKGO3pPMquAnxp/view?usp=sharing) [LinkedLists](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/)
   - [SinglyLinkedList](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/singly/SinglyLinkedList.java)
   - [DoublyLinkedList](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/doubly/DoublyLinkedList.java)
   - [CircularSinglyLinkedList](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/singly/CircularSinglyLinkedList.java)
   - [CircularDoublyLinkedList](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/doubly/CircularDoublyLinkedList.java)
-* [Stack](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/stack/) [:blue_book:](https://drive.google.com/file/d/1DFrMFR37C3AbJTY27ppxsOaYPuwKuKCk/view?usp=sharing)
+* [:blue_book:](https://drive.google.com/file/d/1DFrMFR37C3AbJTY27ppxsOaYPuwKuKCk/view?usp=sharing) [Stack](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/stack/)
   - [Using Array](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/stack/usingarray/StackTest.java)
   - [Using LinkedLinked](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/stack/using_linkedlist/StackTest.java)
   - [Using Queue](https://github.com/njha-collab/DS_Algo/tree/master/src/basic/queue)
-* [Queue](https://github.com/njha-collab/DS_Algo/tree/master/src/basic/queue/) [:blue_book:](https://drive.google.com/file/d/1jXLA_k-eIz4JsnHYUQC_QaBliweKasUw/view?usp=sharing)
+* [:blue_book:](https://drive.google.com/file/d/1jXLA_k-eIz4JsnHYUQC_QaBliweKasUw/view?usp=sharing) [Queue](https://github.com/njha-collab/DS_Algo/tree/master/src/basic/queue/)
   - [Using Array](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/queue/usingarray/QueueTest.java)
   - [Using LinkedLinked](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/queue/using_linkedlist/QueueTest.java)
   - [Using Stack](https://github.com/njha-collab/DS_Algo/tree/master/src/basic/queue)
-* [Deque](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/queue/) [:blue_book:](https://drive.google.com/file/d/1jXLA_k-eIz4JsnHYUQC_QaBliweKasUw/view?usp=sharing)
+* [:blue_book:](https://drive.google.com/file/d/1jXLA_k-eIz4JsnHYUQC_QaBliweKasUw/view?usp=sharing) [Deque](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/queue/)
   - [Using Array](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/queue/usingarray/DequeTest.java)
   - [Using LinkedLinked](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/queue/using_linkedlist/DequeTest.java)
-* [Binary Search Tree](https://github.com/njha-collab/DS_Algo/blob/master/src/tree/bst/BstTest.java) [:blue_book:](https://drive.google.com/file/d/1AoSj0olloDZOVHIeoSsjMl17ZPHrsGg0/view?usp=sharing)
-* [Hashtable](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/hashing/) [:blue_book:](https://drive.google.com/file/d/1cfYNPuLCWCWQDFcIEEQk2kGaXgKSrTTc/view?usp=sharing)
+* [:blue_book:](https://drive.google.com/file/d/1AoSj0olloDZOVHIeoSsjMl17ZPHrsGg0/view?usp=sharing) [Binary Search Tree](https://github.com/njha-collab/DS_Algo/blob/master/src/tree/bst/BstTest.java)
+* [:blue_book:](https://drive.google.com/file/d/1cfYNPuLCWCWQDFcIEEQk2kGaXgKSrTTc/view?usp=sharing) [Hashtable](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/hashing/)
   - [Chaining](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/hashing/chaining/HashTableTest.java)
   - [Open Addressing](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/hashing/openaddressing/HashTableTest.java)
-* [Heap](https://github.com/njha-collab/DS_Algo/blob/master/src/tree/heap/) [:blue_book:](https://drive.google.com/file/d/1AoSj0olloDZOVHIeoSsjMl17ZPHrsGg0/view?usp=sharing)
+* [:blue_book:](https://drive.google.com/file/d/1AoSj0olloDZOVHIeoSsjMl17ZPHrsGg0/view?usp=sharing) [Heap](https://github.com/njha-collab/DS_Algo/blob/master/src/tree/heap/)
   - [Max Heap](https://github.com/njha-collab/DS_Algo/blob/master/src/tree/heap/MaxHeapTest.java)
   - [Min Heap](https://github.com/njha-collab/DS_Algo/blob/master/src/tree/heap/MinHeapTest.java)
-* [Balanced Trees](https://github.com/njha-collab/DS_Algo/blob/master/src/advance_ds/)
-  - [AVL Tree](https://github.com/njha-collab/DS_Algo/blob/master/src/advance_ds/AVLTree.java) [:blue_book:](https://drive.google.com/file/d/1H7dD5CBSY-8JY6zw6C2dLPUwO05J5QpH/view?usp=sharing)
-  - [Red-Black Tree](https://github.com/njha-collab/DS_Algo/blob/master/src/advance_ds/RedBlackTree.java) [:blue_book:](https://drive.google.com/file/d/16P8t90Rpcw5FXCIRUTtl5D5iBJTVEKAg/view?usp=sharing)
-* [Trie](https://github.com/njha-collab/DS_Algo/tree/master/src/advance_ds/trie) [:blue_book:](https://drive.google.com/file/d/1s8uz7PhTJWXN5IWya-V7iRiSaLpP2o-D/view?usp=sharing)
-* [Segment Tree](https://github.com/njha-collab/DS_Algo/tree/master/src/advance_ds/segment_tree) [:blue_book:](https://drive.google.com/file/d/1hul0fcoMsbGyScvj7pllTmHXb-EhhwZl/view?usp=sharing)
-* [Fenwick Tree](https://github.com/njha-collab/DS_Algo/blob/master/src/advance_ds/BinaryIndexedTree.java) [:blue_book:](https://drive.google.com/file/d/1ukomS6h8jmPIKm1QdYTpCboRs5_0EWyS/view?usp=sharing)
-* [LRU Cache](https://github.com/njha-collab/DS_Algo/blob/master/src/advance_ds/lru_cache/LRUCache.java) [:blue_book:](https://drive.google.com/file/d/1VBlLHwhinuFRMXBL-jDT7ZVzB42SBSlf/view?usp=sharing)
+* Balanced Trees
+  - [:blue_book:](https://drive.google.com/file/d/1H7dD5CBSY-8JY6zw6C2dLPUwO05J5QpH/view?usp=sharing) [AVL Tree](https://github.com/njha-collab/DS_Algo/blob/master/src/advance_ds/AVLTree.java)
+  - [:blue_book:](https://drive.google.com/file/d/16P8t90Rpcw5FXCIRUTtl5D5iBJTVEKAg/view?usp=sharing) [Red-Black Tree](https://github.com/njha-collab/DS_Algo/blob/master/src/advance_ds/RedBlackTree.java)
+* [:blue_book:](https://drive.google.com/file/d/1s8uz7PhTJWXN5IWya-V7iRiSaLpP2o-D/view?usp=sharing) [Trie](https://github.com/njha-collab/DS_Algo/tree/master/src/advance_ds/trie)
+* [:blue_book:](https://drive.google.com/file/d/1hul0fcoMsbGyScvj7pllTmHXb-EhhwZl/view?usp=sharing) [Segment Tree](https://github.com/njha-collab/DS_Algo/tree/master/src/advance_ds/segment_tree)
+* [:blue_book:](https://drive.google.com/file/d/1ukomS6h8jmPIKm1QdYTpCboRs5_0EWyS/view?usp=sharing) [Fenwick Tree](https://github.com/njha-collab/DS_Algo/blob/master/src/advance_ds/BinaryIndexedTree.java)
+* [:blue_book:](https://drive.google.com/file/d/1VBlLHwhinuFRMXBL-jDT7ZVzB42SBSlf/view?usp=sharing) [LRU Cache](https://github.com/njha-collab/DS_Algo/blob/master/src/advance_ds/lru_cache/LRUCache.java)
 
 ## Dynamic Programming [Problems]
 (Sorted: Easy To Hard)
@@ -178,7 +178,7 @@ Repo to host code for learning Data Structures and Algorithms
 141. [All Ways To Add Parenthesis For Evaluation](https://github.com/njha-collab/DS_Algo/blob/master/src/dynamicprogramming/hard/AllWaysToAddParenthesisForEvaluation.java)
 142. [Minimum Cost To Sort Strings Using Reversals](https://github.com/njha-collab/DS_Algo/blob/master/src/dynamicprogramming/hard/MinimumCostToSortStringsUsingReversal.java)
 
-## Sorting Algorithms [:blue_book:](https://drive.google.com/drive/folders/1BYykgpfMi810rDtnZc605GP0KAo59TE4?usp=sharing)
+## [:blue_book:](https://drive.google.com/drive/folders/1BYykgpfMi810rDtnZc605GP0KAo59TE4?usp=sharing) Sorting Algorithms
   * [Bubble Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/BubbleSort.java) **- O(n<sup>2</sup>)**
   * [Insertion Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/InsertionSort.java) **- O(n<sup>2</sup>)**
   * [Merge Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/MergeSort.java) **- O(nlgn)**
@@ -190,7 +190,7 @@ Repo to host code for learning Data Structures and Algorithms
   * [Bucket Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/BucketSort.java) **- Θ(n + k)**
   * [Radix Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/RadixSort.java) **- O(d\*n)**
 
-## Graph Theory
+## [:blue_book:]()Graph Theory
   * [AdjacencyList Representation](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/Graph.java)
   * [BFS](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/BreadthFirstSearch.java) **- O(V+E)**
     - [Shortest Path In Unweighted Graph](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/ShortestPathUnweightedGraph.java) **- O(V+E)**
