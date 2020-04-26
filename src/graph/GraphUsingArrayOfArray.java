@@ -17,7 +17,7 @@ import java.util.List;
  * @author Narendra Jha, njha.sde@gmail.com
  * 
  */
-public class GraphUsingListOfList {
+public class GraphUsingArrayOfArray {
 
     protected int numberOfVertices;
     protected List<List<Edge>> adjList;
@@ -44,7 +44,7 @@ public class GraphUsingListOfList {
         }
     }
     
-    public GraphUsingListOfList(int numberOfVertices) {
+    public GraphUsingArrayOfArray(int numberOfVertices) {
         this.numberOfVertices = numberOfVertices;
         adjList = new ArrayList<>();
         
@@ -126,7 +126,7 @@ public class GraphUsingListOfList {
     }
     
     public static void main(String[] args) {
-        GraphUsingListOfList graph = new GraphUsingListOfList(5);
+        GraphUsingArrayOfArray graph = new GraphUsingArrayOfArray(5);
         graph.addEdge(0, 1);
         graph.addEdge(0, 4);
         graph.addEdge(1, 2);

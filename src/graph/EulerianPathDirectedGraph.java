@@ -11,7 +11,7 @@ import java.util.List;
  * @author Narendra Jha, njha.sde@gmail.com
  *
  */
-public class EulerianPathDirectedGraph extends GraphUsingListOfList {
+public class EulerianPathDirectedGraph extends GraphUsingArrayOfArray {
     
     private final int n;
     private int edgeCount;
@@ -66,7 +66,7 @@ public class EulerianPathDirectedGraph extends GraphUsingListOfList {
          * 
          * This assumes the adjacency list stores edges in a data structure that is 
          * indexable in O(1) (e.g stored in a array of array), 
-         * that's why we are using GraphUsingListOfList implementation and not 
+         * that's why we are using GraphUsingArrayOfArray implementation and not 
          * the standard Graph implementation for this algorithm
          */
         while (out[at] > 0) {
@@ -75,7 +75,7 @@ public class EulerianPathDirectedGraph extends GraphUsingListOfList {
             --out[at];
             
             // select the outgoing edge, and call dfs for destination node
-            Edge nextEdge = adjList.get(at).get(out[at]); // we're using GraphUsingListOfList
+            Edge nextEdge = adjList.get(at).get(out[at]); // we're using GraphUsingArrayOfArray
             // implementation of adjacency list here because of the .get(out[at]) used here, 
             // which would make this take linear time because of LinkedList.get(index), 
             // if we used standard Graph implementation, consequently affecting overall 
