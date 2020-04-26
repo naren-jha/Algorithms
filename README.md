@@ -4,8 +4,8 @@ Repo to host code for learning Data Structures and Algorithms
 ## Data Structures
 * [:blue_book:](https://drive.google.com/file/d/1iWbtK-zaWp-dlt-8pJBKGO3pPMquAnxp/view?usp=sharing) [Linked Lists](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/)
   - [Singly Linked List](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/singly/SinglyLinkedList.java)
-  - [Doubly Linked List](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/doubly/DoublyLinkedList.java)
   - [Circular Singly Linked List](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/singly/CircularSinglyLinkedList.java)
+  - [Doubly Linked List](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/doubly/DoublyLinkedList.java)
   - [Circular Doubly Linked List](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/doubly/CircularDoublyLinkedList.java)
 * [:blue_book:](https://drive.google.com/file/d/1DFrMFR37C3AbJTY27ppxsOaYPuwKuKCk/view?usp=sharing) [Stack](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/stack/)
   - [Using Array](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/stack/usingarray/StackTest.java)
