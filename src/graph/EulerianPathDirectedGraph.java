@@ -1,5 +1,7 @@
 package graph;
 
+import static java.lang.Math.abs;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -30,6 +32,7 @@ public class EulerianPathDirectedGraph extends GraphUsingArrayOfArray {
     
     // Returns a list of (edgeCount + 1) node ids that give the Eulerian path or
     // null if no path exists or the graph is disconnected.
+    // O(E + V)
     public LinkedList<Integer> getEulerianPath() {
         countInAndOutDegrees();
         if (!hasEulerianPath()) return null;
@@ -43,6 +46,7 @@ public class EulerianPathDirectedGraph extends GraphUsingArrayOfArray {
         return path;
     }
     
+    // O(E)
     private void dfs(int at) {
         
         /* 
@@ -88,6 +92,7 @@ public class EulerianPathDirectedGraph extends GraphUsingArrayOfArray {
         path.addFirst(at);
     }
     
+    // O(V)
     private int findStartNode() {
         int startNode = 0;
         for (int i = 0; i < n; ++i) {
@@ -104,6 +109,7 @@ public class EulerianPathDirectedGraph extends GraphUsingArrayOfArray {
         return startNode;
     }
     
+    // O(V)
     private boolean hasEulerianPath() {
         if (edgeCount == 0) return false;
         
@@ -111,7 +117,7 @@ public class EulerianPathDirectedGraph extends GraphUsingArrayOfArray {
         for (int i = 0; i < n; ++i) {
             // Check for too many incoming or outgoing edges
             // (out[i] - in[i] > 1) or (in[i] - out[i] > 1)
-            if (Math.abs(in[i] - out[i]) > 1) return false;
+            if (abs(in[i] - out[i]) > 1) return false;
             
             // Check if a node has exactly one extra outgoing edges
             // a potential start node in Eulerian path
@@ -139,6 +145,7 @@ public class EulerianPathDirectedGraph extends GraphUsingArrayOfArray {
                 (startNodeCount == 1 && endNodeCount == 1);
     }
     
+    // O(E)
     private void countInAndOutDegrees() {
         for (List<Edge> edges : adjList) {
             for (Edge edge : edges) {
@@ -175,7 +182,6 @@ public class EulerianPathDirectedGraph extends GraphUsingArrayOfArray {
         g2.addEdge(1, 3, false);
         g2.addEdge(2, 1, false);
         g2.addEdge(4, 1, false);
-        System.out.println(g2);
         
         System.out.println(g2.getEulerianPath());
         // Prints: [0, 1, 4, 1, 2, 1, 3]
