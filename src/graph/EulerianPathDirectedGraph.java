@@ -28,6 +28,8 @@ public class EulerianPathDirectedGraph extends GraphUsingArrayOfArray {
         edgeCount = 0;
     }
     
+    // Returns a list of (edgeCount + 1) node ids that give the Eulerian path or
+    // null if no path exists or the graph is disconnected.
     public LinkedList<Integer> getEulerianPath() {
         countInAndOutDegrees();
         if (!hasEulerianPath()) return null;
@@ -163,7 +165,20 @@ public class EulerianPathDirectedGraph extends GraphUsingArrayOfArray {
         g.addEdge(6, 3, false);
         
         System.out.println(g.getEulerianPath());
-        // [1, 3, 5, 6, 3, 2, 4, 3, 1, 2, 2, 4, 6]
+        // Prints: [1, 3, 5, 6, 3, 2, 4, 3, 1, 2, 2, 4, 6]
+        
+        // TEST CASE 2:
+        EulerianPathDirectedGraph g2 = new EulerianPathDirectedGraph(5);
+        g2.addEdge(0, 1, false);
+        g2.addEdge(1, 2, false);
+        g2.addEdge(1, 4, false);
+        g2.addEdge(1, 3, false);
+        g2.addEdge(2, 1, false);
+        g2.addEdge(4, 1, false);
+        System.out.println(g2);
+        
+        System.out.println(g2.getEulerianPath());
+        // Prints: [0, 1, 4, 1, 2, 1, 3]
     }
 
 }
