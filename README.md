@@ -2,22 +2,22 @@
 Repo to host code for learning Data Structures and Algorithms 
 
 ## Data Structures
-* [:blue_book:](https://drive.google.com/file/d/1iWbtK-zaWp-dlt-8pJBKGO3pPMquAnxp/view?usp=sharing) [LinkedLists](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/)
-  - [SinglyLinkedList](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/singly/SinglyLinkedList.java)
-  - [DoublyLinkedList](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/doubly/DoublyLinkedList.java)
-  - [CircularSinglyLinkedList](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/singly/CircularSinglyLinkedList.java)
-  - [CircularDoublyLinkedList](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/doubly/CircularDoublyLinkedList.java)
+* [:blue_book:](https://drive.google.com/file/d/1iWbtK-zaWp-dlt-8pJBKGO3pPMquAnxp/view?usp=sharing) [Linked Lists](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/)
+  - [Singly Linked List](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/singly/SinglyLinkedList.java)
+  - [Doubly Linked List](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/doubly/DoublyLinkedList.java)
+  - [Circular Singly Linked List](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/singly/CircularSinglyLinkedList.java)
+  - [Circular Doubly Linked List](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/doubly/CircularDoublyLinkedList.java)
 * [:blue_book:](https://drive.google.com/file/d/1DFrMFR37C3AbJTY27ppxsOaYPuwKuKCk/view?usp=sharing) [Stack](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/stack/)
   - [Using Array](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/stack/usingarray/StackTest.java)
-  - [Using LinkedLinked](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/stack/using_linkedlist/StackTest.java)
+  - [Using Linked List](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/stack/using_linkedlist/StackTest.java)
   - [Using Queue](https://github.com/njha-collab/DS_Algo/tree/master/src/basic/queue)
 * [:blue_book:](https://drive.google.com/file/d/1jXLA_k-eIz4JsnHYUQC_QaBliweKasUw/view?usp=sharing) [Queue](https://github.com/njha-collab/DS_Algo/tree/master/src/basic/queue/)
   - [Using Array](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/queue/usingarray/QueueTest.java)
-  - [Using LinkedLinked](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/queue/using_linkedlist/QueueTest.java)
+  - [Using Linked List](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/queue/using_linkedlist/QueueTest.java)
   - [Using Stack](https://github.com/njha-collab/DS_Algo/tree/master/src/basic/queue)
 * [:blue_book:](https://drive.google.com/file/d/1jXLA_k-eIz4JsnHYUQC_QaBliweKasUw/view?usp=sharing) [Deque](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/queue/)
   - [Using Array](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/queue/usingarray/DequeTest.java)
-  - [Using LinkedLinked](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/queue/using_linkedlist/DequeTest.java)
+  - [Using Linked List](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/queue/using_linkedlist/DequeTest.java)
 * [:blue_book:](https://drive.google.com/file/d/1AoSj0olloDZOVHIeoSsjMl17ZPHrsGg0/view?usp=sharing) [Binary Search Tree](https://github.com/njha-collab/DS_Algo/blob/master/src/tree/bst/BstTest.java)
 * [:blue_book:](https://drive.google.com/file/d/1cfYNPuLCWCWQDFcIEEQk2kGaXgKSrTTc/view?usp=sharing) [Hashtable](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/hashing/)
   - [Chaining](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/hashing/chaining/HashTableTest.java)
@@ -190,7 +190,7 @@ Repo to host code for learning Data Structures and Algorithms
   * [Bucket Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/BucketSort.java) **- Θ(n + k)**
   * [Radix Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/RadixSort.java) **- O(d\*n)**
 
-## [:blue_book:]()Graph Theory
+## [:blue_book:]() Graph Theory
   * [AdjacencyList Representation](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/Graph.java)
   * [BFS](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/BreadthFirstSearch.java) **- O(V+E)**
     - [Shortest Path In Unweighted Graph](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/ShortestPathUnweightedGraph.java) **- O(V+E)**
