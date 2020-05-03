@@ -74,7 +74,7 @@ public class Graph {
         validateSourceAndDestinationVertices(src, dest);
         adjList.get(src).remove(new Edge(src, dest, 0));
         if (isUndirected)
-            adjList.get(dest).remove(new Edge(src, dest, 0));
+            adjList.get(dest).remove(new Edge(dest, src, 0));
     }
     
     public boolean areNeighbor(int src, int dest) {
