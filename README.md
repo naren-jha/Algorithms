@@ -32,6 +32,7 @@ Repo to host code for learning Data Structures and Algorithms
 * [:blue_book:](https://drive.google.com/file/d/1hul0fcoMsbGyScvj7pllTmHXb-EhhwZl/view?usp=sharing) [Segment Tree](https://github.com/njha-collab/DS_Algo/tree/master/src/advance_ds/segment_tree)
 * [:blue_book:](https://drive.google.com/file/d/1ukomS6h8jmPIKm1QdYTpCboRs5_0EWyS/view?usp=sharing) [Fenwick Tree](https://github.com/njha-collab/DS_Algo/blob/master/src/advance_ds/BinaryIndexedTree.java)
 * [:blue_book:](https://drive.google.com/file/d/1VBlLHwhinuFRMXBL-jDT7ZVzB42SBSlf/view?usp=sharing) [LRU Cache](https://github.com/njha-collab/DS_Algo/blob/master/src/advance_ds/lru_cache/LRUCache.java)
+* [:blue_book:](https://drive.google.com/file/d/1VBlLHwhinuFRMXBL-jDT7ZVzB42SBSlf/view?usp=sharing) [Union Find (Merge By Size)](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/UnionFind.java)
 
 ## Dynamic Programming [Problems]
 (Sorted: Easy To Hard)
