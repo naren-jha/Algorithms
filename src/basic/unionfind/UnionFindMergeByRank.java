@@ -1,4 +1,4 @@
-package basic;
+package basic.unionfind;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,7 +10,7 @@ import java.util.Map;
  * which should help minimize the height of the tree, consequently improving 
  * performance. However, performance improvement due to rank based merging 
  * can be debated, as we can't use array as underlying data structure, 
- * and path compression is anyway going reduce the heights of 
+ * and path compression is anyway going to reduce the heights of 
  * all component trees to 1
  *
  * @author Narendra Jha, njha.sde@gmail.com
@@ -69,11 +69,8 @@ public class UnionFindMergeByRank {
         while (node != root) {
             Node parent = node.parent;
             node.parent = root;
-            node.rank = 0; // redundant
             node = parent;
         }
-        // after path compression, update rank (height) of root node to 1
-        if (n != root.data) root.rank = 1;
         
         return root.data;
     }
@@ -81,12 +78,7 @@ public class UnionFindMergeByRank {
     // A recursive implementation of find() method
     public int findRec(int n) {
         if (!nodeMap.containsKey(n)) throw new IllegalArgumentException("invalid node");
-        Node root = findRecUtil(nodeMap.get(n));
-        
-        // after path compression, update rank (height) of root node to 1
-        if (n != root.data) root.rank = 1;
-        
-        return root.data;
+        return findRecUtil(nodeMap.get(n)).data;
     }
     
     // A utility method used in recursive implementation of find operation

@@ -1,4 +1,4 @@
-package basic;
+package basic.unionfind;
 
 /**
  * Implementation of Union Find (AKA Disjoint Set) data structure
