@@ -3,6 +3,8 @@ package graph;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+
+import graph.Graph.Edge;
  
 /**
  * Adjacency list representation of Graph
@@ -15,7 +17,7 @@ public class Graph {
     protected int numberOfVertices;
     protected List<LinkedList<Edge>> adjList;
     
-    protected class Edge {
+    protected class Edge implements Comparable<Edge> {
         int from; // source vertex
         int to; // destination vertex
         double wt; // weight
@@ -34,6 +36,13 @@ public class Graph {
         @Override
         public String toString() {
             return String.format("{from=%d, to=%d, weight=%.2f}", from, to, wt);
+        }
+
+        @Override
+        public int compareTo(Edge o) {
+            if (this.wt > o.wt) return 1;
+            else if (this.wt < o.wt) return -1;
+            return 0;
         }
     }
     

@@ -6,7 +6,7 @@ import basic.unionfind.UnionFind;
 
 /**
  * Implements algorithm to find number of connected components
- * using Union Find data structure
+ * in a given graph, using Union Find data structure
  *
  * @author Narendra Jha, njha.sde@gmail.com
  *
