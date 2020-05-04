@@ -12,12 +12,18 @@ import java.util.Map;
  * can be debated, as we can't use array as underlying data structure, 
  * and path compression is anyway going to reduce the heights of 
  * all component trees to 1
+ * 
+ * This implementation has one major flaw. After path compression in find() method,
+ * rank of root node is not updated, because of which there is a possibility that 
+ * later a component with smaller tree height becomes parent of a component with  
+ * larger tree height, which kind of defeats the purpose of this implementation 
  *
  * @author Narendra Jha, njha.sde@gmail.com
  *
  */
 public class UnionFindMergeByRank {
 
+    // Map to store nodes by their node number
     private Map<Integer, Node> nodeMap = new HashMap<>();
     
     // To track number of components in union find
