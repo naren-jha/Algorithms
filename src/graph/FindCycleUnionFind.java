@@ -13,14 +13,12 @@ import basic.unionfind.UnionFind;
  */
 public class FindCycleUnionFind extends Graph {
     
-    UnionFind uf;
-
     public FindCycleUnionFind(int numberOfVertices) {
         super(numberOfVertices);
     }
     
     public boolean hasCycle() {
-        uf = new UnionFind(numberOfVertices);
+        UnionFind uf = new UnionFind(numberOfVertices);
         
         for (LinkedList<Edge> edges : adjList) {
             for (Edge edge : edges) {
