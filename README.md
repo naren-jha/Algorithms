@@ -218,3 +218,7 @@ Repo to host code for learning Data Structures and Algorithms
     - [DP Iterative Approach](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/TspDynamicProgrammingIterative.java) **- O(n<sup>2</sup>2<sup>n</sup>)**
     - [DP Recursive Approach](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/TspDynamicProgrammingRecursive.java) **- O(n<sup>2</sup>2<sup>n</sup>)**
   * [Eulerian Path (Directed Graph)](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/EulerianPathDirectedGraph.java) **- O(V+E)**
+  * Cycle Detection
+    - [In Directed Graph -  Using DFS](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/CycleInDirectedGraph.java) **- O(V+E)**
+    - [In Undirected Graph -  Using DFS](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/CycleInUndirectedGraph.java) **- O(V+E)**
+    - [In Directed Graph -  Using Union Find](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/FindCycleUnionFind.java) **- O(E)**
