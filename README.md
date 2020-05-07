@@ -224,5 +224,6 @@ Repo to host code for learning Data Structures and Algorithms
     - [DP Recursive Approach](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/TspDynamicProgrammingRecursive.java) **- O(n<sup>2</sup>2<sup>n</sup>)**
   * [Eulerian Path (Directed Graph)](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/EulerianPathDirectedGraph.java) **- O(V+E)**
   * Minimum Spanning Trees
-    - [Kruskal's Algorithm Using Union Find](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/KruskalsMST.java)
-    - [Kruskal's Algorithm Using Union Find - Lazy Sorting Using Priority Queue](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/KruskalsMstLazySortingUsingPriorityQueue.java)
+    - [Kruskal's Algorithm Using Union Find](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/KruskalsMST.java) **- O(ElgE)**
+    - [Kruskal's Algorithm Using Union Find - Lazy Sorting Using Priority Queue](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/KruskalsMstLazySortingUsingPriorityQueue.java) **- O(ElgE)**
+    - [Prim's Algorithm Using Union Find](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/PrimsMst.java) **- O(ElgE)**
