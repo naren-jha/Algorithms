@@ -6,7 +6,9 @@ import basic.unionfind.UnionFind;
 
 /**
  * Implements algorithm to find number of connected components
- * in a given graph, using Union Find data structure
+ * in a given undirected graph, using Union Find data structure
+ * 
+ * To solve this for directed graph, use Tarjan's / Kosaraju's algorithm
  *
  * @author Narendra Jha, njha.sde@gmail.com
  *
