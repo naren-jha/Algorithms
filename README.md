@@ -22,10 +22,10 @@ Repo to host code for learning Data Structures and Algorithms
 * [:blue_book:](https://drive.google.com/file/d/1cfYNPuLCWCWQDFcIEEQk2kGaXgKSrTTc/view?usp=sharing) [Hashtable](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/hashing/)
   - [Chaining](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/hashing/chaining/HashTableTest.java)
   - [Open Addressing](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/hashing/openaddressing/HashTableTest.java)
-* [:blue_book:](https://drive.google.com/file/d/1AoSj0olloDZOVHIeoSsjMl17ZPHrsGg0/view?usp=sharing) [Heap](https://github.com/njha-collab/DS_Algo/blob/master/src/tree/heap/)
+* [:blue_book:](https://drive.google.com/file/d/1AoSj0olloDZOVHIeoSsjMl17ZPHrsGg0/view?usp=sharing) [Heap (Priority Queue)](https://github.com/njha-collab/DS_Algo/blob/master/src/tree/heap/)
   - [Max Heap](https://github.com/njha-collab/DS_Algo/blob/master/src/tree/heap/MaxHeapTest.java)
   - [Min Heap](https://github.com/njha-collab/DS_Algo/blob/master/src/tree/heap/MinHeapTest.java)
-* Balanced Trees
+* Self-Balancing BSTs
   - [:blue_book:](https://drive.google.com/file/d/1H7dD5CBSY-8JY6zw6C2dLPUwO05J5QpH/view?usp=sharing) [AVL Tree](https://github.com/njha-collab/DS_Algo/blob/master/src/advance_ds/AVLTree.java)
   - [:blue_book:](https://drive.google.com/file/d/16P8t90Rpcw5FXCIRUTtl5D5iBJTVEKAg/view?usp=sharing) [Red-Black Tree](https://github.com/njha-collab/DS_Algo/blob/master/src/advance_ds/RedBlackTree.java)
 * [:blue_book:](https://drive.google.com/file/d/1s8uz7PhTJWXN5IWya-V7iRiSaLpP2o-D/view?usp=sharing) [Trie](https://github.com/njha-collab/DS_Algo/tree/master/src/advance_ds/trie)
