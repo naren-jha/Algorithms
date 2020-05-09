@@ -3,8 +3,8 @@ Repo to host code for learning Data Structures and Algorithms
 
 ## Data Structures
 * [:blue_book:](https://drive.google.com/file/d/1iWbtK-zaWp-dlt-8pJBKGO3pPMquAnxp/view?usp=sharing) [Linked Lists](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/)
-  - [Singly Linked List](https://github.com/njha-collab/DS_Algo/tree/master/src/basic/ll/singly)
-  - [Doubly Linked List](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/doubly)
+  - [Singly Linked Lists](https://github.com/njha-collab/DS_Algo/tree/master/src/basic/ll/singly)
+  - [Doubly Linked Lists](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/doubly)
 * [:blue_book:](https://drive.google.com/file/d/1DFrMFR37C3AbJTY27ppxsOaYPuwKuKCk/view?usp=sharing) [Stack](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/stack/)
   - [Using Array](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/stack/usingarray/StackTest.java)
   - [Using Linked List](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/stack/using_linkedlist/StackTest.java)
@@ -20,7 +20,7 @@ Repo to host code for learning Data Structures and Algorithms
 * [:blue_book:](https://drive.google.com/file/d/1cfYNPuLCWCWQDFcIEEQk2kGaXgKSrTTc/view?usp=sharing) [Hashtable](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/hashing/)
   - [Chaining](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/hashing/chaining/HashTableTest.java)
   - [Open Addressing](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/hashing/openaddressing/HashTableTest.java)
-* [:blue_book:](https://drive.google.com/file/d/1AoSj0olloDZOVHIeoSsjMl17ZPHrsGg0/view?usp=sharing) [Heap (Priority Queue)](https://github.com/njha-collab/DS_Algo/blob/master/src/tree/heap/)
+* [:blue_book:](https://drive.google.com/file/d/1AoSj0olloDZOVHIeoSsjMl17ZPHrsGg0/view?usp=sharing) [Heap (Priority Queues)](https://github.com/njha-collab/DS_Algo/blob/master/src/tree/heap/)
   - [Max Heap](https://github.com/njha-collab/DS_Algo/blob/master/src/tree/heap/MaxHeapTest.java)
   - [Min Heap](https://github.com/njha-collab/DS_Algo/blob/master/src/tree/heap/MinHeapTest.java)
 * Self-Balancing BSTs
