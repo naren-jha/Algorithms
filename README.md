@@ -180,6 +180,10 @@ Repo to host code for learning Data Structures and Algorithms
 140. [Count AP (Arithmetic Progression) Subsequences In An Array](https://github.com/njha-collab/DS_Algo/blob/master/src/dynamicprogramming/hard/CountAPSubsequences.java)
 141. [All Ways To Add Parenthesis For Evaluation](https://github.com/njha-collab/DS_Algo/blob/master/src/dynamicprogramming/hard/AllWaysToAddParenthesisForEvaluation.java)
 142. [Minimum Cost To Sort Strings Using Reversals](https://github.com/njha-collab/DS_Algo/blob/master/src/dynamicprogramming/hard/MinimumCostToSortStringsUsingReversal.java)
+143. Travelling Salesman Problem 
+     - [Brute-Force Approach](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/TspBruteForce.java) **- O(n!)**
+     - [DP Iterative Approach](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/TspDynamicProgrammingIterative.java) **- O(n<sup>2</sup>2<sup>n</sup>)**
+     - [DP Recursive Approach](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/TspDynamicProgrammingRecursive.java) **- O(n<sup>2</sup>2<sup>n</sup>)**
 
 ## [:blue_book:](https://drive.google.com/drive/folders/1BYykgpfMi810rDtnZc605GP0KAo59TE4?usp=sharing) Sorting Algorithms
   * [Bubble Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/BubbleSort.java) **- O(n<sup>2</sup>)**
