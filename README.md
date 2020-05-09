@@ -226,4 +226,4 @@ Repo to host code for learning Data Structures and Algorithms
   * Minimum Spanning Trees
     - [Kruskal's Algorithm Using Union Find](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/KruskalsMST.java) **- O(ElgE)**
     - [Kruskal's Algorithm Using Union Find - Lazy Sorting Using Priority Queue](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/KruskalsMstLazySortingUsingPriorityQueue.java) **- O(ElgE)**
-    - [Prim's Algorithm Using Union Find](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/PrimsMst.java) **- O(ElgE)**
+    - [Prim's Algorithm For MST](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/PrimsMst.java) **- O(ElgE)**
