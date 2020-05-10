@@ -4,6 +4,9 @@ import java.util.Comparator;
 import java.util.TreeSet;
 
 /**
+ * WARNING: This implementation has an issue discussed at: 
+ * https://stackoverflow.com/questions/61710348/java-treeset-weird-behavior
+ * 
  * Implementation of Prim's algorithm (eager version) to
  * find Minimum Spanning Tree using a self-balancing BST
  * Time Complexity: O(ElogV)
