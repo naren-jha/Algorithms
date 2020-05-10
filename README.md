@@ -3,10 +3,8 @@ Repo to host code for learning Data Structures and Algorithms
 
 ## Data Structures
 * [:blue_book:](https://drive.google.com/file/d/1iWbtK-zaWp-dlt-8pJBKGO3pPMquAnxp/view?usp=sharing) [Linked Lists](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/)
-  - [Singly Linked List](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/singly/SinglyLinkedList.java)
-  - [Circular Singly Linked List](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/singly/CircularSinglyLinkedList.java)
-  - [Doubly Linked List](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/doubly/DoublyLinkedList.java)
-  - [Circular Doubly Linked List](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/doubly/CircularDoublyLinkedList.java)
+  - [Singly Linked Lists](https://github.com/njha-collab/DS_Algo/tree/master/src/basic/ll/singly)
+  - [Doubly Linked Lists](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/ll/doubly)
 * [:blue_book:](https://drive.google.com/file/d/1DFrMFR37C3AbJTY27ppxsOaYPuwKuKCk/view?usp=sharing) [Stack](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/stack/)
   - [Using Array](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/stack/usingarray/StackTest.java)
   - [Using Linked List](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/stack/using_linkedlist/StackTest.java)
@@ -22,10 +20,10 @@ Repo to host code for learning Data Structures and Algorithms
 * [:blue_book:](https://drive.google.com/file/d/1cfYNPuLCWCWQDFcIEEQk2kGaXgKSrTTc/view?usp=sharing) [Hashtable](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/hashing/)
   - [Chaining](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/hashing/chaining/HashTableTest.java)
   - [Open Addressing](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/hashing/openaddressing/HashTableTest.java)
-* [:blue_book:](https://drive.google.com/file/d/1AoSj0olloDZOVHIeoSsjMl17ZPHrsGg0/view?usp=sharing) [Heap](https://github.com/njha-collab/DS_Algo/blob/master/src/tree/heap/)
+* [:blue_book:](https://drive.google.com/file/d/1AoSj0olloDZOVHIeoSsjMl17ZPHrsGg0/view?usp=sharing) [Heap (Priority Queues)](https://github.com/njha-collab/DS_Algo/blob/master/src/tree/heap/)
   - [Max Heap](https://github.com/njha-collab/DS_Algo/blob/master/src/tree/heap/MaxHeapTest.java)
   - [Min Heap](https://github.com/njha-collab/DS_Algo/blob/master/src/tree/heap/MinHeapTest.java)
-* Balanced Trees
+* Self-Balancing BSTs
   - [:blue_book:](https://drive.google.com/file/d/1H7dD5CBSY-8JY6zw6C2dLPUwO05J5QpH/view?usp=sharing) [AVL Tree](https://github.com/njha-collab/DS_Algo/blob/master/src/advance_ds/AVLTree.java)
   - [:blue_book:](https://drive.google.com/file/d/16P8t90Rpcw5FXCIRUTtl5D5iBJTVEKAg/view?usp=sharing) [Red-Black Tree](https://github.com/njha-collab/DS_Algo/blob/master/src/advance_ds/RedBlackTree.java)
 * [:blue_book:](https://drive.google.com/file/d/1s8uz7PhTJWXN5IWya-V7iRiSaLpP2o-D/view?usp=sharing) [Trie](https://github.com/njha-collab/DS_Algo/tree/master/src/advance_ds/trie)
@@ -180,6 +178,10 @@ Repo to host code for learning Data Structures and Algorithms
 140. [Count AP (Arithmetic Progression) Subsequences In An Array](https://github.com/njha-collab/DS_Algo/blob/master/src/dynamicprogramming/hard/CountAPSubsequences.java)
 141. [All Ways To Add Parenthesis For Evaluation](https://github.com/njha-collab/DS_Algo/blob/master/src/dynamicprogramming/hard/AllWaysToAddParenthesisForEvaluation.java)
 142. [Minimum Cost To Sort Strings Using Reversals](https://github.com/njha-collab/DS_Algo/blob/master/src/dynamicprogramming/hard/MinimumCostToSortStringsUsingReversal.java)
+143. Travelling Salesman Problem 
+     1. [Brute-Force Approach](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/TspBruteForce.java) **- O(n!)**
+     2. [DP Iterative Approach](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/TspDynamicProgrammingIterative.java) **- O(n<sup>2</sup>2<sup>n</sup>)**
+     3. [DP Recursive Approach](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/TspDynamicProgrammingRecursive.java) **- O(n<sup>2</sup>2<sup>n</sup>)**
 
 ## [:blue_book:](https://drive.google.com/drive/folders/1BYykgpfMi810rDtnZc605GP0KAo59TE4?usp=sharing) Sorting Algorithms
   * [Bubble Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/BubbleSort.java) **- O(n<sup>2</sup>)**
@@ -203,9 +205,9 @@ Repo to host code for learning Data Structures and Algorithms
     - [TransitiveClosure](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/TransitiveClosure.java) **- O(V+E)**
   * [Topological Sorting](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/TopologicalSorting.java) **- O(V+E)**
   * Cycle Detection
-    - [In Directed Graph -  Using DFS](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/CycleInDirectedGraph.java) **- O(V+E)**
-    - [In Undirected Graph -  Using DFS](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/CycleInUndirectedGraph.java) **- O(V+E)**
-    - [In Directed Graph -  Using Union Find](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/FindCycleUnionFind.java) **- O(E)**
+    - [In Directed Graph - Using DFS](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/CycleInDirectedGraph.java) **- O(V+E)**
+    - [In Undirected Graph - Using DFS](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/CycleInUndirectedGraph.java) **- O(V+E)**
+    - [In Directed Graph - Using Union Find](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/FindCycleUnionFind.java) **- O(E)**
   * [Connected Components - Using Union Find](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/NumberOfConnectedComponentsUnionFind.java) **- O(E)**
   * Single-Source Shortest Paths Algorithms
     - [The Bellman-Ford Algorithm](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/BellmanFord.java) **- O(VE)**
@@ -226,4 +228,4 @@ Repo to host code for learning Data Structures and Algorithms
   * Minimum Spanning Trees
     - [Kruskal's Algorithm Using Union Find](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/KruskalsMST.java) **- O(ElgE)**
     - [Kruskal's Algorithm Using Union Find - Lazy Sorting Using Priority Queue](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/KruskalsMstLazySortingUsingPriorityQueue.java) **- O(ElgE)**
-    - [Prim's Algorithm Using Union Find](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/PrimsMst.java) **- O(ElgE)**
+    - [Prim's Algorithm For MST](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/PrimsMst.java) **- O(ElgE)**
