@@ -17,7 +17,7 @@ Repo to host code for learning Data Structures and Algorithms
   - [Using Array](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/queue/usingarray/DequeTest.java)
   - [Using Linked List](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/queue/using_linkedlist/DequeTest.java)
 * [:blue_book:](https://drive.google.com/file/d/1Q2YJg8LMLvEwmt1JQPYR8A0ZvQXxmg3J/view?usp=sharing) [Binary Search Tree](https://github.com/njha-collab/DS_Algo/blob/master/src/tree/bst/BstTest.java)
-* [:blue_book:](https://drive.google.com/file/d/1h_xY5p2gR2pLfTt151_S2mGk4WN0K_3i/view?usp=sharing) [Hashtable](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/hashing/)
+* [:blue_book:](https://drive.google.com/file/d/1M6oBs04woUndQdEp3KqFo1T845BQVicj/view?usp=sharing) [Hashtable](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/hashing/)
   - [Chaining](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/hashing/chaining/HashTableTest.java)
   - [Open Addressing](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/hashing/openaddressing/HashTableTest.java)
 * [:blue_book:](https://drive.google.com/file/d/1Q2YJg8LMLvEwmt1JQPYR8A0ZvQXxmg3J/view?usp=sharing) [Heap (Priority Queues)](https://github.com/njha-collab/DS_Algo/blob/master/src/tree/heap/)
