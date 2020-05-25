@@ -56,7 +56,6 @@ public class MergeSort {
         mergeSort(array);
         System.out.println(Arrays.toString(array));
         
-        // TODO: move to javatests/...
         runTests();
     }
     

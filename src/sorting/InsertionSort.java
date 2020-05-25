@@ -28,7 +28,6 @@ public class InsertionSort {
         insertionSort(array);
         System.out.println(Arrays.toString(array));
         
-        // TODO: move to javatests/...
         runTests();
     }
     

@@ -63,7 +63,6 @@ public class RadixSort {
         radixSort(array);
         System.out.println(Arrays.toString(array));
         
-        // TODO: move to javatests/...
         runTests();
     }
     

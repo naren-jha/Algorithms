@@ -42,7 +42,6 @@ public class Shell {
         sort(array);
         System.out.println(Arrays.toString(array));
         
-        // TODO: move to javatests/...
         runTests();
     }
     

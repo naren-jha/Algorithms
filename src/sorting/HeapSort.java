@@ -67,7 +67,6 @@ public class HeapSort {
         heapSort(array);
         System.out.println(Arrays.toString(array));
         
-        // TODO: move to javatests/...
         runTests();
     }
     
