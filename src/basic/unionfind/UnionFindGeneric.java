@@ -75,7 +75,6 @@ public class UnionFindGeneric<T> {
         return find(m) == find(n);
     }
     
-
     // Returns size of component node 'n' belongs to
     public int getCompSize(T n) {
         return compSize.get(find(n));
