@@ -23,7 +23,7 @@ Repo to host code for learning Data Structures and Algorithms
 * [:blue_book:](https://drive.google.com/file/d/1SbDD62N32FTnufkqWolMgk5ckFosl77B/view?usp=sharing) [Heap (Priority Queues)](https://github.com/njha-collab/DS_Algo/blob/master/src/tree/heap/)
   - [Max Heap](https://github.com/njha-collab/DS_Algo/blob/master/src/tree/heap/MaxHeapTest.java)
   - [Min Heap](https://github.com/njha-collab/DS_Algo/blob/master/src/tree/heap/MinHeapTest.java)
-* Self-Balancing BSTs
+* [:blue_book:](https://drive.google.com/drive/folders/1ysDKegzxyZUXmsYum63krWw1Qo5p-k74?usp=sharing) [Self-Balancing BSTs](https://github.com/njha-collab/DS_Algo/blob/master/src/advance_ds/)
   - [:blue_book:](https://drive.google.com/file/d/1H7dD5CBSY-8JY6zw6C2dLPUwO05J5QpH/view?usp=sharing) [AVL Tree](https://github.com/njha-collab/DS_Algo/blob/master/src/advance_ds/AVLTree.java)
   - [:blue_book:](https://drive.google.com/file/d/16P8t90Rpcw5FXCIRUTtl5D5iBJTVEKAg/view?usp=sharing) [Red-Black Tree](https://github.com/njha-collab/DS_Algo/blob/master/src/advance_ds/RedBlackTree.java)
 * [:blue_book:](https://drive.google.com/file/d/1s8uz7PhTJWXN5IWya-V7iRiSaLpP2o-D/view?usp=sharing) [Trie](https://github.com/njha-collab/DS_Algo/tree/master/src/advance_ds/trie)
