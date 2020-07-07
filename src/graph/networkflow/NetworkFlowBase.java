@@ -186,26 +186,26 @@ public abstract class NetworkFlowBase {
     }
     
     // Returns a mincut formed by two disjoint sets A and B, 
-    // where set A contains node s and set of nodes reachable from s,
-    // and set B contains node t and set of nodes from which t is reachable
+    // where set A contains node s and all the nodes reachable from s,
+    // and set B contains node t and all the nodes from which t is reachable
     @SuppressWarnings("unchecked")
     public List<String>[] getMinCutSets() {
-      execute();
-      List<String>[] resMinCut = new List[2];
-      resMinCut[0] = new ArrayList<String>(); // set A
-      resMinCut[1] = new ArrayList<String>(); // set B
+        execute();
+        List<String>[] resMinCut = new List[2];
+        resMinCut[0] = new ArrayList<String>(); // set A
+        resMinCut[1] = new ArrayList<String>(); // set B
       
-      for (int i = 0; i < n; ++i) {
-          if (minCut[i]) resMinCut[0].add(getNodeString(i));
-          else resMinCut[1].add(getNodeString(i));
-      }
+        for (int i = 0; i < n; ++i) {
+            if (minCut[i]) resMinCut[0].add(getNodeString(i));
+            else resMinCut[1].add(getNodeString(i));
+        }
       
-      return resMinCut;
+        return resMinCut;
     }
     
     // Prints mincut node sets after max flow algorithm is executed
-    // set A contains node s and set of nodes reachable from s,
-    // set B contains node t and set of nodes from which t is reachable
+    // set A contains node s and all the nodes reachable from s,
+    // set B contains node t and all the nodes from which t is reachable
     public void printMinCut() {
         List<String>[] minCutNodeSets = getMinCutSets();
         System.out.println("A: " + minCutNodeSets[0] + " B: " + minCutNodeSets[1]);

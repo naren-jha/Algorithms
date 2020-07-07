@@ -48,7 +48,7 @@ public class FordFulkersonDfsAdjacencyList extends NetworkFlowBase {
             if (!IsVisited(edge.to) && remCap > 0) {
                 long bottleNeck = dfs(edge.to, min(min, remCap));
                 
-                // augment the flow with bottleneck value, if a s-t augmenting path exists
+                // Augment the flow with bottleneck value, if a s-t augmenting path exists
                 if (bottleNeck > 0) {
                     edge.augment(bottleNeck);
                     return bottleNeck;
