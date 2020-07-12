@@ -231,6 +231,6 @@ Repo to host code for learning Data Structures and Algorithms
     - [Prim's Algorithm For MST](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/PrimsMst.java) **- O(ElgE)**
     
   ### Network Flow
-   * [Max flow & Min cut (Ford-Fulkerson using DFS, adjacency list)](https://github.com/njha-collab/Algorithms/blob/master/src/graph/networkflow/FordFulkersonDfsAdjacencyList.java)
-   * [Max flow & Min cut (Ford-Fulkerson using DFS, adjacency matrix)](https://github.com/njha-collab/Algorithms/blob/master/src/graph/networkflow/FordFulkersonDfsAdjacencyMatrix.java)
-   * [Maximum Cardinality Bipartite Matching (Using Ford-Fulkerson DFS based Max Flow)](https://github.com/njha-collab/Algorithms/blob/master/src/graph/networkflow/MaximumCardinalityBipartiteMatchingMaxFlow.java)
+   * [Max flow & Min cut (Ford-Fulkerson using DFS, adjacency list)](https://github.com/njha-collab/Algorithms/blob/master/src/graph/networkflow/FordFulkersonDfsAdjacencyList.java) **- O(fE)**
+   * [Max flow & Min cut (Ford-Fulkerson using DFS, adjacency matrix)](https://github.com/njha-collab/Algorithms/blob/master/src/graph/networkflow/FordFulkersonDfsAdjacencyMatrix.java) **- O(fV<sup>2</sup>)**
+   * [Maximum Cardinality Bipartite Matching (Using Ford-Fulkerson DFS based Max Flow)](https://github.com/njha-collab/Algorithms/blob/master/src/graph/networkflow/MaximumCardinalityBipartiteMatchingMaxFlow.java) **- O(nE)**
