@@ -91,9 +91,9 @@ public abstract class NetworkFlowBase {
         this.s = s;
         this.t = t;
         
-        // initialize graph
+        // Initialize graph
         graph = new ArrayList<>();
-        // create a new array list for each vertex
+        // Create a new array list for each vertex
         for (int i = 0; i < n; ++i)
             graph.add(new ArrayList<FlowEdge>());
         
