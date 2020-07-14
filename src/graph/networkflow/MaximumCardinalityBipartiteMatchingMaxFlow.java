@@ -39,7 +39,7 @@ public class MaximumCardinalityBipartiteMatchingMaxFlow {
     }
     
     public long mcbm() {
-        FordFulkersonDfsAdjacencyList ff = new FordFulkersonDfsAdjacencyList(N + 2, s, t);
+        NetworkFlowBase ff = new FordFulkersonDfsAdjacencyList(N + 2, s, t);
         
         // Hook up edges from the 'source' to nodes in set1
         // And from set1 to set2 nodes
@@ -72,6 +72,10 @@ public class MaximumCardinalityBipartiteMatchingMaxFlow {
             throw new IllegalArgumentException("Invalid source vertex");
         if (dest < 0 || dest >= N)
             throw new IllegalArgumentException("Invalid destination vertex");
+        if ((src < n && dest < n) || 
+            ((src >= n && src < N) && (dest >= n && dest < N)))
+            throw new IllegalArgumentException("Source and destination belong "
+                    + "to the same set. Not allowed in a bipartite graph.");
     }
     
     public static void main(String[] args) {
