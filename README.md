@@ -196,7 +196,7 @@ Repo to host code for learning Data Structures and Algorithms
   * [Radix Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/RadixSort.java) **- O(d\*n)**
 
 ## [:blue_book:](https://drive.google.com/file/d/1XkJ-lcPAW84vQ-Q67xD9jexOQ_OSIDXc/view?usp=sharing) Graph Theory
-  * [AdjacencyList Representation](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/Graph.java)
+  * [Adjacency List Representation](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/Graph.java)
   * [BFS](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/BreadthFirstSearch.java) **- O(V+E)**
     - [Shortest Path In Unweighted Graph](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/ShortestPathUnweightedGraph.java) **- O(V+E)**
     - [Shortest Path On A Grid](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/ShortestPathOnAGrid.java) **- O(V+E)**
