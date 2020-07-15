@@ -1,6 +1,5 @@
 package graph.networkflow;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,7 +26,7 @@ public class ElementryMath {
     private InputPair[] pairs;
     
     // Maps to store answer -> indices (of answer nodes) 
-    // and vice-versa in flow-network
+    // and vice-versa in the flow-network
     private Map<Integer, Integer> answerIndexMap = new HashMap<>();
     private Map<Integer, Integer> indexAnswerMap = new HashMap<>();
     
@@ -41,6 +40,7 @@ public class ElementryMath {
         this.pairs = pairs;
         n = pairs.length;
         
+        // generate unique answer node indices and store them in maps
         int i = 0;
         for (InputPair pair : pairs) {
             for (int answer : getAnswersForPair(pair)) {
@@ -58,7 +58,7 @@ public class ElementryMath {
         t = N - 2;
     }
     
-    public void solve() {
+    public String[] solve() {
         NetworkFlowBase ff = new FordFulkersonDfsAdjacencyList(N, s, t);
         
         // Hook up edges from source to input pair nodes
@@ -74,11 +74,11 @@ public class ElementryMath {
         for (Integer index : answerIndexMap.values())
             ff.addEdge(index, t, 1);
         
-        printResultEquations(ff.getGraph());
+        return getResultEquations(ff.getGraph());
     }
 
-    private void printResultEquations(List<List<FlowEdge>> graph) {
-        List<String> result = new ArrayList<String>();
+    private String[] getResultEquations(List<List<FlowEdge>> graph) {
+        String[] result = new String[n];
         for (int i = 0; i < n; ++i) {
             InputPair pair = pairs[i];
             char opr = '.';
@@ -91,15 +91,12 @@ public class ElementryMath {
                 }
             }
             
-            if (opr == '.') {
-                System.out.println("impossible");
-                return;
-            }
-            result.add(String.format("%d %c %d = %d", pair.a, opr, pair.b, ans));
+            if (opr == '.') return null;
+            
+            result[i] = String.format("%d %c %d = %d", pair.a, opr, pair.b, ans);
         }
         
-        for (String equation : result)
-            System.out.println(equation);
+        return result;
     }
     
     private int[] getAnswersForPair(InputPair pair) {
@@ -127,7 +124,8 @@ public class ElementryMath {
         };
         
         ElementryMath solver = new ElementryMath(pairs);
-        solver.solve();
+        printResult(solver.solve());
+        
         /*
          Outputs:
          1 - 5 = -4
@@ -146,11 +144,22 @@ public class ElementryMath {
         };
         
         ElementryMath solver = new ElementryMath(pairs);
-        solver.solve();
+        printResult(solver.solve());
+        
         /*
          Outputs:
          impossible
          */
+    }
+
+    private static void printResult(String[] result) {
+        if (result == null) {
+            System.out.println("impossible");
+        }
+        else {
+            for (String equation : result)
+                System.out.println(equation);
+        }
     }
 
 }
