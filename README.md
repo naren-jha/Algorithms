@@ -236,3 +236,4 @@ Repo to host code for learning Data Structures and Algorithms
    * [Maximum Cardinality Bipartite Matching (Using Ford-Fulkerson DFS based Max Flow)](https://github.com/njha-collab/Algorithms/blob/master/src/graph/networkflow/MaximumCardinalityBipartiteMatchingMaxFlow.java) **- O(nE)**
    * [[Problem]: Mice And Owls (Bipartite Matching)](https://github.com/njha-collab/Algorithms/blob/master/src/graph/networkflow/MiceAndOwls.java)
    * [[Problem]: Elementry Math (Bipartite Matching)](https://github.com/njha-collab/Algorithms/blob/master/src/graph/networkflow/ElementryMath.java)
+   * [Bipartite graph verification (adjacency list, DFS)](https://github.com/njha-collab/Algorithms/blob/master/src/graph/networkflow/BipartiteGraphCheckAdjacencyList.java) **- O(V+E)**
