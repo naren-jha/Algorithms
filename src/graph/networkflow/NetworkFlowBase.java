@@ -65,7 +65,6 @@ public abstract class NetworkFlowBase {
     protected final int n, s, t;
 
     protected long maxFlow;
-    protected long minCost;
 
     protected boolean[] minCut;
     protected List<List<FlowEdge>> graph;
@@ -139,7 +138,7 @@ public abstract class NetworkFlowBase {
     }
 
     // Returns whether or not node 'i' has been visited
-    public boolean IsVisited(int i) {
+    public boolean isVisited(int i) {
         return visited[i] == visitedToken;
     }
 
@@ -169,12 +168,6 @@ public abstract class NetworkFlowBase {
     public long getMaxFlow() {
         execute();
         return maxFlow;
-    }
-
-    // Returns the min cost from the source to the sink.
-    public long getMinCost() {
-        execute();
-        return minCost;
     }
     
     // Returns the min-cut of this flow network in which the nodes on the "left side"

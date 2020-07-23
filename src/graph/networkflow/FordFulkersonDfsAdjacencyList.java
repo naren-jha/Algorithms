@@ -28,13 +28,12 @@ public class FordFulkersonDfsAdjacencyList extends NetworkFlowBase {
             maxFlow += b;
         }
         
-        // During last dfs call, all the nodes reachable from 's' 
-        // would have been marked visited.
-        // Using that, we separate entire flow graph into 2 sets of nodes:
-        // set A which contains s and all nodes reachable from s,
+        // During the last call to dfs, all the nodes reachable from s would have
+        // been marked visited. Using that, we separate the entire flow graph into
+        // 2 sets of nodes: set A which contains s and all nodes reachable from s,
         // and set B which contains t and all nodes from which t is reachable
         for (int i = 0; i < n; ++i)
-            if (IsVisited(i)) minCut[i] = true;
+            if (isVisited(i)) minCut[i] = true;
     }
     
     private long dfs(int node, long min) {
@@ -45,7 +44,7 @@ public class FordFulkersonDfsAdjacencyList extends NetworkFlowBase {
         
         for (FlowEdge edge : edges) {
             long remCap = edge.getResidualCapacity();
-            if (!IsVisited(edge.to) && remCap > 0) {
+            if (!isVisited(edge.to) && remCap > 0) {
                 long bottleNeck = dfs(edge.to, min(min, remCap));
                 
                 // Augment the flow with bottleneck value, if a s-t augmenting path exists
