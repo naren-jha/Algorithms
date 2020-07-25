@@ -8,7 +8,7 @@ import java.util.Queue;
 /**
  * Implementation of Edmonds-Karp algorithm to find Max Flow and Min Cut in a
  * given flow network. Edmonds-Karp is basically an extension of Ford-Fulkerson
- * method. It uses BFS to find augmenting paths instead of DFS. Consequently
+ * method. It uses BFS to find augmenting paths instead of DFS, consequently
  * removing the dependency of time complexity on MaxFlow value and on capacity
  * values of the flow network.
  *
