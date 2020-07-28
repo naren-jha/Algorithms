@@ -239,3 +239,4 @@ Repo to host code for learning Data Structures and Algorithms
    * [Bipartite graph verification (adjacency list, DFS)](https://github.com/njha-collab/Algorithms/blob/master/src/graph/networkflow/BipartiteGraphCheckAdjacencyList.java) **- O(V+E)**
    * [Max flow, Min cut (Edmonds-Karp, adjacency list)](https://github.com/njha-collab/Algorithms/blob/master/src/graph/networkflow/EdmondsKarpAdjacencyList.java) **- O(VE<sup>2</sup>)**
    * [Max flow, Min cut (Capacity scaling, adjacency list)](https://github.com/njha-collab/Algorithms/blob/master/src/graph/networkflow/CapacityScalingAdjacencyList.java)**- O(E<sup>2</sup>lgU)**
+   * [Max flow, Min cut (Dinics, adjacency list)](https://github.com/njha-collab/Algorithms/blob/master/src/graph/networkflow/DinicsAdjacencyList.java) **- O(EV<sup>2</sup>), O(E√V) for bipartite graphs**
