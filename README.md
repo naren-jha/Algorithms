@@ -30,7 +30,7 @@ Repo to host code for learning Data Structures and Algorithms
 * [:blue_book:](https://drive.google.com/file/d/1hul0fcoMsbGyScvj7pllTmHXb-EhhwZl/view?usp=sharing) [Segment Tree](https://github.com/njha-collab/DS_Algo/tree/master/src/advance_ds/segment_tree)
 * [:blue_book:](https://drive.google.com/file/d/1ukomS6h8jmPIKm1QdYTpCboRs5_0EWyS/view?usp=sharing) [Fenwick Tree](https://github.com/njha-collab/DS_Algo/blob/master/src/advance_ds/BinaryIndexedTree.java)
 * [:blue_book:](https://drive.google.com/file/d/1VBlLHwhinuFRMXBL-jDT7ZVzB42SBSlf/view?usp=sharing) [LRU Cache](https://github.com/njha-collab/DS_Algo/blob/master/src/advance_ds/lru_cache/LRUCache.java)
-* [:blue_book:](https://drive.google.com/file/d/1Meoap2Mt-gu1mySB1J1Kcc2fyiXnsNvS/view?usp=sharing) [Union Find](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/unionfind)
+* [:blue_book:](https://drive.google.com/file/d/15IxYY3x4vKOifiwS16GU0WPRjR_Xh2qZ/view?usp=sharing) [Union Find](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/unionfind)
   - [Union Find (Merge By Size)](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/unionfind/UnionFind.java)
   - [Union Find (Merge By Rank)](https://github.com/njha-collab/DS_Algo/blob/master/src/basic/unionfind/UnionFindMergeByRank.java)
 
@@ -195,7 +195,7 @@ Repo to host code for learning Data Structures and Algorithms
   * [Bucket Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/BucketSort.java) **- Θ(n + k)**
   * [Radix Sort](https://github.com/njha-collab/DS_Algo/blob/master/src/sorting/RadixSort.java) **- O(d\*n)**
 
-## [:blue_book:](https://drive.google.com/file/d/1XkJ-lcPAW84vQ-Q67xD9jexOQ_OSIDXc/view?usp=sharing) Graph Theory
+## [:blue_book:](https://drive.google.com/file/d/1DyJaB3EucWXzky1qKfoEFu1Bb2fXjREE/view?usp=sharing) Graph Theory
   * [Adjacency List Representation](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/Graph.java)
   * [BFS](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/BreadthFirstSearch.java) **- O(V+E)**
     - [Shortest Path In Unweighted Graph](https://github.com/njha-collab/DS_Algo/blob/master/src/graph/ShortestPathUnweightedGraph.java) **- O(V+E)**
@@ -238,5 +238,5 @@ Repo to host code for learning Data Structures and Algorithms
    * [[Problem]: Elementry Math (Bipartite Matching)](https://github.com/njha-collab/Algorithms/blob/master/src/graph/networkflow/ElementryMath.java)
    * [Bipartite graph verification (adjacency list, DFS)](https://github.com/njha-collab/Algorithms/blob/master/src/graph/networkflow/BipartiteGraphCheckAdjacencyList.java) **- O(V+E)**
    * [Max flow, Min cut (Edmonds-Karp, adjacency list)](https://github.com/njha-collab/Algorithms/blob/master/src/graph/networkflow/EdmondsKarpAdjacencyList.java) **- O(VE<sup>2</sup>)**
-   * [Max flow, Min cut (Capacity scaling, adjacency list)](https://github.com/njha-collab/Algorithms/blob/master/src/graph/networkflow/CapacityScalingAdjacencyList.java)**- O(E<sup>2</sup>lgU)**
+   * [Max flow, Min cut (Capacity scaling, adjacency list)](https://github.com/njha-collab/Algorithms/blob/master/src/graph/networkflow/CapacityScalingAdjacencyList.java) **- O(E<sup>2</sup>lgU)**
    * [Max flow, Min cut (Dinics, adjacency list)](https://github.com/njha-collab/Algorithms/blob/master/src/graph/networkflow/DinicsAdjacencyList.java) **- O(EV<sup>2</sup>), O(E√V) for bipartite graphs**
