@@ -33,28 +33,24 @@ class LinkedList {
     
     // Returns the number of elements in this list
     public int size() {
-        return this.size;
+        return size;
     }
     
     // This method mainly calls recursive size method
     public int sizeRec() {
-        return size(this.head, 0);
+        return size(head);
     }
     
     // Recursive method to get size
-    public int size(Node n, int size) {
-        if (n == null)
-            return size;
-        
-        size++;
-        size = size(n.next, size);
-        return size;
+    public int size(Node n) {
+        if (n == null) return 0;
+        return size(n.next) + 1;
     }
     
     // Iterative method to get size
     public int sizeItr() {
         int size = 0;
-        for (Node tmp = this.head; tmp != null; tmp = tmp.next)
+        for (Node tmp = head; tmp != null; tmp = tmp.next)
             size++;
         
         return size;
@@ -62,7 +58,7 @@ class LinkedList {
     
     // Checks if the linked list is empty or not
     public boolean isEmpty() {
-        return this.head == null;
+        return head == null;
     }
     
     // Inserts given element at the beginning of the list
@@ -214,6 +210,7 @@ public class DoublyLinkedList {
     public static void main(String[] args) {
         LinkedList l = new LinkedList();
         l.add(4);l.add(10);l.add(8);l.add(2,3);l.add(0,3);l.addFirst(20);
+        System.out.println(l.sizeRec()); // 6
         //l.remove(1);l.remove(0);
         System.out.println(l);
         System.out.println(l.get(1));

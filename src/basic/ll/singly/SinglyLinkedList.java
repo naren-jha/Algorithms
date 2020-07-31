@@ -1,7 +1,7 @@
 package basic.ll.singly;
 
 /**
- * Implementation of Singly LinkedList data structure
+ * Implementation of Singly Linked List data structure
  * 
  * @author Narendra Jha, njha.sde@gmail.com
  *
@@ -12,20 +12,17 @@ class LinkedList {
     class Node {
         
         private int data;
-        private Node link;
+        private Node next;
         
         // Constructor
         public Node(int data) {
             this.data = data;
-            this.link = null;
+            this.next = null;
         }
     }
     
     private int size;
     private Node head;
-    
-    // for detecting loop and fixing it
-    private Node slowPointer, fastPointer;
     
     public LinkedList() {
         this.size = 0;
@@ -34,28 +31,24 @@ class LinkedList {
 
     // Returns the number of elements in this list
     public int size() {
-        return this.size;
+        return size;
     }
     
     // This method mainly calls recursive size method
     public int sizeRec() {
-        return size(this.head, 0);
+        return size(head);
     }
     
     // Recursive method to get size
-    public int size(Node n, int size) {
-        if (n == null)
-            return size;
-        
-        size++;
-        size = size(n.link, size);
-        return size;
+    public int size(Node n) {
+        if (n == null) return 0;
+        return size(n.next) + 1;
     }
     
     // Iterative method to get size
     public int sizeItr() {
         int size = 0;
-        for (Node tmp = this.head; tmp != null; tmp = tmp.link)
+        for (Node tmp = head; tmp != null; tmp = tmp.next)
             size++;
         
         return size;
@@ -63,13 +56,13 @@ class LinkedList {
     
     // Checks if the linked list is empty or not
     public boolean isEmpty() {
-        return this.head == null;
+        return head == null;
     }
     
     // Inserts given element at the beginning of the list
     public void addFirst(int val) {
         Node node = new Node(val);
-        node.link = head;
+        node.next = head;
         head = node;
     }
     
@@ -86,10 +79,10 @@ class LinkedList {
         }
         else {
             Node pntr = head;
-            while (pntr.link != null) {
-                pntr = pntr.link;
+            while (pntr.next != null) {
+                pntr = pntr.next;
             }
-            pntr.link = node;
+            pntr.next = node;
         }
         size++;
     }
@@ -113,10 +106,10 @@ class LinkedList {
             Node node = new Node(val);
             Node pntr = head;
             for (int i = 0; i < index-1; i++) {
-                pntr = pntr.link;
+                pntr = pntr.next;
             }
-            node.link = pntr.link;
-            pntr.link = node;
+            node.next = pntr.next;
+            pntr.next = node;
         }
         size++;
     }
@@ -128,7 +121,7 @@ class LinkedList {
         }
         
         if (index == 0) {
-            head = head.link;
+            head = head.next;
             // here abandoned object will be deleted from memory
             // by java garbage collector.
             // if we are to implement this DS in C/C++
@@ -138,10 +131,10 @@ class LinkedList {
         else {
             Node pntr = head;
             for (int i = 0; i < index-1; i++) {
-                pntr = pntr.link;
+                pntr = pntr.next;
             }
-            Node targetNode = pntr.link;
-            pntr.link = targetNode.link;
+            Node targetNode = pntr.next;
+            pntr.next = targetNode.next;
             // here targetNode object will be abandoned, and
             // therefore will be taken care by java garbage collector.
             // if we are to implement this DS in C/C++
@@ -159,13 +152,13 @@ class LinkedList {
         while (pntr != null) {
             if(pntr.data == val) {
                 if(pntr == head) // when first node is the target node
-                    head = pntr.link;
+                    head = pntr.next;
                 else
-                    prevNode.link = pntr.link;
+                    prevNode.next = pntr.next;
                 return true;
             }
             prevNode = pntr;
-            pntr = pntr.link;
+            pntr = pntr.next;
         }
         return false;
     }
@@ -178,10 +171,10 @@ class LinkedList {
         
         while (curr != null) {
             // 1. store next node address in a temporary variable 'next'
-            // 2. set current node link to previous node
+            // 2. set next of current node  to previous node
             // 3. update previous node and current node
-            next = curr.link; // 1
-            curr.link = prev; // 2
+            next = curr.next; // 1
+            curr.next = prev; // 2
             prev = curr; // 3
             curr = next; // 3
         }
@@ -205,22 +198,22 @@ class LinkedList {
      * may just become very slow.
      * */
     public void reverse(Node p) {
-        if (p.link == null) {
+        if (p.next == null) {
             // exit condition
             /* update head to reversed linked list's first node
              * which is original linked list's last node */
             head = p;
             return;
         }
-        reverse(p.link);
+        reverse(p.next);
         
-        // link of current nodes's next node is set to current node
+        // next of current nodes's next node is set to current node
         // means the pointer is reversed
-        Node q = p.link;
-        q.link = p;
+        Node q = p.next;
+        q.next = p;
         
         // to set last node of reversed linked list to null
-        p.link = null;
+        p.next = null;
     }
     
     /**
@@ -234,7 +227,7 @@ class LinkedList {
             return;
         }
         System.out.print(p.data + " ");
-        print(p.link);
+        print(p.next);
     }
     
     /**
@@ -243,7 +236,7 @@ class LinkedList {
     // Prints reversed linked list using recursive approach
     public void printReverse(Node p) {
         if (p == null) return; // exit condition
-        printReverse(p.link);
+        printReverse(p.next);
         System.out.print(p.data+ " ");
         
     }
@@ -256,16 +249,19 @@ class LinkedList {
         
         Node p = head;
         while(index-- != 0)
-            p = p.link;
+            p = p.next;
         return p.data;
     }
+    
+    // for detecting loop and fixing it
+    private Node slowPointer, fastPointer;
     
     // Detects loop in linked list
     public boolean hasLoop() {
         slowPointer = fastPointer = head;
-        while (fastPointer != null && fastPointer.link != null) {
-            slowPointer = slowPointer.link;
-            fastPointer = fastPointer.link.link;
+        while (fastPointer != null && fastPointer.next != null) {
+            slowPointer = slowPointer.next;
+            fastPointer = fastPointer.next.next;
             if (slowPointer == fastPointer) {
                 System.out.println("Loop found");
                 return true;
@@ -280,18 +276,18 @@ class LinkedList {
         // Finding start of the loop
         slowPointer = head;
         while(slowPointer != fastPointer) {
-            slowPointer = slowPointer.link;
-            fastPointer = fastPointer.link;
+            slowPointer = slowPointer.next;
+            fastPointer = fastPointer.next;
         }
         // Now both slowPointer and fastPointer points to start of the loop.
         System.out.println("Start of the loop is: "+ slowPointer + 
                 " Which holds value: " + slowPointer.data);
 
         // Fixing the loop by breaking link
-        while(fastPointer.link != slowPointer) {
-            fastPointer = fastPointer.link;
+        while(fastPointer.next != slowPointer) {
+            fastPointer = fastPointer.next;
         }
-        fastPointer.link = null;
+        fastPointer.next = null;
         System.out.println("Loop fixed.");
     }
 
@@ -319,7 +315,7 @@ class LinkedList {
                 System.out.println("Incorrect length. Cannot introduce loop.");
                 return;
             }
-            p2 = p2.link;
+            p2 = p2.next;
             count++;
         }
         
@@ -327,14 +323,14 @@ class LinkedList {
         // move both the pointers together till 
         // leading pointer reaches to the last node
         // i.e., till it's next node is not null
-        while (p2.link != null) {
-            p1 = p1.link;
-            p2 = p2.link;
+        while (p2.next != null) {
+            p1 = p1.next;
+            p2 = p2.next;
         }
-        p2.link = p1.link;
+        p2.next = p1.next;
         // connecting last node to some node would count as length of 1
         // and therefore, loop length would become 'len+1'
-        // that's why, we do p1.getlink(), to reduce length by 1. 
+        // that's why, we do p1.next, to reduce length by 1. 
         // so that it compensates loop length to keep it 'len'
     }
     
@@ -356,7 +352,7 @@ class LinkedList {
         while (pntr != null) {
             if(pntr.data == val)
                 return true;
-            pntr = pntr.link;
+            pntr = pntr.next;
         }
         return false;
     }
@@ -370,7 +366,7 @@ class LinkedList {
         while (pntr != null) {
             if(pntr.data == val)
                 return index;
-            pntr = pntr.link;
+            pntr = pntr.next;
             index++;
         }
         return -1;
@@ -385,7 +381,7 @@ class LinkedList {
         while (pntr != null) {
             if(pntr.data == val)
                 lastIndex = index;
-            pntr = pntr.link;
+            pntr = pntr.next;
             index++;
         }
         return lastIndex;
@@ -398,7 +394,7 @@ class LinkedList {
         Node pntr = head;
         while (pntr != null) {
             result.append(pntr.data).append(", ");
-            pntr = pntr.link;
+            pntr = pntr.next;
         }
         if (result.indexOf(",") != -1)
             result.delete(result.lastIndexOf(","), result.length());
@@ -414,6 +410,7 @@ public class SinglyLinkedList {
         
         LinkedList l = new LinkedList();
         l.add(4);l.add(10);l.add(8);l.add(2,3);l.addFirst(20);
+        System.out.println(l.sizeRec()); // 5
         //l.remove(1);l.remove(0);
         //l.reverse();
         //l.reverse(l.head);

@@ -29,21 +29,32 @@ public class CircularDoublyLinkedList {
         this.head = null;
     }
     
-    // Iterative method to get size of list
+    // This method mainly calls recursive size method
+    public int sizeRec() {
+        if (head == null) return 0;
+        return size(head);
+    }
+    
+    // Recursive method to get size
+    public int size(Node n) {
+        if (n.next == head) return 1;
+        return size(n.next) + 1;
+    }
+    
+    // Iterative method to get size
     public int size() {
-        int size = 0;
-        Node tmp = head;
-        do {
-            size++;
-            tmp = tmp.next;
-        } while (tmp != head);
+        // When list is empty
+        if (head == null) return 0;
         
+        int size = 1;
+        for (Node p = head; p.next != head; p = p.next)
+            size++;
         return size;
     }
     
     // Checks if the linked list is empty or not
     public boolean isEmpty() {
-        return this.head == null;
+        return head == null;
     }
     
     // Utility method to add given element to an empty list
@@ -117,10 +128,10 @@ public class CircularDoublyLinkedList {
     }
     
     // If present, removes first occurrence of the given element from list
-    public void remove(int key) {
+    public boolean remove(int key) {
         // When list is empty
         if (head == null)
-            return;
+            return false;
         
         Node curr = head;
         do {
@@ -129,23 +140,21 @@ public class CircularDoublyLinkedList {
                 if (head.next == head) {
                     head = null;
                 }
+                // When more than one node in list
                 else {
-                    // When more than one node in list
                     curr.next.prev = curr.prev;
                     curr.prev.next = curr.next;
                     
-                    // If target node is the first node
-                    // then reposition 'head' pointer
-                    if (curr == head) {
+                    if (curr == head)
                         head = curr.next;
-                    }
                 }
-                return;
+                return true;
             }
+            
             curr = curr.next;
         } while (curr != head);
         
-        throw new IllegalStateException("Given key was not found.");
+        return false;
     }
     
     // To print list using reference variable. Iterative approach
@@ -169,10 +178,12 @@ public class CircularDoublyLinkedList {
     // Main method to test the program
     public static void main(String[] args) {
         CircularDoublyLinkedList l = new CircularDoublyLinkedList();
+        System.out.println(l.sizeRec()); // 0
         l.addLast(30);l.addFirst(20);l.addLast(40);l.addFirst(10);
         l.addAfter(35, 30);l.addAfter(45, 40);
         System.out.println(l); // [10, 20, 30, 35, 40, 45]
         System.out.println(l.size()); // 6
+        System.out.println(l.sizeRec()); // 6
         l.remove(30);
         System.out.println(l); // [10, 20, 35, 40, 45]
     }

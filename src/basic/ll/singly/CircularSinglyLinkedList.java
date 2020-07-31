@@ -27,25 +27,32 @@ public class CircularSinglyLinkedList {
         this.last = null;
     }
     
+    // This method mainly calls recursive size method
+    public int sizeRec() {
+        if (last == null) return 0;
+        return size(last);
+    }
+    
+    // Recursive method to get size
+    public int size(Node n) {
+        if (n.next == last) return 1;
+        return size(n.next) + 1;
+    }
+    
     // Iterative method to get size
     public int size() {
         // When list is empty
-        if (last == null)
-            return 0;
+        if (last == null) return 0;
         
-        int size = 0;
-        Node tmp = last;
-        do {
+        int size = 1;
+        for (Node p = last; p.next != last; p = p.next)
             size++;
-            tmp = tmp.next;
-        } while (tmp != last);
-        
         return size;
     }
     
     // Checks if the linked list is empty or not
     public boolean isEmpty() {
-        return this.last == null;
+        return last == null;
     }
     
     // Utility method to add given element to an empty list
@@ -122,33 +129,22 @@ public class CircularSinglyLinkedList {
         if (last == null)
             return false;
         
-        Node curr = last.next, prev = null;
+        Node curr = last.next, prev = last;
         do {
             if (curr.data == key) {
                 // When target node is the only node in list
                 if (last.next == last) {
                     last = null;
                 }
+                // When more than one node in list
                 else {
-                    // When more than one node in list
-                    
-                    // When target node is first node
-                    if (curr == last.next) {
-                        last.next = curr.next;
-                    }
-                    // When target node is last node
-                    else if (curr == last) {
-                        prev.next = last.next;
+                    prev.next = curr.next;
+                    if (curr == last)
                         last = prev;
-                    }
-                    // When target node is neither first node 
-                    // nor last node
-                    else {
-                        prev.next = curr.next;
-                    }
                 }
                 return true;
             }
+            
             prev = curr;
             curr = curr.next;
         } while (curr != last.next);
@@ -177,12 +173,14 @@ public class CircularSinglyLinkedList {
     // Main method to test the program
     public static void main(String[] args) {
         CircularSinglyLinkedList l = new CircularSinglyLinkedList();
+        System.out.println(l.sizeRec()); // 0
         l.addLast(30);l.addFirst(20);l.addLast(40);l.addFirst(10);
         l.addAfter(35, 30);l.addAfter(45, 40);
         System.out.println(l); // [10, 20, 30, 35, 40, 45]
         System.out.println(l.size()); // 6
+        System.out.println(l.sizeRec()); // 6
         l.remove(30);
         System.out.println(l); // [10, 20, 35, 40, 45]
     }
-    
+
 }
