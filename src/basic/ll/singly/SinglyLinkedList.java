@@ -48,7 +48,7 @@ class LinkedList {
     // Iterative method to get size
     public int sizeItr() {
         int size = 0;
-        for (Node tmp = head; tmp != null; tmp = tmp.next)
+        for (Node p = head; p != null; p = p.next)
             size++;
         
         return size;
@@ -64,25 +64,19 @@ class LinkedList {
         Node node = new Node(val);
         node.next = head;
         head = node;
+        size++;
     }
     
     // Appends given element to the end of the list
     public void add(int val) {
-        
         Node node = new Node(val);
-        // In C we have to use malloc function
-        // to implement above line as below
-        // struct Node* node = (Node*)malloc(sizeof(struct node));
-        
         if (head == null) {
             head = node;
         }
         else {
-            Node pntr = head;
-            while (pntr.next != null) {
-                pntr = pntr.next;
-            }
-            pntr.next = node;
+            Node p = head;
+            while (p.next != null) p = p.next;
+            p.next = node;
         }
         size++;
     }
@@ -90,57 +84,36 @@ class LinkedList {
     // Inserts given element at the specified position in list
     public void add(int index, int val) {
         if (index < 0 || index > size) {
-            throw new IndexOutOfBoundsException();
+            throw new IndexOutOfBoundsException("Invalid index " + index);
         }
         
         // at the beginning of the list
         if (index == 0) {
             addFirst(val);
         }
-        // at the end of the list
-        else if (index == size) {
-            add(val);
-        }
-        // at a position other than beginning or end
         else {
             Node node = new Node(val);
-            Node pntr = head;
-            for (int i = 0; i < index-1; i++) {
-                pntr = pntr.next;
-            }
-            node.next = pntr.next;
-            pntr.next = node;
+            Node p = head;
+            while (--index != 0) p = p.next;
+            node.next = p.next;
+            p.next = node;
+            size++;
         }
-        size++;
     }
     
     // Removes element at the specified position in list.
     public void remove(int index) {
         if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException();
+            throw new IndexOutOfBoundsException("Invalid index " + index);
         }
         
         if (index == 0) {
             head = head.next;
-            // here abandoned object will be deleted from memory
-            // by java garbage collector.
-            // if we are to implement this DS in C/C++
-            // we would have to explicitly deallocate memory
-            // by using "free(obj) in C" or "delete obj in C++"
         }
         else {
-            Node pntr = head;
-            for (int i = 0; i < index-1; i++) {
-                pntr = pntr.next;
-            }
-            Node targetNode = pntr.next;
-            pntr.next = targetNode.next;
-            // here targetNode object will be abandoned, and
-            // therefore will be taken care by java garbage collector.
-            // if we are to implement this DS in C/C++
-            // we would have to explicitly deallocate memory
-            // by using "free(targetNode) in C" 
-            // or "delete targetNode in C++"
+            Node p = head;
+            while (--index != 0) p = p.next;
+            p.next = p.next.next;
         }
         size--;
     }
@@ -155,6 +128,8 @@ class LinkedList {
                     head = pntr.next;
                 else
                     prevNode.next = pntr.next;
+                
+                size--;
                 return true;
             }
             prevNode = pntr;
@@ -244,25 +219,24 @@ class LinkedList {
     // Returns elements at given 'index'
     public Integer get(int index) {
         if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException();
+            throw new IndexOutOfBoundsException("Invalid index " + index);
         }
         
         Node p = head;
-        while(index-- != 0)
-            p = p.next;
+        while(index-- != 0) p = p.next;
         return p.data;
     }
     
     // for detecting loop and fixing it
-    private Node slowPointer, fastPointer;
+    private Node sp, fp;
     
     // Detects loop in linked list
     public boolean hasLoop() {
-        slowPointer = fastPointer = head;
-        while (fastPointer != null && fastPointer.next != null) {
-            slowPointer = slowPointer.next;
-            fastPointer = fastPointer.next.next;
-            if (slowPointer == fastPointer) {
+        sp = fp = head;
+        while (fp != null && fp.next != null) {
+            sp = sp.next;
+            fp = fp.next.next;
+            if (sp == fp) {
                 System.out.println("Loop found");
                 return true;
             }
@@ -274,20 +248,20 @@ class LinkedList {
     // Fixes loop in linkedlist
     public void fixLoop() {
         // Finding start of the loop
-        slowPointer = head;
-        while(slowPointer != fastPointer) {
-            slowPointer = slowPointer.next;
-            fastPointer = fastPointer.next;
+        sp = head;
+        while(sp != fp) {
+            sp = sp.next;
+            fp = fp.next;
         }
         // Now both slowPointer and fastPointer points to start of the loop.
-        System.out.println("Start of the loop is: "+ slowPointer + 
-                " Which holds value: " + slowPointer.data);
+        System.out.println("Start of the loop is: "+ sp + 
+                " Which holds value: " + sp.data);
 
         // Fixing the loop by breaking link
-        while(fastPointer.next != slowPointer) {
-            fastPointer = fastPointer.next;
+        while(fp.next != sp) {
+            fp = fp.next;
         }
-        fastPointer.next = null;
+        fp.next = null;
         System.out.println("Loop fixed.");
     }
 
@@ -334,15 +308,9 @@ class LinkedList {
         // so that it compensates loop length to keep it 'len'
     }
     
-    
     /* some other useful methods */
     // Removes all of the elements from this list.
     public void clear() {
-        // just make head = null
-        // and first node will be taken care by GC
-        // as head will no more be pointing to it
-        // and similarly second and subsequent nodes will be
-        // deleted from memory as well by Java GC
         head = null;
     }
 
@@ -411,10 +379,10 @@ public class SinglyLinkedList {
         LinkedList l = new LinkedList();
         l.add(4);l.add(10);l.add(8);l.add(2,3);l.addFirst(20);
         System.out.println(l.sizeRec()); // 5
-        //l.remove(1);l.remove(0);
+        //l.remove(1);l.remove(3);
         //l.reverse();
         //l.reverse(l.head);
-        System.out.println(l); // [10, 4, 10, 3, 8]
+        System.out.println(l); // [20, 4, 10, 3, 8]
         System.out.println(l.get(1)); // 10
         
         //l.clear();

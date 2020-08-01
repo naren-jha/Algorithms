@@ -50,7 +50,7 @@ class LinkedList {
     // Iterative method to get size
     public int sizeItr() {
         int size = 0;
-        for (Node tmp = head; tmp != null; tmp = tmp.next)
+        for (Node p = head; p != null; p = p.next)
             size++;
         
         return size;
@@ -73,6 +73,7 @@ class LinkedList {
             head.prev = node;
             head = node;
         }
+        size++;
     }
     
     // Appends given element to the end of the list
@@ -82,12 +83,10 @@ class LinkedList {
             head = node;
         }
         else {
-            Node pntr = head;
-            while (pntr.next != null) {
-                pntr = pntr.next;
-            }
-            pntr.next = node;
-            node.prev= pntr;
+            Node p = head;
+            while (p.next != null) p = p.next;
+            p.next = node;
+            node.prev= p;
         }
         size++;
     }
@@ -95,60 +94,41 @@ class LinkedList {
     // Inserts given element at the specified position in list
     public void add(int index, int val) {
         if (index < 0 || index > size) {
-            throw new IndexOutOfBoundsException();
+            throw new IndexOutOfBoundsException("Invalid index " + index);
         }
         
         // at the beginning of the list
         if (index == 0) {
             addFirst(val);
         }
-        // at the end of the list
-        else if (index == size) {
-            add(val);
-        }
-        // at a position other than beginning or end
         else {
+            Node p = head;
+            while (--index != 0) p = p.next;
             Node node = new Node(val);
-            Node pntr = head;
-            for (int i = 0; i < index-1; i++) {
-                pntr = pntr.next;
-            }
-            node.next = pntr.next;
-            pntr.next.prev = node;
-            pntr.next = node;
-            node.prev = pntr;
+            node.next = p.next;
+            node.prev = p;
+            if (p.next != null) p.next.prev = node;
+            p.next = node;
+            size++;
         }
-        size++;
+        
     }
     
     // Removes element at the specified position in list.
     public void remove(int index) {
         if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException();
+            throw new IndexOutOfBoundsException("Invalid index " + index);
         }
         
         if (index == 0) {
             head = head.next;
             head.prev = null;
-            // here abandoned object will be deleted from memory
-            // by java garbage collector.
-            // if we are to implement this DS in C/C++
-            // we would have to explicitly deallocate memory
-            // by using "free(obj) in C" or "delete obj in C++"
         }
         else {
-            Node pntr = head;
-            for (int i = 0; i < index; i++) {
-                pntr = pntr.next;
-            }
-            pntr.prev.next = pntr.next;
-            if(pntr.next != null)
-                pntr.next.prev = pntr.prev;
-            // here abandoned object will be deleted from memory
-            // by java garbage collector.
-            // if we are to implement this DS in C/C++
-            // we would have to explicitly deallocate memory
-            // by using "free(obj) in C" or "delete obj in C++"
+            Node p = head;
+            while (index-- != 0) p = p.next;
+            p.prev.next = p.next;
+            if (p.next != null) p.next.prev = p.prev;
         }
         size--;
     }
@@ -158,17 +138,19 @@ class LinkedList {
         int val = (int) ele;
         Node pntr = head;
         while (pntr != null) {
-            if(pntr.data == val) {
-                if(pntr == head) {
+            if (pntr.data == val) {
+                if (pntr == head) {
                     // when first node is the target node
-                    head = pntr.next;
+                    head = head.next;
                     head.prev = null;
                 }
                 else {
                     pntr.prev.next = pntr.next;
-                    if(pntr.next != null)
+                    if (pntr.next != null)
                         pntr.next.prev = pntr.prev;
                 }
+                
+                size--;
                 return true;
             }
             pntr = pntr.next;
@@ -179,12 +161,11 @@ class LinkedList {
     // Returns elements at given 'index'
     public Integer get(int index) {
         if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException();
+            throw new IndexOutOfBoundsException("Invalid index " + index);
         }
         
         Node p = head;
-        while(index-- != 0)
-            p = p.next;
+        while(index-- != 0) p = p.next;
         return p.data;
     }
     
@@ -210,14 +191,16 @@ public class DoublyLinkedList {
     public static void main(String[] args) {
         LinkedList l = new LinkedList();
         l.add(4);l.add(10);l.add(8);l.add(2,3);l.add(0,3);l.addFirst(20);
-        System.out.println(l.sizeRec()); // 6
-        //l.remove(1);l.remove(0);
-        System.out.println(l);
-        System.out.println(l.get(1));
+        System.out.println(l); // [20, 3, 4, 10, 3, 8]
+        System.out.println(l.size()); // 6
+        
+        l.remove(1);l.remove(4);
+        System.out.println(l); // [20, 4, 10, 3]
+        System.out.println(l.get(1)); // 4
         
         Object e = 10;
-        System.out.println(l.remove(e));
-        System.out.println(l);
+        System.out.println(l.remove(e)); // true
+        System.out.println(l); // [20, 4, 3]
     }
 
 }

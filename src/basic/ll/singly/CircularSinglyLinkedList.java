@@ -106,19 +106,17 @@ public class CircularSinglyLinkedList {
          * 4. P.next = T
          * */
         Node node = null;
-        Node pntr = last.next;
+        Node p = last;
         do {
-            if (pntr.data == item) {
+            if (p.data == item) {
                 node = new Node(val);
-                node.next = pntr.next;
-                pntr.next = node;
-                
-                if (pntr == last)
-                    last = node;
+                node.next = p.next;
+                p.next = node;
+                if (p == last) last = node;
                 return;
             }
-            pntr = pntr.next;
-        } while (pntr != last.next);
+            p = p.next;
+        } while (p != last);
         
         throw new IllegalArgumentException(item + " is not present in the list.");
     }
@@ -129,7 +127,7 @@ public class CircularSinglyLinkedList {
         if (last == null)
             return false;
         
-        Node curr = last.next, prev = last;
+        Node curr = last, prev = last;
         do {
             if (curr.data == key) {
                 // When target node is the only node in list
@@ -139,15 +137,14 @@ public class CircularSinglyLinkedList {
                 // When more than one node in list
                 else {
                     prev.next = curr.next;
-                    if (curr == last)
-                        last = prev;
+                    if (curr == last) last = prev;
                 }
                 return true;
             }
             
             prev = curr;
             curr = curr.next;
-        } while (curr != last.next);
+        } while (curr != last);
         
         return false;
     }
@@ -179,6 +176,7 @@ public class CircularSinglyLinkedList {
         System.out.println(l); // [10, 20, 30, 35, 40, 45]
         System.out.println(l.size()); // 6
         System.out.println(l.sizeRec()); // 6
+        
         l.remove(30);
         System.out.println(l); // [10, 20, 35, 40, 45]
     }
