@@ -1,5 +1,7 @@
 package basic.ll.singly;
 
+import java.util.Stack;
+
 /**
  * Implementation of Singly Linked List data structure
  * 
@@ -138,7 +140,7 @@ class LinkedList {
         return false;
     }
     
-    // Iterative method to reverse LinkedList.
+    // Iterative method to reverse LinkedList // T(n), S(1)
     public void reverse() {
         Node curr, prev, next;
         curr = head;
@@ -172,6 +174,7 @@ class LinkedList {
      * method calls reaches a million or so, system may go out of memory or
      * may just become very slow.
      * */
+    // T(n), S(n)
     public void reverse(Node p) {
         if (p.next == null) {
             // exit condition
@@ -190,6 +193,24 @@ class LinkedList {
         // to set last node of reversed linked list to null
         p.next = null;
     }
+    
+    // Reversing linked list using stack // T(n), S(n)
+    public void reverse2() {
+        Stack<Node> s = new Stack<Node>();
+        Node p = head;
+        while (p != null) {
+            s.push(p);
+            p = p.next;
+        }
+    
+        head = p = s.pop();
+        while (!s.isEmpty()) {
+            p.next = s.pop();
+            p = p.next;
+        }
+        p.next = null; // remove last node’s next pointer
+    }
+
     
     /**
      * @param p is head node of linked list
