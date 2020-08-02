@@ -26,12 +26,12 @@ class Stack {
     }
 
     public int pop() {
-        if(isEmpty()) throw new IllegalStateException("Stack is empty.");
+        if(isEmpty()) throw new IllegalStateException("empty stack");
         return e[top--];
     }
     
     public int peek() {
-        if(isEmpty()) throw new IllegalStateException("Stack is empty.");
+        if(isEmpty()) throw new IllegalStateException("empty stack");
         return e[top];
     }
     

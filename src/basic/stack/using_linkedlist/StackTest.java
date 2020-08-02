@@ -10,42 +10,36 @@ class Stack {
     // Template for node in LinkedList
     class Node {
         private int data;
-        private Node link;
+        private Node next;
         
         // Constructor
         public Node(int data) {
             this.data = data;
-            this.link = null;
+            this.next = null;
         }
     }
     
     private Node top; // head is top of stack
     
     public Stack() {
-        this.top = null;
+        top = null;
     }
     
     public void push(int val) {
         Node node = new Node(val);
-        node.link = top;
+        node.next = top;
         top = node;
     }
     
     public int pop() {
-        if(top == null) {
-            // when stack is empty
-            throw new IllegalStateException("Stack is empty.");
-        }
-        Node targetNode = top;
-        top = top.link;
-        return targetNode.data;
+        if(isEmpty()) throw new IllegalStateException("empty stack");
+        int val = top.data;
+        top = top.next;
+        return val;
     }
     
     public int peek() {
-        if(top == null) {
-            // when stack is empty
-            throw new IllegalStateException("Stack is empty.");
-        }
+        if(isEmpty()) throw new IllegalStateException("empty stack");
         return top.data;
     }
     
@@ -59,7 +53,7 @@ class Stack {
         Node pntr = top;
         while (pntr != null) {
             result.append(pntr.data).append(", ");
-            pntr = pntr.link;
+            pntr = pntr.next;
         }
         if (result.indexOf(",") != -1)
             result.delete(result.lastIndexOf(","), result.length());
