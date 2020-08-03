@@ -1,6 +1,5 @@
 package basic.stack;
 
-import java.util.Comparator;
 import java.util.PriorityQueue;
 
 /**
@@ -20,25 +19,12 @@ class Stack2 {
         }
     }
     
-    private PriorityQueue<Entry> pq = 
-            new PriorityQueue<Entry>(new Comparator<Entry>() {
-        @Override
-        public int compare(Entry e1, Entry e2) {
-            /*if (e2.priority > e1.priority)
-                return 1;
-            else if (e2.priority < e1.priority)
-                return -1;
-            else
-                return 0;*/
-            
-            return e2.priority - e1.priority;
-        }
-    });
-    
+    private PriorityQueue<Entry> pq;
     private int count;
     
     // constructor
     public Stack2() {
+        pq = new PriorityQueue<>((a, b) -> b.priority - a.priority);
         count = 0;
     }
     
