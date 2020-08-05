@@ -12,7 +12,7 @@ class Deque {
     private int N; // size of array
     
     public Deque() {
-        this(100); // default size: 100
+        this(16);
     }
     
     public Deque(int arrSize) {
@@ -23,83 +23,59 @@ class Deque {
     
     // Inserts an element at the front end of the deque
     public void insertFront(int key) {
-        if ((rear + 1) % N == front) {
-            // when deque is full
+        if (isFull())
             throw new IllegalStateException("Deque is full.");
-        }
         
-        if (front == -1 && rear == -1) {
-            // when deque is empty
+        if (isEmpty())
             front = rear = 0;
-        }
-        else {
+        else
             front = (front - 1 + N) % N;
-        }
         a[front] = key;
     }
     
     // Inserts an element at the rear end of the deque
     public void insertRear(int key) {
-        if ((rear + 1) % N == front) {
-            // when deque is full
+        if (isFull())
             throw new IllegalStateException("Deque is full");
-        }
         
-        if (front == -1 && rear == -1) {
-            // when deque is empty
+        if (isEmpty())
             front = rear = 0;
-        }
-        else {
+        else
             rear = (rear + 1) % N;
-        }
         a[rear] = key;
     }
     
     // Deletes and returns element from the front end of the deque
     public int deleteFront() {
-        if (front == -1 && rear == -1) {
-            // when deque is empty
+        if (isEmpty())
             throw new IllegalStateException("Deque is empty");
-        }
         
         int key = a[front];
-        if (front == rear) {
-            // when deque has only one element, in that case, 
-            // delete operation should make deque empty
+        if (front == rear)
             front = rear = -1;
-        }
-        else {
+        else
             front = (front + 1) % N;
-        }
         return key;
     }
     
     // Deletes and returns element from the rear end of the deque
     public int deleteRear() {
-        if (front == -1 && rear == -1) {
-            // when deque is empty
+        if (isEmpty())
             throw new IllegalStateException("Deque is empty");
-        }
         
         int key = a[rear];
-        if (front == rear) {
-            // when deque has only one element, in that case, 
-            // delete operation should make deque empty
+        if (front == rear)
             rear = front = -1;
-        }
-        else {
+        else
             rear = (rear - 1 + N) % N;
-        }
         return key;
     }
     
     // Returns element from the front end of the deque
     // without deleting it
     public int getFront() {
-        if (front == -1 && rear == -1) {
-            // when deque is empty
+        if (isEmpty())
             throw new IllegalStateException("Deque is empty");
-        }
         
         return a[front];
     }
@@ -107,10 +83,8 @@ class Deque {
     // Returns element from the rear end of the deque
     // without deleting it
     public int getRear() {
-        if (front == -1 && rear == -1) {
-            // when deque is empty
+        if (isEmpty())
             throw new IllegalStateException("Deque is empty");
-        }
         
         return a[rear];
     }
@@ -122,8 +96,6 @@ class Deque {
     
     // Checks if deque is full or not
     public boolean isFull() {
-        /* return ((front == 0 && rear == size-1) ||
-                    front == rear+1) */
         return (rear + 1) % N == front;
     }
     
@@ -157,16 +129,16 @@ public class DequeTest {
         System.out.println(dq.isEmpty()); // false
         System.out.println(dq.isFull()); // true
         
-        dq.deleteFront();
-        dq.deleteFront();
+        System.out.println(dq.deleteFront()); // 40
+        System.out.println(dq.deleteFront()); // 10
         System.out.println(dq); // [20, 30]
         
         dq.insertRear(40);
         dq.insertRear(10);
         System.out.println(dq); // [20, 30, 40, 10]
         
-        dq.deleteRear();
-        dq.deleteRear();
+        System.out.println(dq.deleteRear()); // 10
+        System.out.println(dq.deleteRear()); // 40
         System.out.println(dq); // [20, 30]
     }
 

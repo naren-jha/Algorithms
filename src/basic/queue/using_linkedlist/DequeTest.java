@@ -31,11 +31,11 @@ class Deque {
     // Inserts an element at the front end of the deque
     public void insertFront(int key) {
         Node node = new Node(key);
-        if (front == null && rear == null) {
-            // when deque is empty
+        if (isEmpty()) {
             front = rear = node;
             return;
         }
+        
         node.next = front;
         front.prev = node;
         front = node;
@@ -44,11 +44,11 @@ class Deque {
     // Inserts an element at the rear end of the deque
     public void insertRear(int key) {
         Node node = new Node(key);
-        if (front == null && rear == null) {
-            // when deque is empty
+        if (isEmpty()) {
             front = rear = node;
             return;
         }
+        
         rear.next = node;
         node.prev = rear;
         rear = node;
@@ -56,10 +56,8 @@ class Deque {
     
     // Deletes and returns element from the front end of the deque
     public int deleteFront() {
-        if (front == null && rear == null) {
-            // when deque is empty
+        if (isEmpty())
             throw new IllegalStateException("Deque is empty");
-        }
         
         int key = front.data;
         if (front == rear) {
@@ -78,10 +76,8 @@ class Deque {
     
     // Deletes and returns element from the rear end of the deque
     public int deleteRear() {
-        if (front == null && rear == null) {
-            // when deque is empty
+        if (isEmpty())
             throw new IllegalStateException("Deque is empty");
-        }
         
         int key = rear.data;
         if (front == rear) {
@@ -101,10 +97,8 @@ class Deque {
     // Returns element from the front end of the deque
     // without deleting it
     public int getFront() {
-        if (front == null && rear == null) {
-            // when deque is empty
+        if (isEmpty())
             throw new IllegalStateException("Deque is empty");
-        }
         
         return front.data;
     }
@@ -112,10 +106,8 @@ class Deque {
     // Returns element from the rear end of the deque
     // without deleting it
     public int getRear() {
-        if (front == null && rear == null) {
-            // when deque is empty
+        if (isEmpty())
             throw new IllegalStateException("Deque is empty");
-        }
         
         return rear.data;
     }
@@ -153,16 +145,16 @@ public class DequeTest {
         System.out.println(dq); // [40, 10, 20, 30]
         System.out.println(dq.isEmpty()); // false
         
-        dq.deleteFront();
-        dq.deleteFront();
+        System.out.println(dq.deleteFront()); // 40
+        System.out.println(dq.deleteFront()); // 10
         System.out.println(dq); // [20, 30]
         
         dq.insertRear(40);
         dq.insertRear(10);
         System.out.println(dq); // [20, 30, 40, 10]
         
-        dq.deleteRear();
-        dq.deleteRear();
+        System.out.println(dq.deleteRear()); // 10
+        System.out.println(dq.deleteRear()); // 40
         System.out.println(dq); // [20, 30]
     }
 
