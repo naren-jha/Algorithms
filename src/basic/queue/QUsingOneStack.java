@@ -1,6 +1,7 @@
 package basic.queue;
 
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 /**
  * @author Narendra Jha, njha.sde@gmail.com
@@ -8,53 +9,53 @@ import java.util.Stack;
  * Queue using one explicit Stack
  */
 class Q {
-    private Stack<Integer> stack1;
+    private Deque<Integer> s1;
     
     public Q() {
-        stack1 = new Stack<Integer>();
+        s1 = new ArrayDeque<Integer>();
     }
     
     // Method to add a new item to the queue
-    public void enqueue(int item) {
-        stack1.push(item);
+    public void offer(int item) {
+        s1.push(item);
     }
     
     // Method to remove and return oldest item from queue
-    public int dequeue() {
-        if (stack1.isEmpty())
+    public int poll() {
+        if (s1.isEmpty())
             throw new IllegalStateException("Empty queue");
         
         // Base case
-        if (stack1.size() == 1) {
-            return stack1.pop();
+        if (s1.size() == 1) {
+            return s1.pop();
         }
         
-        int tmp = stack1.pop();
-        int res = dequeue();
-        stack1.push(tmp);
+        int tmp = s1.pop();
+        int res = poll();
+        s1.push(tmp);
         return res;
     }
     
     // Method to return oldest item from queue 
     // without removing it.
-    public int front() {
-        if (stack1.isEmpty())
+    public int peek() {
+        if (s1.isEmpty())
             throw new IllegalStateException("Empty queue");
         
         // Base case
-        if (stack1.size() == 1) {
-            return stack1.peek();
+        if (s1.size() == 1) {
+            return s1.peek();
         }
         
-        int tmp = stack1.pop();
-        int res = front();
-        stack1.push(tmp);
+        int tmp = s1.pop();
+        int res = peek();
+        s1.push(tmp);
         return res;
     }
     
     // Checks if queue is empty or not
     public boolean isEmpty() {
-        return stack1.isEmpty();
+        return s1.isEmpty();
     }
 
 }
@@ -63,18 +64,18 @@ public class QUsingOneStack {
 
     public static void main(String[] args) {
         Q q = new Q();
-        q.enqueue(1);
-        q.enqueue(2);
-        q.enqueue(3);
+        q.offer(1);
+        q.offer(2);
+        q.offer(3);
          
         /* Dequeue items */
-        System.out.println(q.front()); // 1
-        System.out.println(q.dequeue()); // 1
-        System.out.println(q.front()); // 2
-        System.out.println(q.dequeue()); // 2
+        System.out.println(q.peek()); // 1
+        System.out.println(q.poll()); // 1
+        System.out.println(q.peek()); // 2
+        System.out.println(q.poll()); // 2
         System.out.println(q.isEmpty()); // false
-        System.out.println(q.front()); // 3
-        System.out.println(q.dequeue()); // 3
+        System.out.println(q.peek()); // 3
+        System.out.println(q.poll()); // 3
         System.out.println(q.isEmpty()); // true
     }
 
