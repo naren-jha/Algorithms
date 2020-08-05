@@ -16,68 +16,59 @@ public class CircularQueueUsingCircularLinkedList {
         // Constructor
         public Node(int data) {
             this.data = data;
-            this.next = null;
         }
     }
     
-    private Node front, rear;
+    // we don't need a separate pointer to 'front' 
+    // as 'rear.next' will give us 'front'
+    private Node rear;
     
     public CircularQueueUsingCircularLinkedList() {
-        front = rear = null;
+        rear = null;
     }
     
     public boolean isEmpty() {
-        return (front == null && rear == null);
+        return rear == null;
     }
     
-    public void enqueue(int value) {
+    public void offer(int value) {
         Node node = new Node(value);
         if (isEmpty()) {
-            // when queue is empty
-            front = rear = node;
-            front.next = front;
+            rear = node;
+            rear.next = rear;
             return;
         }
+        
+        Node front = rear.next;
         rear.next = node;
         rear = node;
         rear.next = front;
     }
     
-    public int dequeue() {
-        int value;
-        if (isEmpty()) {
-            // when queue is empty
-            throw new IllegalStateException("Queue is empty");
-        }
+    public int poll() {
+        if (isEmpty())
+            throw new IllegalStateException("empty queue");
         
-        if (front == rear) {
-            // when queue has only one element
-            // in that case, dequeue operation
-            // should make queue empty
-            value = front.data;
-            front = rear = null;
-        }
-        else {
-            value = front.data;
-            front = front.next;
-            rear.next = front;
-        }
+        int value = rear.next.data;
+        if (rear.next == rear)
+            rear = null;
+        else
+            rear.next = rear.next.next;
         
         return value;
     }
     
-    public int front() {
-        if (isEmpty()) {
-            // when queue is empty
-            throw new IllegalStateException("Queue is empty");
-        }
-        return front.data;
+    public int peek() {
+        if (isEmpty())
+            throw new IllegalStateException("empty queue");
+        
+        return rear.next.data;
     }
     
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder("[");
-        Node pntr = front;
+        Node pntr = rear.next;
         while (pntr != rear) {
             result.append(pntr.data).append(", ");
             pntr = pntr.next;
@@ -92,11 +83,11 @@ public class CircularQueueUsingCircularLinkedList {
     
     public static void main(String[] args) {
         CircularQueueUsingCircularLinkedList q = new CircularQueueUsingCircularLinkedList();
-        q.enqueue(2);q.enqueue(4);q.enqueue(6);q.enqueue(8);
+        q.offer(2);q.offer(4);q.offer(6);q.offer(8);
         System.out.println(q); // [2, 4, 6, 8]
-        System.out.println(q.dequeue()); // 2
+        System.out.println(q.poll()); // 2
         System.out.println(q); // [4, 6, 8]
-        System.out.println(q.front()); // 4
+        System.out.println(q.peek()); // 4
         System.out.println(q); // [4, 6, 8]
     }
 }

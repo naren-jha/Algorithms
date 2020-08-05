@@ -9,8 +9,8 @@ class Stack {
     
     // Template for node in LinkedList
     class Node {
-        private int data;
-        private Node next;
+        int data;
+        Node next;
         
         // Constructor
         public Node(int data) {

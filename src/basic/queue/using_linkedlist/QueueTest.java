@@ -1,21 +1,21 @@
 package basic.queue.using_linkedlist;
 
 /**
+ * Implementation of Queue data structure using Linked List
+ * 
  * @author Narendra Jha, njha.sde@gmail.com
  *
- * Queue using LinkedList
  */
 class Queue {
     
     // Template for node in LinkedList
     class Node {
-        private int data;
-        private Node link;
+        int data;
+        Node next;
         
         // Constructor
         public Node(int data) {
             this.data = data;
-            this.link = null;
         }
     }
     
@@ -30,42 +30,32 @@ class Queue {
         return (front == null && rear == null);
     }
     
-    public void enqueue(int value) {
+    public void offer(int value) {
         Node node = new Node(value);
         if (isEmpty()) {
-            // when queue is empty
             front = rear = node;
             return;
         }
-        rear.link = node;
+        
+        rear.next = node;
         rear = node;
     }
     
-    public int dequeue() {
-        int value;
-        if (isEmpty()) {
-            // when queue is empty
-            throw new IllegalStateException("Queue is empty");
-        }
-        else if (front == rear) {
-            // when queue has only one element
-            // in that case, dequeue operation
-            // should make queue empty
-            value = front.data;
+    public int poll() {
+        if (isEmpty())
+            throw new IllegalStateException("empty queue");
+        
+        int value = front.data;
+        if (front == rear)
             front = rear = null;
-        }
-        else {
-            value = front.data;
-            front = front.link;
-        }
+        else
+            front = front.next;
         return value;
     }
     
-    public int front() {
-        if (isEmpty()) {
-            // when queue is empty
-            throw new IllegalStateException("Queue is empty");
-        }
+    public int peek() {
+        if (isEmpty())
+            throw new IllegalStateException("empty queue");
         return front.data;
     }
     
@@ -75,7 +65,7 @@ class Queue {
         Node pntr = front;
         while (pntr != null) {
             result.append(pntr.data).append(", ");
-            pntr = pntr.link;
+            pntr = pntr.next;
         }
         if (result.indexOf(",") != -1)
             result.delete(result.lastIndexOf(","), result.length());
@@ -88,11 +78,11 @@ public class QueueTest {
 
     public static void main(String[] args) {
         Queue q = new Queue();
-        q.enqueue(2);q.enqueue(4);q.enqueue(6);q.enqueue(8);
+        q.offer(2);q.offer(4);q.offer(6);q.offer(8);
         System.out.println(q); // [2, 4, 6, 8]
-        System.out.println(q.dequeue()); // 2
+        System.out.println(q.poll()); // 2
         System.out.println(q); // [4, 6, 8]
-        System.out.println(q.front()); // 4
+        System.out.println(q.peek()); // 4
         System.out.println(q); // [4, 6, 8]
     }
 
