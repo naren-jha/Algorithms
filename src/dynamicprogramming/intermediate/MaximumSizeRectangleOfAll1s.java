@@ -1,6 +1,6 @@
 package dynamicprogramming.intermediate;
 
-import basic.stack.LargestRectHistogram;
+import basic.stack.problems.LargestRectHistogram;
 
 // http://www.careercup.com/question?id=6299074475065344
 // https://youtu.be/g8bSdXCG-lA
