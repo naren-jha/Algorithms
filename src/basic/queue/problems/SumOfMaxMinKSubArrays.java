@@ -1,7 +1,7 @@
 package basic.queue.problems;
 
+import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.LinkedList;
 
 public class SumOfMaxMinKSubArrays {
 
@@ -11,59 +11,58 @@ public class SumOfMaxMinKSubArrays {
         int sum = 0;
         
         // The queue will store indexes of useful elements in every window
-        // In deque 'g' we maintain decreasing order of
+        // In deque 'maxDq' we maintain decreasing order of
         // values from front to rear
-        // In deque 's' we  maintain increasing order of
+        // In deque 'minDq' we  maintain increasing order of
         // values from front to rear
-        Deque<Integer> g = new LinkedList<Integer>();
-        Deque<Integer> s = new LinkedList<Integer>();
+        Deque<Integer> maxDq = new ArrayDeque<Integer>();
+        Deque<Integer> minDq = new ArrayDeque<Integer>();
          
         // Process first window of size K
         int i;
         for (i = 0; i < k; ++i) {
             
             // Remove all previous greater elements that are useless.
-            while (!g.isEmpty() && a[i] >= a[g.peekLast()])
-                g.removeLast();   // Remove from rear
+            while (!maxDq.isEmpty() && a[i] >= a[maxDq.peekLast()])
+                maxDq.removeLast();   // Remove from rear // same as pop()
             
             // Remove all previous smaller elements that are useless.
-            while (!s.isEmpty() && a[i] <= a[s.peekLast()])
-                s.removeLast();   // Remove from rear
+            while (!minDq.isEmpty() && a[i] <= a[minDq.peekLast()])
+                minDq.removeLast();   // Remove from rear // same as pop()
              
             // Add current element at rear of both deque
-            g.addLast(i);
-            s.addLast(i);
+            maxDq.addLast(i); // same as offer(i)
+            minDq.addLast(i); // same as offer(i)
         }
          
         // Process rest of the Array elements
         for ( ; i < n; ++i) {
             
-            // Element at the front of the deque 'g' & 's'
-            // is the largest and smallest element of
-            // previous window respectively
-            sum += a[g.peek()] + a[s.peek()];
+            // Elements at the front of the deques are the largest and smallest 
+            // elements of previous window respectively
+            sum += a[maxDq.peek()] + a[minDq.peek()];
              
             // Remove all elements which are out of this window
-            while ((!g.isEmpty()) && g.peek() <= i-k)
-                g.removeFirst();
-            while ((!s.isEmpty()) && s.peek() <= i-k)
-                s.removeFirst();
+            while ((!maxDq.isEmpty()) && maxDq.peek() <= i-k)
+                maxDq.removeFirst(); // same as poll()
+            while ((!minDq.isEmpty()) && minDq.peek() <= i-k)
+                minDq.removeFirst(); // same as poll()
              
             // Remove all previous greater elements that are useless.
-            while ((!g.isEmpty()) && a[i] >= a[g.peekLast()])
-                g.removeLast();
+            while ((!maxDq.isEmpty()) && a[i] >= a[maxDq.peekLast()])
+                maxDq.removeLast(); // same as pop()
             
             // Remove all previous smaller elements that are useless.
-            while ((!s.isEmpty()) && a[i] <= a[s.peekLast()])
-                s.removeLast();
+            while ((!minDq.isEmpty()) && a[i] <= a[minDq.peekLast()])
+                minDq.removeLast(); // same as pop()
              
             // Add current element at rear of both deque
-            g.addLast(i);
-            s.addLast(i);
+            maxDq.addLast(i); // same as offer(i)
+            minDq.addLast(i); // same as offer(i)
         }
      
         // Sum of minimum and maximum element of last window
-        sum += a[g.peek()] + a[s.peek()];
+        sum += a[maxDq.peek()] + a[minDq.peek()];
         
         return sum;
     }

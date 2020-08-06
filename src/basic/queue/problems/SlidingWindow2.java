@@ -1,7 +1,7 @@
 package basic.queue.problems;
 
+import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.LinkedList;
 
 public class SlidingWindow2 {
     
@@ -15,7 +15,7 @@ public class SlidingWindow2 {
         // elements in every window and it will maintain indices in  
         // decreasing order of values from front to rear in 'dq', i.e.,
         // a[dq.front()] to a[dq.rear()] are sorted in decreasing order
-        Deque<Integer> dq = new LinkedList<Integer>();
+        Deque<Integer> dq = new ArrayDeque<Integer>();
          
         /* Process first k (or first window) elements of array */
         int i;
@@ -23,10 +23,10 @@ public class SlidingWindow2 {
             // For every element, the previous smaller elements are useless so
             // remove them from dq
             while (!dq.isEmpty() && a[i] >= a[dq.peekLast()])
-                dq.removeLast();   // Remove from rear
+                dq.pop();   // Remove from rear
              
             // Add new element at rear of queue
-            dq.addLast(i);
+            dq.offer(i);
         }
          
         // Process rest of the elements, i.e., from a[k] to a[n-1]
@@ -37,16 +37,15 @@ public class SlidingWindow2 {
              
             // Remove the elements which are out of this window
             while ((!dq.isEmpty()) && dq.peek() <= i-k)
-                dq.removeFirst();
+                dq.poll();
              
             // Remove all elements smaller than the current
             // element (remove useless elements)
             while ((!dq.isEmpty()) && a[i] >= a[dq.peekLast()])
-                dq.removeLast();
+                dq.pop();
              
- 
             // Add current element at the rear of dq
-            dq.addLast(i);
+            dq.offer(i);
         }
      
         // Print the maximum element of last window
