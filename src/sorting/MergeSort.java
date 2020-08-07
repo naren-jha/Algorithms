@@ -26,7 +26,7 @@ public class MergeSort {
         merge(a, p, q, r);
     }
     
-    public static void merge(int[] a,int p,int q,int r) {
+    public static void merge(int[] a, int p, int q, int r) {
         int[] la = Arrays.copyOfRange(a, p, q + 1); // a[p..q]
         int[] ra = Arrays.copyOfRange(a, q + 1, r + 1); // a[q+1..r]
         

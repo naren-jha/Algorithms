@@ -16,39 +16,36 @@ public class QuickSort {
     }
 
     public static void randomizedQuickSort(int[] a, int p, int r) {
-        if (p < r) {
-            int q = randomizedPartition(a, p, r);
-            randomizedQuickSort(a, p, q-1);
-            randomizedQuickSort(a, q+1, r);
-        }
+        if (p >= r) return;
+        
+        int q = randomizedPartition(a, p, r);
+        randomizedQuickSort(a, p, q-1);
+        randomizedQuickSort(a, q+1, r);
     }
 
     public static int randomizedPartition(int[] a, int p, int r) {
         int i = randInt(p, r);
         // exchange a[r] and a[i] to randomize the selection of pivot element
-        int temp = a[r];
-        a[r] = a[i];
-        a[i] = temp;
+        swap(a, r, i);
         return partition(a, p, r);
     }
 
     public static int partition(int[] a, int p, int r) {
-        int x = a[r];
-        int i = p-1;
+        int pivot = a[r];
+        int i = p;
         for (int j = p; j < r; j++) {
-            if (a[j] <= x) {
-                i++;
-                // exchange a[i] and a[j]
-                int temp = a[i];
-                a[i] = a[j];
-                a[j] = temp;
-            }
+            if (a[j] <= pivot)
+                swap(a, i++, j);
         }
-        // exchange a[i+1] and a[r]
-        int temp = a[i+1];
-        a[i+1] = a[r];
-        a[r] = temp;
-        return i+1;
+        
+        swap(a, i, r);
+        return i;
+    }
+    
+    private static void swap(int[] a, int i, int j) {
+        int tmp = a[i];
+        a[i] = a[j];
+        a[j] = tmp;
     }
     
     private static Random RANDOM = new Random();
@@ -61,7 +58,7 @@ public class QuickSort {
     public static void main(String[] args) {
         int[] array = {10, 4, 6, 8, 13, 2, 3};
         randomizedQuickSort(array);
-        System.out.println(Arrays.toString(array));
+        System.out.println(Arrays.toString(array)); // [2, 3, 4, 6, 8, 10, 13]
         
         runTests();
     }
