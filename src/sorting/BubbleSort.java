@@ -12,25 +12,28 @@ import java.util.Random;
 public class BubbleSort {
 
     public static void bubbleSort(int[] a) {        
-        int temp = 0, n = a.length;
+        int n = a.length;
         boolean sw = true; // swap
         for (int i = 0; i < n-1 && sw; ++i) {
             sw = false;
             for (int j = 0; j < n-i-1; ++j) {
-                if (a[j] > a[j+1]) {
-                    temp = a[j];
-                    a[j] = a[j+1];
-                    a[j+1] = temp;
-                    sw = true;
-                }
+                if (a[j] > a[j+1])
+                    sw = swap(a, j);
             }
         }
+    }
+
+    private static boolean swap(int[] a, int j) {
+        int temp = a[j];
+        a[j] = a[j+1];
+        a[j+1] = temp;
+        return true;
     }
     
     public static void main(String[] args) {
         int[] array = {10, 4, 6, 8, 13, 2, 3};
         bubbleSort(array);
-        System.out.println(Arrays.toString(array));
+        System.out.println(Arrays.toString(array)); // [2, 3, 4, 6, 8, 10, 13]
         
         runTests();
     }
