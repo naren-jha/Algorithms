@@ -9,21 +9,17 @@ import java.util.Arrays;
  */
 
 class MinHeap {
-    private int capacity; // capacity of 'items' array
-    private int size; // heap size
     private int[] items; // array to store heap
+    private int size; // heap size
     
-    // constructors - start -
     public MinHeap() {
         this(10); // default size 10
     }
     
     public MinHeap(int capacity) {
-        this.capacity = capacity;
         size = 0;
         items = new int[capacity];
     }
-    // constructors - end -
     
     // helper methods - start -
     private int getLeftIndex(int parentIndex) {
@@ -35,7 +31,7 @@ class MinHeap {
     }
     
     private int getParentIndex(int childIndex) {
-        return (childIndex - 1) / 2; // floorDiv
+        return (childIndex - 1) / 2;
     }
     
     private void swap(int indexOne, int indexTwo) {
@@ -45,13 +41,9 @@ class MinHeap {
     }
     
     private void ensureExtraCapacity() {
-        // if array is exhausted, create new array 
-        // double the size of original array. copy all 
-        // elements from original array to new array
-        if (size == capacity) {
-            items = Arrays.copyOf(items, capacity * 2);
-            capacity *= 2;
-        }
+        // if array is exhausted, double the size of array
+        if (size == items.length)
+            items = Arrays.copyOf(items, items.length * 2);
     }
     
     // fixes the heap in bottom-up manner
