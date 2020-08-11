@@ -14,23 +14,20 @@ public class HeapSort {
 
     public static void heapSort(int[] a) {
         buildMaxHeap(a);
-        int temp = 0;
         for (int i = a.length - 1; i >= 1; i--) {
-            temp = a[i];
-            a[i] = a[0];
-            a[0] = temp;
+            swap(a, i, 0);
             heapSize--;
-            maxHeapify(a, 0);
+            heapifyDown(a, 0);
         }
     }
     
     public static void buildMaxHeap(int[] a) {
         heapSize = a.length;
         for (int i = a.length/2 - 1; i >= 0; i--)
-            maxHeapify(a, i);
+            heapifyDown(a, i);
     }
     
-    public static void maxHeapify(int[] a, int i) {
+    public static void heapifyDown(int[] a, int i) {
         int l = getLeftIndex(i);
         int r = getRightIndex(i);
         
@@ -40,18 +37,16 @@ public class HeapSort {
         if (r < heapSize && a[r] > a[largest])
             largest = r;
         
-        int temp = 0;
         if (largest != i) {
-            // exchange a[i] with a[largest]
-            temp = a[i];
-            a[i] = a[largest];
-            a[largest] = temp;
-            maxHeapify(a, largest);
+            swap(a, i, largest);
+            heapifyDown(a, largest);
         }
     }
     
-    public static int getParentIndex(int i) {
-        return i / 2; // floorDiv
+    private static void swap(int[] a, int i, int j) {
+        int tmp = a[i];
+        a[i] = a[j];
+        a[j] = tmp;
     }
     
     public static int getLeftIndex(int i) {
@@ -65,7 +60,7 @@ public class HeapSort {
     public static void main(String[] args) {
         int[] array = {3, 15, 24, 51, 77, 52, 92};
         heapSort(array);
-        System.out.println(Arrays.toString(array));
+        System.out.println(Arrays.toString(array)); // [3, 15, 24, 51, 52, 77, 92]
         
         runTests();
     }
