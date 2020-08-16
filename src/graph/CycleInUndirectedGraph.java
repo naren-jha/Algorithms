@@ -19,29 +19,26 @@ public class CycleInUndirectedGraph extends Graph {
         boolean[] visited = new boolean[numberOfVertices];
         
         for (int vn = 0; vn < numberOfVertices; ++vn) {
-            if (!visited[vn] && hasCycleUtil(vn, visited, -1)) {
-                return true;
-            }
+            if (visited[vn]) continue;
+            if (dfs(vn, visited, -1)) return true;
         }
         return false;
     }
     
-    private boolean hasCycleUtil(int v, boolean[] visited,  int parent) {
-        visited[v] = true;
-        for (Edge edge : adjList.get(v)) {
-            int adjNode = edge.to;
-            
+    private boolean dfs(int at, boolean[] visited,  int parent) {
+        visited[at] = true;
+        for (Edge edge : adjList.get(at)) {
             // ignore parent
-            if (adjNode == parent)
+            if (edge.to == parent)
                 continue;
             
             // if node is already visited and it is not parent, 
             // then there is cycle in graph
-            if (visited[adjNode]) 
+            if (visited[edge.to]) 
                 return true;
             
             // go deeper using DFS
-            if (hasCycleUtil(adjNode, visited, v))
+            if (dfs(edge.to, visited, at))
                 return true;
         }
         
