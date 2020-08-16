@@ -31,7 +31,7 @@ class MaxHeap {
     }
     
     private int getParentIndex(int childIndex) {
-        return (childIndex - 1) / 2; // floorDiv
+        return (childIndex - 1) / 2;
     }
     
     private void swap(int indexOne, int indexTwo) {

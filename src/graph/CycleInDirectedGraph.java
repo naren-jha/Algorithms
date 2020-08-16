@@ -19,43 +19,40 @@ public class CycleInDirectedGraph extends Graph {
         boolean[] visited = new boolean[numberOfVertices];
         
         // indicates whether a node is currently in call stack or not
-        boolean[] stackFlag = new boolean[numberOfVertices];
+        boolean[] inStack = new boolean[numberOfVertices];
         
         for (int vn = 0; vn < numberOfVertices; ++vn) {
-            if (!visited[vn] && hasCycleUtil(vn, visited, stackFlag)) {
-                return true;
-            }
+            if (visited[vn]) continue;
+            if (dfs(vn, visited, inStack)) return true;
         }
+        
         return false;
     }
     
-    private boolean hasCycleUtil(int v, boolean[] visited,  boolean[] stackFlag) {
-        stackFlag[v] = true;
-        for (Edge edge : adjList.get(v)) {
-            int adjNode = edge.to;
-            if (visited[adjNode])
-                continue;
+    private boolean dfs(int at, boolean[] visited,  boolean[] inStack) {
+        visited[at] = true;
+        inStack[at] = true;
+        
+        for (Edge edge : adjList.get(at)) {
+            if (inStack[edge.to]) return true;
             
-            if (stackFlag[adjNode])
-                return true;
+            if (visited[edge.to]) continue;
             
-            if (hasCycleUtil(adjNode, visited, stackFlag))
+            if (dfs(edge.to, visited, inStack))
                 return true;
         }
         
-        stackFlag[v] = false;
-        visited[v] = true;
+        inStack[at] = false;
         return false;
     }
 
     public static void main(String[] args) {
-        CycleInDirectedGraph graph = new CycleInDirectedGraph(5);
+        CycleInDirectedGraph graph = new CycleInDirectedGraph(6);
         graph.addEdge(0, 1, false);
         graph.addEdge(0, 3, false);
         graph.addEdge(1, 2, false);
         graph.addEdge(3, 4, false);
         graph.addEdge(4, 0, false);
-        
         System.out.println(graph.hasCycle()); // true
         
         graph.removeEdge(4, 0, false);
