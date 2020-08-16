@@ -102,7 +102,7 @@ public class TopologicalSorting extends Graph {
     }
 
     private void allTopSortUtil(boolean[] visited, int[] indegree, List<Integer> result) {
-        boolean resultReady = false;
+        boolean resultReady = true;
         for (int vn = 0; vn < numberOfVertices; ++vn) {
             if (indegree[vn] != 0 || visited[vn]) continue;
             
@@ -116,10 +116,10 @@ public class TopologicalSorting extends Graph {
             result.remove(result.size()-1);
             for (Edge edge : adjList.get(vn))
                 indegree[edge.to]++;
-            resultReady = true;
+            resultReady = false;
         }
         
-        if (!resultReady) {
+        if (resultReady) {
             for (Integer e : result)
                 System.out.print(e + " ");
             System.out.println();
