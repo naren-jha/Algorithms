@@ -22,25 +22,13 @@ public class DijkstrasShortestPath extends Graph {
         super(numberOfVertices);
     }
     
-    private class QueueEntry implements Comparable<QueueEntry> {
+    private class QueueEntry {
         int vn; // vertex number
         double dist; // distance
         
         QueueEntry(int vn, double dist) {
             this.vn = vn;
             this.dist = dist;
-        }
-        
-        @Override
-        public int compareTo(QueueEntry o) {
-            // priority queue needs to keep element sorted 
-            // in ascending order based on distance
-            if (this.dist - o.dist > 0)
-                return 1;
-            else if (this.dist - o.dist < 0)
-                return -1;
-            else
-                return 0;
         }
     }
     
@@ -53,24 +41,22 @@ public class DijkstrasShortestPath extends Graph {
         
         double[] dist = new double[numberOfVertices];
         Arrays.fill(dist, Double.POSITIVE_INFINITY);
-        dist[s] = 0;
         
         // Array used to track which nodes have already been visited.
         boolean[] visited = new boolean[numberOfVertices];
-        visited[s] = true;
         
         // Keep a priority queue of the next most promising node to visit.
-        PriorityQueue<QueueEntry> pq = new PriorityQueue<>(2*numberOfVertices);
+        PriorityQueue<QueueEntry> pq = new PriorityQueue<>(2 * numberOfVertices, (a, b) -> Double.compare(a.dist, b.dist));
+        
+        // start with source
         pq.offer(new QueueEntry(s, 0));
+        dist[s] = 0;
         
         while (!pq.isEmpty()) {
             QueueEntry entry = pq.poll();
             int vn = entry.vn;
+            if (visited[vn]) continue;
             visited[vn] = true;
-            
-            // We already found a better path before we got to
-            // process this QueueEntry so we can ignore this entry
-            if (dist[vn] < entry.dist) continue;
             
             for (Edge edge : adjList.get(vn)) {
                 int src = edge.from;
@@ -81,7 +67,7 @@ public class DijkstrasShortestPath extends Graph {
                 if (visited[dest]) continue;
                 
                 // Relax edge by updating minimum cost if applicable
-                if (dist[dest] > dist[src] + edge.wt) {
+                if (dist[src] + edge.wt < dist[dest]) {
                     dist[dest] = dist[src] + edge.wt;
                     pq.offer(new QueueEntry(dest, dist[dest]));
                 }
@@ -101,29 +87,25 @@ public class DijkstrasShortestPath extends Graph {
         
         double[] dist = new double[numberOfVertices];
         Arrays.fill(dist, Double.POSITIVE_INFINITY);
-        dist[s] = 0;
         
         // Array used to track which nodes have already been visited.
         boolean[] visited = new boolean[numberOfVertices];
-        visited[s] = true;
         
         // Keep a priority queue of the next most promising node to visit.
-        PriorityQueue<QueueEntry> pq = new PriorityQueue<>(2*numberOfVertices);
+        PriorityQueue<QueueEntry> pq = new PriorityQueue<>(2 * numberOfVertices, (a, b) -> Double.compare(a.dist, b.dist));
         pq.offer(new QueueEntry(s, 0));
+        dist[s] = 0;
         
         int[] prev = new int[numberOfVertices];
         
         while (!pq.isEmpty()) {
             QueueEntry entry = pq.poll();
             int vn = entry.vn;
+            if (visited[vn]) continue;
             visited[vn] = true;
             
             // is destination node found
             if (vn == d) break;
-            
-            // We already found a better path before we got to
-            // process this QueueEntry so we can ignore this entry
-            if (dist[vn] < entry.dist) continue;
             
             for (Edge edge : adjList.get(vn)) {
                 int src = edge.from;
@@ -134,7 +116,7 @@ public class DijkstrasShortestPath extends Graph {
                 if (visited[dest]) continue;
                 
                 // Relax edge by updating minimum cost if applicable
-                if (dist[dest] > dist[src] + edge.wt) {
+                if (dist[src] + edge.wt < dist[dest]) {
                     dist[dest] = dist[src] + edge.wt;
                     pq.offer(new QueueEntry(dest, dist[dest]));
                     prev[dest] = src;
@@ -146,9 +128,7 @@ public class DijkstrasShortestPath extends Graph {
         reconstructPath(s, d, prev, dist[d]);
     }
     
-    public void reconstructPath(int src, int dest, int[] prev, double dist) {
-        validateSourceAndDestinationVertices(src, dest);
-        
+    public void reconstructPath(int src, int dest, int[] prev, double dist) {       
         if (dist == Double.POSITIVE_INFINITY) {
             System.out.println("No path found from " + src + " to " + dest);
             return;
