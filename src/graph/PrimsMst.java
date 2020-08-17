@@ -1,5 +1,7 @@
 package graph;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.PriorityQueue;
 
 /**
@@ -11,50 +13,47 @@ import java.util.PriorityQueue;
  */
 public class PrimsMst extends Graph {
     
-    private int n, m, edgeCount;
     private boolean[] visited;
-    private Edge[] mst;
+    private List<Edge> mst;
     private double cost;
     private PriorityQueue<Edge> pq;
 
     public PrimsMst(int numberOfVertices) {
         super(numberOfVertices);
-        n = numberOfVertices;
     }
     
     public Double mst(int s) {
-        m = n - 1; // number of expected edges in mst
-        edgeCount = 0;
-        mst = new Edge[m];
-        visited = new boolean[n];
+        mst = new ArrayList<Edge>();
+        visited = new boolean[numberOfVertices];
         pq = new PriorityQueue<>();        
         
-        addEdges(s);
+        // start with node 's', add all outgoing edges from 's' to 'pq'
+        visited[s] = true;
+        for (Edge edge : adjList.get(s)) pq.offer(edge);
         
-        while (!pq.isEmpty() && edgeCount != m) {
+        while (!pq.isEmpty()) {
             Edge edge = pq.poll();
-            int nodeIndex = edge.to;
+            int vn = edge.to;
+            if (visited[vn]) continue;
             
-            // skip edges pointing to already visited nodes
-            if (visited[nodeIndex]) continue;
-            
-            mst[edgeCount] = edge;
-            edgeCount++;
+            visited[vn] = true;
+            mst.add(edge);
             cost += edge.wt;
             
-            addEdges(nodeIndex);
+            for (Edge ae : adjList.get(vn))
+                if (!visited[ae.to]) pq.offer(ae);
+            
+            // Optimization: stop early if we've already found a MST
+            // that includes all nodes in the graph
+            if (mst.size() == numberOfVertices - 1) break;
         }
-        if (edgeCount != m) return null;
+        
+        // Make sure we've found a valid MST with all nodes in the graph.
+        // For a valid MST, number of edges in MST should be one less than 
+        // the total number of vertices in the graph
+        if (mst.size() != numberOfVertices - 1) return null;
         
         return cost;
-    }
-
-    private void addEdges(int index) {
-        visited[index] = true;
-        for (Edge edge : adjList.get(index))  {
-            if (visited[edge.to]) continue;
-            pq.add(edge);
-        }
     }
     
     public static void main(String[] args) {
@@ -133,15 +132,15 @@ public class PrimsMst extends Graph {
             for (Edge e : graph.mst)
                 System.out.println(String.format("Used edge (%d, %d) with cost: %.2f", e.from, e.to, e.wt));
             /*
-             * Used edge (9, 8) with cost: 0.00
              * Used edge (0, 4) with cost: 1.00
-             * Used edge (2, 8) with cost: 1.00
              * Used edge (4, 5) with cost: 1.00
-             * Used edge (6, 7) with cost: 1.00
-             * Used edge (1, 3) with cost: 2.00
-             * Used edge (3, 7) with cost: 2.00
              * Used edge (4, 3) with cost: 2.00
-             * Used edge (1, 2) with cost: 4.00
+             * Used edge (3, 7) with cost: 2.00
+             * Used edge (7, 6) with cost: 1.00
+             * Used edge (3, 1) with cost: 2.00
+             * Used edge (6, 8) with cost: 4.00
+             * Used edge (8, 9) with cost: 0.00
+             * Used edge (8, 2) with cost: 1.00
              */
         }
         else {

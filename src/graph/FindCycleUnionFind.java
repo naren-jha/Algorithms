@@ -50,7 +50,7 @@ public class FindCycleUnionFind extends Graph {
         
         // Every directed edge here is treated as an undirected edge
         // that means, we don't add two edges u->v and v->u
-        // there is just one u->v which is treated as bidirectional
+        // there is just one u->v which is treated as bidirectional edge
     }
 
 }
