@@ -63,7 +63,7 @@ public class BipartiteGraphCheckAdjacencyList {
             
             // If a contradiction is found during DFS, propagate return -1
             int count = colorGraph(to, nextColor);
-            if (color == -1) return -1;
+            if (count == -1) return -1;
             
             visitCount += count;
         }
