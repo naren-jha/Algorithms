@@ -33,7 +33,7 @@ public class TspDynamicProgrammingIterative {
 
         if (N <= 2) throw new IllegalStateException("What on earth are you doing!");
         if (start < 0 || start >= N) throw new IllegalArgumentException("Invalid start node.");
-        if (N != m[0].length) throw new IllegalArgumentException("Square matric required.");
+        if (N != m[0].length) throw new IllegalArgumentException("Square matrix required.");
         if (N > 32) throw new IllegalArgumentException("Matrix too large for computation");
        
         this.S = start;
