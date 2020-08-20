@@ -27,7 +27,7 @@ Repo to host code for learning Data Structures and Algorithms
   - [:blue_book:](https://drive.google.com/file/d/1H7dD5CBSY-8JY6zw6C2dLPUwO05J5QpH/view?usp=sharing) [AVL Tree](https://github.com/njha-collab/Algorithms/blob/master/src/advance_ds/AVLTree.java)
   - [:blue_book:](https://drive.google.com/file/d/16P8t90Rpcw5FXCIRUTtl5D5iBJTVEKAg/view?usp=sharing) [Red-Black Tree](https://github.com/njha-collab/Algorithms/blob/master/src/advance_ds/RedBlackTree.java)
 * [:blue_book:](https://drive.google.com/file/d/1s8uz7PhTJWXN5IWya-V7iRiSaLpP2o-D/view?usp=sharing) [Trie](https://github.com/njha-collab/Algorithms/tree/master/src/advance_ds/trie)
-* [:blue_book:](https://drive.google.com/file/d/1hul0fcoMsbGyScvj7pllTmHXb-EhhwZl/view?usp=sharing) [Segment Tree](https://github.com/njha-collab/Algorithms/tree/master/src/advance_ds/segment_tree)
+* [:blue_book:](https://drive.google.com/file/d/1hul0fcoMsbGyScvj7pllTmHXb-EhhwZl/view?usp=sharing) [Segment Tree](https://github.com/njha-collab/Algorithms/blob/master/src/advance_ds/segment_tree/RangeMinimumQuery.java)
 * [:blue_book:](https://drive.google.com/file/d/1ukomS6h8jmPIKm1QdYTpCboRs5_0EWyS/view?usp=sharing) [Fenwick Tree](https://github.com/njha-collab/Algorithms/blob/master/src/advance_ds/BinaryIndexedTree.java)
 * [:blue_book:](https://drive.google.com/file/d/1VBlLHwhinuFRMXBL-jDT7ZVzB42SBSlf/view?usp=sharing) [LRU Cache](https://github.com/njha-collab/Algorithms/blob/master/src/advance_ds/lru_cache/LRUCache.java)
 * [:blue_book:](https://drive.google.com/file/d/15IxYY3x4vKOifiwS16GU0WPRjR_Xh2qZ/view?usp=sharing) [Union Find](https://github.com/njha-collab/Algorithms/blob/master/src/basic/unionfind)
