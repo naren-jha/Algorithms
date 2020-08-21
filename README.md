@@ -23,6 +23,9 @@ Repo to host code for learning Data Structures and Algorithms
 * [:blue_book:](https://drive.google.com/file/d/1SbDD62N32FTnufkqWolMgk5ckFosl77B/view?usp=sharing) [Heap (Priority Queues)](https://github.com/njha-collab/Algorithms/blob/master/src/tree/heap/)
   - [Max Heap](https://github.com/njha-collab/Algorithms/blob/master/src/tree/heap/MaxHeapTest.java)
   - [Min Heap](https://github.com/njha-collab/Algorithms/blob/master/src/tree/heap/MinHeapTest.java)
+* [:blue_book:](https://drive.google.com/file/d/15IxYY3x4vKOifiwS16GU0WPRjR_Xh2qZ/view?usp=sharing) [Union Find](https://github.com/njha-collab/Algorithms/blob/master/src/basic/unionfind)
+  - [Union Find (Merge By Size)](https://github.com/njha-collab/Algorithms/blob/master/src/basic/unionfind/UnionFind.java)
+  - [Union Find (Merge By Rank)](https://github.com/njha-collab/Algorithms/blob/master/src/basic/unionfind/UnionFindMergeByRank.java)
 * [:blue_book:](https://drive.google.com/drive/folders/1ysDKegzxyZUXmsYum63krWw1Qo5p-k74?usp=sharing) [Self-Balancing BSTs](https://github.com/njha-collab/Algorithms/blob/master/src/advance_ds/)
   - [:blue_book:](https://drive.google.com/file/d/1H7dD5CBSY-8JY6zw6C2dLPUwO05J5QpH/view?usp=sharing) [AVL Tree](https://github.com/njha-collab/Algorithms/blob/master/src/advance_ds/AVLTree.java)
   - [:blue_book:](https://drive.google.com/file/d/16P8t90Rpcw5FXCIRUTtl5D5iBJTVEKAg/view?usp=sharing) [Red-Black Tree](https://github.com/njha-collab/Algorithms/blob/master/src/advance_ds/RedBlackTree.java)
@@ -30,9 +33,6 @@ Repo to host code for learning Data Structures and Algorithms
 * [:blue_book:](https://drive.google.com/file/d/1hul0fcoMsbGyScvj7pllTmHXb-EhhwZl/view?usp=sharing) [Segment Tree](https://github.com/njha-collab/Algorithms/blob/master/src/advance_ds/segment_tree/RangeMinimumQuery.java)
 * [:blue_book:](https://drive.google.com/file/d/1ukomS6h8jmPIKm1QdYTpCboRs5_0EWyS/view?usp=sharing) [Fenwick Tree](https://github.com/njha-collab/Algorithms/blob/master/src/advance_ds/BinaryIndexedTree.java)
 * [:blue_book:](https://drive.google.com/file/d/1VBlLHwhinuFRMXBL-jDT7ZVzB42SBSlf/view?usp=sharing) [LRU Cache](https://github.com/njha-collab/Algorithms/blob/master/src/advance_ds/lru_cache/LRUCache.java)
-* [:blue_book:](https://drive.google.com/file/d/15IxYY3x4vKOifiwS16GU0WPRjR_Xh2qZ/view?usp=sharing) [Union Find](https://github.com/njha-collab/Algorithms/blob/master/src/basic/unionfind)
-  - [Union Find (Merge By Size)](https://github.com/njha-collab/Algorithms/blob/master/src/basic/unionfind/UnionFind.java)
-  - [Union Find (Merge By Rank)](https://github.com/njha-collab/Algorithms/blob/master/src/basic/unionfind/UnionFindMergeByRank.java)
 
 ## Dynamic Programming [Problems]
 (Sorted: Easy To Hard)
@@ -184,12 +184,12 @@ Repo to host code for learning Data Structures and Algorithms
      3. [DP Recursive Approach](https://github.com/njha-collab/Algorithms/blob/master/src/graph/TspDynamicProgrammingRecursive.java) **- O(n<sup>2</sup>2<sup>n</sup>)**
 
 ## [:blue_book:](https://drive.google.com/drive/folders/1BYykgpfMi810rDtnZc605GP0KAo59TE4?usp=sharing) Sorting Algorithms
-  * [Bubble Sort](https://github.com/njha-collab/Algorithms/blob/master/src/sorting/BubbleSort.java) **- O(n<sup>2</sup>)**
-  * [Insertion Sort](https://github.com/njha-collab/Algorithms/blob/master/src/sorting/InsertionSort.java) **- O(n<sup>2</sup>)**
   * [Merge Sort](https://github.com/njha-collab/Algorithms/blob/master/src/sorting/MergeSort.java) **- O(nlgn)**
   * [Heap Sort](https://github.com/njha-collab/Algorithms/blob/master/src/sorting/HeapSort.java) **- O(nlgn)**
   * [QuickSort](https://github.com/njha-collab/Algorithms/blob/master/src/sorting/QuickSort.java) **- Θ(nlgn)**
   * [Tim Sort](https://njha-collab.github.io/blogs/understanding-tim-sort) :blue_book: **- O(nlgn)**
+  * [Bubble Sort](https://github.com/njha-collab/Algorithms/blob/master/src/sorting/BubbleSort.java) **- O(n<sup>2</sup>)**
+  * [Insertion Sort](https://github.com/njha-collab/Algorithms/blob/master/src/sorting/InsertionSort.java) **- O(n<sup>2</sup>)**
   * [Shell Sort](https://github.com/njha-collab/Algorithms/blob/master/src/sorting/Shell.java) **- O(n<sup>2</sup>)**
   * [Counting Sort](https://github.com/njha-collab/Algorithms/blob/master/src/sorting/CountingSort.java) **- O(n + k)**
   * [Bucket Sort](https://github.com/njha-collab/Algorithms/blob/master/src/sorting/BucketSort.java) **- Θ(n + k)**
