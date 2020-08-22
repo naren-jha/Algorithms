@@ -10,20 +10,16 @@ public class SuperUglyNumbers {
         int[] uglyNumbers = new int[n];
         uglyNumbers[0] = 1; // first ugly number
         
-        int[] multipleOf = new int[primes.length]; // multiplier indexes
-        int[] nextMultiples = new int[primes.length];
-        for (int j = 0; j < primes.length; j++) {
-            multipleOf[j] = 0;
-            nextMultiples[j] = primes[j]; // since first ugly number is 1
-        }
+        int[] nextMultiples = primes.clone();
+        int[] multiplierIndices = new int[primes.length];
         
         for (int index = 1; index < n; index++) {
             uglyNumbers[index] = Arrays.stream(nextMultiples).min().getAsInt();
             
             for (int j = 0; j < primes.length; j++) {
                 if (uglyNumbers[index] == nextMultiples[j]) {
-                    multipleOf[j]++;
-                    nextMultiples[j] = uglyNumbers[multipleOf[j]] * primes[j];
+                    multiplierIndices[j]++;
+                    nextMultiples[j] = uglyNumbers[multiplierIndices[j]] * primes[j];
                 }
             }
         }

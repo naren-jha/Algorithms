@@ -11,11 +11,12 @@ import java.util.Arrays;
  */
 public class TilingNxMFloorWith1xMTile {
 
-    int tileMemoized(int n, int m, int[] res) {        
+    int tileMemoized(int n, int m, int[] res) {
+        if (n == 0)
+            return 1;
+        
         if (n < m)
             return 1;
-        if (n == m)
-            return 2;
         
         if (res[n] != -1)
             return res[n];
@@ -26,12 +27,11 @@ public class TilingNxMFloorWith1xMTile {
     
     int tileBottomUpTabulation(int n, int m) {
         int[] res = new int[n+1]; // 1 extra for n = 0 case
-        res[0] = 0;
+        res[0] = 1;
+        
         for (int i = 1; i <= n; i++) {
             if (i < m)
                 res[i] = 1;
-            else if (i == m)
-                res[i] = 2;
             else
                 res[i] = res[i-1] + res[i-m];
         }
