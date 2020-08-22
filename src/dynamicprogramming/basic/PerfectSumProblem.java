@@ -11,32 +11,31 @@ public class PerfectSumProblem {
     
     // T(n): O(sum*n) + O(sum+n) = O(sum*n)
     public void printAllSubsets(int[] a, int n, int sum) {
-        boolean[][] resTable = new boolean[n+1][sum+1];
+        boolean[][] res = new boolean[n+1][sum+1];
         
         // when sum == 0 (first column of 2D array)
         for (int i = 0; i <= n; i++)
-            resTable[i][0] = true;
+            res[i][0] = true;
         
         // when (sum != 0 && n == 0)
         for (int j = 1; j <= sum; j++)
-            resTable[0][j] = false; // redundant in Java
+            res[0][j] = false; // redundant in Java
         
         for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= sum; j++) {
-                if (a[i-1] > j) // when last number cannot be included
-                    resTable[i][j] = resTable[i-1][j];
-                else
-                    resTable[i][j] = resTable[i-1][j] || resTable[i-1][j-a[i-1]];
+                res[i][j] = res[i-1][j];
+                if (j - a[i-1] >= 0)
+                    res[i][j] = res[i][j] || res[i-1][j - a[i-1]];
             }
         }
         
-        if (!resTable[n][sum]) {
+        if (!res[n][sum]) {
             System.out.println("There is no subset with the sum " + sum);
             return;
         }
         
         List<Integer> lst = new ArrayList<>();
-        printSubsetsUtil(a, resTable, n, sum, lst); // O(sum+n)
+        printSubsetsUtil(a, res, n, sum, lst); // O(sum+n)
     }
     
     // T(n): O(sum+n)
@@ -54,7 +53,7 @@ public class PerfectSumProblem {
         // if given sum can be achieved by excluding current element
         if (res[i-1][sum]) {
             List<Integer> lst2 = new ArrayList<>();
-            lst2.addAll(lst);
+            lst2.addAll(lst); // add the elements which are already considered in previous iterations
             printSubsetsUtil(a, res, i-1, sum, lst2);
         }
         

@@ -74,7 +74,7 @@ public class GoldMineProblem {
         
         // botton-up tabulation
         // T(n) = O(mn)
-        public int getMaxGoldBottomUp(int[][] m) {
+        public int maxGoldBottomUp(int[][] m) {
             int r = m.length; // row length
             if (r == 0) throw new IllegalArgumentException("empty matrix");
             int c = m[0].length; // col length
@@ -101,7 +101,7 @@ public class GoldMineProblem {
             return maxGold;
         }
         
-        public String getMaxGoldBottomUpWithPath(int[][] m) {
+        public String maxGoldBottomUpWithPath(int[][] m) {
             int r = m.length; // row length
             if (r == 0) throw new IllegalArgumentException("empty matrix");
             int c = m[0].length; // col length
@@ -168,9 +168,9 @@ public class GoldMineProblem {
         
         System.out.println(solver.new BruteForce().maxGold(goldMine)); // 16
         System.out.println(solver.new DPSolution().maxGoldMemoized(goldMine)); // 16
-        System.out.println(solver.new DPSolution().getMaxGoldBottomUp(goldMine)); // 16
+        System.out.println(solver.new DPSolution().maxGoldBottomUp(goldMine)); // 16
         
-        System.out.println(solver.new DPSolution().getMaxGoldBottomUpWithPath(goldMine)); 
+        System.out.println(solver.new DPSolution().maxGoldBottomUpWithPath(goldMine)); 
         // maxGold: 16, Path: (2, 0) -> (1, 1) -> (1, 2) -> (0, 3)
     }
 

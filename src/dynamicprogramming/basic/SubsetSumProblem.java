@@ -10,12 +10,10 @@ public class SubsetSumProblem {
             // Base conditions
             if (sum == 0)
                 return true;
-            if (sum != 0 && n == 0)
+            if (sum < 0)
                 return false;
-            
-            // when last number cannot be included
-            if (a[n-1] > sum)
-                return isSubsetSum(a, n-1, sum);
+            if (n == 0)
+                return false;
             
             return isSubsetSum(a, n-1, sum) || isSubsetSum(a, n-1, sum-a[n-1]);
         }
@@ -32,23 +30,22 @@ public class SubsetSumProblem {
             for (int i = 0; i <= n; i++)
                 res[i][0] = true;
             
-            // when (sum != 0 && n == 0)
+            // when n == 0
             for (int j = 1; j <= sum; j++)
                 res[0][j] = false; // redundant in Java
             
             for (int i = 1; i <= n; i++) {
                 for (int j = 1; j <= sum; j++) {
-                    if (a[i-1] > j) // when last number cannot be included
-                        res[i][j] = res[i-1][j];
-                    else
-                        res[i][j] = res[i-1][j] || res[i-1][j-a[i-1]];
+                    res[i][j] = res[i-1][j];
+                    if (j - a[i-1] >= 0)
+                        res[i][j] = res[i][j] || res[i-1][j - a[i-1]];
                 }
             }
             
-            // print complete result table
+            // print result table
             /*for (int i = 0; i <= n; i++) {
                 for (int j = 0; j <= sum; j++) {
-                    System.out.print(res[i][j] + " ");
+                    System.out.print(res[i][j] ? "T " :  "F ");
                 }
                 System.out.println();
             }*/
@@ -73,17 +70,15 @@ public class SubsetSumProblem {
             res[0][0] = true;
             res[1][0] = true;
             
-            // when (sum != 0 && n == 0)
+            // when n == 0
             for (int j = 1; j <= sum; j++)
                 res[0][j] = false; // redundant in Java
             
             for (int i = 1; i <= n; i++) {
                 for (int j = 1; j <= sum; j++) {
-                    if (a[i-1] > j) // when last number cannot be included
-                        res[i % 2][j] = res[(i-1) % 2][j];
-                    else
-                        res[i % 2][j] = res[(i-1) % 2][j] 
-                                                    || res[(i-1) % 2][j-a[i-1]];
+                    res[i % 2][j] = res[(i-1) % 2][j];
+                    if (j - a[i-1] >= 0)
+                        res[i % 2][j] = res[i % 2][j] || res[(i-1) % 2][j - a[i-1]];
                 }
             }
             
