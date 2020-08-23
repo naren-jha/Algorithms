@@ -9,7 +9,43 @@ import java.util.Arrays;
 
 public class PaintingFenceProblem {
     
-    // new approach - 2020
+    public int countWays(int n, int k) {
+        if (n <= 0 || k <= 0) return 0;
+        if (n == 1) return k;
+        
+        // coloring first two post
+        // we can color is either same or different
+        int same = k*1; // k choices for first post and 1 choice for second
+        int different = k*(k-1); // k choices for first post and k-1 choices for second
+        
+        // then solve from post 3 to n
+        for (int i = 3; i <= n; ++i) {
+            int sameCopy = same;
+            same = different*1; // if last 2 posts were painted same, we cannot paint current post same again. But if last 2 posts were painted different, then we can paint current post with immediate previous color
+            different = sameCopy*(k-1) + different*(k-1); // whether last 2 posts were painted same or different, we have k-1 choices for the current post
+        }
+        
+        return same + different;
+    }
+    
+    // same approach as previous one, but loop
+    // starts from 2 instead of 3
+    public int countWays2(int n, int k) {
+        if (n <= 0)
+            return 0;
+        
+        int same = 0, diff = k;
+        int prevDiff;
+        for(int i = 2; i <= n; i++) {
+            prevDiff = diff;
+            diff = (same + diff) * (k - 1);
+            same = prevDiff;
+        }
+        return same + diff;
+    }
+    
+    // new approach - 23/08/2020
+    // Time and Space: O(3*n) = O(n)
     public int paintFence(int n, int k) {
         if (n == 0 || k == 0) return 0;
         
@@ -41,6 +77,7 @@ public class PaintingFenceProblem {
     }
     
     // new approach - bottom-up tabulation
+    // Time and Space: O(3*n) = O(n)
     public int paintFenceBottomUp(int n, int k) {
         if (n == 0 || k == 0) return 0;
         
@@ -58,39 +95,8 @@ public class PaintingFenceProblem {
         return dp[n][0];
     }
     
-    // ==================================================================
-    
-    public int countWays(int n, int k) {
-        if (n <= 0)
-            return 0;
-        if (n == 1)
-            return k;
-        
-        int same = k, diff = k * (k - 1);
-        int prevDiff;
-        for(int i = 3; i <= n; i++) {
-            prevDiff = diff;
-            diff = (same + diff) * (k - 1);
-            same = prevDiff;
-        }
-        return same + diff;
-    }
-    
-    // same approach as previous one, but loop
-    // starts from 2 instead of 3
-    public int countWays2(int n, int k) {
-        if (n <= 0)
-            return 0;
-        
-        int same = 0, diff = k;
-        int prevDiff;
-        for(int i = 2; i <= n; i++) {
-            prevDiff = diff;
-            diff = (same + diff) * (k - 1);
-            same = prevDiff;
-        }
-        return same + diff;
-    }
+    // an even better way: https://leetcode.com/problems/paint-fence/discuss/178010/The-only-solution-you-need-to-read
+    // ================================================================================================================
     
     public static void main(String[] args) {
         PaintingFenceProblem obj = new PaintingFenceProblem();
