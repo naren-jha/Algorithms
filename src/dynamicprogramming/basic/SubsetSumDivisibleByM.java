@@ -5,7 +5,36 @@ import java.util.Arrays;
 // https://www.geeksforgeeks.org/subset-sum-divisible-m/
 
 public class SubsetSumDivisibleByM {
+    
+    // approach 1
+    public boolean isSubsetSum(int[] a, int m) {
+        return isSubsetSumUtil(a, m, a.length, 0);
+    }
+    
+    public boolean isSubsetSumUtil(int[] a, int m, int n, int sum) {
+        // Base conditions
+        if (sum >= 0 && sum % m == 0)
+            return true;
+        if (sum < 0)
+            return false;
+        if (n == 0)
+            return false;
+        
+        return isSubsetSumUtil(a, m, n-1, sum + a[n-1]) || isSubsetSumUtil(a, m, n-1, sum);
+    }
+    
+    // bottom-up tabulation
+    public boolean isSubsetSumBottomUp(int[] a, int m) {
+        int n = a.length;
+        int sum = Arrays.stream(a).sum();
+        boolean[][] dp = new boolean[n+1][sum+1];
+        return false;
+        
+        // this approach will require space in the order of O(sum(a)*n)
+        // not a practical solution?
+    }
 
+    // approach 2
     public boolean isSubsetSumDivisibleByM(int[] a, int n, int m) {
         // If n > m there will always be a subset with sum 
         // divisible by m (by pigeonhole principle)
@@ -100,7 +129,9 @@ public class SubsetSumDivisibleByM {
         int m = 9;
         
         SubsetSumDivisibleByM obj = new SubsetSumDivisibleByM();
-        System.out.println(obj.isSubsetSumDivisibleByM(a, n, m));
-        System.out.println(obj.new Method2().isSubsetSumDivisibleByM(a, n, m));
+        System.out.println(obj.isSubsetSumDivisibleByM(a, n, m)); // true
+        System.out.println(obj.new Method2().isSubsetSumDivisibleByM(a, n, m)); // true
+        
+        System.out.println(obj.isSubsetSum(a, m)); // true
     }
 }
