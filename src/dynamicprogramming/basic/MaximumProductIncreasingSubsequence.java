@@ -1,14 +1,14 @@
 package dynamicprogramming.basic;
 
+import static java.lang.Math.max;
+
 import java.util.Arrays;
 
 // https://www.geeksforgeeks.org/maximum-product-increasing-subsequence/
 
 public class MaximumProductIncreasingSubsequence {
     
-    /* This problem is similar to Maximum Sum 
-     * Increasing Subsequence problem
-     */
+    /* This problem is similar to Maximum Sum Increasing Subsequence problem */
     
     // T(n): O(n^2), S(n): O(n)
     public int maxSumIS(int[] a) {
@@ -16,14 +16,11 @@ public class MaximumProductIncreasingSubsequence {
         int[] mpis = new int[n];
         
         mpis[0] = a[0];
-        for (int i = 1; i < n; i++) {
+        for (int i = 1; i < n; ++i) {
             mpis[i] = a[i];
-            for (int j = 0; j < i; j++) {
-                if (a[j] < a[i]) {
-                    if (mpis[i] < mpis[j] * a[i]) {
-                        mpis[i] = mpis[j] * a[i];
-                    }
-                }
+            for (int j = i-1; j >= 0; --j) {
+                if (a[i] > a[j])
+                    mpis[i] = max(mpis[i], mpis[j]*a[i]);
             }
         }
         

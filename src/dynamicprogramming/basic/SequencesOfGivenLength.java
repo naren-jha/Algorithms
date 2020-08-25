@@ -9,7 +9,7 @@ public class SequencesOfGivenLength {
     class SimpleRecursiveSolution {
         // T(m, n): Exp
         public int countSeq(int m, int n) {
-            if (m < Math.pow(2, n-1))
+            if (m < (1 << n-1)) // m < Math.pow(2, n-1)
                 return 0;
             if (n == 1)
                 return m;
@@ -29,7 +29,7 @@ public class SequencesOfGivenLength {
         }
         
         private int countSeqMemoizedUtil(int m, int n, int[][] res) {
-            if (m < Math.pow(2, n-1))
+            if (m < (1 << n-1))
                 return 0;
             if (n == 1)
                 return m;
@@ -50,7 +50,7 @@ public class SequencesOfGivenLength {
                 for (int j = 0; j <= n; j++) {
                     if (j == 0)
                         res[i][j] = 0;
-                    else if (i < Math.pow(2, j-1))
+                    else if (i < (1 << j-1))
                         res[i][j] = 0;
                     else if (j == 1)
                         res[i][j] = i;
@@ -66,9 +66,9 @@ public class SequencesOfGivenLength {
     public static void main(String[] args) {
         SequencesOfGivenLength obj = new SequencesOfGivenLength();
         int m = 5, n = 2;
-        System.out.println(obj.new SimpleRecursiveSolution().countSeq(m, n));
+        System.out.println(obj.new SimpleRecursiveSolution().countSeq(m, n)); // 6
         
-        System.out.println(obj.new DPSolution().countSeqMemoized(m, n));
-        System.out.println(obj.new DPSolution().countSeq(m, n));
+        System.out.println(obj.new DPSolution().countSeqMemoized(m, n)); // 6
+        System.out.println(obj.new DPSolution().countSeq(m, n)); // 6
     }
 }

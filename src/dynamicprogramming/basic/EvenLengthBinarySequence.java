@@ -15,14 +15,11 @@ public class EvenLengthBinarySequence {
         private int countSeqUtil(int n, int diff) {
             // Base cases:
             // we can't cover diff of more than n
-            if (Math.abs(diff) > n)
-                return 0;
+            if (Math.abs(diff) > n) return 0;
             
-            if (n == 1) {
-                if (diff == 0)
-                    return 2;
-                if (Math.abs(diff) == 1)
-                    return 1;
+            if (n == 0) {
+                if (diff == 0) return 1;
+                else return 0;
             }
             
             return 2*countSeqUtil(n-1, diff) // First and last bits are same
@@ -50,14 +47,11 @@ public class EvenLengthBinarySequence {
         private int countSeqUtil(int n, int diff, int[][] res) {
             // Base cases:
             // we can't cover diff of more than n
-            if (Math.abs(diff) > n)
-                return 0;
+            if (Math.abs(diff) > n) return 0;
             
-            if (n == 1) {
-                if (diff == 0)
-                    return 2;
-                if (Math.abs(diff) == 1)
-                    return 1;
+            if (n == 0) {
+                if (diff == 0) return 1;
+                else return 0;
             }
             
             if (res[n][n+diff] != -1)
