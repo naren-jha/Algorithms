@@ -1,5 +1,7 @@
 package dynamicprogramming.basic;
 
+import static java.lang.Math.max;
+
 // https://www.geeksforgeeks.org/maximum-path-sum-triangle/
 /*
  * Input : 
@@ -12,6 +14,50 @@ package dynamicprogramming.basic;
     Explanation : 3 + 7 + 4 + 9 = 23 
  */
 public class MaxPathSumTriangle {
+    
+    // August 2020
+    int maxSumRec(int[][] t) {
+        int r = t.length - 1;
+        
+        int maxSum = 0;
+        for (int j = 0; j < t[r].length; ++j)
+            maxSum = max(maxSum, max(maxSumUtil(t, r-1, j-1), maxSumUtil(t, r-1, j)) + t[r][j]);
+            
+        return maxSum;
+    }
+
+    int maxSumUtil(int[][] t, int r, int c) {
+        if (r < 0 || c < 0) return 0;
+        if (c >= t[r].length) return 0;
+        
+        return max(maxSumUtil(t, r-1, c-1), maxSumUtil(t, r-1, c)) + t[r][c];
+    }
+    
+    // dp bottom-up
+    int maxSum(int[][] t) {
+        int r = t.length;
+        int[][] dp = new int[r][];
+        dp[0] = new int[1];
+        dp[0][0] = t[0][0];
+        
+        for (int i = 1; i < r; ++i) {
+            dp[i] = new int[t[i].length];
+            for (int j = 0; j < t[i].length; ++j) {
+                if (j == 0) dp[i][j] = dp[i-1][j] + t[i][j];
+                else if (j == t[i].length - 1) dp[i][j] = dp[i-1][j-1] + t[i][j];
+                else dp[i][j] = max(dp[i-1][j-1], dp[i-1][j]) + t[i][j];
+            }
+        }
+        
+        int maxSum = 0;
+        for (int j = 0; j < dp[r-1].length; ++j)
+            maxSum = max(maxSum, dp[r-1][j]);
+            
+        return maxSum;
+    }
+    // August 2020 - end
+    
+    // old
     
     public int maxPathSum(int[][] t) {
         int n = t.length;
@@ -62,5 +108,8 @@ public class MaxPathSumTriangle {
         MaxPathSumTriangle o = new MaxPathSumTriangle();
         System.out.println(o.maxPathSum(t)); // 23
         System.out.println(o.maxPathSumSpaceOptimized(t)); // 23
+        
+        System.out.println(o.maxSumRec(t)); // 23
+        System.out.println(o.maxSum(t)); // 23
     }
 }

@@ -3,6 +3,21 @@ package dynamicprogramming.basic;
 // https://www.geeksforgeeks.org/count-ways-build-street-given-constraints/
 
 public class WaysToBuildStreet {
+    
+    // Aug 2020
+    public int countWays(int n) {
+        // start with solution for n = 1
+        int t1 = 1; // type 1 subproblem (both houses: HH)
+        int t2 = 2; // type 2 subproblem (one house, one office: OH or HO)
+        
+        // solve for rest of n
+        for (int i = 2; i <= n; ++i) {
+            int prevT1 = t1;
+            t1 = t1 + t2; // if HH then current type1 solution is previous total number of ways.
+            t2 = 2 * (prevT1 + t2 / 2); // if OH then don't consider HO and vice-versa. multiply by 2 to get solution for both OH and HO combinations, for current i.
+        }
+        return t1 + t2;
+    }
 
     /*
      * dp[0] = 1;
@@ -83,5 +98,7 @@ public class WaysToBuildStreet {
         System.out.println(o.new SimpleRecursiveSolution().countWays(n)); // 99
         System.out.println(o.new DPSolution().countWays(n)); // 99
         System.out.println(o.new DPSolution().countWaysSpaceOptimized(n)); // 99
+        
+        System.out.println(o.countWays(n));
     }
 }

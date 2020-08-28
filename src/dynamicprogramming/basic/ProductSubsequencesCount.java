@@ -15,8 +15,9 @@ public class ProductSubsequencesCount {
         private int countProdSubSeqUtil(int[] a, int n, int k) {
             if (n == 0)
                 return 0;
+            
             if (a[n-1] <= k)
-                return countProdSubSeqUtil(a, n-1, k/a[n-1]) + 1
+                return 1 + countProdSubSeqUtil(a, n-1, k/a[n-1])
                                 + countProdSubSeqUtil(a, n-1, k);
             else 
                 return countProdSubSeqUtil(a, n-1, k);
@@ -42,7 +43,7 @@ public class ProductSubsequencesCount {
                 return res[n][k];
             
             if (a[n-1] <= k)
-                res[n][k] = countProdSubSeqUtil(a, n-1, k/a[n-1], res) + 1
+                res[n][k] = 1 + countProdSubSeqUtil(a, n-1, k/a[n-1], res)
                                 + countProdSubSeqUtil(a, n-1, k, res);
             else 
                 res[n][k] = countProdSubSeqUtil(a, n-1, k, res);
@@ -56,13 +57,12 @@ public class ProductSubsequencesCount {
         public int countProdSubSeq(int[] a, int k) {
             int n = a.length;
             int[][] res = new int[n+1][k+1];
+            Arrays.fill(res[0], 0);
             
-            for (int i = 0; i <= n; i++) {
-                for (int j = 0; j <= k; j++) {
-                    if (i == 0 || j == 0)
-                        res[i][j] = 0;
-                    else if (a[i-1] <= j)
-                        res[i][j] = res[i-1][j/a[i-1]] + 1 + res[i-1][j];
+            for (int i = 1; i <= n; i++) {
+                for (int j = 1; j <= k; j++) {
+                    if (a[i-1] <= j)
+                        res[i][j] = 1 + res[i-1][j/a[i-1]] + res[i-1][j];
                     else
                         res[i][j] = res[i-1][j];
                 }
@@ -76,13 +76,12 @@ public class ProductSubsequencesCount {
         public int countProdSubSeqSpaceOptimized(int[] a, int k) {
             int n = a.length;
             int[][] res = new int[2][k+1];
+            Arrays.fill(res[0], 0);
             
-            for (int i = 0; i <= n; i++) {
-                for (int j = 0; j <= k; j++) {
-                    if (i == 0 || j == 0)
-                        res[i%2][j] = 0;
-                    else if (a[i-1] <= j)
-                        res[i%2][j] = res[(i-1)%2][j/a[i-1]] + 1 + res[(i-1)%2][j];
+            for (int i = 1; i <= n; i++) {
+                for (int j = 1; j <= k; j++) {
+                    if (a[i-1] <= j)
+                        res[i%2][j] = 1 + res[(i-1)%2][j/a[i-1]] + res[(i-1)%2][j];
                     else
                         res[i%2][j] = res[(i-1)%2][j];
                 }

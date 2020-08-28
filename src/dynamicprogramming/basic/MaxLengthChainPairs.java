@@ -1,5 +1,7 @@
 package dynamicprogramming.basic;
 
+import static java.lang.Math.max;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -9,18 +11,13 @@ import java.util.List;
 
 public class MaxLengthChainPairs {
 
-    class Pair implements Comparable<Pair> {
+    class Pair {
         int a;
         int b;
         
         public Pair(int a, int b) {
             this.a = a;
             this.b = b;
-        }
-
-        @Override
-        public int compareTo(Pair pair) {
-            return this.a - pair.a;
         }
         
         @Override
@@ -44,20 +41,17 @@ public class MaxLengthChainPairs {
      */
     // T(n): O(n^2), S(n): O(n)
     public int getMaxChainLength(Pair[] pairs) {
-        Arrays.sort(pairs);
+        Arrays.sort(pairs, (p1, p2) -> p1.a - p2.a);
         
         int n = pairs.length;
         int[] mcl = new int[n];
         
         mcl[0] = 1;
-        for (int i = 1; i < n; i++) {
+        for (int i = 1; i < n; ++i) {
             mcl[i] = 1;
-            for (int j = 0; j < i; j++) {
-                if (pairs[j].b < pairs[i].a) {
-                    if (mcl[i] < mcl[j] + 1) {
-                        mcl[i] = mcl[j] + 1;
-                    }
-                }
+            for (int j = i-1; j >= 0; --j) {
+                if (pairs[j].b < pairs[i].a)
+                    mcl[i] = max(mcl[i], 1 + mcl[j]);
             }
         }
         
@@ -71,7 +65,7 @@ public class MaxLengthChainPairs {
      */
     // T(n): O(n^2), S(n): O(n)
     public void maxChainLength(Pair[] pairs) {
-        Arrays.sort(pairs);
+        Arrays.sort(pairs, (p1, p2) -> p1.a - p2.a);
         
         int n = pairs.length;
         List<Pair>[] mclResLists = new List[n];

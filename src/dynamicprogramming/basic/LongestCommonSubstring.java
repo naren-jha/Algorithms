@@ -82,6 +82,32 @@ public class LongestCommonSubstring {
         return lcs;
     }
     
+    // Aug 2020
+    public int lcs2(String s1, String s2) {
+        int m = s1.length();
+        int n = s2.length();
+        int lcs = 0;
+        int[][] res = new int[m][n];
+        
+        for (int j = 0; j < n; j++)
+            res[0][j] = (s1.charAt(0) == s2.charAt(j)) ? 1 : 0;
+        for (int i = 0; i < m; i++)
+            res[i][0] = (s1.charAt(i) == s2.charAt(0)) ? 1 : 0;
+        
+        // fill rest of the table
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                if (s1.charAt(i-1) == s2.charAt(j-1)) {
+                    res[i][j] = res[i-1][j-1] + 1;
+                    lcs = Math.max(lcs, res[i][j]);
+                }
+                else
+                    res[i][j] = 0;
+            }
+        }
+        return lcs;
+    }
+    
     /*
      * NOTE 1:
      * we can space optimize above solution,
@@ -97,5 +123,7 @@ public class LongestCommonSubstring {
         LongestCommonSubstring o = new LongestCommonSubstring();
         System.out.println(o.lcsMem(s1, s2)); // 4
         System.out.println(o.lcs(s1, s2)); // 4
+        
+        System.out.println(o.lcs2(s1, s2)); // 4
     }
 }

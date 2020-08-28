@@ -3,7 +3,7 @@ package dynamicprogramming.basic;
 import java.util.HashMap;
 import java.util.Map;
 
-//https://www.geeksforgeeks.org/longest-subsequence-such-that-difference-between-adjacents-is-one/
+// https://www.geeksforgeeks.org/longest-subsequence-such-that-difference-between-adjacents-is-one/
 
 public class LongestSubseqAdjacentDiff1 {
     

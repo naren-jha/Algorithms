@@ -1,5 +1,7 @@
 package dynamicprogramming.basic;
 
+import static java.lang.Math.max;
+
 import java.util.Arrays;
 
 // https://www.geeksforgeeks.org/path-maximum-average-value/
@@ -49,28 +51,22 @@ public class PathWithMaximumAverageValue {
         
         // Bottom-up tabulation
         // T(n): O(n^2), S(n): O(n^2)
-        public double maxAvgPathVal(int[][]    a) {
+        public double maxAvgPathVal(int[][] a) {
             int n = a.length;
+            int[][] dp = new int[n][n];
             
-            int[][] res = new int[n][n];
+            dp[0][0] = a[0][0];
+            for (int i = 1; i < n; i++)
+                dp[i][0] = dp[i-1][0] + a[i][0];
+            for (int j = 1; j < n; j++)
+                dp[0][j] = dp[0][j-1] + a[0][j];
             
-            int left, up;
-            for (int i = 0; i < n; i++) {
-                for (int j = 0; j < n; j++) {
-                    if (i == 0 && j == 0) {
-                        res[i][j] = a[i][j];
-                        continue;
-                    }
-                    up = 0;
-                    if (i > 0)
-                        up = res[i-1][j];
-                    left = 0;
-                    if (j > 0)
-                        left = res[i][j-1];
-                    res[i][j] = Math.max(up, left) + a[i][j];
+            for (int i = 1; i < n; i++) {
+                for (int j = 1; j < n; j++) {
+                    dp[i][j] = max(dp[i-1][j], dp[i][j-1]) + a[i][j];
                 }
             }
-            return (double) res[n-1][n-1] / (2*n - 1);
+            return (double) dp[n-1][n-1] / (2*n - 1);
         }
     }
     
