@@ -9,12 +9,12 @@ public class DiffWaysToSum {
     /*
      * The idea is that, since the sum has to be formed using numbers
      * >= m, the numbers that can be used to make sum are [m, m+1, m+2 ... n]
-     * This is because if m i > n then a sum cannot be made
+     * This is because if m is > n then a sum cannot be made
      */
     
     class SimpleRecursiveSolution {
         // T(n): Exp
-        public int countWays(int n, int m) {
+        /*public int countWays(int n, int m) {
             if (n == 0)
                 return 1;
             if (n < 0)
@@ -23,6 +23,18 @@ public class DiffWaysToSum {
                 return 0;
             
             return countWays(n-m, m) + countWays(n, m+1);
+        }*/
+        
+        public int countWays(int n, int m) {
+            if (n == 0)
+                return 1;
+            
+            int count = 0;
+            if (n >= m)
+                count += countWays(n-m, m);
+            if (m < n)
+                count += countWays(n, m+1);
+            return count;
         }
     }
     

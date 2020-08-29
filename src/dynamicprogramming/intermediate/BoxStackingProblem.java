@@ -1,14 +1,26 @@
 package dynamicprogramming.intermediate;
 
+import static java.lang.Math.max;
+
 import java.util.Arrays;
 
 // https://www.geeksforgeeks.org/box-stacking-problem-dp-22/
+// https://www.youtube.com/watch?v=9mod_xRB-O0
 
 public class BoxStackingProblem {
 
     // This problem is a variation of LIS problem
     
-    private class Box implements Comparable<Box> {
+    /*
+     * Since each given is available in unlimited quantity, so same box can be rotated and 
+     * used again in different orientation. Means, every box can be used in 3 different 
+     * orientations. 
+     * Then we sort the boxes (with all orientations) by their base area in decreasing order
+     * so that when we place boxes on top of one-another (while finding maximum height stack)
+     * smaller area boxes always comes on top of bigger area box
+     */
+    
+    private class Box {
         int height, width, depth, area;
         
         Box(int height, int width, int depth) {
@@ -16,12 +28,6 @@ public class BoxStackingProblem {
             this.width = width;
             this.depth = depth;
             area = width * depth;
-        }
-        
-        // to sort in decreasing order
-        @Override
-        public int compareTo(Box box) {
-            return box.area - this.area;
         }
     }
     
@@ -32,14 +38,11 @@ public class BoxStackingProblem {
         
         // generate all three rotations of original boxes
         for (int i = 0; i < n; i++) {
-            boxes[3*i] = new Box(b[i].height, Math.max(b[i].width, b[i].depth), 
-                                        Math.min(b[i].width, b[i].depth));
-            boxes[3*i + 1] = new Box(b[i].width, Math.max(b[i].height, b[i].depth), 
-                                        Math.min(b[i].height, b[i].depth));
-            boxes[3*i + 2] = new Box(b[i].depth, Math.max(b[i].height, b[i].width), 
-                                        Math.min(b[i].height, b[i].width));
+            boxes[3*i] = new Box(b[i].height, Math.max(b[i].width, b[i].depth), Math.min(b[i].width, b[i].depth));
+            boxes[3*i + 1] = new Box(b[i].width, Math.max(b[i].height, b[i].depth), Math.min(b[i].height, b[i].depth));
+            boxes[3*i + 2] = new Box(b[i].depth, Math.max(b[i].height, b[i].width), Math.min(b[i].height, b[i].width));
         }
-        Arrays.sort(boxes); // sort by area in decreasing order
+        Arrays.sort(boxes, (b1, b2) -> b2.area - b1.area); // sort by area in decreasing order
         n *= 3;
         
         // create a result array to store intermediate results
@@ -50,12 +53,9 @@ public class BoxStackingProblem {
         mhs[0] = boxes[0].height;
         for (int i = 1; i < n; i++) {
             mhs[i] = boxes[i].height;
-            for (int j = 0; j < i; j++) {
-                if (boxes[j].width > boxes[i].width && boxes[j].depth > boxes[i].depth) {
-                    if (mhs[i] < mhs[j] + boxes[i].height) {
-                        mhs[i] = mhs[j] + boxes[i].height;
-                    }
-                }
+            for (int j = i-1; j >= 0; --j) {
+                if (boxes[i].width < boxes[j].width && boxes[i].depth < boxes[j].depth)
+                    mhs[i] = max(mhs[i], mhs[j] + boxes[i].height);
             }
         }
         
@@ -71,6 +71,6 @@ public class BoxStackingProblem {
         b[2] = o.new Box(4, 5, 6); 
         b[3] = o.new Box(10, 12, 32);
         
-        System.out.println(o.maxStackHeight(b));
+        System.out.println(o.maxStackHeight(b)); // 60
     }
 }

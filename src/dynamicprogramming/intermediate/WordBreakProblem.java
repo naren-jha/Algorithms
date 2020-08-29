@@ -7,6 +7,40 @@ import java.util.Set;
 // https://www.geeksforgeeks.org/word-break-problem-dp-32/
 
 public class WordBreakProblem {
+    
+    // Aug 2020
+    public boolean wordBreakRec(String s, Set<String> dict) {
+        return wordBreak(s, s.length(), dict, 0);
+    }
+    
+    private boolean wordBreak(String s, int n, Set<String> dict, int start) {
+        if (start == n) return true; // empty string
+        for (int end = start; end < n; ++end) {
+            if (dict.contains(s.substring(start, end+1)) && wordBreak(s, n, dict, end+1))
+                return true;
+        }
+        return false;
+    }
+    
+    public boolean wordBreak(String s, Set<String> dict) {
+        int n = s.length();
+        boolean[] dp = new boolean[n + 1];
+        dp[n] = true; // empty string
+        
+        for (int start = n-1; start >= 0; start--) {
+            for (int end = start; end < n; ++end) {
+                if (dict.contains(s.substring(start, end+1)) && dp[end+1]) {
+                    dp[start] = true;
+                    break;
+                }
+            }
+        }
+        
+        return dp[0];
+    }
+    
+    // ==================================================================
+    
 
     private String[] words = {"mobile", "samsung", "sam", "sung", 
                                 "man", "mango", "icecream", "and", 
@@ -80,5 +114,26 @@ public class WordBreakProblem {
         System.out.println(dps.isWordBreak("ilikelikeimangoiii")); // true
         System.out.println(dps.isWordBreak("samsungandmango")); // true
         System.out.println(dps.isWordBreak("samsungandmangok")); // false
+        
+        System.out.println("------");
+        System.out.println(obj.wordBreakRec("ilikesamsung", obj.dict)); // true
+        System.out.println(obj.wordBreakRec("iiiiiiii", obj.dict)); // true
+        System.out.println(obj.wordBreakRec("", obj.dict)); // true
+        System.out.println(obj.wordBreakRec("ilikelikeimangoiii", obj.dict)); // true
+        System.out.println(obj.wordBreakRec("samsungandmango", obj.dict)); // true
+        System.out.println(obj.wordBreakRec("samsungandmangok", obj.dict)); // false
+        // "catsandog"
+        String[] d = {"cats","dog","sand","and","cat"};
+        System.out.println(obj.wordBreakRec("catsandog", new HashSet<>(Arrays.asList(d)))); // false
+        
+        System.out.println("------");
+        System.out.println(obj.wordBreak("ilikesamsung", obj.dict)); // true
+        System.out.println(obj.wordBreak("iiiiiiii", obj.dict)); // true
+        System.out.println(obj.wordBreak("", obj.dict)); // true
+        System.out.println(obj.wordBreak("ilikelikeimangoiii", obj.dict)); // true
+        System.out.println(obj.wordBreak("samsungandmango", obj.dict)); // true
+        System.out.println(obj.wordBreak("samsungandmangok", obj.dict)); // false
+        // "catsandog"
+        System.out.println(obj.wordBreak("catsandog", new HashSet<>(Arrays.asList(d)))); // false
     }
 }

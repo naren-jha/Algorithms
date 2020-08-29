@@ -47,25 +47,24 @@ public class TempleOffering {
             int[] left = new int[n];
             int[] right = new int[n];
             
-            left[0] = 1;
-            right[n-1] = 1;
-            
+            left[0] = 0;
             for (int i = 1; i < n; i++) {
                 if (t[i-1] < t[i])
                     left[i] = left[i-1] + 1;
                 else
-                    left[i] = 1;
+                    left[i] = 0;
             }
             
+            right[n-1] = 0;
             for (int i = n-2; i >= 0; i--) {
                 if (t[i+1] < t[i])
                     right[i] = right[i+1] + 1;
                 else
-                    right[i] = 1;
+                    right[i] = 0;
             }
             
             for (int i = 0; i < n; i++) {
-                sum += Math.max(left[i], right[i]);
+                sum += Math.max(left[i], right[i]) + 1;
             }
             
             return sum;

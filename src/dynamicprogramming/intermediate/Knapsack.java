@@ -84,7 +84,14 @@ public class Knapsack {
                 }
             }
             
-            //System.out.println(Arrays.deepToString(k));
+            // For wt = {1, 3, 4, 5} and val = {1, 4, 5, 7}
+            // System.out.println(Arrays.deepToString(k));
+            // [[0, 0, 0, 0, 0, 0, 0, 0], 
+            //  [0, 1, 1, 1, 1, 1, 1, 1], 
+            //  [0, 1, 1, 4, 5, 5, 5, 5], 
+            //  [0, 1, 1, 4, 5, 6, 6, 9], 
+            //  [0, 1, 1, 4, 5, 7, 8, 9]]
+            
             // return k[n][w];
             int i = n, j = w;
             Stack<Integer> res = new Stack<Integer>();

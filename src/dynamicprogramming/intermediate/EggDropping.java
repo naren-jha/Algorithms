@@ -2,8 +2,13 @@ package dynamicprogramming.intermediate;
 
 // https://www.geeksforgeeks.org/egg-dropping-puzzle-dp-11/
 // https://www.youtube.com/watch?v=iOaRjDT0vjc
+// https://leetcode.com/problems/super-egg-drop/
 
 public class EggDropping {
+    
+    /*
+     * NOTE: Instead of dropping from every floor, we can apply binary search to improve this algorithm
+     */
 
     /*
      * The idea is that we consider each floor as the first drop 
@@ -34,10 +39,31 @@ public class EggDropping {
      * 
      * eggDrop(n, k) = 1 + min{max(eggDrop(n - 1, x - 1), eggDrop(n, k - x)): 
                              x = {1, 2, ..., k}}
-                             
+     *                        
      * We take max of two possibilities in above recurrence as 
      * we need to consider worst case solution for each subproblem
                              
+     */
+    
+    /* 
+     *  We take max of the two possible solutions because we want to find out number of attempts needed in worst case (and then we want to minimize it).
+     *  For example:
+     *  Let there be '2' eggs and '2' floors then -
+     *  
+     *  If we try throwing from '1st' floor:
+     *  Number of tries in worst case = 1 + max(0, 1)
+     *  0 => If the egg breaks from first floor then it is threshold floor (best case possibility).
+     *  1 => If the egg does not break from first floor we will now have ‘2’ eggs and 1 floor to test which will give answer as '1'.(worst case possibility)
+     *  We take the worst case possibility in account, so 1 + max(0, 1) = 2
+     *  
+     *  If we try throwing from '2nd' floor:
+     *  Number of tries in worst case = 1 + max(1, 0)
+     *  1 => If the egg breaks from second floor then we will have 1 egg and 1 floor to find threshold floor.(Worst Case)
+     *  0 => If egg does not break from second floor then it is threshold floor.(Best Case)
+     *  We take worst case possibility for surety, so 1 + max(1, 0) = 2.
+     *  
+     *  The final answer is min(1st, 2nd, 3rd..... kth floor)
+     *  So answer here is '2'.
      */
     class SimpleRecursiveSolution {
         // T(n): Exp

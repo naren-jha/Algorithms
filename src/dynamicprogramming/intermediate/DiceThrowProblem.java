@@ -1,8 +1,37 @@
 package dynamicprogramming.intermediate;
 
+import static java.lang.Math.min;
+
+import java.util.Arrays;
+
 // https://www.geeksforgeeks.org/dice-throw-dp-30/
 
 public class DiceThrowProblem {
+    
+    // Aug 2020, TC: Exp
+    public int countWays(int n, int m, int sum) {
+        if (n == 1) return 1;
+        
+        int count = 0;
+        for (int fv = 1; fv <= min(m, sum-1); ++fv)
+            count += countWays(n-1, m, sum-fv);
+        return count;
+    }
+    
+    // dp bottom-up, TC: O(n*m*sum)
+    public int countWaysDp(int n, int m, int sum) {
+        int[][] dp = new int[n+1][sum+1];
+        
+       Arrays.fill(dp[1], 1);
+       for (int i = 2; i <= n; ++i) {
+           for (int j = 1; j <= sum; ++j) {
+               for (int fv = 1; fv <= min(m, j-1); ++fv)
+                   dp[i][j] += dp[i-1][j-fv];
+           }
+       }
+       
+       return dp[n][sum];
+    }
 
     /*
      * The idea is this: lets say if we are solving this problem for m = 1
@@ -168,6 +197,20 @@ public class DiceThrowProblem {
         System.out.println(dps.countWaysSO(3, 6, 8)); // 21
         System.out.println(dps.countWaysSO(2, 4, 5)); // 4
         System.out.println(dps.countWaysSO(3, 4, 5)); // 6
+        
+        System.out.println("----");
+        System.out.println(dt.countWays(2, 4, 1)); // 0
+        System.out.println(dt.countWays(2, 2, 3)); // 2
+        System.out.println(dt.countWays(3, 6, 8)); // 21
+        System.out.println(dt.countWays(2, 4, 5)); // 4
+        System.out.println(dt.countWays(3, 4, 5)); // 6
+        
+        System.out.println("----");
+        System.out.println(dt.countWaysDp(2, 4, 1)); // 0
+        System.out.println(dt.countWaysDp(2, 2, 3)); // 2
+        System.out.println(dt.countWaysDp(3, 6, 8)); // 21
+        System.out.println(dt.countWaysDp(2, 4, 5)); // 4
+        System.out.println(dt.countWaysDp(3, 4, 5)); // 6
     }
     
 }
