@@ -9,13 +9,13 @@ public class RegularExpressionMatching {
         return match(s.toCharArray(), p.toCharArray(), s.length(), p.length());
     }
     
-    boolean match(char[] s, char[] p, int sLen, int pLen) {
+    private boolean match(char[] s, char[] p, int sLen, int pLen) {
         //System.out.println("sLen: " + sLen + ", pLen: " + pLen);
         if (pLen == 0)
             return sLen == 0;
         if (sLen == 0) {
             if (p[pLen-1] == '*') {
-                /*if (pLen == 1) return true/false; // there shouldn't be just one * left in the pattern string, but if there is we can either consider that it'll match with everything left in the input string or it'll not match with anything
+                /*if (pLen == 1) return true/false; // there shouldn't be just one '*' left in the pattern string, but if there is - we can consider that either it'll match with the empty input string or it'll not match with empty string
                 else return match(s, p, 0, pLen-2);*/
                 return match(s, p, 0, pLen-2);
             }
@@ -28,7 +28,7 @@ public class RegularExpressionMatching {
             return match(s, p, sLen-1, pLen-1);
 
         if (p[pLen-1] == '*') {
-            //if (pLen == 1) return true/false; // there shouldn't be just one * left in the pattern string, but if there is we can either consider that it'll match with everything left in the input string or it'll not match with anything
+            //if (pLen == 1) return true/false; // there shouldn't be just one '*' left in the pattern string, but if there is - we can consider that either it'll match with everything left in the input string or it'll not match with anything
             boolean status = match(s, p, sLen, pLen-2); // without considering this wildcard
             if (p[pLen-2] == s[sLen-1] || p[pLen-2] == '.')
                 status = status || match(s, p, sLen-1, pLen); // consider this wildcard (and repeat)
