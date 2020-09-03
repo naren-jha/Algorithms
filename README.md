@@ -113,7 +113,7 @@ Repo to host code for learning Data Structures and Algorithms
 75. [K maximum sums of non-overlapping contiguous sub-arrays](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/KmaximumSumsNonOverlappingContiguousSubArrays.java)
 76. [Maximum Product Subarray](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/MaximumProductSubarray.java)
 77. [Maximum Dot Product of Two Arrays](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/MaximumDotProductTwoArrays.java)
-78. [Minimum Initial Points to Reach Destination](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/MinimumInitialPointsToReachDestination.java)
+78. [**Minimum Initial Points to Reach Destination (Dungeon Game)**](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/MinimumInitialPointsToReachDestination.java)
 79. [Minimum Insertions To Form Palindrome](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/MinimumInsertionsToFormPalindrome.java)
 80. [Minimum Number of Squares Sum to Given Number](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/SquareSumToNumber.java)
 81. [Remove Minimum Elements From Either Side](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/RemoveMinElementsFromEitherSide.java)
