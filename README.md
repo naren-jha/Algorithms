@@ -48,7 +48,7 @@ Repo to host code for learning Data Structures and Algorithms
 10. [Subset Sum Problem](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/SubsetSumProblem.java)
 11. [Perfect Sum Problem](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/PerfectSumProblem.java)
 12. [Subset Sum Divisible By M](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/SubsetSumDivisibleByM.java)
-13. ~~[Largest Divisible Pair Subset (DUPLICATE OF #91)](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/LargestDivisiblePairSubset.java)~~
+13. [Largest Divisible Pair Subset (DUPLICATE OF #91)](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/LargestDivisiblePairSubset.java)
 14. [Rod Cutting Problem](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/RodCuttingProblem.java)
 15. [Tiling With Dominoes](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/TilingWithDominoes.java)
 16. [Painting Fence Problem](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/PaintingFenceProblem.java)
