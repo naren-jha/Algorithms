@@ -9,8 +9,6 @@ public class CountStringWithABC {
         public int count(int n, int bCount, int cCount) {
             if (n == 0)
                 return 1;
-            if (bCount == 0 && cCount == 0)
-                return 1;
             
             int res = count(n-1, bCount, cCount);
             if (bCount > 0)
@@ -39,8 +37,6 @@ public class CountStringWithABC {
                     res[0][j][k] = 1; // when n == 0
                 }
             }
-            for (int i = 0; i <= n; i++)
-                res[i][0][0] = 1; // when bCount == 0 && cCount == 0
             
             for (int i = 1; i <= n; i++) {
                 for (int j = 0; j <= bCount; j++) {

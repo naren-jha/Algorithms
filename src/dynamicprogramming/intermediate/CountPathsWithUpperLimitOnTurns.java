@@ -7,21 +7,32 @@ public class CountPathsWithUpperLimitOnTurns {
     class SimpleRecursiveSolution {
         // T(n): Exp
         public int countPaths(int i, int j, int k) {
-            // dir = 0 => rows, dir = 1 => rows
+            // dir = 0 => rows, dir = 1 => columns
             return countPaths(i, j, k, 0) + countPaths(i, j, k, 1);
         }
         
         public int countPaths(int i, int j, int k, int dir) {
-            // Base cases
+            // Base cases:
+            // If invalid row or column indices 
             if (i < 0 || j < 0)
                 return 0;
+            
+            // If current cell is top left itself
             if (i == 0 && j == 0)
                 return 1;
+            
+            // If 0 turns left
             if (k == 0) {
+                // If direction is row, then we can reach here  
+                // only if direction is row and row is 0
                 if (dir == 0 && i == 0)
                     return 1;
+                
+                // If direction is column, then we can reach here  
+                // only if direction is column and column is 0
                 if (dir == 1 && j == 0)
                     return 1;
+                
                 else
                     return 0;
             }

@@ -1,5 +1,7 @@
 package dynamicprogramming.basic;
 
+import static java.lang.Math.max;
+
 // https://www.geeksforgeeks.org/largest-sum-contiguous-subarray/
 // Kadane's Algorithm
 
@@ -56,8 +58,8 @@ public class MaximumSumSubarray {
         int maxEndingHere = 0;
         
         for (int i = 0; i < a.length; i++) {
-            maxEndingHere = Math.max(a[i], maxEndingHere + a[i]);
-            maxSoFar = Math.max(maxSoFar, maxEndingHere);
+            maxEndingHere = max(a[i], maxEndingHere + a[i]);
+            maxSoFar = max(maxSoFar, maxEndingHere);
         }
         
         return maxSoFar;

@@ -23,6 +23,7 @@ public class CountDecodingsDigitSequence {
             // 10 to 26
             // when last two digits form a number 
             // greater than equal to 10 or smaller than equal to 26
+            // Equivalent to: 10 <= Integer.parseInt(s[n-2]+""+s[n-1]) <= 26
             if (s[n-2] == '1' || (s[n-2] == '2' && s[n-1] <= '6'))
                 count += countDecodings(s, n-2);
             

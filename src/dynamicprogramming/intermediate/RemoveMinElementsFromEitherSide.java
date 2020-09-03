@@ -3,6 +3,8 @@ package dynamicprogramming.intermediate;
 // https://www.geeksforgeeks.org/remove-minimum-elements-either-side-2min-max/
 // https://www.geeksforgeeks.org/remove-minimum-elements-from-either-side-such-that-2min-becomes-more-than-max-set-2/
 
+// https://www.geeksforgeeks.org/remove-minimum-elements-from-the-array-such-that-2min-becomes-more-than-max
+
 public class RemoveMinElementsFromEitherSide {
 
     // T(n): O(n^2)

@@ -1,7 +1,5 @@
 package dynamicprogramming.intermediate;
 
-import java.util.Arrays;
-
 // https://www.geeksforgeeks.org/count-of-n-digit-numbers-whose-sum-of-digits-equals-to-given-sum/
 
 public class CountNumbersWithGivenSum {
@@ -34,7 +32,7 @@ public class CountNumbersWithGivenSum {
         public int countNumbers(int n, int sum) {
             int[][] res = new int[n+1][sum+1];
             
-            Arrays.fill(res, 0); // redundant in Java
+            //Arrays.fill(res, 0); // redundant in Java
             res[0][0] = 1; // when n == 0 && sum == 0
             
             /*
@@ -64,10 +62,42 @@ public class CountNumbersWithGivenSum {
         // we are using only two rows, so we can manage with res[2][sum+1]
     }
     
+    // Aug 2020
+    public int count(int n, int sum) {
+        if (n == 1) {
+            if (sum > 0 && sum < 10) return 1;
+            else return 0;
+        }
+        
+        int count = 0;
+        for (int x = 0; x < 10 && x <= sum - 1; ++x)
+            count += count(n-1, sum-x);
+        return count;
+    }
+    
+    // bottom-up
+    public int countDp(int n, int sum) {
+        int[][] dp = new int[n+1][sum+1];
+        for (int j = 1; j <= sum && j < 10; ++j)
+            dp[1][j] = 1;
+        
+        for (int i = 2; i <= n; ++i) {
+            for (int j = 1; j <= sum; ++j) {
+                for (int x = 0; x < 10 && x <= j - 1; ++x)
+                    dp[i][j] += dp[i-1][j-x];
+            }
+        }
+        
+        return dp[n][sum];
+    }
+    
     public static void main(String[] args) {
         int n = 3, sum = 6;
         CountNumbersWithGivenSum o = new CountNumbersWithGivenSum();
         System.out.println(o.new SimpleRecursiveSolution().countNumbers(n, sum)); // 21
         System.out.println(o.new DPSolution().countNumbers(n, sum)); // 21
+        
+        System.out.println(o.count(n, sum)); // 21
+        System.out.println(o.countDp(n, sum)); // 21
     }
 }

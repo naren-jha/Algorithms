@@ -13,12 +13,12 @@ public class LongestPathInMatrixFourDirections {
         n = mat.length; 
         
         int[][] dp = new int[n][n];
-        for (int i = 0; i <n; i++)
+        for (int i = 0; i < n; i++)
             Arrays.fill(dp[i], -1);
         
         int result = 1;
-        for (int i = 0; i <n; i++) {
-            for (int j = 0; j <n; j++) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
                 if (dp[i][j] == -1)
                     dp[i][j] = findLongestPathForCell(mat, i, j, dp);
                 result = Math.max(result, dp[i][j]);

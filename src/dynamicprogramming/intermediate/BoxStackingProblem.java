@@ -12,12 +12,12 @@ public class BoxStackingProblem {
     // This problem is a variation of LIS problem
     
     /*
-     * Since each given is available in unlimited quantity, so same box can be rotated and 
-     * used again in different orientation. Means, every box can be used in 3 different 
-     * orientations. 
-     * Then we sort the boxes (with all orientations) by their base area in decreasing order
+     * Since each box is available in unlimited quantity, so same box can be rotated and 
+     * used again in different orientation. So that means every box can be used in 3 different 
+     * orientations. So we consider every orientations of each box and create a new array.
+     * Then we sort the boxes[] array (with all orientations) by their base area in decreasing order
      * so that when we place boxes on top of one-another (while finding maximum height stack)
-     * smaller area boxes always comes on top of bigger area box
+     * smaller area box always comes on top of a larger area box
      */
     
     private class Box {

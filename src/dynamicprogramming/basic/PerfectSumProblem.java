@@ -34,8 +34,23 @@ public class PerfectSumProblem {
             return;
         }
         
+        //System.out.println(Arrays.deepToString(res));
+        /* 
+         * {3, 6, 4, 12, 7, 2}
+         * 
+        [[T, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F], 
+         [T, F, F, T, F, F, F, F, F, F, F, F, F, F, F, F, F, F, F], 
+         [T, F, F, T, F, F, T, F, F, T, F, F, F, F, F, F, F, F, F], 
+         [T, F, F, T, T, F, T, T, F, T, T, F, F, T, F, F, F, F, F], 
+         [T, F, F, T, T, F, T, T, F, T, T, F, T, T, F, T, T, F, T], 
+         [T, F, F, T, T, F, T, T, F, T, T, T, T, T, T, T, T, T, T], 
+         [T, F, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T, T]]
+        */
+        
         List<Integer> lst = new ArrayList<>();
         printSubsetsUtil(a, res, n, sum, lst); // O(sum+n)
+        
+        // printOneSubset(a, res, n, sum, lst); // to print just one subset
     }
     
     // T(n): O(sum+n)
@@ -61,6 +76,29 @@ public class PerfectSumProblem {
         if (a[i-1] <= sum && res[i-1][sum - a[i-1]]) {
             lst.add(a[i-1]);
             printSubsetsUtil(a, res, i-1, sum - a[i-1], lst);
+        }
+    }
+    
+    // T(n): O(sum+n)
+    private void printOneSubset(int[] a, boolean[][] res, int i, int sum, List<Integer> lst) {
+        // Base conditions
+        if (sum == 0) {
+            System.out.println(lst);
+            lst.clear();
+            return;
+        }
+        if (i == 0) {
+            return;
+        }
+        
+        // sum will be achievable by either including or not including the current element
+        // so go in either direction
+        if (a[i-1] <= sum && res[i-1][sum - a[i-1]]) {
+            lst.add(a[i-1]);
+            printOneSubset(a, res, i-1, sum - a[i-1], lst);
+        }
+        else if (res[i-1][sum]) {
+            printOneSubset(a, res, i-1, sum, lst);
         }
     }
     

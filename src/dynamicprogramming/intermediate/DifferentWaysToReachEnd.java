@@ -52,9 +52,9 @@ public class DifferentWaysToReachEnd {
         int[] res = new int[n]; // res[0] will hold the final result
         
         // create a temporary array to store summed results
-        int[] tmp = new int[n];
+        int[] dp = new int[n];
         
-        res[n-1] = 0; tmp[n-1] = 0;
+        res[n-1] = 0; dp[n-1] = 0;
         for (int i = n-2; i >= 0; i--) {
             // If a[i] is 0 then a[n-1] can't be reached from here
             if (a[i] == 0)
@@ -66,11 +66,11 @@ public class DifferentWaysToReachEnd {
                 
                 // Add the counts of all the elements that can reach to end 
                 // and a[i] can reach to them
-                res[i] += tmp[i + 1];
-                if (i + a[i] < n-1)
-                    res[i] -= tmp[i + a[i] + 1];
+                res[i] += dp[i + 1];
+                if (i + a[i] + 1 < n)
+                    res[i] -= dp[i + a[i] + 1]; // subtract the ones that a[i] can't reach
             }
-            tmp[i] = tmp[i+1] + res[i];
+            dp[i] = dp[i+1] + res[i];
         }
         
         System.out.println(Arrays.toString(res));
@@ -80,7 +80,7 @@ public class DifferentWaysToReachEnd {
     public static void main(String[] args) {
         DifferentWaysToReachEnd obj = new DifferentWaysToReachEnd();
         int[] a = {1, 3, 5, 8, 9, 1, 0, 7, 6, 8, 9};
-        obj.countWays(a);
-        obj.countWaysOptimized(a);
+        obj.countWays(a); // [52, 52, 28, 16, 8, 0, 0, 4, 2, 1, 0]
+        obj.countWaysOptimized(a); // [52, 52, 28, 16, 8, 0, 0, 4, 2, 1, 0]
     }
 }

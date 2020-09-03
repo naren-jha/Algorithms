@@ -3,6 +3,40 @@ package dynamicprogramming.hard;
 // https://leetcode.com/problems/regular-expression-matching/
     
 public class RegularExpressionMatching {
+    
+    // Aug 2020
+    public boolean match(String s, String p) {
+        return match(s.toCharArray(), p.toCharArray(), s.length(), p.length());
+    }
+    
+    boolean match(char[] s, char[] p, int sLen, int pLen) {
+        //System.out.println("sLen: " + sLen + ", pLen: " + pLen);
+        if (pLen == 0)
+            return sLen == 0;
+        if (sLen == 0) {
+            if (p[pLen-1] == '*') {
+                /*if (pLen == 1) return true/false; // there shouldn't be just one * left in the pattern string, but if there is we can either consider that it'll match with everything left in the input string or it'll not match with anything
+                else return match(s, p, 0, pLen-2);*/
+                return match(s, p, 0, pLen-2);
+            }
+            else {
+                return false;
+            }
+        }
+
+        if (s[sLen-1] == p[pLen-1] || p[pLen-1] == '.')
+            return match(s, p, sLen-1, pLen-1);
+
+        if (p[pLen-1] == '*') {
+            //if (pLen == 1) return true/false; // there shouldn't be just one * left in the pattern string, but if there is we can either consider that it'll match with everything left in the input string or it'll not match with anything
+            boolean status = match(s, p, sLen, pLen-2); // without considering this wildcard
+            if (p[pLen-2] == s[sLen-1] || p[pLen-2] == '.')
+                status = status || match(s, p, sLen-1, pLen); // consider this wildcard (and repeat)
+            return status;
+        }
+
+        return false;
+    }
 
     class SimpleRecursiveSolution {
         // T(n): Exponential
@@ -49,10 +83,17 @@ public class RegularExpressionMatching {
     }
     
     public static void main(String[] args) {
-        String s = "aab";
-        String p = "c*a*b";
+        //String s = "aab";
+        //String p = "c*a*b"; // true
+        
+        String s = "mississippi";
+        String p = "mis*is*ip*."; // true
+        //String p = "mis*is*p*."; // false
+        
         RegularExpressionMatching o = new RegularExpressionMatching();
         System.out.println(o.new SimpleRecursiveSolution().isMatch(s, p)); // true
         System.out.println(o.new DPSolution().isMatch(s, p)); // true
+        
+        System.out.println(o.match(s, p)); // true
     }
 }

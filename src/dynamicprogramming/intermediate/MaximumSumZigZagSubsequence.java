@@ -1,5 +1,7 @@
 package dynamicprogramming.intermediate;
 
+import static java.lang.Math.max;
+
 // https://www.geeksforgeeks.org/maximum-sum-alternating-subsequence-sum/
 
 public class MaximumSumZigZagSubsequence {
@@ -21,21 +23,22 @@ public class MaximumSumZigZagSubsequence {
         */
         int[][] z = new int[n][2];
         
-        int res = Integer.MIN_VALUE;
+        z[0][0] = a[0]; z[0][1] = a[0];
+        int res = a[0];
         for (int i = 0; i < n; i++) {
             z[i][0] = a[i]; z[i][1] = a[i];
-            for (int j = 0; j < i; j++) {
-                if (a[j] < a[i])
-                    if (z[i][0] < z[j][1] + a[i])
-                        z[i][0] = z[j][1] + a[i];
+            for (int j = i-1; j >= 0; --j) {
+                if (a[i] > a[j])
+                    z[i][0] = max(z[i][0], z[j][1] + a[i]);
                 
-                if (a[j] > a[i])
-                    if (z[i][1] < z[j][0] + a[i])
-                        z[i][1] = z[j][0] + a[i];
+                if (a[i] < a[j])
+                    z[i][1] = max(z[i][1], z[j][0] + a[i]);
             }
-            if (res < Math.max(z[i][0], z[i][1]))
-                res = Math.max(z[i][0], z[i][1]);
+            
+            if (res < max(z[i][0], z[i][1]))
+                res = max(z[i][0], z[i][1]);
         }
+        
         return res;
     }
     
