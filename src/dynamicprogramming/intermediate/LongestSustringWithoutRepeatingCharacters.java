@@ -1,5 +1,7 @@
 package dynamicprogramming.intermediate;
 
+import static java.lang.Math.max;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,23 +12,31 @@ import java.util.Set;
 public class LongestSustringWithoutRepeatingCharacters {
 
     public static int len(String s) {
-        int maxLength = 0;
+        int maxLen = 0;
         Set<Character> set = new HashSet<Character>();
         
         int i = 0;
         int j = 0;
         while (j < s.length()) {
-            if (!set.contains(s.charAt(j))) {
-                set.add(s.charAt(j));
-                maxLength = Math.max(maxLength, j - i + 1);
+            char c = s.charAt(j);
+            if (!set.contains(c)) {
+                set.add(c);
+                maxLen = max(maxLen, j - i + 1);
                 j++;
-            } else {
-                set.remove(s.charAt(i));
+            }
+            else {
+                set.remove(c);
                 i++;
             }
         }
-        return maxLength;
+        
+        return maxLen;
     }
+    
+    // since the keyspace is limited, we can also use a boolean array instead of hashtable
+    // boolean[] visited = new boolean[256]
+    // int i = c = s.charAt(j);
+    // if (!visited[i])
     
     public static void main(String[] args) {
         System.out.println(len("ABDEFGABEF")); // 6

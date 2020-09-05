@@ -88,7 +88,12 @@ public class RegularExpressionMatching {
         
         String s = "mississippi";
         String p = "mis*is*ip*."; // true
+        
+        //String s = "mississippi";
         //String p = "mis*is*p*."; // false
+        
+        //String s = "mississippi";
+        //String p = ".*"; // true
         
         RegularExpressionMatching o = new RegularExpressionMatching();
         System.out.println(o.new SimpleRecursiveSolution().isMatch(s, p)); // true

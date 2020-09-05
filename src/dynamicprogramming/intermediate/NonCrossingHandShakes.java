@@ -33,7 +33,7 @@ public class NonCrossingHandShakes {
     
     public int countHandShakes(int n) {
         if (n % 2 == 1)
-            throw new IllegalStateException("n cannot be odd");
+            throw new IllegalArgumentException("n cannot be odd");
         
         return catalanNumber(n/2);
     }

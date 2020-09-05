@@ -1,5 +1,7 @@
 package dynamicprogramming.intermediate;
 
+import static java.lang.Math.max;
+
 import java.util.Arrays;
 
 // https://www.geeksforgeeks.org/dynamic-programming-building-bridges/
@@ -40,21 +42,18 @@ public class BuildingBridges {
         Arrays.sort(cityPairs);
         
         int n = cityPairs.length;
-        int[] res = new int[n];
+        int[] dp = new int[n];
         
-        res[0] = 1;
+        dp[0] = 1;
         int lis = 1;
         for (int i = 1; i < n; i++) {
-            res[i] = 1;
-            for (int j = 0; j < i; j++) {
-                if (cityPairs[j].north <= cityPairs[i].north) {
-                    if (res[i] < res[j] + 1) {
-                        res[i] = res[j] + 1;
-                    }
-                }
+            dp[i] = 1;
+            for (int j = i-1; j >= 0; --j) {
+                if (cityPairs[i].north >= cityPairs[j].north)
+                    dp[i] = max(dp[i], 1 + dp[j]);
             }
-            if (lis < res[i])
-                lis = res[i];
+            
+            lis = max(lis, dp[i]);
         }
         return lis;
     }

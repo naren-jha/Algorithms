@@ -2,6 +2,7 @@ package dynamicprogramming.intermediate;
 
 // https://www.geeksforgeeks.org/number-of-permutation-with-k-inversions/
 // https://stackoverflow.com/a/25747326/4210068
+// https://leetcode.com/problems/k-inverse-pairs-array/solution/
 
 public class NumberOfPermutationsWithKInversions {
     

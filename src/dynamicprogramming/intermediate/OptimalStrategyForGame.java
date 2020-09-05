@@ -32,16 +32,19 @@ public class OptimalStrategyForGame {
             int n = a.length;
             int[][] dp = new int[n][n];
             
-            for (int i = n-1; i >= 0; i--) {
-                for (int j = i; j < n; j++) {
-                    if (i == j)
-                        dp[i][j] = 0;
-                    else if ((j - i + 1) % 2 == 0) // users turn
+            // i == j case
+            for (int i = 0; i < n; ++i)
+                dp[i][i] = 0; // redundant in Java
+            
+            for (int i = n-2; i >= 0; i--) {
+                for (int j = i+1; j < n; j++) {
+                    if ((j - i + 1) % 2 == 0) // users turn
                         dp[i][j] = Math.max(a[i] + dp[i+1][j], a[j] + dp[i][j-1]);
                     else // opponents turn
                         dp[i][j] = Math.min(dp[i+1][j], dp[i][j-1]);
                 }
             }
+            
             return dp[0][n-1];
         }
     }

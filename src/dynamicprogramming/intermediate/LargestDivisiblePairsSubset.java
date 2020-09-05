@@ -1,5 +1,7 @@
 package dynamicprogramming.intermediate;
 
+import static java.lang.Math.max;
+
 import java.util.Arrays;
 
 // https://www.geeksforgeeks.org/largest-divisible-pairs-subset/
@@ -17,13 +19,12 @@ public class LargestDivisiblePairsSubset {
         
         for (int i = 1; i < n; i++) {
             dp[i] = 1;
-            for (int j = 0; j < i; j++) {
-                if (a[i] % a[j] == 0) {
-                    if (dp[j] + 1 > dp[i])
-                        dp[i] = dp[j] + 1;
-                }
+            for (int j = i-1; j >= 0; --j) {
+                if (a[i] % a[j] == 0)
+                    dp[i] = max(dp[i], 1 + dp[j]);
             }
         }
+        
         return dp[n-1];
     }
     

@@ -2,8 +2,6 @@ package dynamicprogramming.basic;
 
 import static java.lang.Math.max;
 
-import java.util.Arrays;
-
 // https://www.geeksforgeeks.org/longest-increasing-subsequence-dp-3/
 
 public class LongestIncreasingSubsequence {
