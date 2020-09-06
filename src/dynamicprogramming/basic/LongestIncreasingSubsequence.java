@@ -2,6 +2,8 @@ package dynamicprogramming.basic;
 
 import static java.lang.Math.max;
 
+import java.util.Arrays;
+
 // https://www.geeksforgeeks.org/longest-increasing-subsequence-dp-3/
 
 public class LongestIncreasingSubsequence {
@@ -24,7 +26,37 @@ public class LongestIncreasingSubsequence {
         return longest;
     }
     
-    // dp bottom-up
+    // =======================================================================
+    
+    // dp top-down memoization
+    public int lisMem(int[] a) {
+        int n = a.length;
+        // dp[i] stores LIS in a[0...i-1]
+        int[] dp = new int[n];
+        Arrays.fill(dp, -1);
+        
+        lisUtil(a, n-1, dp);
+        
+        // we'll have to get maximum starting from every index
+        return Arrays.stream(dp).max().getAsInt();
+    }
+    
+    private int lisUtil(int[] a, int i, int[] dp) {
+        if (i == 0) 
+            return dp[i] = 1;
+        
+        if (dp[i] != -1) return dp[i];
+        
+        dp[i] = 1; // every single element is length 1 LIS to begin with
+        for (int j = i-1; j >= 0; --j) {
+            int lisFromJ = lisUtil(a, j, dp);
+            if (a[i] > a[j]) 
+                dp[i] = max(dp[i], 1 + lisFromJ);
+        }
+        return dp[i];
+    }
+    
+    // dp bottom-up tabulation
     // T(n): O(n^2)
     public int lisDp(int[] a) {
         int n = a.length;
@@ -56,19 +88,19 @@ public class LongestIncreasingSubsequence {
         int[] dp = new int[n];
         
         dp[0] = 1;
+        int longest = 1;
         for (int i = 1; i < n; ++i) {
             dp[i] = 1;
             for (int j = i-1; j >= 0; --j) {
                 // if this number can be included
                 if (a[i] > a[j])
                     dp[i] = max(dp[i], 1 + dp[j]);
-                
-                // without including current number
-                dp[i] = max(dp[i], dp[j]);
             }
+            
+            longest = max(longest, dp[i]);
         }
         
-        return dp[n-1];
+        return longest;
     }
     
     /*
@@ -80,6 +112,8 @@ public class LongestIncreasingSubsequence {
     public static void main(String[] args) {
         int[] a = {10, 22, 9, 33, 21, 50, 41, 60, 10};
         LongestIncreasingSubsequence obj = new LongestIncreasingSubsequence();
+        System.out.println(obj.lisMem(a)); // 5
         System.out.println(obj.lisDp(a)); // 5
+        System.out.println(obj.lisDp2(a)); // 5
     }
 }
