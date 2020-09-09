@@ -11,27 +11,24 @@ import java.util.Random;
  */
 public class QuickSort {
 
-    public static void randomizedQuickSort(int[] a) {
-        randomizedQuickSort(a, 0, a.length-1);
+    public static void quickSort(int[] a) {
+        quickSort(a, 0, a.length-1);
     }
 
-    public static void randomizedQuickSort(int[] a, int p, int r) {
+    public static void quickSort(int[] a, int p, int r) {
         if (p >= r) return;
         
-        int q = randomizedPartition(a, p, r);
-        randomizedQuickSort(a, p, q-1);
-        randomizedQuickSort(a, q+1, r);
-    }
-
-    public static int randomizedPartition(int[] a, int p, int r) {
-        int i = randInt(p, r);
-        // exchange a[r] and a[i] to randomize the selection of pivot element
-        swap(a, r, i);
-        return partition(a, p, r);
+        int q = partition(a, p, r);
+        quickSort(a, p, q-1);
+        quickSort(a, q+1, r);
     }
 
     public static int partition(int[] a, int p, int r) {
+        int ri = randInt(p, r);
+        // exchange a[r] and a[ri] to randomize the selection of pivot element
+        swap(a, r, ri);
         int pivot = a[r];
+        
         int i = p;
         for (int j = p; j < r; j++) {
             if (a[j] <= pivot)
@@ -57,7 +54,7 @@ public class QuickSort {
     
     public static void main(String[] args) {
         int[] array = {10, 4, 6, 8, 13, 2, 3};
-        randomizedQuickSort(array);
+        quickSort(array);
         System.out.println(Arrays.toString(array)); // [2, 3, 4, 6, 8, 10, 13]
         
         runTests();
@@ -71,7 +68,7 @@ public class QuickSort {
             for (int j = 0; j < i; j++) array[j] = randInt(-1000000, +1000000);
             int[] arrayCopy = array.clone();
     
-            randomizedQuickSort(array);
+            quickSort(array);
             Arrays.sort(arrayCopy);
     
             if (!Arrays.equals(array, arrayCopy)) {
