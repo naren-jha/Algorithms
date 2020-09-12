@@ -115,7 +115,7 @@ public class LongestIncreasingSubsequence {
         int[] seq = new int[n];
         
         int len = 0;
-        for (int num : nums){
+        for (int num : nums) {
             int i = Arrays.binarySearch(seq, 0, len, num);
             if (i < 0) i = -i-1;
             
@@ -125,6 +125,8 @@ public class LongestIncreasingSubsequence {
         
         return len;
     }
+    // binary search returns (-(insertion point) - 1) since the key is not present
+    
     //https://algorithmsandme.com/longest-increasing-subsequence-in-onlogn/
     /*
      * When we are trying to insert a bigger number than the last inserted number in seq[] (i.e., seq[len-1]),
@@ -159,6 +161,26 @@ public class LongestIncreasingSubsequence {
      * get len of LIS as still 1 which should have been 2.
      */
     
+    // above algo without using library binary search
+    public int lenOfLIS(int[] nums) {
+        int n = nums.length;
+        int[] seq = new int[n];
+        
+        int len = 0;
+        for (int num : nums) {
+            int lo = 0, hi = len;
+            while (lo != hi) {
+                int mid = (lo + hi) / 2;
+                if (num > seq[mid]) lo = mid + 1;
+                else hi = mid;
+            }
+            
+            seq[hi] = num;
+            if (hi == len) len++;
+        }
+        return len;
+    }
+    
     public static void main(String[] args) {
         int[] a = {10, 22, 9, 33, 21, 50, 41, 60, 10};
         LongestIncreasingSubsequence obj = new LongestIncreasingSubsequence();
@@ -166,5 +188,6 @@ public class LongestIncreasingSubsequence {
         System.out.println(obj.lisDp(a)); // 5
         System.out.println(obj.lisDp2(a)); // 5
         System.out.println(obj.lengthOfLIS(a)); // 5
+        System.out.println(obj.lenOfLIS(a)); // 5
     }
 }
