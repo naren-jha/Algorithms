@@ -31,7 +31,7 @@ public class ChangeMakingProblem {
             dp[i][0] = 0;
         
         // if amount is 5 then max valid count will be 1+1+1+1+1 = 5, so we take one more than that
-        int maxVal = amount+1; 
+        int maxVal = amount+1;
         
         for (int j = 1; j <= amount; ++j) {// i == 0
             if (j >= coins[0] && dp[0][j-coins[0]] != maxVal)
@@ -78,7 +78,7 @@ public class ChangeMakingProblem {
         return dp[amount] != maxVal ? dp[amount] : -1;
     }
     
-    // Futher refactoring
+    // Further refactoring
     public int coinChange3(int[] coins, int amount) {
         int n = coins.length;
         int[] dp = new int[amount+1];

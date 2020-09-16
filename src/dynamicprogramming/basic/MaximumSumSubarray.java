@@ -8,6 +8,7 @@ import static java.lang.Math.max;
 public class MaximumSumSubarray {
 
     // returns largest sum of a continuous subarray
+    // this handles all negative number case too (if we initialize maxSoFar = 0, then it won't)
     public static int maxSubArraySum(int[] a) {
         int maxSoFar = Integer.MIN_VALUE;
         int maxEndingHere = 0;
