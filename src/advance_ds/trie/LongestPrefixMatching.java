@@ -36,13 +36,11 @@ public class LongestPrefixMatching {
     
     public String solution(String input) {
         TrieNode current = trie.root;
-        StringBuilder res = new StringBuilder();
         int lastMatch = 0;
         for (int index = 0; index < input.length(); index++) {
             char ch = input.charAt(index);
             TrieNode node = current.children.get(ch);
             if (node != null) {
-                res.append(ch);
                 current = node;
                 if (current.isEndOfWord)
                     lastMatch = index + 1;
@@ -50,7 +48,7 @@ public class LongestPrefixMatching {
             else
                 break;
         }
-        return res.toString().substring(0, lastMatch);
+        return input.toString().substring(0, lastMatch);
     }
     
     public static void main(String[] args) {

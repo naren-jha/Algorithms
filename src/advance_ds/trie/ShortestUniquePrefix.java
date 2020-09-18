@@ -108,7 +108,7 @@ public class ShortestUniquePrefix {
 
     public static void main(String[] args) {
         ShortestUniquePrefix trie = new ShortestUniquePrefix();
-        String[] input = {"zebra", "dog", "duck", "dove"};
+        String[] input = {"zebra", "zeb", "duck", "dove"};
         String[] result = trie.solution(input);
         for (int i = 0; i < input.length; i++) {
             System.out.println(input[i] + " --> " + result[i]);

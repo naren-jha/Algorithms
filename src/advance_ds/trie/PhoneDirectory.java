@@ -48,10 +48,8 @@ public class PhoneDirectory extends Trie {
     public List<String> searchContacts(String query) {
         List<String> resultList = new ArrayList<String>();
         TrieNode current = root; // starting with root
-        String prefix = "";
         for (int index = 0; index < query.length(); index++) {
             char ch = query.charAt(index);
-            prefix += ch;
             TrieNode node = current.children.get(ch);
             if (node == null) {
                 // return empty list if no match is found
@@ -60,7 +58,7 @@ public class PhoneDirectory extends Trie {
             current = node;
         }
         
-        populateWordsIntoResultListUsingDFS(current, resultList, prefix);
+        populateWordsIntoResultListUsingDFS(current, resultList, query);
         return resultList;
     }
     
@@ -96,7 +94,7 @@ public class PhoneDirectory extends Trie {
             
             /*
              *  Search result for input 'g':
-                geeksquiz, gforgeeks 
+                geeksquiz, gforgeeks, 
                 Search result for input 'ge':
                 geeksquiz, 
                 Search result for input 'gek':

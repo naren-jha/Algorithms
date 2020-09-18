@@ -29,7 +29,7 @@ public class MinimumInitialPointsToReachDestination {
         }
         else {
             minPointsNeeded = min(minPointToEnd(a, r, c+1), 
-                                minPointToEnd(a, r+1, c+1)); // minimum of either direction
+                                minPointToEnd(a, r, c+1)); // minimum of either direction
         }
     
         minPointsNeeded  -= a[r][c]; // consider current cell in the path

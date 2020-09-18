@@ -43,28 +43,23 @@ public class WordFormationUsingConcatenation extends Trie {
     public boolean isPossible(String word) {
         // Search for the word in the trie and get its prefix positions
         // upto which there is matched 
-        List<Integer> prefixPositions1 = findPrefix(word); 
+        List<Integer> prefixPositions = findPrefixIndices(word); 
        
         // Word formation is not possible if the word did not have 
         // at least one prefix match
-        if (prefixPositions1.isEmpty()) 
+        if (prefixPositions.isEmpty()) 
             return false; 
        
         // Search for rest of substring for each prefix match
-        for (Integer len1 : prefixPositions1) {
-            String restOfSubstring = word.substring(len1, word.length()); 
-            List<Integer> prefixPositions2 = findPrefix(restOfSubstring);
-            for (Integer len2 : prefixPositions2) {
-                // check if word formation is possible
-                if (len1 + len2 == word.length())
-                    return true;
-            }
+        for (Integer i : prefixPositions) {
+            String restOfSubstring = word.substring(i, word.length()); 
+            if (search(restOfSubstring)) return true;
         }
         
         return false;
     }
     
-    public List<Integer> findPrefix(String word) {
+    public List<Integer> findPrefixIndices(String word) {
         List<Integer> prefixPositions = new ArrayList<Integer>();
         TrieNode current = root; // starting with root
         int index;
