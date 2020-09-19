@@ -207,7 +207,7 @@ Repo to host code for learning Data Structures and Algorithms
   * Cycle Detection
     - [In Directed Graph - Using DFS](https://github.com/njha-collab/Algorithms/blob/master/src/graph/CycleInDirectedGraph.java) **- O(V+E)**
     - [In Undirected Graph - Using DFS](https://github.com/njha-collab/Algorithms/blob/master/src/graph/CycleInUndirectedGraph.java) **- O(V+E)**
-    - [In Directed Graph - Using Union Find](https://github.com/njha-collab/Algorithms/blob/master/src/graph/FindCycleUnionFind.java) **- O(E)**
+    - [In Undirected Graph - Using Union Find](https://github.com/njha-collab/Algorithms/blob/master/src/graph/FindCycleUnionFind.java) **- O(E)**
   * [Connected Components - Using Union Find](https://github.com/njha-collab/Algorithms/blob/master/src/graph/NumberOfConnectedComponentsUnionFind.java) **- O(E)**
   * Single-Source Shortest Paths Algorithms
     - [The Bellman-Ford Algorithm](https://github.com/njha-collab/Algorithms/blob/master/src/graph/BellmanFord.java) **- O(VE)**
