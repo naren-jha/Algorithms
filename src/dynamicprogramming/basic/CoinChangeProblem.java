@@ -12,12 +12,15 @@ public class CoinChangeProblem {
         public int coinChange(int[] coins, int n, int sum) {
             if (sum == 0)
                 return 1;
-            if (sum < 0)
-                return 0;
             if (n == 0)
                 return 0;
             
-            return coinChange(coins, n, sum-coins[n-1]) + coinChange(coins, n-1, sum);
+            int count = coinChange(coins, n-1, sum); // without considering last coin
+            
+            if (sum >= coins[n-1])
+                count += coinChange(coins, n, sum-coins[n-1]); // by considering last coin
+            
+            return count;
         }
     }
     
@@ -27,16 +30,17 @@ public class CoinChangeProblem {
         public int coinChangeMemoized(int[] coins, int n, int sum, int[][] res) {
             if (sum == 0)
                 return 1;
-            if (sum < 0)
-                return 0;
             if (n == 0)
                 return 0;
             
             if (res[n][sum] != -1)
                 return res[n][sum];
             
-            res[n][sum] = coinChangeMemoized(coins, n, sum-coins[n-1], res) 
-                                    + coinChangeMemoized(coins, n-1, sum, res);
+            res[n][sum] = coinChangeMemoized(coins, n-1, sum, res);
+            
+            if (sum >= coins[n-1])
+                res[n][sum] += coinChangeMemoized(coins, n, sum-coins[n-1], res);
+            
             return res[n][sum];
         }
         
@@ -44,25 +48,23 @@ public class CoinChangeProblem {
         // T(n) = O(n*sum), S(n) = O(n*sum)
         public int coinChangeBottomUp(int[] coins, int sum) {
             int n = coins.length;
-            int[][] res = new int[n][sum+1];
+            int[][] dp = new int[n+1][sum+1];
             
-            for (int i = 0; i < n; i++) {
-                Arrays.fill(res[i], 0); // redundant in java
-                
-                res[i][0] = 1; // whenever we reach amount 
-                // zero while calculating results, that means we have
-                // found a combination, so we should return 1 for that.
-            }
+            // when n == 0
+            Arrays.fill(dp[0], 0); // redundant in java
             
-            for (int i = 0; i < n; i++) {
+            // when sum == 0
+            for (int i = 0; i <= n; i++)
+                dp[i][0] = 1; 
+            
+            for (int i = 1; i <= n; i++) {
                 for (int j = 1; j <= sum; j++) {
-                    if (i > 0)
-                        res[i][j] = res[i-1][j];
-                    if (j >= coins[i])
-                        res[i][j] += res[i][j-coins[i]];
+                    dp[i][j] = dp[i-1][j];
+                    if (j >= coins[i-1])
+                        dp[i][j] += dp[i][j-coins[i-1]];
                 }
             }
-            return res[n-1][sum];
+            return dp[n][sum];
         }
         
         /*
@@ -76,15 +78,11 @@ public class CoinChangeProblem {
         public int coinChange(int[] coins, int sum) {
             int[] res = new int[sum+1];
             Arrays.fill(res, 0); // redundant in java
+            res[0] = 1; // when sum == 0
             
-            res[0] = 1; // whenever we reach zero while calculating results 
-            // in innermost 'for' loop below, that simply means that we have 
-            // found a combination that sums to current amount (j) 
-            // so we should return 1 to count that combination.
-            
-            for (int i = 0; i < coins.length; i++) {
-                for (int j = coins[i]; j <= sum; j++) {
-                    res[j] += res[j-coins[i]];
+            for (int i = 1; i <= coins.length; i++) {
+                for (int j = coins[i-1]; j <= sum; j++) {
+                    res[j] += res[j-coins[i-1]];
                 }
             }
             return res[sum];

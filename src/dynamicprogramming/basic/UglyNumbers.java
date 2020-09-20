@@ -39,26 +39,18 @@ public class UglyNumbers {
         public int getUglyNumber(int n) {
             int[] uglyNumbers = new int[n];
             uglyNumbers[0] = 1; // first ugly number
-            int i2 = 0, i3 = 0, i5 = 0; // multiplier indexes
+            int p2 = 0, p3 = 0, p5 = 0; // multiplier indexes
             
-            int nextMultipleOf2 = 2;
-            int nextMultipleOf3 = 3;
-            int nextMultipleOf5 = 5;
-            for (int index = 1; index < n; index++) {
-                uglyNumbers[index] = Math.min(nextMultipleOf2, Math.min(nextMultipleOf3, nextMultipleOf5));
+            for (int i = 1; i < n; ++i) {
+                int m2 = uglyNumbers[p2] * 2;
+                int m3 = uglyNumbers[p3] * 3;
+                int m5 = uglyNumbers[p5] * 5;
                 
-                if (uglyNumbers[index] == nextMultipleOf2) {
-                    i2++;
-                    nextMultipleOf2 = uglyNumbers[i2]*2;
-                }
-                if (uglyNumbers[index] == nextMultipleOf3) {
-                    i3++;
-                    nextMultipleOf3 = uglyNumbers[i3]*3;
-                }
-                if (uglyNumbers[index] == nextMultipleOf5) {
-                    i5++;
-                    nextMultipleOf5 = uglyNumbers[i5]*5;
-                }
+                uglyNumbers[i] = Math.min(m2, Math.min(m3, m5));
+                
+                if (uglyNumbers[i] == m2) p2++;
+                if (uglyNumbers[i] == m3) p3++;
+                if (uglyNumbers[i] == m5) p5++;
             }
             return uglyNumbers[n-1];
         }
