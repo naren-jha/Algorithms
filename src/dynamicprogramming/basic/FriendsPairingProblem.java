@@ -9,8 +9,11 @@ public class FriendsPairingProblem {
     private class SimpleRecursiveSolution {
         // T(n): Exponential
         public int pairFriends(int n) {
-            if (n <= 2)
-                return n;
+            if (n == 0)
+                return 1;
+            if (n == 1)
+                return 1;
+            
             return pairFriends(n-1) + (n-1)*pairFriends(n-2);
         }
     }
@@ -19,8 +22,10 @@ public class FriendsPairingProblem {
         // top-to-bottom memoized
         // T(n): O(n), S(n): O(n)
         public int pairFriendsMemoized(int n, int[] res) {
-            if (n <= 2)
-                return n;
+            if (n == 0)
+                return 1;
+            if (n == 1)
+                return 1;
             
             if (res[n] != -1)
                 return res[n];
@@ -34,8 +39,8 @@ public class FriendsPairingProblem {
         public int pairFriendsBottomUp(int n) {
             int[] res = new int[n+1];
             
-            res[0] = 0; res[1] = 1; res[2] = 2;
-            for (int i = 3; i <= n; i++)
+            res[0] = 1; res[1] = 1;
+            for (int i = 2; i <= n; i++)
                 res[i] = res[i-1] + (i-1)*res[i-2];
             
             return res[n];

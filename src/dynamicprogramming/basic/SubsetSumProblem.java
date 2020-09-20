@@ -10,12 +10,15 @@ public class SubsetSumProblem {
             // Base conditions
             if (sum == 0)
                 return true;
-            if (sum < 0)
-                return false;
             if (n == 0)
                 return false;
             
-            return isSubsetSum(a, n-1, sum) || isSubsetSum(a, n-1, sum-a[n-1]);
+            boolean res = isSubsetSum(a, n-1, sum); // without considering last num
+            
+            if (sum >= a[n-1])
+                res = res || isSubsetSum(a, n-1, sum-a[n-1]); // by considering last num
+            
+            return res;
         }
     }
     
@@ -24,21 +27,21 @@ public class SubsetSumProblem {
         // T(n) = O(n*sum)
         // S(n) = O(n*sum)
         public boolean isSubsetSum(int[] a, int n, int sum) {
-            boolean[][] res = new boolean[n+1][sum+1];
+            boolean[][] dp = new boolean[n+1][sum+1];
             
             // when sum == 0
             for (int i = 0; i <= n; i++)
-                res[i][0] = true;
+                dp[i][0] = true;
             
             // when n == 0
             for (int j = 1; j <= sum; j++)
-                res[0][j] = false; // redundant in Java
+                dp[0][j] = false; // redundant in Java
             
             for (int i = 1; i <= n; i++) {
                 for (int j = 1; j <= sum; j++) {
-                    res[i][j] = res[i-1][j];
-                    if (j - a[i-1] >= 0)
-                        res[i][j] = res[i][j] || res[i-1][j - a[i-1]];
+                    dp[i][j] = dp[i-1][j];
+                    if (j >= a[i-1])
+                        dp[i][j] = dp[i][j] || dp[i-1][j - a[i-1]];
                 }
             }
             
@@ -50,7 +53,7 @@ public class SubsetSumProblem {
                 System.out.println();
             }*/
             
-            return res[n][sum];
+            return dp[n][sum];
         }
         
         /*
@@ -64,25 +67,25 @@ public class SubsetSumProblem {
         // T(n) = O(n*sum)
         // S(n) = O(sum)
         public boolean isSubsetSumSpaceOptimized(int[] a, int n, int sum) {
-            boolean[][] res = new boolean[2][sum+1];
+            boolean[][] dp = new boolean[2][sum+1];
             
             // when sum == 0
-            res[0][0] = true;
-            res[1][0] = true;
+            dp[0][0] = true;
+            dp[1][0] = true;
             
             // when n == 0
             for (int j = 1; j <= sum; j++)
-                res[0][j] = false; // redundant in Java
+                dp[0][j] = false; // redundant in Java
             
             for (int i = 1; i <= n; i++) {
                 for (int j = 1; j <= sum; j++) {
-                    res[i % 2][j] = res[(i-1) % 2][j];
+                    dp[i % 2][j] = dp[(i-1) % 2][j];
                     if (j - a[i-1] >= 0)
-                        res[i % 2][j] = res[i % 2][j] || res[(i-1) % 2][j - a[i-1]];
+                        dp[i % 2][j] = dp[i % 2][j] || dp[(i-1) % 2][j - a[i-1]];
                 }
             }
             
-            return res[n % 2][sum];
+            return dp[n % 2][sum];
         }
     }
 
