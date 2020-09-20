@@ -1,100 +1,72 @@
 package dynamicprogramming.basic;
 
-import java.util.Arrays;
-
 // https://leetcode.com/problems/coin-change/
 
 public class ChangeMakingProblem {
 
     // Recurrence:
-    int f(int[] coins, int amount, int i) {
+    int f(int[] coins, int amount, int n) {
         if (amount == 0) return 0;
-
-        if (i == 0) {
-            if (amount >= coins[i])
-                return 1 + f(coins, amount-coins[i], i);
-            else return -1;
+        if (n == 0) return Integer.MAX_VALUE;
+        
+        int minCount = f(coins, amount, n-1); // without considering last coin
+        
+        if (amount >= coins[n-1]) {
+            int consideringLastCoin = f(coins, amount-coins[n-1], n); // we can consider same coin multiple times
+            if (consideringLastCoin != Integer.MAX_VALUE)
+                consideringLastCoin += 1; // since we considered this coin, add 1
+            minCount = Math.min(minCount, consideringLastCoin);
         }
         
-        int minCount = f(coins, amount, i-1);
-        if (amount >= coins[i])
-            minCount = Math.min(minCount, 1 + f(coins, amount-coins[i], i));
         return minCount;
     }
     
     // DP Bottom-Up, T(n): O(n*amount), S(n): O(n*amount)
     public int coinChange(int[] coins, int amount) {        
         int n = coins.length;
-        int[][] dp = new int[n][amount+1];
+        int[][] dp = new int[n+1][amount+1];
         
-        for (int i = 0; i < n; ++i) // amount == 0
+        for (int i = 0; i <= n; ++i) // amount == 0
             dp[i][0] = 0;
         
-        // if amount is 5 then max valid count will be 1+1+1+1+1 = 5, so we take one more than that
-        int maxVal = amount+1;
-        
-        for (int j = 1; j <= amount; ++j) {// i == 0
-            if (j >= coins[0] && dp[0][j-coins[0]] != maxVal)
-                dp[0][j] = 1 + dp[0][j-coins[0]];
-            else
-                dp[0][j] = maxVal;
-        }
+        for (int j = 1; j <= amount; ++j) // n == 0
+            dp[0][j] = Integer.MAX_VALUE;
             
-        for (int i = 1; i < n; ++i) {
+        for (int i = 1; i <= n; ++i) {
             for (int j = 1; j <= amount; ++j) {
-                dp[i][j] = dp[i-1][j];
-                if (j >= coins[i])
-                    dp[i][j] = Math.min(dp[i][j], 1 + dp[i][j-coins[i]]);
+                dp[i][j] = dp[i-1][j]; // without considering
+                
+                if (j >= coins[i-1]) {
+                    int consideringLastCoin = dp[i][j-coins[i-1]];
+                    if (consideringLastCoin != Integer.MAX_VALUE)
+                        consideringLastCoin += 1;
+                    dp[i][j] = Math.min(dp[i][j], consideringLastCoin);
+                }
             }
         }
         
-        return dp[n-1][amount] != maxVal ? dp[n-1][amount] : -1;
+        return dp[n][amount] != Integer.MAX_VALUE ? dp[n][amount] : -1;
     }
     
     // Space Optimization, T(n): O(n*amount), S(n): O(amount)
-    public int coinChange2(int[] coins, int amount) {
+    public int coinChangeSO(int[] coins, int amount) {
         int n = coins.length;
         int[] dp = new int[amount+1];
         
         dp[0] = 0; // amount == 0
+        for (int j = 1; j <= amount; ++j) // n == 0
+            dp[j] = Integer.MAX_VALUE;
             
-        // if amount is 5 then max valid count will be 1+1+1+1+1 = 5, so we take one more than that
-        int maxVal = amount+1; 
-        
-        for (int j = 1; j <= amount; ++j) {// i == 0
-            if (j >= coins[0] && dp[j-coins[0]] != maxVal)
-                dp[j] = 1 + dp[j-coins[0]];
-            else
-                dp[j] = maxVal;
-        }
-            
-        for (int i = 1; i < n; ++i) {
-            for (int j = 1; j <= amount; ++j) {
-                if (j >= coins[i])
-                    dp[j] = Math.min(dp[j], 1 + dp[j-coins[i]]);
+        for (int i = 1; i <= n; ++i) {
+            for (int j = coins[i-1]; j <= amount; ++j) {
+                int consideringLastCoin = dp[j-coins[i-1]];
+                if (consideringLastCoin != Integer.MAX_VALUE)
+                    consideringLastCoin += 1;
+                dp[j] = Math.min(dp[j], consideringLastCoin);
             }
         }
         
-        return dp[amount] != maxVal ? dp[amount] : -1;
-    }
-    
-    // Further refactoring
-    public int coinChange3(int[] coins, int amount) {
-        int n = coins.length;
-        int[] dp = new int[amount+1];
-        int maxVal = amount+1;
-        
-        Arrays.fill(dp, maxVal);
-        dp[0] = 0; // amount == 0
-            
-        for (int i = 0; i < n; ++i) {
-            for (int j = 1; j <= amount; ++j) {
-                if (j >= coins[i])
-                    dp[j] = Math.min(dp[j], 1 + dp[j-coins[i]]);
-            }
-        }
-        
-        return dp[amount] > amount ? -1 : dp[amount];
+        return dp[amount] != Integer.MAX_VALUE ? dp[amount] : -1;
     }
     
     public static void main(String[] args) {
@@ -103,7 +75,6 @@ public class ChangeMakingProblem {
         int amount = 11;
         
         System.out.println(solver.coinChange(coins, amount)); // 3
-        System.out.println(solver.coinChange2(coins, amount)); // 3
-        System.out.println(solver.coinChange3(coins, amount)); // 3
+        System.out.println(solver.coinChangeSO(coins, amount)); // 3
     }
 }
