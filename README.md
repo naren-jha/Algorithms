@@ -46,7 +46,7 @@ Repo to host code for learning Data Structures and Algorithms
 8. [Coin Change Problem](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/CoinChangeProblem.java)
 9. [Friends Pairing Problem](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/FriendsPairingProblem.java)
 10. [Subset Sum Problem](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/SubsetSumProblem.java)
-11. [Perfect Sum Problem](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/PerfectSumProblem.java)
+11. [**Perfect Sum Problem**](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/PerfectSumProblem.java)
 12. [Subset Sum Divisible By M](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/SubsetSumDivisibleByM.java)
 13. [Change Making Problem](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/ChangeMakingProblem.java)
 14. [Rod Cutting Problem](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/RodCuttingProblem.java)
