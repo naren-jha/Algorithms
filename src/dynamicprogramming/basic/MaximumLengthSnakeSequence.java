@@ -1,84 +1,106 @@
 package dynamicprogramming.basic;
 
-import java.util.Stack;
+import static java.lang.Math.abs;
+import static java.lang.Math.max;
+
+import java.util.StringJoiner;
 
 // https://www.geeksforgeeks.org/find-maximum-length-snake-sequence/
 
 public class MaximumLengthSnakeSequence {
     
+    // Recurrence
+    int f(int[][] mat, int i, int j) {
+        if (i == mat.length-1 && j == mat[0].length-1) return 0; // 2 cells form snake of length 1
+        
+        int down = 0;
+        if (i != mat.length-1) {
+            down = f(mat, i+1, j);
+            if (abs(mat[i][j] - mat[i+1][j]) == 1) down += 1;
+        }
+        
+        int right = 0;
+        if (j != mat[0].length-1) {
+            right = f(mat, i, j+1);
+            if (abs(mat[i][j] - mat[i][j+1]) == 1) right += 1;
+        }
+        
+        return max(down, right);
+    }
+    
     public void findMaxLengthSnakeSequence(int[][] mat) {
-        int m = mat.length;
-        if (m == 0)
+        int r = mat.length;
+        if (r == 0)
             return;
-        int n = mat[0].length;
+        int c = mat[0].length;
         
-        // create lookup matrix of same size as input matrix
-        // which will store the maximum length of snake sequence 
-        // possible for each location in input matrix, with tail
-        // of snake at that location of input matrix
-        int[][] lookup = new int[m][n];
+        int[][] dp = new int[r][c];
         
-        // (0, 0) location will have snake of length 0
-        lookup[0][0] = 0; // redundant in java
+        dp[r-1][c-1] = 0; // redundant in java
         
         // fill the lookup matrix by calculating max length
         // snake sequence possible for each location
         int maxLength = 0;
         int maxRow = 0, maxCol = 0;
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                if (i == 0 && j== 0)
-                    continue;
+        for (int i = r-1; i >= 0; --i) {
+            for (int j = c-1; j >= 0; --j) {
+                if (i == r-1 && j== c-1) continue;
                 
-                // look above
-                if (i > 0 && Math.abs(mat[i][j] - mat[i-1][j]) == 1)
-                    lookup[i][j] = lookup[i-1][j] + 1;
+                int down = 0;
+                if (i != r-1) {
+                    down = dp[i+1][j];
+                    if (abs(mat[i][j] - mat[i+1][j]) == 1) down += 1;
+                }
                 
-                // look left
-                if (j > 0 && Math.abs(mat[i][j] - mat[i][j-1]) == 1)
-                    lookup[i][j] = Math.max(lookup[i][j], lookup[i][j-1] + 1);
+                int right = 0;
+                if (j != c-1) {
+                    right = dp[i][j+1];
+                    if (abs(mat[i][j] - mat[i][j+1]) == 1) right += 1;
+                }
                 
-                if (lookup[i][j] > maxLength) {
-                    maxLength = lookup[i][j];
+                dp[i][j] = max(down, right);
+                
+                if (dp[i][j] > maxLength) {
+                    maxLength = dp[i][j];
                     maxRow = i; maxCol = j;
                 }
             }
         }
         
         System.out.println("Max length of snake sequnence is " + maxLength);
-        if (maxLength > 0) {
-            Stack<Point> path = new Stack<Point>();
-            findPath(mat, lookup, maxRow, maxCol, path);
+        
+        printSequence(mat, dp, maxRow, maxCol);
+    }
+    
+    private void printSequence(int[][] mat, int[][] dp, int i, int j) {
+        StringJoiner joiner = new StringJoiner(" -> ");
+        int r = mat.length, c = mat[0].length;
+        
+        while (i != r-1 || j != c-1) {
+            joiner.add(String.format("(%d, %d)", i, j));
             
-            System.out.println("Snake sequence is: ");
-            while (!path.isEmpty()) {
-                Point point = path.pop();
-                System.out.println(mat[point.x][point.y] + 
-                        "\t(" + point.x + ", " + point.y + ")");
+            // if it can only go right
+            if (i == r-1) {
+                j++;
+            }
+            
+            // if it can only go down
+            else if (j == c-1) {
+                i++;
+            }
+            
+            // can go in both direction
+            else {
+                int down = dp[i+1][j];
+                int right = dp[i][j+1];
+                
+                if (abs(mat[i][j] - mat[i+1][j]) == 1 && down >= right) i++;
+                else j++;
             }
         }
-    }
-    
-    private class Point {
-        int x; int y;
-        public Point(int x, int y) {
-            this.x = x;
-            this.y = y;
-        }
-    }
-    
-    private void findPath(int[][] mat, int[][] lookup, int i, int j, Stack<Point> path) {
+        joiner.add(String.format("(%d, %d)", i, j)); // add bottom right cell
         
-        path.push(new Point(i, j));
-        
-        // base condition
-        if (lookup[i][j] == 0)
-            return;
-        
-        if (i > 0 && lookup[i][j] - 1 == lookup[i-1][j])
-            findPath(mat, lookup, i-1, j, path);
-        else if (j > 0 && lookup[i][j] - 1 == lookup[i][j-1])
-            findPath(mat, lookup, i, j-1, path);
+        System.out.println("Path: " + joiner.toString());
     }
     
     public static void main(String[] args) {
@@ -87,9 +109,20 @@ public class MaximumLengthSnakeSequence {
                          {8, 7, 6, 5}, 
                          {7, 3, 1, 6}, 
                          {1, 1, 1, 7}, 
-                      }; 
-        MaximumLengthSnakeSequence obj = new MaximumLengthSnakeSequence();
-        obj.findMaxLengthSnakeSequence(mat);
+                      };
+        /* dp
+         * {7, 6, 5, 3}, 
+           {6, 5, 4, 3}, 
+           {2, 2, 2, 2}, 
+           {1, 1, 1, 1},
+         */
+        MaximumLengthSnakeSequence solver = new MaximumLengthSnakeSequence();
+        
+        System.out.println(solver.f(mat, 0, 0)); // 6
+        
+        solver.findMaxLengthSnakeSequence(mat);
+        // Max length of snake sequnence is 6
+        // Path: (0, 0) -> (1, 0) -> (1, 1) -> (1, 2) -> (1, 3) -> (2, 3) -> (3, 3)
     }
 
 }
