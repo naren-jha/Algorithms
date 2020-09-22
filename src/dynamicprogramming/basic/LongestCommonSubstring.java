@@ -8,19 +8,16 @@ public class LongestCommonSubstring {
     
     // top-down memoization
     /*
-     * The core idea is to first find the longest common suffix for all 
-     * the pairs of string1 and string2's prefix, the result is stored 
-     * in a 2D array. Then find in this array the largest length. The 
-     * tricky part of this question is we are not looking for an optimal 
-     * subproblem structure for the original question. Instead we first 
-     * convert the original question to another question, i.e. finding 
-     * the longest common suffix for ALL the pairs of string1's and 
-     * string2's prefix. Remember we need to calculate for all the pairs. 
-     * For example, if we use a topdown approach, for the problem P(m, n), 
-     * if string1[m-1] and string2[n-1] are not equal to each other then 
-     * P(m, n) = 0, this doesn't mean the recursion stops here, instead 
-     * it needs to continue until we calculated all P(i, j) where 0<=i<=m 
-     * and 0<=j<=n.
+     * The idea is to first find the longest common suffix for all the pairs of s1's 
+     * and s2's prefix, the result is stored in a 2D array. Then find the largest length 
+     * in this array. The tricky part of this question is that we are not looking for 
+     * an optimal structure for the original question, instead we first convert the 
+     * original question to another question, i.e. finding the longest common suffix 
+     * for ALL the pairs of s1's and s2's prefix. Remember we need to calculate for all 
+     * the pairs. For example, if we use a top-down approach, for the problem P(m, n), 
+     * if s1[m-1] and s2[n-1] are not equal then P(m, n) = 0, this doesn't mean the 
+     * recursion stops here, instead it needs to continue until we calculated all P(i, j) 
+     * where 0<=i<=m  and 0<=j<=n
      */
     public int lcsMem(String s1, String s2) {
         int m = s1.length();
@@ -87,24 +84,25 @@ public class LongestCommonSubstring {
         int m = s1.length();
         int n = s2.length();
         int lcs = 0;
-        int[][] res = new int[m][n];
+        int[][] dp = new int[m][n];
         
         for (int j = 0; j < n; j++)
-            res[0][j] = (s1.charAt(0) == s2.charAt(j)) ? 1 : 0;
+            dp[0][j] = (s1.charAt(0) == s2.charAt(j)) ? 1 : 0;
         for (int i = 0; i < m; i++)
-            res[i][0] = (s1.charAt(i) == s2.charAt(0)) ? 1 : 0;
+            dp[i][0] = (s1.charAt(i) == s2.charAt(0)) ? 1 : 0;
         
         // fill rest of the table
         for (int i = 1; i < m; i++) {
             for (int j = 1; j < n; j++) {
-                if (s1.charAt(i-1) == s2.charAt(j-1)) {
-                    res[i][j] = res[i-1][j-1] + 1;
-                    lcs = Math.max(lcs, res[i][j]);
+                if (s1.charAt(i) == s2.charAt(j)) {
+                    dp[i][j] = dp[i-1][j-1] + 1;
+                    lcs = Math.max(lcs, dp[i][j]);
                 }
                 else
-                    res[i][j] = 0;
+                    dp[i][j] = 0;
             }
         }
+        
         return lcs;
     }
     

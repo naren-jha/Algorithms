@@ -28,6 +28,7 @@ public class MaximumLengthSnakeSequence {
         return max(down, right);
     }
     
+    // dp bottom-up
     public void findMaxLengthSnakeSequence(int[][] mat) {
         int r = mat.length;
         if (r == 0)
@@ -38,8 +39,6 @@ public class MaximumLengthSnakeSequence {
         
         dp[r-1][c-1] = 0; // redundant in java
         
-        // fill the lookup matrix by calculating max length
-        // snake sequence possible for each location
         int maxLength = 0;
         int maxRow = 0, maxCol = 0;
         for (int i = r-1; i >= 0; --i) {
@@ -67,7 +66,7 @@ public class MaximumLengthSnakeSequence {
             }
         }
         
-        System.out.println("Max length of snake sequnence is " + maxLength);
+        System.out.println("Max length of snake sequence is " + maxLength);
         
         printSequence(mat, dp, maxRow, maxCol);
     }
@@ -121,7 +120,7 @@ public class MaximumLengthSnakeSequence {
         System.out.println(solver.f(mat, 0, 0)); // 6
         
         solver.findMaxLengthSnakeSequence(mat);
-        // Max length of snake sequnence is 6
+        // Max length of snake sequence is 6
         // Path: (0, 0) -> (1, 0) -> (1, 1) -> (1, 2) -> (1, 3) -> (2, 3) -> (3, 3)
     }
 

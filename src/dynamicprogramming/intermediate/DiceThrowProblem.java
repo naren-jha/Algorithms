@@ -2,18 +2,17 @@ package dynamicprogramming.intermediate;
 
 import static java.lang.Math.min;
 
-import java.util.Arrays;
-
 // https://www.geeksforgeeks.org/dice-throw-dp-30/
 
 public class DiceThrowProblem {
     
     // Aug 2020, TC: Exp
     public int countWays(int n, int m, int sum) {
-        if (n == 1) return 1;
+        if (sum == 0 && n == 0) return 1;
+        if (sum == 0 || n == 0) return 0;
         
         int count = 0;
-        for (int fv = 1; fv <= min(m, sum-1); ++fv)
+        for (int fv = 1; fv <= min(m, sum); ++fv)
             count += countWays(n-1, m, sum-fv);
         return count;
     }
@@ -21,16 +20,16 @@ public class DiceThrowProblem {
     // dp bottom-up, TC: O(n*m*sum)
     public int countWaysDp(int n, int m, int sum) {
         int[][] dp = new int[n+1][sum+1];
+        dp[0][0] = 1;
         
-       Arrays.fill(dp[1], 1);
-       for (int i = 2; i <= n; ++i) {
-           for (int j = 1; j <= sum; ++j) {
-               for (int fv = 1; fv <= min(m, j-1); ++fv)
-                   dp[i][j] += dp[i-1][j-fv];
-           }
-       }
+        for (int i = 1; i <= n; ++i) {
+            for (int j = 1; j <= sum; ++j) {
+                for (int fv = 1; fv <= min(m, j); ++fv)
+                    dp[i][j] += dp[i-1][j-fv];
+            }
+         }
        
-       return dp[n][sum];
+        return dp[n][sum];
     }
 
     /*
