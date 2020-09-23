@@ -81,7 +81,7 @@ public class Trie {
         return searchRecursive(root, word, 0);
     }
 
-    private boolean searchRecursive(TrieNode current, String word, int index) {
+    protected boolean searchRecursive(TrieNode current, String word, int index) {
         // exit condition
         if (index == word.length()) {
             return current.isEndOfWord;

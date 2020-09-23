@@ -52,8 +52,8 @@ public class WordFormationUsingConcatenation extends Trie {
        
         // Search for rest of substring for each prefix match
         for (Integer i : prefixPositions) {
-            String restOfSubstring = word.substring(i, word.length()); 
-            if (search(restOfSubstring)) return true;
+            //String restOfSubstring = word.substring(i, word.length()); 
+            if (searchRecursive(root, word, i)) return true;
         }
         
         return false;

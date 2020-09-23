@@ -33,11 +33,44 @@ public class MinimumInitialPointsToReachDestination {
         }
     
         minPointsNeeded  -= a[r][c]; // consider current cell in the path
-        if (minPointsNeeded <= 0) 
+        if (minPointsNeeded < 1) 
             minPointsNeeded = 1;
     
         return minPointsNeeded;
     }
+    
+    // dp bottom-up
+    int minPointToEnd(int[][] a) {
+        int r = a.length;
+        int c = a[0].length;
+        
+        int[][] dp = new int[r][c];
+        dp[r-1][c-1] = a[r-1][c-1] > 0 ? 1 : 1 - a[r-1][c-1];
+        
+        // last row
+        for (int j = c-2; j >= 0; --j) {
+            int p = dp[r-1][j+1] - a[r-1][j];
+            dp[r-1][j] = p < 1 ? 1: p;
+        }
+        
+        // last column
+        for (int i = r-2; i >= 0; --i) {
+            int p = dp[i+1][c-1] - a[i][c-1];
+            dp[i][c-1] = p < 1 ? 1: p;
+        }
+        
+        // rest of the table
+        for (int i = r-2; i >= 0; --i) {
+            for (int j = c-2; j >= 0; --j) {
+                int p = min(dp[i+1][j], dp[i][j+1]) - a[i][j];
+                dp[i][j] = p < 1 ? 1: p;
+            }
+        }
+        
+        return dp[0][0];
+    }
+    
+    
 
     class SimpleRecursiveSolution {
         // T(n): Exp
@@ -94,5 +127,6 @@ public class MinimumInitialPointsToReachDestination {
         System.out.println(o.new DPSolution().minInitialPoints(points)); // 7
         
         System.out.println(o.minPointToEnd(points, 0, 0)); // 7
+        System.out.println(o.minPointToEnd(points)); // 7
     }
 }
