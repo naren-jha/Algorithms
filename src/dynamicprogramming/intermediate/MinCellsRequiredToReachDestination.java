@@ -5,26 +5,27 @@ package dynamicprogramming.intermediate;
 public class MinCellsRequiredToReachDestination {
 
     class SimpleRecursiveSolution {
-        int R, C, MAX_VAL;
-        
         // T(n): Exp
         public int minCells(int[][] a) {
-            R = a.length; C = a[0].length;
-            MAX_VAL = Integer.MAX_VALUE - Math.max(R, C);
-            
             int minCell = minCells(a, 0, 0);
-            return minCell >= MAX_VAL ? -1 : minCell;
+            return minCell == Integer.MAX_VALUE ? -1 : minCell;
         }
         
         private int minCells(int[][] a, int r, int c) {
             // Base cases:
-            if (r > R-1 || c > C-1)
-                return MAX_VAL;
-            if (r == R-1 && c == C-1)
+            if (r > a.length-1 || c > a[0].length-1)
+                return Integer.MAX_VALUE;
+            if (r == a.length-1 && c == a[0].length-1)
                 return 1;
             
-            return 1 + Math.min(minCells(a, r + a[r][c], c), 
+            int res = Math.min(minCells(a, r + a[r][c], c), 
                                 minCells(a, r, c + a[r][c]));
+            
+            // consider this cell
+            if (res != Integer.MAX_VALUE)
+                res = res + 1;
+            
+            return res;
         }
     }
     
@@ -33,34 +34,42 @@ public class MinCellsRequiredToReachDestination {
         // T(n): O(r*c), S(n): O(r*c)
         public int minCells(int[][] a) {
             int r = a.length, c = a[0].length;
-            int MAX_VAL = Integer.MAX_VALUE - Math.max(r, c);
             
-            int[][] res = new int[r][c];
+            int[][] dp = new int[r][c];
             
-            int bottom, right, next_i, next_j;
+            int down, right, next_i, next_j;
             for (int i = r-1; i >= 0; i--) {
                 for (int j = c-1; j >= 0; j--) {
                     if (i == r-1 && j == c-1) {
-                        res[i][j] = 1;
+                        dp[i][j] = 1;
                         continue;
                     }
+                    
                     next_i = i + a[i][j];
-                    bottom =  (next_i < r) ? res[next_i][j] : MAX_VAL;
+                    down =  (next_i < r) ? dp[next_i][j] : Integer.MAX_VALUE;
+                    
                     next_j = j + a[i][j];
-                    right = (next_j < c) ? res[i][next_j] : MAX_VAL;
-                    res[i][j] = 1 + Math.min(bottom, right);
+                    right = (next_j < c) ? dp[i][next_j] : Integer.MAX_VALUE;
+                    
+                    dp[i][j] = Math.min(down, right);
+                    
+                    // consider this cell
+                    if (dp[i][j] != Integer.MAX_VALUE)
+                        dp[i][j] += 1;
                 }
             }
-            return res[0][0] >= MAX_VAL ? -1 : res[0][0];
+            
+            return dp[0][0] == Integer.MAX_VALUE ? -1 : dp[0][0];
         }
     }
     
     public static void main(String[] args) {
-        MinCellsRequiredToReachDestination o = new MinCellsRequiredToReachDestination();
+        MinCellsRequiredToReachDestination solver = new MinCellsRequiredToReachDestination();
         int[][] a = { { 2, 3, 2, 1, 4 }, 
                       { 3, 2, 5, 8, 2 }, 
                       { 1, 1, 2, 2, 1 } };
-        System.out.println(o.new SimpleRecursiveSolution().minCells(a)); // 4
-        System.out.println(o.new DPSolution().minCells(a)); // 4
+        
+        System.out.println(solver.new SimpleRecursiveSolution().minCells(a)); // 4
+        System.out.println(solver.new DPSolution().minCells(a)); // 4
     }
 }
