@@ -26,14 +26,16 @@ public class CatalanNumber {
 
     /*
      * Below is recurrence equation for Catalan Number
-     * C(n) = Summation[C(i) * C(n-i-1)]
-     *           i = 0 to n-1
+     * C(n) = Summation[C(k) * C(n-1-k)]
+     *           k = 0 to n-1
      * 
      * i.e., C(n) = C(0)*C(n-1) + C(1)*C(n-2) ... C(n-2)*C(1) + C(n-1)*C(0)
      * 
-     * Base cases:
+     * Base cases: when (n == 0 or n == 1)
      * C(0) = C(1) = 1
      * 
+     * for n == 0, answer is 1, because there is exactly one way of arranging zero
+     * parentheses: don't write anything.
      */
     class SimpleRecursiveSolution {
         // T(n): Exp
@@ -42,8 +44,8 @@ public class CatalanNumber {
                 return 1;
             
             int count = 0;
-            for (int i = 0; i < n; i++)
-                count += catalanNumber(i) * catalanNumber(n-i-1);
+            for (int k = 0; k < n; k++)
+                count += catalanNumber(k) * catalanNumber(n-1-k);
             return count;
         }
     }
@@ -54,9 +56,9 @@ public class CatalanNumber {
             int[] dp = new int[n+1];
             dp[0] = dp[1] = 1;
             
-            for (int j = 2; j <= n; j++)
-                for (int i = 0; i < j; i++)
-                    dp[j] += dp[i] * dp[j-i-1];
+            for (int i = 2; i <= n; i++)
+                for (int k = 0; k < i; k++)
+                    dp[i] += dp[k] * dp[i-1-k];
             
             return dp[n];
         }
