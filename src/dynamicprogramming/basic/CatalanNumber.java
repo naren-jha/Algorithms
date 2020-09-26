@@ -6,6 +6,11 @@ package dynamicprogramming.basic;
 public class CatalanNumber {
     
     /*
+     * Suppose you have n pairs of parentheses and you would like to form valid groupings of them, 
+     * where "valid" means that each open parenthesis has a matching closed parenthesis. 
+     * For example, "(()())" is valid, but "())()(" is not. How many valid groupings can be formed  
+     * for a given value of n?
+
      * We know that in any balanced set, the first character has to be '('. We also know that
      * somewhere in the set is the matching ')' for that opening one. In between that pair of 
      * parentheses is a balanced set of parentheses (lets call it A), and to the right of it 

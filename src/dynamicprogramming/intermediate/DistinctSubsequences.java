@@ -4,6 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 // https://www.geeksforgeeks.org/count-distinct-subsequences/
+// https://leetcode.com/problems/distinct-subsequences-ii/
+
+// similar
+// https://leetcode.com/problems/distinct-subsequences/
 
 public class DistinctSubsequences {
 

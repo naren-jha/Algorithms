@@ -6,6 +6,18 @@ package dynamicprogramming.intermediate;
 
 public class NumberOfPermutationsWithKInversions {
     
+    /*
+    Idea:
+    1, 2, 3, 4, 5
+    
+    lets place 5 at different positions
+    1, 2, 3, 4, 5 : f(n-1, k)
+    1, 2, 3, 5, 4 : f(n-1, k-1)
+    1, 2, 5, 3, 4 : f(n-1, k-2)
+    1, 5, 2, 3, 4 : f(n-1, k-3)
+    5, 1, 2, 3, 4 : f(n-1, k-4)
+    */
+    
     class SimpleRecursiveSolution {
         // T(n): Exponential
         public int count(int n, int k) {

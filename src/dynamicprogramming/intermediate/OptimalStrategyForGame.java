@@ -2,6 +2,9 @@ package dynamicprogramming.intermediate;
 
 // https://www.geeksforgeeks.org/optimal-strategy-for-a-game-dp-31/
 
+// similar
+// https://leetcode.com/problems/stone-game/
+
 public class OptimalStrategyForGame {
 
     class SimpleRecursiveSolution {
