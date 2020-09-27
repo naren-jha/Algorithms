@@ -1,5 +1,7 @@
 package dynamicprogramming.intermediate;
 
+import java.util.PriorityQueue;
+
 // https://www.geeksforgeeks.org/remove-minimum-elements-either-side-2min-max/
 // https://www.geeksforgeeks.org/remove-minimum-elements-from-either-side-such-that-2min-becomes-more-than-max-set-2/
 
@@ -7,7 +9,7 @@ package dynamicprogramming.intermediate;
 
 public class RemoveMinElementsFromEitherSide {
 
-    // T(n): O(n^2)
+     // T(n): O(n^2)
     public int removeMinElements(int[] a) {
         int n = a.length;
         int maxValidLen = 0;
