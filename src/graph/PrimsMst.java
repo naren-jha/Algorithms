@@ -22,14 +22,14 @@ public class PrimsMst extends Graph {
         super(numberOfVertices);
     }
     
-    public Double mst(int s) {
+    public Double mst() {
         mst = new ArrayList<Edge>();
         visited = new boolean[numberOfVertices];
         pq = new PriorityQueue<>();        
         
-        // start with node 's', add all outgoing edges from 's' to 'pq'
-        visited[s] = true;
-        for (Edge edge : adjList.get(s)) pq.offer(edge);
+        // start with node 0, add all outgoing edges from node 0 to PQ
+        visited[0] = true;
+        for (Edge edge : adjList.get(0)) pq.offer(edge);
         
         while (!pq.isEmpty()) {
             Edge edge = pq.poll();
@@ -81,8 +81,7 @@ public class PrimsMst extends Graph {
         graph.addEdge(4, 6, true, 6);
         graph.addEdge(5, 6, true, 1);
         
-        int s = 0;
-        Double cost = graph.mst(s);
+        Double cost = graph.mst();
         if (cost != null) {
             System.out.println(cost); // 9.0
             for (Edge e : graph.mst)
@@ -125,8 +124,7 @@ public class PrimsMst extends Graph {
         graph.addEdge(3, 7, true, 2);
         graph.addEdge(7, 8, true, 6);
         
-        int s = 0;
-        Double cost = graph.mst(s);
+        Double cost = graph.mst();
         if (cost != null) {
             System.out.println(cost); // 14.0
             for (Edge e : graph.mst)
@@ -166,8 +164,7 @@ public class PrimsMst extends Graph {
         graph.addEdge(6, 7, true, 11);
         graph.addEdge(7, 8, true, 5);
         
-        int s = 0;
-        Double cost = graph.mst(s);
+        Double cost = graph.mst();
         if (cost != null) {
             System.out.println(cost); // 39.0
             for (Edge e : graph.mst)
@@ -208,8 +205,7 @@ public class PrimsMst extends Graph {
         graph.addEdge(4, 7, true, 8);
         graph.addEdge(6, 7, true, 12);
         
-        int s = 0;
-        Double cost = graph.mst(s);
+        Double cost = graph.mst();
         if (cost != null) {
             System.out.println(cost); // 20.0
             for (Edge e : graph.mst)

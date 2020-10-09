@@ -65,7 +65,7 @@ public class LargestMinimumSumSplitSubarray {
         return dp[n][m];
     }
     
-    // another approach: O(n*lg(sumOfArray))
+    // another approach: Greedy + Binary Search, TC: O(n * lg(sumOfArray - maxValue))
     // https://leetcode.com/problems/split-array-largest-sum/discuss/89817/Clear-Explanation%3A-8ms-Binary-Search-Java
     public int splitArrayGreedy(int[] nums, int m) {
         int max = 0, sum = 0;
@@ -74,6 +74,7 @@ public class LargestMinimumSumSplitSubarray {
             sum += num;
         }
         
+        // apply binary search
         int lo = max, hi = sum;
         while (lo <= hi) {
             int mid = lo + (hi - lo) / 2;
@@ -87,11 +88,11 @@ public class LargestMinimumSumSplitSubarray {
     }
     
     boolean isValid(int[] nums, int m, int target) {
-        int count = 1, total = 0;
+        int count = 1, subarraySum = 0;
         for (int num : nums) {
-            total += num;
-            if (total > target) {
-                total = num;
+            subarraySum += num;
+            if (subarraySum > target) {
+                subarraySum = num;
                 count++;
                 if (count > m) {
                     return false;
