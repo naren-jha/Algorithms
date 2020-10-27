@@ -186,8 +186,8 @@ Repo to host code for learning Data Structures and Algorithms
 
 ## [:blue_book:](https://drive.google.com/drive/folders/1BYykgpfMi810rDtnZc605GP0KAo59TE4?usp=sharing) Sorting Algorithms
   * [Merge Sort](https://github.com/njha-collab/Algorithms/blob/master/src/sorting/MergeSort.java) **- O(nlgn)**
-  * [Heap Sort](https://github.com/njha-collab/Algorithms/blob/master/src/sorting/HeapSort.java) **- O(nlgn)**
   * [QuickSort](https://github.com/njha-collab/Algorithms/blob/master/src/sorting/QuickSort.java) **- Θ(nlgn)**
+  * [Heap Sort](https://github.com/njha-collab/Algorithms/blob/master/src/sorting/HeapSort.java) **- O(nlgn)**
   * [Tim Sort](https://njha-collab.github.io/blogs/understanding-tim-sort) :blue_book: **- O(nlgn)**
   * [Bubble Sort](https://github.com/njha-collab/Algorithms/blob/master/src/sorting/BubbleSort.java) **- O(n<sup>2</sup>)**
   * [Insertion Sort](https://github.com/njha-collab/Algorithms/blob/master/src/sorting/InsertionSort.java) **- O(n<sup>2</sup>)**
