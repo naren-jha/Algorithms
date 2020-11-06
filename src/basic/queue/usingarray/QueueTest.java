@@ -46,7 +46,7 @@ class Queue {
         
         // copy 'n' elements from 'front' to 'rear'
         for (int i = 0, j = front; i < n; i++, j = (j+1)%n)
-            a[j] = ta[i];
+            a[i] = ta[j];
         
         front = 0; rear = n-1;
     }
