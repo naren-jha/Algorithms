@@ -1,7 +1,5 @@
 package basic.queue.usingarray;
 
-import java.util.Arrays;
-
 /**
  * Implementation of Queue data structure using array
  * 
@@ -30,8 +28,8 @@ class Queue {
         int n = a.length;
         if ((rear + 1) % n == front) {
             //throw new IllegalStateException("Queue is full");
+            increaseCapacity();
             n *= 2;
-            a = Arrays.copyOf(a, n);
         }
         
         if (isEmpty())
@@ -39,6 +37,18 @@ class Queue {
         else
             rear = (rear + 1) % n;
         a[rear] = value;
+    }
+
+    private void increaseCapacity() {
+        int n = a.length;
+        int[] ta = a;
+        a = new int[2*n];
+        
+        // copy 'n' elements from 'front' to 'rear'
+        for (int i = 0, j = front; i < n; i++, j = (j+1)%n)
+            a[j] = ta[i];
+        
+        front = 0; rear = n-1;
     }
     
     public int poll() {
@@ -77,13 +87,21 @@ class Queue {
 public class QueueTest {
 
     public static void main(String[] args) {
-        Queue q = new Queue(3);
+        Queue q = new Queue(4);
         q.offer(2);q.offer(4);q.offer(6);q.offer(8);
-        System.out.println(q); // [2, 4, 6, 8]
         System.out.println(q.poll()); // 2
-        System.out.println(q); // [4, 6, 8]
-        System.out.println(q.peek()); // 4
-        System.out.println(q); // [4, 6, 8]
+        System.out.println(q.poll()); // 4
+        
+        System.out.println(q); // [6, 8]
+        
+        q.offer(10);q.offer(12);
+        q.offer(14);
+        System.out.println(q); // [6, 8, 10, 12, 14]
+        
+        System.out.println(q.poll()); // 6
+        System.out.println(q); // [8, 10, 12, 14]
+        System.out.println(q.peek()); // 8
+        System.out.println(q); // [8, 10, 12, 14]
     }
 
 }
