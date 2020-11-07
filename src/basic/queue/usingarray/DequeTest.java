@@ -23,8 +23,10 @@ class Deque {
     
     // Inserts an element at the front end of the deque
     public void insertFront(int key) {
-        if (isFull())
-            throw new IllegalStateException("Deque is full.");
+        if (isFull()) {
+            // throw new IllegalStateException("Deque is full.");
+            increaseCapacity();
+        }
         
         if (isEmpty())
             front = rear = 0;
@@ -35,8 +37,10 @@ class Deque {
     
     // Inserts an element at the rear end of the deque
     public void insertRear(int key) {
-        if (isFull())
-            throw new IllegalStateException("Deque is full");
+        if (isFull()) {
+            // throw new IllegalStateException("Deque is full.");
+            increaseCapacity();
+        }
         
         if (isEmpty())
             front = rear = 0;
@@ -99,6 +103,18 @@ class Deque {
         return (rear + 1) % N == front;
     }
     
+    private void increaseCapacity() {
+        int[] ta = a;
+        a = new int[2*N];
+        
+        // copy 'n' elements from 'front' to 'rear'
+        for (int i = 0, j = front; i < N; i++, j = (j+1)%N)
+            a[i] = ta[j];
+        
+        front = 0; rear = N-1;
+        N *= 2;
+    }
+    
     // To print Deque using reference variable
     @Override
     public String toString() {
@@ -140,6 +156,12 @@ public class DequeTest {
         System.out.println(dq.deleteRear()); // 10
         System.out.println(dq.deleteRear()); // 40
         System.out.println(dq); // [20, 30]
+        
+        dq.insertRear(40);
+        dq.insertRear(10);
+        dq.insertFront(50);
+        dq.insertRear(60);
+        System.out.println(dq); // [50, 20, 30, 40, 10, 60]
     }
 
 }
