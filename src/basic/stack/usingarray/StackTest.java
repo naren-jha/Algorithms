@@ -21,17 +21,17 @@ class Stack {
     }
     
     public void push(int val) {
-        if(top == e.length - 1) e = Arrays.copyOf(e, 2*e.length);
+        if (top == e.length - 1) e = Arrays.copyOf(e, 2*e.length);
         e[++top] = val;
     }
 
     public int pop() {
-        if(isEmpty()) throw new IllegalStateException("empty stack");
+        if (isEmpty()) throw new IllegalStateException("empty stack");
         return e[top--];
     }
     
     public int peek() {
-        if(isEmpty()) throw new IllegalStateException("empty stack");
+        if (isEmpty()) throw new IllegalStateException("empty stack");
         return e[top];
     }
     
@@ -42,7 +42,7 @@ class Stack {
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder("[");
-        for(int i = 0; i <= top; i++)
+        for (int i = 0; i <= top; i++)
             result.append(e[i]).append(", ");
         if (result.indexOf(",") != -1)
             result.delete(result.lastIndexOf(","), result.length());
