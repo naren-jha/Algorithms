@@ -10,14 +10,16 @@ class Queue {
     private int[] a;
     private int front;
     private int rear;
+    private int n; // current capacity of queue
     
     public Queue() {
         this(16);
     }
     
     public Queue(int n) {
-        front = rear = -1;
+        this.n = n;
         a = new int[n];
+        front = rear = -1;
     }
     
     public boolean isEmpty() {
@@ -25,11 +27,9 @@ class Queue {
     }
     
     public void offer(int value) {
-        int n = a.length;
         if ((rear + 1) % n == front) {
             //throw new IllegalStateException("Queue is full");
             increaseCapacity();
-            n *= 2;
         }
         
         if (isEmpty())
@@ -40,7 +40,6 @@ class Queue {
     }
 
     private void increaseCapacity() {
-        int n = a.length;
         int[] ta = a;
         a = new int[2*n];
         
@@ -49,13 +48,13 @@ class Queue {
             a[i] = ta[j];
         
         front = 0; rear = n-1;
+        n *= 2;
     }
     
     public int poll() {
         if (isEmpty())
             throw new IllegalStateException("empty queue");
         
-        int n = a.length;
         int value= a[front];
         if (front == rear)
             front = rear = -1;
@@ -72,7 +71,6 @@ class Queue {
     
     @Override
     public String toString() {
-        int n = a.length;
         StringBuilder result = new StringBuilder("[");
         for (int i = front; i != rear; i = (i + 1) % n)
             result.append(a[i]).append(", ");
