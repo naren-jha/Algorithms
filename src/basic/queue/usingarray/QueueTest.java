@@ -55,7 +55,7 @@ class Queue {
         if (isEmpty())
             throw new IllegalStateException("empty queue");
         
-        int value= a[front];
+        int value = a[front];
         if (front == rear)
             front = rear = -1;
         else
