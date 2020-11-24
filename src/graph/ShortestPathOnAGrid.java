@@ -116,6 +116,7 @@ public class ShortestPathOnAGrid {
             Integer c = cq.poll();
             
             if (r == null || c == null) {
+                if (rq.isEmpty() || cq.isEmpty()) break;
                 ++moveCount;
                 rq.add(null);
                 cq.add(null);
