@@ -93,8 +93,8 @@ public class TopologicalSorting extends Graph {
         boolean[] visited = new boolean[numberOfVertices];
         
         int[] indegree = new int[numberOfVertices];
-        for (int vn = 0; vn < numberOfVertices; ++vn)
-            for (Edge edge : adjList.get(vn))
+        for (int i = 0; i < numberOfVertices; ++i)
+            for (Edge edge : adjList.get(i))
                 indegree[edge.to]++;
         
         List<Integer> result = new ArrayList<Integer>();
@@ -102,27 +102,25 @@ public class TopologicalSorting extends Graph {
     }
 
     private void allTopSortUtil(boolean[] visited, int[] indegree, List<Integer> result) {
-        boolean resultReady = true;
-        for (int vn = 0; vn < numberOfVertices; ++vn) {
-            if (indegree[vn] != 0 || visited[vn]) continue;
-            
-            visited[vn] = true;
-            result.add(vn);
-            
-            for (Edge edge : adjList.get(vn)) indegree[edge.to]--;
-            allTopSortUtil(visited, indegree, result);
-            
-            visited[vn] = false;
-            result.remove(result.size()-1);
-            for (Edge edge : adjList.get(vn))
-                indegree[edge.to]++;
-            resultReady = false;
+        if (result.size() == numberOfVertices) {
+            for (Integer e : result) System.out.print(e + " ");
+            System.out.println();
+            return;
         }
         
-        if (resultReady) {
-            for (Integer e : result)
-                System.out.print(e + " ");
-            System.out.println();
+        for (int i = 0; i < numberOfVertices; ++i) {
+            if (visited[i]) continue;
+            if (indegree[i] != 0) continue;
+            
+            visited[i] = true;
+            result.add(i);
+            for (Edge edge : adjList.get(i)) indegree[edge.to]--;
+            
+            allTopSortUtil(visited, indegree, result);
+            
+            visited[i] = false;
+            result.remove(result.size()-1);
+            for (Edge edge : adjList.get(i)) indegree[edge.to]++;
         }
     }
 
