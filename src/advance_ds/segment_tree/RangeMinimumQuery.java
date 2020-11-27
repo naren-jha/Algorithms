@@ -9,14 +9,14 @@ import static java.lang.Math.min;
  */
 public class RangeMinimumQuery {
     
-    private int[] sgTree; // array to store segment tree
+    private int[] st; // array to store segment tree
     private int n; // length of input array
     
     public RangeMinimumQuery(int[] input) {
         n = input.length;
-        int sgTreeSize = 2 * nextPowerOfTwo(n) - 1;
+        int stSize = 2 * nextPowerOfTwo(n) - 1;
         
-        sgTree = new int[sgTreeSize];
+        st = new int[stSize];
         buildTree(input, 0, n-1, 0);
     }
     
@@ -26,7 +26,7 @@ public class RangeMinimumQuery {
     private void buildTree(int[] input, int low, int high, int pos) {
         if (low == high) {
             // its a leaf node
-            sgTree[pos] = input[low];
+            st[pos] = input[low];
             return;
         }
         
@@ -34,7 +34,7 @@ public class RangeMinimumQuery {
         int mid = (low + high) / 2;
         buildTree(input, low, mid, (2*pos + 1));
         buildTree(input, mid+1, high, (2*pos + 2));
-        sgTree[pos] = min(sgTree[2*pos + 1], sgTree[2*pos + 2]);
+        st[pos] = min(st[2*pos + 1], st[2*pos + 2]);
     }
     
     /**
@@ -54,7 +54,7 @@ public class RangeMinimumQuery {
         // so we update value in segment tree at pos, and return as low == high
         // means its a leaf node
         if (low == high){
-            sgTree[pos] += delta;
+            st[pos] += delta;
             return;
         }
         
@@ -63,25 +63,26 @@ public class RangeMinimumQuery {
         int mid = (low + high) / 2;
         updateUtil(index, delta, low, mid, (2*pos + 1));
         updateUtil(index, delta, mid + 1, high, (2*pos + 2));
-        sgTree[pos] = min(sgTree[2*pos + 1], sgTree[2*pos + 2]);
+        st[pos] = min(st[2*pos + 1], st[2*pos + 2]);
     }
     
     /**
      * Updates segment tree for a given range by given delta
      */
-    public void updateRange(int from, int to, int delta) {        
+    public void updateRange(int from, int to, int delta) {
+        if (from > to) throw new IllegalArgumentException("invalid range");
         updateRangeUtil(from, to, delta, 0, n-1, 0);
     }
 
     private void updateRangeUtil(int from, int to, int delta, int low, int high, int pos) {
         // if range to be updated is outside the current node range
-        if (from > high || to < low ) {
+        if (to < low || from > high) {
             return;
         }
 
         // if leaf node
         if (low == high) {
-            sgTree[pos] += delta;
+            st[pos] += delta;
             return;
         }
 
@@ -90,24 +91,25 @@ public class RangeMinimumQuery {
         int mid = (low + high) / 2;
         updateRangeUtil(from, to, delta, low, mid, (2*pos + 1));
         updateRangeUtil(from, to, delta, mid+1, high, (2*pos + 2));
-        sgTree[pos] = min(sgTree[2*pos + 1], sgTree[2*pos + 2]);
+        st[pos] = min(st[2*pos + 1], st[2*pos + 2]);
     }
     
     /**
      * Queries given range for minimum value.
      */
-    public int minInRange(int from, int to){
+    public int minInRange(int from, int to) {
+        if (from > to) throw new IllegalArgumentException("invalid range");
         return minInRangeUtil(0, n-1, from, to, 0);
     }
 
     private int minInRangeUtil(int low, int high, int from, int to, int pos) {
         // total overlap
         if (from <= low && to >= high) {
-            return sgTree[pos];
+            return st[pos];
         }
         
         // no overlap
-        if (from > high || to < low) {
+        if (to < low || from > high) {
             return Integer.MAX_VALUE;
         }
         
