@@ -97,6 +97,7 @@ public class DijkstrasShortestPath extends Graph {
         dist[s] = 0;
         
         int[] prev = new int[numberOfVertices];
+        Arrays.fill(prev, -1);
         
         while (!pq.isEmpty()) {
             QueueEntry entry = pq.poll();
@@ -124,20 +125,19 @@ public class DijkstrasShortestPath extends Graph {
             }
         }
         
-        System.out.printf("The cost to get from node %d to %d is %.2f\n", s, d, dist[d]);
-        reconstructPath(s, d, prev, dist[d]);
-    }
-    
-    public void reconstructPath(int src, int dest, int[] prev, double dist) {       
-        if (dist == Double.POSITIVE_INFINITY) {
-            System.out.println("No path found from " + src + " to " + dest);
+        if (prev[d] == -1) {
+            System.out.println("No path found from node " + s + " to " + d);
             return;
         }
         
+        System.out.printf("The cost to get from node %d to %d is %.2f\n", s, d, dist[d]);
+        reconstructPath(d, prev);
+    }
+    
+    public void reconstructPath(int d, int[] prev) {       
         List<Integer> path = new ArrayList<Integer>();
-        for (int vn = dest; vn != src; vn = prev[vn]) 
-            path.add(vn);
-        path.add(src);
+        for (int v = d; v != -1; v = prev[v]) 
+            path.add(v);
         Collections.reverse(path);
         
         StringJoiner joiner = new StringJoiner("->");
