@@ -54,22 +54,24 @@ public class DijkstrasShortestPath extends Graph {
         
         while (!pq.isEmpty()) {
             QueueEntry entry = pq.poll();
-            int vn = entry.vn;
-            if (visited[vn]) continue;
-            visited[vn] = true;
+            int v = entry.vn;
             
-            for (Edge edge : adjList.get(vn)) {
+            if (visited[v]) continue;
+            
+            visited[v] = true;
+            
+            for (Edge edge : adjList.get(v)) {
                 int src = edge.from;
-                int dest = edge.to;
+                int dst = edge.to;
 
                 // You cannot get a shorter path by revisiting
                 // a node you have already visited before.
-                if (visited[dest]) continue;
+                if (visited[dst]) continue;
                 
                 // Relax edge by updating minimum cost if applicable
-                if (dist[src] + edge.wt < dist[dest]) {
-                    dist[dest] = dist[src] + edge.wt;
-                    pq.offer(new QueueEntry(dest, dist[dest]));
+                if (dist[src] + edge.wt < dist[dst]) {
+                    dist[dst] = dist[src] + edge.wt;
+                    pq.offer(new QueueEntry(dst, dist[dst]));
                 }
             }
         }
@@ -101,32 +103,34 @@ public class DijkstrasShortestPath extends Graph {
         
         while (!pq.isEmpty()) {
             QueueEntry entry = pq.poll();
-            int vn = entry.vn;
-            if (visited[vn]) continue;
-            visited[vn] = true;
+            int v = entry.vn;
+            
+            if (visited[v]) continue;
+            
+            visited[v] = true;
             
             // is destination node found
-            if (vn == d) break;
+            if (v == d) break;
             
-            for (Edge edge : adjList.get(vn)) {
+            for (Edge edge : adjList.get(v)) {
                 int src = edge.from;
-                int dest = edge.to;
+                int dst = edge.to;
                 
                 // You cannot get a shorter path by revisiting
                 // a node you have already visited before.
-                if (visited[dest]) continue;
+                if (visited[dst]) continue;
                 
                 // Relax edge by updating minimum cost if applicable
-                if (dist[src] + edge.wt < dist[dest]) {
-                    dist[dest] = dist[src] + edge.wt;
-                    pq.offer(new QueueEntry(dest, dist[dest]));
-                    prev[dest] = src;
+                if (dist[src] + edge.wt < dist[dst]) {
+                    dist[dst] = dist[src] + edge.wt;
+                    pq.offer(new QueueEntry(dst, dist[dst]));
+                    prev[dst] = src;
                 }
             }
         }
         
         if (prev[d] == -1) {
-            System.out.println("No path found from node " + s + " to " + d);
+            System.out.printf("No path found from node %d to %d \n", s, d);
             return;
         }
         
