@@ -68,7 +68,7 @@ public class Bridges extends Graph {
                 dfs(to, at);
                 lowLink[at] = min(lowLink[at], lowLink[to]);
                 if (ids[at] < lowLink[to])
-                    bridges.add(new Pair<Integer, Integer>(at, to));
+                    bridges.add(new Pair<>(at, to));
             }
             
             // if the adjacent node that you're going to is already visited, 

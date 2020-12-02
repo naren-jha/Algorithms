@@ -62,8 +62,8 @@ public class TarjansAlgorithmForSCC extends Graph {
     }
     
     private void dfs(int at) {
-        ids[at] = lowLink[at] = ++id;
         //visited[at] = true;
+        ids[at] = lowLink[at] = id++;
         stack.push(at);
         onStack[at] = true;
         
