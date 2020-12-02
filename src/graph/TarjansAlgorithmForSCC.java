@@ -58,6 +58,7 @@ public class TarjansAlgorithmForSCC extends Graph {
                 sccMap.put(lowLink[i], new ArrayList<>());
             sccMap.get(lowLink[i]).add(i);
         }
+        
         return sccMap.values();
     }
     
@@ -82,7 +83,9 @@ public class TarjansAlgorithmForSCC extends Graph {
             do {
                 v = stack.pop();
                 onStack[v] = false;
-                lowLink[v] = ids[at]; // This is needed
+                
+                lowLink[v] = ids[at]; // This is needed, analyze below example graph for better understanding
+                // https://media.geeksforgeeks.org/wp-content/cdn-uploads/20190702123438/TarjansAlgorithms.png
             } while (v != at);
         }
     }
