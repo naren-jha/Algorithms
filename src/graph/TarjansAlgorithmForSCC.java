@@ -78,11 +78,12 @@ public class TarjansAlgorithmForSCC extends Graph {
         // On recursive callback, if we're at the root node (start of a SCC)
         // empty the seen stack until back to root
         if (ids[at] == lowLink[at]) {
-            int node;
+            int v;
             do {
-                node = stack.pop();
-                onStack[node] = false;
-            } while (node != at);
+                v = stack.pop();
+                onStack[v] = false;
+                lowLink[v] = ids[at]; // This is needed
+            } while (v != at);
         }
     }
     
