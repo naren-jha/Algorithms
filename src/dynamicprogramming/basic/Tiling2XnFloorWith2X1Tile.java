@@ -5,38 +5,47 @@ import java.util.Arrays;
 // https://www.geeksforgeeks.org/tiling-problem/
 
 /*
-count(n) = n if n = 0 or n = 1 or n = 2
-count(n) = count(n-1) + count(n-2) , otherwise
+f(n) = 1, if n = 0 or 1
+f(n) = f(n-1) + f(n-2) , otherwise
+
+for n == 0, there is exactly one way we can tile (by not doing anything)
 */
 public class Tiling2XnFloorWith2X1Tile {
+    
+    // TC: O(2^n), SC: O(n) [max height of recursion tree is n and 
+    // for each node we are making 2 recursive calls]
+    int tile(int n) {
+        if (n <= 1) return 1;
+        return tile(n-1) + tile(n-2);
+    }
 
-    int tileMemoized(int n, int[] res) {
-        if (n <= 2)
-            return n;
+    // TC: O(n), SC: O(n)
+    int tileMemoized(int n, int[] mem) {
+        if (n <= 1) return 1;
         
-        if (res[n] != -1)
-            return res[n];
+        if (mem[n] != -1) return mem[n];
         
-        res[n] = tileMemoized(n-1, res) + tileMemoized(n-2, res);
-        return res[n];
+        mem[n] = tileMemoized(n-1, mem) + tileMemoized(n-2, mem);
+        return mem[n];
     }
     
+    // TC: O(n), SC: O(n)
     int tileBottomUp(int n) {
-        int[] res = new int[n+1]; // 1 extra to handle n = 0 case
-        res[0] = 0; res[1] = 1; res[2] = 2;
+        int[] dp = new int[n+1]; // 1 extra to handle n = 0 case
+        dp[0] = dp[1] = 1;
         
-        for (int i = 3; i <= n; i++)
-            res[i] = res[i-1] + res[i-2];
+        for (int i = 2; i <= n; i++)
+            dp[i] = dp[i-1] + dp[i-2];
         
-        return res[n];
+        return dp[n];
     }
     
+    // TC: O(n), SC: O(1)
     int tileBottomUpSpaceOptimized(int n) {
-        if (n <= 2) // edge case
-            return n;
-        
-        int a = 1, b = 2, c = 0;
-        for (int i = 3; i <= n; i++) {
+        if (n <= 1) return 1;// edge case
+            
+        int a = 1, b = 1, c = 0;
+        for (int i = 2; i <= n; i++) {
             c = a + b;
             a = b;
             b = c;
@@ -46,11 +55,13 @@ public class Tiling2XnFloorWith2X1Tile {
     
     public static void main(String[] args) {
         Tiling2XnFloorWith2X1Tile obj = new Tiling2XnFloorWith2X1Tile();
-        int[] res = new int[5]; // 1 extra to handle n = 0 case
-        Arrays.fill(res, -1);
-        System.out.println(obj.tileMemoized(4, res));
-        System.out.println(obj.tileBottomUp(4));
-        System.out.println(obj.tileBottomUpSpaceOptimized(4));
+        int[] mem = new int[5]; // 1 extra to handle n = 0 case
+        Arrays.fill(mem, -1);
+        
+        System.out.println(obj.tile(4)); // 5
+        System.out.println(obj.tileMemoized(4, mem)); // 5
+        System.out.println(obj.tileBottomUp(4)); // 5
+        System.out.println(obj.tileBottomUpSpaceOptimized(4)); // 5
     }
 
 }

@@ -7,43 +7,38 @@ import java.util.Arrays;
 public class FriendsPairingProblem {
     
     private class SimpleRecursiveSolution {
-        // T(n): Exponential
+        // TC: O(2^n), SC: O(n) 
+        // max height (or max number of levels) of recursion tree is n and 
+        // for each node in the tree, we are making 2 recursive calls
         public int pairFriends(int n) {
-            if (n == 0)
-                return 1;
-            if (n == 1)
-                return 1;
+            if (n <= 1) return 1;
             
             return pairFriends(n-1) + (n-1)*pairFriends(n-2);
         }
     }
     
     private class DPSolution {
-        // top-to-bottom memoized
-        // T(n): O(n), S(n): O(n)
-        public int pairFriendsMemoized(int n, int[] res) {
-            if (n == 0)
-                return 1;
-            if (n == 1)
-                return 1;
+        // top-to-bottom memoization
+        // TC: O(n), SC: O(n)
+        public int pairFriendsMemoized(int n, int[] mem) {
+            if (n <= 1) return 1;
             
-            if (res[n] != -1)
-                return res[n];
+            if (mem[n] != -1) return mem[n];
             
-            res[n] = pairFriendsMemoized(n-1, res) + (n-1)*pairFriendsMemoized(n-2, res);
-            return res[n];
+            mem[n] = pairFriendsMemoized(n-1, mem) + (n-1)*pairFriendsMemoized(n-2, mem);
+            return mem[n];
         }
         
         // bottom-up tabulation
-        // T(n): O(n), S(n): O(n)
+        // TC: O(n), SC: O(n)
         public int pairFriendsBottomUp(int n) {
-            int[] res = new int[n+1];
+            int[] dp = new int[n+1];
+            dp[0] = 1; dp[1] = 1;
             
-            res[0] = 1; res[1] = 1;
             for (int i = 2; i <= n; i++)
-                res[i] = res[i-1] + (i-1)*res[i-2];
+                dp[i] = dp[i-1] + (i-1)*dp[i-2];
             
-            return res[n];
+            return dp[n];
         }
     }
 

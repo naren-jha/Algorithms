@@ -6,29 +6,30 @@ package dynamicprogramming.basic;
 
 public class MaxPathSum {
 
-    // T(n) = O(mn)
-    public int getMaxPathSumBottomUp(int[][] mat) {
-        int m = mat.length; // row length
-        int n = mat[0].length; // col length
+    // T(n) = O(RC)
+    public int getMaxPathSumBottomUp(int[][] m) {
+        int R = m.length;
+        if (R == 0) throw new IllegalArgumentException("empty matrix");
+        int C = m[0].length;
         
-        // matrix to store intermediate results
-        int[][] maxMat = new int[m][n];
+        int[][] dp = new int[R][C];
+        for (int j = 0; j < C; ++j) dp[R-1][j] = m[R-1][j];
         
-        int max = 0, bottom, bottomLeft, bottomRight;
-        for (int row = m-1; row >= 0; row--) {
-            for (int col = 0; col < n; col++) {
-                bottomLeft = (row == m-1 || col == 0) ? 0 : maxMat[row + 1][col - 1];
-                bottom = (row == m-1) ? 0 : maxMat[row + 1][col];
-                bottomRight = (row == m-1 || col == n-1) ? 0 : maxMat[row + 1][col + 1];
-                maxMat[row][col] = mat[row][col] + Math.max(bottomLeft, Math.max(bottom, bottomRight));
+        for (int i = R-2; i >= 0; --i) {
+            for (int j = 0; j < C; ++j) {
+                int ld = (j > 0) ? dp[i+1][j-1] : 0; // left down
+                int d = dp[i+1][j]; // down
+                int rd = (j < C-1) ? dp[i+1][j+1] : 0; // right down
                 
-                // Max path sum will be the max value in first row
-                if (row == 0)
-                    max = Math.max(maxMat[row][col], max);
+                dp[i][j] = m[i][j] + Math.max(ld, Math.max(d, rd));
             }
         }
         
-        return max;
+        int maxSum = 0;
+        for (int j = 0; j < C; ++j)
+            maxSum = Math.max(maxSum, dp[0][j]);
+        
+        return maxSum;
     }
     
     public static void main(String[] args) {
@@ -39,6 +40,6 @@ public class MaxPathSum {
                         { 16, 92, 41, 44 }
                       };
         
-        System.out.println(new MaxPathSum().getMaxPathSumBottomUp(mat));
+        System.out.println(new MaxPathSum().getMaxPathSumBottomUp(mat)); // 120
     }
 }

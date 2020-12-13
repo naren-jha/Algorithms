@@ -5,44 +5,52 @@ import java.util.Arrays;
 // https://www.geeksforgeeks.org/count-number-ways-tile-floor-size-n-x-m-using-1-x-m-size-tiles/
 
 /*
- * count(n, m) = 1, if n < m
- * count(n, m) = 2, if n == m
- * count(n, m) = count(n-1, m) + count(n-m, m)
+ * f(n, m) = 1, if n == 0
+ * f(n, m) = 1, if n < m
+ * f(n, m) = f(n-1, m) + f(n-m, m)
  */
 public class TilingNxMFloorWith1xMTile {
+    
+    // TC: O(2^n), SC: O(n) [max height of recursion tree is n and 
+    // for each node we are making 2 recursive calls]
+    int tile(int n, int m) {
+        if (n == 0) return 1;
+        if (n < m) return 1;
+        
+        return tile(n-1, m) + tile(n-m, m);
+    }
 
-    int tileMemoized(int n, int m, int[] res) {
-        if (n == 0)
-            return 1;
+    // TC: O(n), SC: O(n)
+    int tileMemoized(int n, int m, int[] mem) {
+        if (n == 0) return 1;
+        if (n < m) return 1;
         
-        if (n < m)
-            return 1;
+        if (mem[n] != -1) return mem[n];
         
-        if (res[n] != -1)
-            return res[n];
-        
-        res[n] = tileMemoized(n-1, m, res) + tileMemoized(n-m, m, res);
-        return res[n];
+        mem[n] = tileMemoized(n-1, m, mem) + tileMemoized(n-m, m, mem);
+        return mem[n];
     }
     
+    // TC: O(n), SC: O(n)
     int tileBottomUpTabulation(int n, int m) {
-        int[] res = new int[n+1]; // 1 extra for n = 0 case
-        res[0] = 1;
+        int[] dp = new int[n+1]; // 1 extra for n = 0 case
+        dp[0] = 1;
         
         for (int i = 1; i <= n; i++) {
-            if (i < m)
-                res[i] = 1;
-            else
-                res[i] = res[i-1] + res[i-m];
+            if (i < m) dp[i] = 1;
+            else dp[i] = dp[i-1] + dp[i-m];
         }
-        return res[n];
+        
+        return dp[n];
     }
     
     public static void main(String[] args) {
         TilingNxMFloorWith1xMTile obj = new TilingNxMFloorWith1xMTile();
-        int[] res = new int[8]; // 1 extra for n = 0 case
-        Arrays.fill(res, -1);
-        System.out.println(obj.tileMemoized(7, 4, res)); // 5
+        int[] mem = new int[8]; // 1 extra for n = 0 case
+        Arrays.fill(mem, -1);
+        
+        System.out.println(obj.tile(7, 4)); // 5
+        System.out.println(obj.tileMemoized(7, 4, mem)); // 5
         
         System.out.println(obj.tileBottomUpTabulation(7, 4)); // 5
         System.out.println(obj.tileBottomUpTabulation(8, 4)); // 7

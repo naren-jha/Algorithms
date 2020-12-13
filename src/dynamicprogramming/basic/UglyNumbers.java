@@ -34,26 +34,33 @@ public class UglyNumbers {
         
     }
     
-    // Dynamic Programming Solution - linear time
+    // DP solution
+    // TC: O(n), SC: O(n)
     private class DPSolution {
         public int getUglyNumber(int n) {
-            int[] uglyNumbers = new int[n];
-            uglyNumbers[0] = 1; // first ugly number
-            int p2 = 0, p3 = 0, p5 = 0; // multiplier indexes
+            int[] dp = new int[n]; // to store ugly numbers
+            dp[0] = 1; // first ugly number
+            
+            int mi2 = 0, mi3 = 0, mi5 = 0; // multiplier indices
             
             for (int i = 1; i < n; ++i) {
-                int m2 = uglyNumbers[p2] * 2;
-                int m3 = uglyNumbers[p3] * 3;
-                int m5 = uglyNumbers[p5] * 5;
+                int mv2 = dp[mi2] * 2;
+                int mv3 = dp[mi3] * 3;
+                int mv5 = dp[mi5] * 5;
                 
-                uglyNumbers[i] = Math.min(m2, Math.min(m3, m5));
+                int sm = smallest(mv2, mv3, mv5); // get smallest
+                if (sm == mv2) mi2++;
+                if (sm == mv3) mi3++;
+                if (sm == mv5) mi5++;
                 
-                if (uglyNumbers[i] == m2) p2++;
-                if (uglyNumbers[i] == m3) p3++;
-                if (uglyNumbers[i] == m5) p5++;
+                dp[i] = sm;
             }
-            return uglyNumbers[n-1];
+            return dp[n-1];
         }
+    }
+    
+    private int smallest(int a, int b, int c) {
+        return Math.min(a, Math.min(b, c));
     }
 
     public static void main(String[] args) {

@@ -117,7 +117,7 @@ public class RangeSumQuery {
     }
 
     // Calculates next power of two for given n, is = 2^ceil(lgn))
-    // Equivalent to: Math.pow(2, (int) Math.ceil(Math.log(n) / Math.log(2)));
+    // Equivalent to: int x = (int) Math.pow(2, (int) Math.ceil(Math.log(n) / Math.log(2)));
     public static int nextPowerOfTwo(int n) {
         n--; // to handle the case when n is a perfect square
         n |= n >> 1;

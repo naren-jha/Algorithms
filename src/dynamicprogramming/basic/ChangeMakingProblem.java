@@ -76,5 +76,9 @@ public class ChangeMakingProblem {
         
         System.out.println(solver.coinChange(coins, amount)); // 3
         System.out.println(solver.coinChangeSO(coins, amount)); // 3
+        
+        coins = new int[]{4,5};
+        System.out.println(solver.coinChange(coins, amount)); // -1
+        System.out.println(solver.coinChangeSO(coins, amount)); // -1
     }
 }

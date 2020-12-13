@@ -10,128 +10,147 @@ import java.util.StringJoiner;
 public class GoldMineProblem {
     
     private class BruteForce {
-        // T(n) = Exponential
-        public int maxGold(int[][] m) {
-            int r = m.length; // row length
-            if (r == 0) throw new IllegalArgumentException("empty matrix");
+        int R, C;
+        
+        // TC: O(R * 3^C) [max height of the recursion tree will be C
+        // and for each node in the tree, we are making at most 3 recursive calls]
+        
+        // SC: O(C) [as max height of the recursion tree is C]
+        public int maxGold(int[][] gm) {
+            R = gm.length;
+            if (R == 0) throw new IllegalArgumentException("empty mine");
+            C = gm[0].length;
             
             int maxGold = 0;
-            for (int i = 0; i < r; i++) {
-                maxGold = max(maxGoldUtil(m, i, 0), maxGold);
+            for (int i = 0; i < R; i++) {
+                maxGold = max(maxGoldUtil(gm, i, 0), maxGold);
             }
             
             return maxGold;
         }
         
-        private int maxGoldUtil(int[][] m, int r, int c) {
-            // base conditions
-            if (r < 0 || r >= m.length)
-                return 0;
-            if (c < 0 || c >= m[0].length)
-                return 0;
+        // O(3^C)
+        private int maxGoldUtil(int[][] gm, int i, int j) {
+            // base condition
+            if (j == C-1) return gm[i][j];
             
-            return m[r][c] + max(maxGoldUtil(m, r-1, c+1), max(maxGoldUtil(m, r, c+1), maxGoldUtil(m, r+1, c+1)));
+            int ru = (i > 0) ? maxGoldUtil(gm, i-1, j+1) : 0; // right up
+            int r = maxGoldUtil(gm, i, j+1); // right
+            int rd = (i < R-1) ? maxGoldUtil(gm, i+1, j+1) : 0; // right down
+            
+            return gm[i][j] + max(ru, max(r, rd));
         }
     }
     
     
     private class DPSolution {
-        // T(n) = O(mn)
-        public int maxGoldMemoized(int[][] m) {
-            int r = m.length; // row length
-            if (r == 0) throw new IllegalArgumentException("empty matrix");
-            int c = m[0].length; // col length
+        int R, C;
+        
+        // memoization
+        // TC: O(RC), SC: O(RC)
+        public int maxGoldMemoized(int[][] gm) {
+            R = gm.length;
+            if (R == 0) throw new IllegalArgumentException("empty mine");
+            C = gm[0].length;
             
             // create a matrix to store intermediate results
-            int[][] dp = new int[r][c];
-            for (int i = 0; i < r; i++)
-                Arrays.fill(dp[i],  -1);
+            int[][] mem = new int[R][C];
+            for (int i = 0; i < R; i++)
+                Arrays.fill(mem[i], -1);
             
             int maxGold = 0;
-            for (int i = 0; i < r; i++) {
-                maxGold = max(maxGoldUtilMemoized(m, i, 0, dp), maxGold);
+            for (int i = 0; i < R; i++) {
+                maxGold = max(maxGoldUtilMemoized(gm, i, 0, mem), maxGold);
             }
             
             return maxGold;
         }
         
         // top to bottom memoized
-        private int maxGoldUtilMemoized(int[][] m, int r, int c, int[][] dp) {
-            // base conditions
-            if (r < 0 || r >= m.length)
-                return 0;
-            if (c < 0 || c >= m[0].length)
-                return 0;
+        private int maxGoldUtilMemoized(int[][] gm, int i, int j, int[][] mem) {
+            // base condition
+            if (j == C-1) return gm[i][j];
             
-            if (dp[r][c] != -1)
-                return dp[r][c];
+            if (mem[i][j] != -1)
+                return mem[i][j];
             
-            dp[r][c] = m[r][c] + max(maxGoldUtilMemoized(m, r-1, c+1, dp), 
-                                    max(maxGoldUtilMemoized(m, r, c+1, dp), 
-                                        maxGoldUtilMemoized(m, r+1, c+1, dp)));
-            return dp[r][c];
+            int ru = (i > 0) ? maxGoldUtilMemoized(gm, i-1, j+1, mem) : 0; // right up
+            int r = maxGoldUtilMemoized(gm, i, j+1, mem); // right
+            int rd = (i < R-1) ? maxGoldUtilMemoized(gm, i+1, j+1, mem) : 0; // right down
+            
+            mem[i][j] = gm[i][j] + max(ru, max(r, rd));
+            return mem[i][j];
         }
         
-        // botton-up tabulation
-        // T(n) = O(mn)
-        public int maxGoldBottomUp(int[][] m) {
-            int r = m.length; // row length
-            if (r == 0) throw new IllegalArgumentException("empty matrix");
-            int c = m[0].length; // col length
+        // bottom-up tabulation
+        // TC: O(RC), SC: O(RC)
+        public int maxGoldBottomUp(int[][] gm) {
+            R = gm.length;
+            if (R == 0) throw new IllegalArgumentException("empty mine");
+            C = gm[0].length;
             
             // matrix to store intermediate results
-            int[][] dp = new int[r][c];
+            int[][] dp = new int[R][C];
             
-            for (int i = 0; i < r; ++i) dp[i][c-1] = m[i][c-1];
+            for (int i = 0; i < R; ++i) dp[i][C-1] = gm[i][C-1];
             
-            for (int j = c-2; j >= 0; --j) {
-                for (int i = 0; i < r; ++i) {
-                    int rightUp = (i == 0) ? 0 : dp[i-1][j+1];
-                    int right = dp[i][j+1];
-                    int rightDown = (i == r-1) ? 0 : dp[i+1][j+1];
+            for (int j = C-2; j >= 0; --j) {
+                for (int i = 0; i < R; ++i) {
+                    int ru = (i > 0) ? dp[i-1][j+1] : 0;
+                    int r = dp[i][j+1];
+                    int rd = (i < R-1) ? dp[i+1][j+1] : 0;
                     
-                    dp[i][j] = m[i][j] + max(rightUp, max(right, rightDown));
+                    dp[i][j] = gm[i][j] + max(ru, max(r, rd));
                 }
             }
             
             int maxGold = 0;
-            for (int i = 0; i < r; ++i)
+            for (int i = 0; i < R; ++i)
                 maxGold = max(maxGold, dp[i][0]);
             
             return maxGold;
         }
         
-        public String maxGoldBottomUpWithPath(int[][] m) {
-            int r = m.length; // row length
-            if (r == 0) throw new IllegalArgumentException("empty matrix");
-            int c = m[0].length; // col length
+        // TC: O(RC), SC: O(RC)
+        public String maxGoldBottomUpWithPath(int[][] gm) {
+            R = gm.length;
+            if (R == 0) throw new IllegalArgumentException("empty mine");
+            C = gm[0].length;
             
             // matrix to store intermediate results
-            int[][] dp = new int[r][c];
-            int[][] next = new int[r][c];
+            int[][] dp = new int[R][C];
+            int[][] next = new int[R][C];
             
-            for (int i = 0; i < r; ++i) {
-                dp[i][c-1] = m[i][c-1];
-                next[i][c-1] = -1; // to indicate end of path
+            for (int i = 0; i < R; ++i) {
+                dp[i][C-1] = gm[i][C-1];
+                next[i][C-1] = -1; // to indicate end of path
             }
             
-            for (int j = c-2; j >= 0; --j) {
-                for (int i = 0; i < r; ++i) {
-                    int rightUp = (i == 0) ? 0 : dp[i-1][j+1];
-                    int right = dp[i][j+1];
-                    int rightDown = (i == r-1) ? 0 : dp[i+1][j+1];
+            for (int j = C-2; j >= 0; --j) {
+                for (int i = 0; i < R; ++i) {
+                    // right
+                    int mv = dp[i][j+1]; // max value
+                    int nr = i; // next row
                     
-                    int nextMax = max(rightUp, max(right, rightDown));
-                    dp[i][j] = m[i][j] + nextMax;
+                    // right up
+                    if (i > 0 && dp[i-1][j+1] > mv) {
+                        mv = dp[i-1][j+1];
+                        nr = i-1;
+                    }
                     
-                    if (nextMax == rightUp && i != 0) next[i][j] = i-1;
-                    else if (nextMax == right) next[i][j] = i;
-                    else if (nextMax == rightDown && i != r-1) next[i][j] = i+1;
+                    // right down
+                    if (i < R-1 && dp[i+1][j+1] > mv) {
+                        mv = dp[i+1][j+1];
+                        nr = i+1;
+                    }
+                    
+                    dp[i][j] = gm[i][j] + mv;
+                    next[i][j] = nr;
                 }
             }
             
             int maxGold = 0, startRow = 0;
-            for (int i = 0; i < r; ++i) {
+            for (int i = 0; i < R; ++i) {
                 if (dp[i][0] > maxGold) {
                     maxGold = dp[i][0];
                     startRow = i;
@@ -139,19 +158,13 @@ public class GoldMineProblem {
             }
             
             String path = reconstructPath(next, startRow);
-            return String.format("maxGold: %d, Path: %s", maxGold, path);
+            return String.format("Max Gold: %d, Path: %s", maxGold, path);
         }
         
-        private String reconstructPath(int[][] next, int startRow) {
+        private String reconstructPath(int[][] next, int sr) {
             StringJoiner joiner = new StringJoiner(" -> ");
-            int row = startRow;
-            int col = 0;
-            
-            while (row != -1) {
-                joiner.add(String.format("(%d, %d)", row, col));
-                row = next[row][col];
-                col++;
-            }
+            for (int i = sr, j = 0; i != -1; i = next[i][j], j++)
+                joiner.add(String.format("(%d, %d)", i, j));
             
             return joiner.toString();
         }
@@ -171,7 +184,7 @@ public class GoldMineProblem {
         System.out.println(solver.new DPSolution().maxGoldBottomUp(goldMine)); // 16
         
         System.out.println(solver.new DPSolution().maxGoldBottomUpWithPath(goldMine)); 
-        // maxGold: 16, Path: (2, 0) -> (1, 1) -> (1, 2) -> (0, 3)
+        // Max Gold: 16, Path: (2, 0) -> (1, 1) -> (1, 2) -> (0, 3)
     }
 
 }

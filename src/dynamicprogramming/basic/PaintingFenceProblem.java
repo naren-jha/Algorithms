@@ -14,22 +14,21 @@ public class PaintingFenceProblem {
         if (n == 1) return k;
         
         // coloring first two post
-        // we can color is either same or different
+        // we can color it either same or different
         int same = k*1; // k choices for first post and 1 choice for second
-        int different = k*(k-1); // k choices for first post and k-1 choices for second
+        int diff = k*(k-1); // k choices for first post and k-1 choices for second
         
         // then solve from post 3 to n
         for (int i = 3; i <= n; ++i) {
-            int sameCopy = same;
-            same = different*1; // if last 2 posts were painted same, we cannot paint current post same again. But if last 2 posts were painted different, then we can paint current post with immediate previous color
-            different = sameCopy*(k-1) + different*(k-1); // whether last 2 posts were painted same or different, we have k-1 choices for the current post
+            int prevDiff = diff;
+            diff = (same + diff) * (k-1); // whether last 2 posts were painted same or different, we have k-1 choices to paint current post different
+            same = prevDiff*1; // if last 2 posts were painted same, we cannot paint current post same again. But if last 2 posts were painted different, then we can paint current post with immediate previous color
         }
         
-        return same + different;
+        return same + diff;
     }
     
-    // same approach as previous one, but loop
-    // starts from 2 instead of 3
+    // same approach as previous one, but loop starts from 2 instead of 3
     public int countWays2(int n, int k) {
         if (n <= 0)
             return 0;
@@ -44,7 +43,8 @@ public class PaintingFenceProblem {
         return same + diff;
     }
     
-    // new approach - 23/08/2020
+    
+    // another approach
     // Time and Space: O(3*n) = O(n)
     public int paintFence(int n, int k) {
         if (n == 0 || k == 0) return 0;
@@ -76,7 +76,7 @@ public class PaintingFenceProblem {
         return dp[n][repeatCount] = res;
     }
     
-    // new approach - bottom-up tabulation
+    // bottom-up
     // Time and Space: O(3*n) = O(n)
     public int paintFenceBottomUp(int n, int k) {
         if (n == 0 || k == 0) return 0;
@@ -101,11 +101,11 @@ public class PaintingFenceProblem {
     public static void main(String[] args) {
         PaintingFenceProblem obj = new PaintingFenceProblem();
         int n = 3, k = 2;
-        System.out.println(obj.countWays(n, k));
-        System.out.println(obj.countWays2(n, k));
+        System.out.println(obj.countWays(n, k)); // 6
+        System.out.println(obj.countWays2(n, k)); // 6
         
-        System.out.println(obj.paintFence(n, k));
-        System.out.println(obj.paintFenceBottomUp(n, k));
+        System.out.println(obj.paintFence(n, k)); // 6
+        System.out.println(obj.paintFenceBottomUp(n, k)); // 6
     }
 
 }

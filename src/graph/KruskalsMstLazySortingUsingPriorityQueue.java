@@ -33,9 +33,8 @@ public class KruskalsMstLazySortingUsingPriorityQueue extends Graph {
         for (LinkedList<Edge> edges : adjList)
             allEdges.addAll(edges);
         
-        // Heapify operation in constructor transforms list of edges 
-        // into a binary heap in O(E)
-        PriorityQueue<Edge> pq =  new PriorityQueue<>(allEdges);
+        PriorityQueue<Edge> pq =  new PriorityQueue<>((a, b) -> Double.compare(a.wt, b.wt));
+        pq.addAll(allEdges);
         
         UnionFind uf = new UnionFind(numberOfVertices);
         double cost = 0.0;
@@ -99,13 +98,13 @@ public class KruskalsMstLazySortingUsingPriorityQueue extends Graph {
             /*
              * Used edge (8, 9) with cost: 0.00
              * Used edge (0, 4) with cost: 1.00
-             * Used edge (8, 2) with cost: 1.00
              * Used edge (4, 5) with cost: 1.00
+             * Used edge (8, 2) with cost: 1.00
              * Used edge (6, 7) with cost: 1.00
-             * Used edge (1, 3) with cost: 2.00
              * Used edge (4, 3) with cost: 2.00
+             * Used edge (1, 3) with cost: 2.00
              * Used edge (3, 7) with cost: 2.00
-             * Used edge (1, 2) with cost: 4.00
+             * Used edge (8, 6) with cost: 4.00
              */
         }
         else {

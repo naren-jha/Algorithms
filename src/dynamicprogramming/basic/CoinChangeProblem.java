@@ -8,15 +8,14 @@ import java.util.Arrays;
 public class CoinChangeProblem {
 
     private class SimpleRecursiveSolution {
-        // T(n) = Exp
+        // TC: O(2^(n+sum)) [as max height of the recursion tree is (n+sum), and
+        // for each node in the tree, we are making at most 2 recursive calls]
+        // SC: O(n+sum) [as max height of the recursion tree is (n+sum)]
         public int coinChange(int[] coins, int n, int sum) {
-            if (sum == 0)
-                return 1;
-            if (n == 0)
-                return 0;
+            if (sum == 0) return 1;
+            if (n == 0) return 0;
             
             int count = coinChange(coins, n-1, sum); // without considering last coin
-            
             if (sum >= coins[n-1])
                 count += coinChange(coins, n, sum-coins[n-1]); // by considering last coin
             
@@ -26,26 +25,23 @@ public class CoinChangeProblem {
     
     private class DPSolution {
         // top-to-bottom memoization
-        // T(n) = O(n*sum), S(n) = O(n*sum)
-        public int coinChangeMemoized(int[] coins, int n, int sum, int[][] res) {
-            if (sum == 0)
-                return 1;
-            if (n == 0)
-                return 0;
+        // TC: O(n*sum), SC: O(n*sum)
+        public int coinChangeMemoized(int[] coins, int n, int sum, int[][] mem) {
+            if (sum == 0) return 1;
+            if (n == 0) return 0;
             
-            if (res[n][sum] != -1)
-                return res[n][sum];
+            if (mem[n][sum] != -1)
+                return mem[n][sum];
             
-            res[n][sum] = coinChangeMemoized(coins, n-1, sum, res);
-            
+            mem[n][sum] = coinChangeMemoized(coins, n-1, sum, mem);
             if (sum >= coins[n-1])
-                res[n][sum] += coinChangeMemoized(coins, n, sum-coins[n-1], res);
+                mem[n][sum] += coinChangeMemoized(coins, n, sum-coins[n-1], mem);
             
-            return res[n][sum];
+            return mem[n][sum];
         }
         
         // bottom-up tabulation
-        // T(n) = O(n*sum), S(n) = O(n*sum)
+        // TC: O(n*sum), SC: O(n*sum)
         public int coinChangeBottomUp(int[] coins, int sum) {
             int n = coins.length;
             int[][] dp = new int[n+1][sum+1];
@@ -55,7 +51,7 @@ public class CoinChangeProblem {
             
             // when sum == 0
             for (int i = 0; i <= n; i++)
-                dp[i][0] = 1; 
+                dp[i][0] = 1;
             
             for (int i = 1; i <= n; i++) {
                 for (int j = 1; j <= sum; j++) {
@@ -64,16 +60,19 @@ public class CoinChangeProblem {
                         dp[i][j] += dp[i][j-coins[i-1]];
                 }
             }
+            
             return dp[n][sum];
         }
+        
         
         /*
          * For bottom up tabulation method, in every iteration of inner for loop,
          * since we only need the elements on/before the current element, we can
          * solve this in O(sum) space. See solution below.
          */
+        
         // bottom-up tabulation, space optimized
-        // T(n) = O(n*sum), S(n) = O(sum)
+        // TC: O(n*sum), SC: O(sum)
         // Advantage: better space complexity, cleaner solution.
         public int coinChange(int[] coins, int sum) {
             int[] res = new int[sum+1];

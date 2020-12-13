@@ -1,13 +1,70 @@
 package dynamicprogramming.basic;
 
- // https://www.geeksforgeeks.org/tiling-with-dominoes/
+import java.util.Arrays;
+
+// https://www.geeksforgeeks.org/tiling-with-dominoes/
 
 public class TilingWithDominoes {
     
+    // TC: Exponential
+    class SimpleRecursiveSolution {
+        int fa(int n) {
+            if (n == 0) return 1;
+            if (n == 1) return 0;
+            
+            return fa(n-2) + 2*fb(n-1);
+        }
+        
+        int fb(int n) {
+            if (n == 0) return 0;
+            if (n == 1) return 1;
+            
+            return fa(n-1) + fb(n-2);
+        }
+    }
+    
+    // T(n): O(n), S(n): O(n)
+    class Memoization {
+        int[] ma, mb; // memoization tables for type A and type B problems
+        
+        int f(int n) {
+            ma = new int[n+1];
+            Arrays.fill(ma, -1);
+            
+            mb = new int[n+1];
+            Arrays.fill(mb, -1);
+            
+            return fa(n);
+        }
+        
+        int fa(int n) {
+            if (n == 0) return 1;
+            if (n == 1) return 0;
+            
+            if (ma[n] != -1) return ma[n];
+            
+            return ma[n] = fa(n-2) + 2*fb(n-1);
+        }
+        
+        int fb(int n) {
+            if (n == 0) return 0;
+            if (n == 1) return 1;
+            
+            if (mb[n] != -1) return mb[n];
+            
+            return mb[n] = fa(n-1) + fb(n-2);
+        }
+    }
+    
+    // dp bottom-up tabulation
     // T(n): O(n), S(n): O(n)
     public int countWays(int n) {
-        if (n % 2 == 1)
+        if (n % 2 == 1) {
             return 0;
+            // this is because (n=odd) => (3*n = odd)
+            // that means total number of slots in the tile will be odd
+            // and we cannot fill odd number of slots using even size tile (2x1 = 2 slots)
+        }
         
         int[] a = new int[n+1];
         int[] b = new int[n+1];
@@ -40,9 +97,19 @@ public class TilingWithDominoes {
     
     public static void main(String[] args) {
         int n = 8;
-        TilingWithDominoes obj = new TilingWithDominoes();
-        System.out.println(obj.countWays(n)); // 153
-        System.out.println(obj.countWaysSpaceOptimized(n)); // 153
+        TilingWithDominoes solver = new TilingWithDominoes();
+        
+        System.out.println(solver.new SimpleRecursiveSolution().fa(n)); // 153
+        
+        System.out.println(solver.new Memoization().f(n)); // 153
+        System.out.println(solver.countWays(n)); // 153
+        System.out.println(solver.countWaysSpaceOptimized(n)); // 153
+        
+        n = 118;
+        //System.out.println(obj.new SimpleRecursiveSolution().fa(n)); // 759148825
+        System.out.println(solver.new Memoization().f(n)); // 759148825
+        System.out.println(solver.countWays(n)); // 759148825
+        System.out.println(solver.countWaysSpaceOptimized(n)); // 759148825
     }
 
 }

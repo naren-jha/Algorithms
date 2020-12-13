@@ -13,57 +13,60 @@ fib(n) = fib(n-1) + fib(n-2), otherwise
 
 public class FibonacciNumbers {
     
+    // TC: O(2^n), SC: O(n) 
+    // max height (or max number of levels) of recursion tree is n and 
+    // for each node, we are making 2 recursive calls
     private class SimpleButInefficientSolution {
         public int fib(int n) {
-            if (n <= 1)
-                return n;
+            if (n <= 1) return n;
             return fib(n-1) + fib(n-2);
         }
     }
     
     private class DPSolution {
         // top-to-bottom memoized solution
+        // TC: O(n), SC: O(n)
         public int fibMemoized(int n, int[] fib) {
-            if (n <= 1)
-                return n;
+            if (n <= 1) return n;
             
-            if (fib[n] != -1)
-                return fib[n];
+            if (fib[n] != -1) return fib[n];
             
             fib[n] = fibMemoized(n-1, fib) + fibMemoized(n-2, fib);
             return fib[n];
         }
         
         // bottom-up tabulation method
+        // TC: O(n), SC: O(n)
         public int fibBottomUp(int n) {
             int[] f = new int[n+1]; // 1 extra to handle n = 0 case
             f[0] = 0; f[1] = 1;
             
-            for (int i = 2; i <= n; i++) {
+            for (int i = 2; i <= n; i++)
                 f[i] = f[i-1] + f[i-2];
-            }
+            
             return f[n];
         }
         
         // bottom-up tabulation (space optimized) method
+        // TC: O(n), SC: O(1)
         public int fibBottomUpSpaceOptimized(int n) {
-            int a = 0, b = 1, c;
-            if (n == 0)
-                return a;
+            if (n <= 1) return n; // edge case
+            
+            int a = 0, b = 1, c = 0;
             for (int i = 2; i <= n; i++) {
                 c = a + b;
                 a = b;
                 b = c;
             }
-            return b;
+            return c;
         }
         
-        // bottom-up tabulation (space optimized) method
-        // uses only two variables
+        // bottom-up tabulation (space optimized) method. Uses only two variables.
+        // TC: O(n), SC: O(1)
         public int fibBottomUpSpaceOptimized2Variables(int n) {
+            if (n <= 1) return n; // edge case
+            
             int a = 0, b = 1;
-            if (n == 0)
-                return a;
             for (int i = 2; i <= n; i++) {
                 b = a + b;
                 a = b - a;
@@ -72,9 +75,12 @@ public class FibonacciNumbers {
         }
     }
     
+    // http://www.maths.surrey.ac.uk/hosted-sites/R.Knott/Fibonacci/fibFormula.html
+    // TC: O(1), SC: O(1)
     private class ConstantTimeAndSpaceSolution {
         public int fib(int n) {
-            return (int) (Math.pow((1 + Math.sqrt(5))/2, n) / Math.sqrt(5));
+            double phi = (1 + Math.sqrt(5)) / 2;
+            return (int) Math.round(Math.pow(phi, n) / Math.sqrt(5));
         }
     }
 
