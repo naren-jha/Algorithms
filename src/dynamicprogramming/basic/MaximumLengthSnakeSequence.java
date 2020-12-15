@@ -3,6 +3,7 @@ package dynamicprogramming.basic;
 import static java.lang.Math.abs;
 import static java.lang.Math.max;
 
+import java.util.Arrays;
 import java.util.StringJoiner;
 
 // https://www.geeksforgeeks.org/find-maximum-length-snake-sequence/
@@ -13,90 +14,65 @@ public class MaximumLengthSnakeSequence {
     int f(int[][] mat, int i, int j) {
         if (i == mat.length-1 && j == mat[0].length-1) return 0; // 2 cells form snake of length 1
         
-        int down = 0;
-        if (i != mat.length-1) {
-            down = f(mat, i+1, j);
-            if (abs(mat[i][j] - mat[i+1][j]) == 1) down += 1;
-        }
-        
         int right = 0;
-        if (j != mat[0].length-1) {
-            right = f(mat, i, j+1);
-            if (abs(mat[i][j] - mat[i][j+1]) == 1) right += 1;
-        }
+        if (j < mat[0].length-1 && abs(mat[i][j] - mat[i][j+1]) == 1)
+            right = 1 + f(mat, i, j+1);
+        
+        int down = 0;
+        if (i < mat.length-1 && abs(mat[i][j] - mat[i+1][j]) == 1)
+            down = 1 + f(mat, i+1, j);
         
         return max(down, right);
     }
     
     // dp bottom-up
+    int R, C;
     public void findMaxLengthSnakeSequence(int[][] mat) {
-        int r = mat.length;
-        if (r == 0)
-            return;
-        int c = mat[0].length;
+        R = mat.length;
+        if (R == 0) throw new IllegalArgumentException("empty grid.");
+        C = mat[0].length;
         
-        int[][] dp = new int[r][c];
+        int[][] dp = new int[R][C];
         
-        dp[r-1][c-1] = 0; // redundant in java
-        
-        int maxLength = 0;
+        int maxLen = 0;
         int maxRow = 0, maxCol = 0;
-        for (int i = r-1; i >= 0; --i) {
-            for (int j = c-1; j >= 0; --j) {
-                if (i == r-1 && j== c-1) continue;
+        for (int i = R-1; i >= 0; --i) {
+            for (int j = C-1; j >= 0; --j) {
+                int right = 0;
+                if (j < C-1 && abs(mat[i][j] - mat[i][j+1]) == 1)
+                    right = 1 + dp[i][j+1];
                 
                 int down = 0;
-                if (i != r-1) {
-                    down = dp[i+1][j];
-                    if (abs(mat[i][j] - mat[i+1][j]) == 1) down += 1;
-                }
-                
-                int right = 0;
-                if (j != c-1) {
-                    right = dp[i][j+1];
-                    if (abs(mat[i][j] - mat[i][j+1]) == 1) right += 1;
-                }
+                if (i < R-1 && abs(mat[i][j] - mat[i+1][j]) == 1)
+                    down = 1 + dp[i+1][j];
                 
                 dp[i][j] = max(down, right);
                 
-                if (dp[i][j] > maxLength) {
-                    maxLength = dp[i][j];
+                if (dp[i][j] > maxLen) {
+                    maxLen = dp[i][j];
                     maxRow = i; maxCol = j;
                 }
             }
         }
         
-        System.out.println("Max length of snake sequence is " + maxLength);
+        System.out.println("Max length of snake sequence is " + maxLen);
+        //System.out.println(Arrays.deepToString(dp));
         
-        printSequence(mat, dp, maxRow, maxCol);
+        printSequence(dp, maxRow, maxCol);
     }
     
-    private void printSequence(int[][] mat, int[][] dp, int i, int j) {
+    private void printSequence(int[][] dp, int i, int j) {
         StringJoiner joiner = new StringJoiner(" -> ");
-        int r = mat.length, c = mat[0].length;
-        
-        while (i != r-1 || j != c-1) {
+        do {
             joiner.add(String.format("(%d, %d)", i, j));
             
-            // if it can only go right
-            if (i == r-1) {
-                j++;
-            }
+            if (i == R-1) j++; // if it can only go right
+            else if (j == C-1) i++; // if it can only go down
+            else if (dp[i][j+1] > dp[i+1][j]) j++;
+            else i++;
             
-            // if it can only go down
-            else if (j == c-1) {
-                i++;
-            }
-            
-            // can go in both direction
-            else {
-                int down = dp[i+1][j];
-                int right = dp[i][j+1];
-                
-                if (abs(mat[i][j] - mat[i+1][j]) == 1 && down >= right) i++;
-                else j++;
-            }
-        }
+        } while (dp[i][j] != 0);
+        
         joiner.add(String.format("(%d, %d)", i, j)); // add bottom right cell
         
         System.out.println("Path: " + joiner.toString());
@@ -110,10 +86,10 @@ public class MaximumLengthSnakeSequence {
                          {1, 1, 1, 7}, 
                       };
         /* dp
-         * {7, 6, 5, 3}, 
-           {6, 5, 4, 3}, 
-           {2, 2, 2, 2}, 
-           {1, 1, 1, 1},
+         * [6, 5, 4, 0]
+         * [5, 4, 3, 2]
+         * [0, 0, 0, 1]
+         * [0, 0, 0, 0]
          */
         MaximumLengthSnakeSequence solver = new MaximumLengthSnakeSequence();
         

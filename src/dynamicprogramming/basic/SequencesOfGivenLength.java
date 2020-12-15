@@ -9,10 +9,10 @@ public class SequencesOfGivenLength {
     class SimpleRecursiveSolution {
         // T(m, n): Exp
         public int countSeq(int m, int n) {
+            if (n == 0)
+                return 1;
             if (m < (1 << n-1)) // m < Math.pow(2, n-1)
                 return 0;
-            if (n == 1)
-                return m;
             
             return countSeq(m/2, n-1) + countSeq(m-1, n);
         }
@@ -22,44 +22,42 @@ public class SequencesOfGivenLength {
         // top-down memoization technique
         // T(m, n): O(mn), S(m, n): O(mn)
         public int countSeqMemoized(int m, int n) {
-            int[][] res = new int[m+1][n+1];
+            int[][] mem = new int[m+1][n+1];
             for (int i = 0; i <= m; i++)
-                Arrays.fill(res[i], -1);
-            return countSeqMemoizedUtil(m, n, res);
+                Arrays.fill(mem[i], -1);
+            return countSeqMemoizedUtil(m, n, mem);
         }
         
-        private int countSeqMemoizedUtil(int m, int n, int[][] res) {
+        private int countSeqMemoizedUtil(int m, int n, int[][] mem) {
+            if (n == 0)
+                return 1;
             if (m < (1 << n-1))
                 return 0;
-            if (n == 1)
-                return m;
             
-            if (res[m][n] != -1)
-                return res[m][n];
+            if (mem[m][n] != -1)
+                return mem[m][n];
             
-            res[m][n] = countSeqMemoizedUtil(m/2, n-1, res) + countSeqMemoizedUtil(m-1, n, res);
-            return res[m][n];
+            mem[m][n] = countSeqMemoizedUtil(m/2, n-1, mem) + countSeqMemoizedUtil(m-1, n, mem);
+            return mem[m][n];
         }
         
         // bottom-up tabulation technique
         // T(m, n): O(mn), S(m, n): O(mn)
         public int countSeq(int m, int n) {
-            int[][] res = new int[m+1][n+1];
+            int[][] dp = new int[m+1][n+1];
+            for (int i = 0; i <= m; ++i)
+                dp[i][0] = 1;
             
-            for (int i = 0; i <= m; i++) {
-                for (int j = 0; j <= n; j++) {
-                    if (j == 0)
-                        res[i][j] = 0;
-                    else if (i < (1 << j-1))
-                        res[i][j] = 0;
-                    else if (j == 1)
-                        res[i][j] = i;
+            for (int i = 1; i <= m; i++) {
+                for (int j = 1; j <= n; j++) {
+                    if (i < (1 << j-1))
+                        dp[i][j] = 0;
                     else
-                        res[i][j] = res[i/2][j-1] + res[i-1][j];
+                        dp[i][j] = dp[i/2][j-1] + dp[i-1][j];
                 }
             }
             
-            return res[m][n];
+            return dp[m][n];
         }
     }
     

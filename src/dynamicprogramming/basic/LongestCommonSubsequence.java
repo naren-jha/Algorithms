@@ -9,10 +9,11 @@ package dynamicprogramming.basic;
 public class LongestCommonSubsequence {
 
     class SimpleRecursiveSolution {
-        // T(m,n) = Exp
+        // T(m,n) = O(2^(m+n)), S(m,n): O(m+n)
         public int lcs(char[] x, char[] y, int m, int n) {
             if (m == 0 || n == 0)
                 return 0;
+            
             if (x[m-1] == y[n-1])
                 return lcs(x, y, m-1, n-1) + 1;
             else
@@ -25,20 +26,24 @@ public class LongestCommonSubsequence {
         // T(m,n): O(mn), S(m,n): O(mn)
         public int lcs(char[] x, char[] y) {
             int m = x.length, n = y.length;
-            int[][] res = new int[m+1][n+1];
+            int[][] dp = new int[m+1][n+1];
             
-            for (int i = 0; i <= m; i++) {
-                for (int j = 0; j <= n; j++) {
-                    if (i == 0 || j == 0)
-                        res[i][j] = 0;
-                    else if (x[i-1] == y[j-1])
-                        res[i][j] = res[i-1][j-1] + 1;
+            for (int i = 0; i <= m; i++)
+                dp[i][0] = 0;
+            
+            for (int j = 0; j <= n; j++)
+                dp[0][j] = 0;
+            
+            for (int i = 1; i <= m; i++) {
+                for (int j = 1; j <= n; j++) {
+                    if (x[i-1] == y[j-1])
+                        dp[i][j] = dp[i-1][j-1] + 1;
                     else
-                        res[i][j] = Math.max(res[i][j-1], res[i-1][j]);
+                        dp[i][j] = Math.max(dp[i][j-1], dp[i-1][j]);
                 }
             }
             
-            return res[m][n];
+            return dp[m][n];
         }
         
         /*
@@ -46,20 +51,28 @@ public class LongestCommonSubsequence {
          */
         public void printLcs(char[] x, char[] y) {
             int m = x.length, n = y.length;
-            int[][] res = new int[m+1][n+1];
+            int[][] dp = new int[m+1][n+1];
             
-            for (int i = 0; i <= m; i++) {
-                for (int j = 0; j <= n; j++) {
-                    if (i == 0 || j == 0)
-                        res[i][j] = 0;
-                    else if (x[i-1] == y[j-1])
-                        res[i][j] = res[i-1][j-1] + 1;
+            for (int i = 0; i <= m; i++)
+                dp[i][0] = 0;
+            
+            for (int j = 0; j <= n; j++)
+                dp[0][j] = 0;
+            
+            for (int i = 1; i <= m; i++) {
+                for (int j = 1; j <= n; j++) {
+                    if (x[i-1] == y[j-1])
+                        dp[i][j] = dp[i-1][j-1] + 1;
                     else
-                        res[i][j] = Math.max(res[i][j-1], res[i-1][j]);
+                        dp[i][j] = Math.max(dp[i][j-1], dp[i-1][j]);
                 }
-            }            
+            }        
             
-            printLcsUtil(res, m, n, x, y, new StringBuilder());
+            printLcsUtil(dp, m, n, x, y, new StringBuilder());
+            
+            // or print all possible LCS
+            System.out.println("Longest common subsequences are: ");
+            printAllLcsUtil(dp, m, n, x, y, new StringBuilder());
         }
         
         private void printLcsUtil(int[][] res, int i, int j, char[] x, char[] y, 
@@ -78,43 +91,6 @@ public class LongestCommonSubsequence {
                 printLcsUtil(res, i-1, j, x, y, lcs);
             else 
                 printLcsUtil(res, i, j-1, x, y, lcs);
-        }
-        
-        // Another approach for above recursive util method
-        // Change 1: it does not use a string builder
-        // Change 2: it does not require both input string
-        private void printLcsUtil2(int[][] res, int i, int j, char[] x) {
-            if (i == 0 || j == 0)
-                return;
-            
-            if (res[i][j] == res[i-1][j-1] + 1) {
-                printLcsUtil2(res, i-1, j-1, x);
-                System.out.print(x[i-1]);
-            }
-            else if (res[i-1][j] >= res[i][j-1])
-                printLcsUtil2(res, i-1, j, x);
-            else 
-                printLcsUtil2(res, i, j-1, x);
-        }
-        
-        // We can also print all the possible LCS. see solution below.
-        public void printAllLcs(char[] x, char[] y) {
-            int m = x.length, n = y.length;
-            int[][] res = new int[m+1][n+1];
-            
-            for (int i = 0; i <= m; i++) {
-                for (int j = 0; j <= n; j++) {
-                    if (i == 0 || j == 0)
-                        res[i][j] = 0;
-                    else if (x[i-1] == y[j-1])
-                        res[i][j] = res[i-1][j-1] + 1;
-                    else
-                        res[i][j] = Math.max(res[i][j-1], res[i-1][j]);
-                }
-            }            
-            
-            System.out.println("Longest common subsequences are: ");
-            printAllLcsUtil(res, m, n, x, y, new StringBuilder());
         }
         
         private void printAllLcsUtil(int[][] res, int i, int j, char[] x, char[] y, 
@@ -151,20 +127,24 @@ public class LongestCommonSubsequence {
         // T(m,n): O(mn), S(m,n): O(min(m,n))
         public int lcsSpaceOptimized(char[] x, char[] y) {
             int m = x.length, n = y.length;
-            int[][] res = new int[2][n+1];
+            int[][] dp = new int[2][n+1];
             
-            for (int i = 0; i <= m; i++) {
-                for (int j = 0; j <= n; j++) {
-                    if (i == 0 || j == 0)
-                        res[i%2][j] = 0;
-                    else if (x[i-1] == y[j-1])
-                        res[i%2][j] = res[(i-1)%2][j-1] + 1;
+            for (int i = 0; i <= m; i++)
+                dp[i%2][0] = 0;
+            
+            for (int j = 0; j <= n; j++)
+                dp[0][j] = 0;
+            
+            for (int i = 1; i <= m; i++) {
+                for (int j = 1; j <= n; j++) {
+                    if (x[i-1] == y[j-1])
+                        dp[i%2][j] = dp[(i-1)%2][j-1] + 1;
                     else
-                        res[i%2][j] = Math.max(res[i%2][j-1], res[(i-1)%2][j]);
+                        dp[i%2][j] = Math.max(dp[i%2][j-1], dp[(i-1)%2][j]);
                 }
             }
             
-            return res[m%2][n];
+            return dp[m%2][n];
         }
     }
     
@@ -183,8 +163,6 @@ public class LongestCommonSubsequence {
         System.out.println(obj.new DPSolution().lcs(x, y)); // 4
         
         obj.new DPSolution().printLcs(x, y); // BCBA
-        
-        obj.new DPSolution().printAllLcs(x, y);
         /*
          * BCBA
          * BCAB

@@ -32,10 +32,7 @@ public class EvenLengthBinarySequence {
         // top-down memoization
         // T(n): O(n^2), S(n): O(n^2)
         public int countSeq(int n) {
-            // diff will range from -n to +n, so we need a
-            // nX2n matrix, but we take (n+1)x(2n+1) matrix
-            // to simplify indexes while using this matrix
-            int[][] res = new int[n+1][2*n+1];
+            int[][] res = new int[n+1][2*n+1]; // since diff ranges from -n to +n (total 2n+1)
             
             // initialize entire matrix with -1
             for (int i = 0; i <= n; i++)
