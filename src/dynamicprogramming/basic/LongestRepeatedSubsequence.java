@@ -4,8 +4,7 @@ package dynamicprogramming.basic;
 
 public class LongestRepeatedSubsequence {
     /*
-     * This problem is just the modification of 
-     * Longest Common Subsequence problem. 
+     * This problem is a modified version of LCS prblem.
      * The idea is to find the LCS(str, str)
      * where str is the input string with the restriction
      * that when both the characters are same, they 
@@ -19,49 +18,54 @@ public class LongestRepeatedSubsequence {
     // T(m,n): O(mn), S(m,n): O(mn)
     private int lrs(char[] x, char[] y) {
         int m = x.length, n = y.length;
-        int[][] res = new int[m+1][n+1];
+        int[][] dp = new int[m+1][n+1];
         
-        for (int i = 0; i <= m; i++) {
-            for (int j = 0; j <= n; j++) {
-                if (i == 0 || j == 0)
-                    res[i][j] = 0;
-                else if (x[i-1] == y[j-1] && i!= j)
-                    res[i][j] = res[i-1][j-1] + 1;
+        for (int i = 0; i <= m; i++)
+            dp[i][0] = 0;
+        
+        for (int j = 0; j <= n; j++)
+            dp[0][j] = 0;
+        
+        for (int i = 1; i <= m; i++) {
+            for (int j = 1; j <= n; j++) {
+                if (x[i-1] == y[j-1] && i != j)
+                    dp[i][j] = dp[i-1][j-1] + 1;
                 else
-                    res[i][j] = Math.max(res[i][j-1], res[i-1][j]);
+                    dp[i][j] = Math.max(dp[i][j-1], dp[i-1][j]);
             }
         }
         
-        return res[m][n];
+        return dp[m][n];
     }
     
-    /*
-     * We can also print the LRS. see the solution below.
-     */
+    // We can also print the LRS. see the solution below
     public void printLrs(char[] x) {
         printLrs(x, x);
     }
     
     public void printLrs(char[] x, char[] y) {
         int m = x.length, n = y.length;
-        int[][] res = new int[m+1][n+1];
+        int[][] dp = new int[m+1][n+1];
         
-        for (int i = 0; i <= m; i++) {
-            for (int j = 0; j <= n; j++) {
-                if (i == 0 || j == 0)
-                    res[i][j] = 0;
-                else if (x[i-1] == y[j-1] && i != j)
-                    res[i][j] = res[i-1][j-1] + 1;
+        for (int i = 0; i <= m; i++)
+            dp[i][0] = 0;
+        
+        for (int j = 0; j <= n; j++)
+            dp[0][j] = 0;
+        
+        for (int i = 1; i <= m; i++) {
+            for (int j = 1; j <= n; j++) {
+                if (x[i-1] == y[j-1] && i != j)
+                    dp[i][j] = dp[i-1][j-1] + 1;
                 else
-                    res[i][j] = Math.max(res[i][j-1], res[i-1][j]);
+                    dp[i][j] = Math.max(dp[i][j-1], dp[i-1][j]);
             }
-        }            
+        }          
         
-        printLrsUtil(res, m, n, x, y, new StringBuilder());
+        printLrsUtil(dp, m, n, x, y, new StringBuilder());
     }
     
-    private void printLrsUtil(int[][] res, int i, int j, char[] x, char[] y, 
-                                        StringBuilder lrs) {
+    private void printLrsUtil(int[][] res, int i, int j, char[] x, char[] y, StringBuilder lrs) {
         if (i == 0 || j == 0) {
             System.out.println("Longest repeated subsequence is: ");
             System.out.println(lrs.reverse());
@@ -85,7 +89,7 @@ public class LongestRepeatedSubsequence {
         System.out.println(obj.lrs(s.toCharArray())); // 2
         obj.printLrs(s.toCharArray()); // ab
         
-        s = "axxxy";        
+        s = "axxxy";
         System.out.println(obj.lrs(s.toCharArray())); // 2
         obj.printLrs(s.toCharArray()); // xx
     }

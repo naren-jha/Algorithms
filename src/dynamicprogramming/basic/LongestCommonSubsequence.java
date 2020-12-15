@@ -68,6 +68,7 @@ public class LongestCommonSubsequence {
                 }
             }        
             
+            // print any one LCS
             printLcsUtil(dp, m, n, x, y, new StringBuilder());
             
             // or print all possible LCS
@@ -75,7 +76,7 @@ public class LongestCommonSubsequence {
             printAllLcsUtil(dp, m, n, x, y, new StringBuilder());
         }
         
-        private void printLcsUtil(int[][] res, int i, int j, char[] x, char[] y, 
+        private void printLcsUtil(int[][] dp, int i, int j, char[] x, char[] y, 
                                             StringBuilder lcs) {
             if (i == 0 || j == 0) {
                 System.out.println("Longest common subsequence is: ");
@@ -85,15 +86,15 @@ public class LongestCommonSubsequence {
             
             if (x[i-1] == y[j-1]) {
                 lcs.append(x[i-1]);
-                printLcsUtil(res, i-1, j-1, x, y, lcs);
+                printLcsUtil(dp, i-1, j-1, x, y, lcs);
             }
-            else if (res[i-1][j] >= res[i][j-1])
-                printLcsUtil(res, i-1, j, x, y, lcs);
+            else if (dp[i-1][j] >= dp[i][j-1])
+                printLcsUtil(dp, i-1, j, x, y, lcs);
             else 
-                printLcsUtil(res, i, j-1, x, y, lcs);
+                printLcsUtil(dp, i, j-1, x, y, lcs);
         }
         
-        private void printAllLcsUtil(int[][] res, int i, int j, char[] x, char[] y, 
+        private void printAllLcsUtil(int[][] dp, int i, int j, char[] x, char[] y, 
                                                 StringBuilder lcs) {
             if (i == 0 || j == 0) {
                 System.out.println(lcs.reverse());
@@ -102,18 +103,18 @@ public class LongestCommonSubsequence {
             
             if (x[i-1] == y[j-1]) {
                 lcs.append(x[i-1]);
-                printAllLcsUtil(res, i-1, j-1, x, y, lcs);
+                printAllLcsUtil(dp, i-1, j-1, x, y, lcs);
             }
-            else if (res[i-1][j] == res[i][j-1]) {
+            else if (dp[i-1][j] == dp[i][j-1]) {
                 // two different LCS branches out
                 StringBuilder lcs2 = new StringBuilder(lcs);
-                printAllLcsUtil(res, i-1, j, x, y, lcs);
-                printAllLcsUtil(res, i, j-1, x, y, lcs2);
+                printAllLcsUtil(dp, i-1, j, x, y, lcs);
+                printAllLcsUtil(dp, i, j-1, x, y, lcs2);
             }
-            else if (res[i-1][j] > res[i][j-1])
-                printAllLcsUtil(res, i-1, j, x, y, lcs);
+            else if (dp[i-1][j] > dp[i][j-1])
+                printAllLcsUtil(dp, i-1, j, x, y, lcs);
             else 
-                printAllLcsUtil(res, i, j-1, x, y, lcs);
+                printAllLcsUtil(dp, i, j-1, x, y, lcs);
         }
         
         /*
