@@ -7,7 +7,7 @@ import java.util.Arrays;
 public class ProductSubsequencesCount {
 
     class SimpleRecursiveSolution {
-        // T(n): Exp
+        // T(n): O(2^n), S(n): O(n) [as max height of recursion tree is n]
         public int countProdSubSeq(int[] a, int k) {
             return countProdSubSeqUtil(a, a.length, k);
         }
@@ -26,68 +26,68 @@ public class ProductSubsequencesCount {
     
     class DPSolution {
         // Top-down memoization
-        // T(n): O(ak), S(n): O(ak)
+        // T(n): O(nk), S(n): O(nk)
         public int countProdSubSeqMemoized(int[] a, int k) {
             int n = a.length;
-            int[][] res = new int[n+1][k+1];
+            int[][] mem = new int[n+1][k+1];
             for (int i = 0; i <= n; i++)
-                Arrays.fill(res[i], -1);
-            return countProdSubSeqUtil(a, n, k, res);
+                Arrays.fill(mem[i], -1);
+            return countProdSubSeqUtil(a, n, k, mem);
         }
         
-        private int countProdSubSeqUtil(int[] a, int n, int k, int[][] res) {
+        private int countProdSubSeqUtil(int[] a, int n, int k, int[][] mem) {
             if (n == 0)
                 return 0;
             
-            if (res[n][k] != -1)
-                return res[n][k];
+            if (mem[n][k] != -1)
+                return mem[n][k];
             
             if (a[n-1] <= k)
-                res[n][k] = 1 + countProdSubSeqUtil(a, n-1, k/a[n-1], res)
-                                + countProdSubSeqUtil(a, n-1, k, res);
+                mem[n][k] = 1 + countProdSubSeqUtil(a, n-1, k/a[n-1], mem)
+                                + countProdSubSeqUtil(a, n-1, k, mem);
             else 
-                res[n][k] = countProdSubSeqUtil(a, n-1, k, res);
+                mem[n][k] = countProdSubSeqUtil(a, n-1, k, mem);
             
             
-            return res[n][k];
+            return mem[n][k];
         }
         
         // Bottom-up tabulation
-        // T(n): O(ak), S(n): O(ak)
+        // T(n): O(nk), S(n): O(nk)
         public int countProdSubSeq(int[] a, int k) {
             int n = a.length;
-            int[][] res = new int[n+1][k+1];
-            Arrays.fill(res[0], 0);
+            int[][] dp = new int[n+1][k+1];
+            Arrays.fill(dp[0], 0);
             
             for (int i = 1; i <= n; i++) {
                 for (int j = 1; j <= k; j++) {
                     if (a[i-1] <= j)
-                        res[i][j] = 1 + res[i-1][j/a[i-1]] + res[i-1][j];
+                        dp[i][j] = 1 + dp[i-1][j/a[i-1]] + dp[i-1][j];
                     else
-                        res[i][j] = res[i-1][j];
+                        dp[i][j] = dp[i-1][j];
                 }
             }
             
-            return res[n][k];
+            return dp[n][k];
         }
         
         // Bottom-up tabulation
-        // T(n): O(ak), S(n): O(k)
+        // T(n): O(nk), S(n): O(k)
         public int countProdSubSeqSpaceOptimized(int[] a, int k) {
             int n = a.length;
-            int[][] res = new int[2][k+1];
-            Arrays.fill(res[0], 0);
+            int[][] dp = new int[2][k+1];
+            Arrays.fill(dp[0], 0);
             
             for (int i = 1; i <= n; i++) {
                 for (int j = 1; j <= k; j++) {
                     if (a[i-1] <= j)
-                        res[i%2][j] = 1 + res[(i-1)%2][j/a[i-1]] + res[(i-1)%2][j];
+                        dp[i%2][j] = 1 + dp[(i-1)%2][j/a[i-1]] + dp[(i-1)%2][j];
                     else
-                        res[i%2][j] = res[(i-1)%2][j];
+                        dp[i%2][j] = dp[(i-1)%2][j];
                 }
             }
             
-            return res[n%2][k];
+            return dp[n%2][k];
         }
     }
     

@@ -137,11 +137,11 @@ public class LongestIncreasingSubsequence {
         
         int len = 0;
         for (int num : nums) {
-            int i = Arrays.binarySearch(seq, 0, len, num);
-            if (i < 0) i = -i-1; // since binary search returns (-(insertion point) - 1) if the key is not present
+            int ip = Arrays.binarySearch(seq, 0, len, num);
+            if (ip < 0) ip = -ip-1; // since binary search returns (-(insertion point) - 1) if the key is not present
             
-            seq[i] = num;
-            if (i == len) len++;
+            seq[ip] = num;
+            if (ip == len) len++;
         }
         
         return len;
@@ -149,11 +149,11 @@ public class LongestIncreasingSubsequence {
     
     /*
      * When current num is bigger than the last entry in seq[] (i.e., seq[len-1]),
-     * then after binary search, we will have i = len, so we can directly insert current 
+     * then after binary search, we will have ip = len, so we can directly insert current 
      * num at location len in seq[] array and then increase the len.
      * 
-     * But when current num is smaller than the last entry in seq[], then we get i = a value 
-     * which is < len (0 <= i <= len-1), so then instead of ignoring this smaller number, 
+     * But when current num is smaller than the last entry in seq[], then we get ip = a value 
+     * which is < len (0 <= ip <= len-1), so then instead of ignoring this smaller number, 
      * we replace existing number at that spot with current num.
      * The reason we replace an existing number with a smaller number is "to get as larger LIS as possible"
      * 
@@ -161,25 +161,25 @@ public class LongestIncreasingSubsequence {
      * 
      * step 1:
      * num = 10
-     * i = 0
+     * ip = 0
      * seq[0] = 10
      * len = 1
      * 
      * step 2:
      * num = 2
-     * i = 0
+     * ip = 0
      * seq[0] = 2 (we replace 10 by 2)
      * len = 1
      * 
      * step 3:
      * num = 5
-     * i = 1
+     * ip = 1
      * seq[1] = 5 
      * seq = [2, 5]
      * len = 2
      * 
      * Observe that if we did not replace 10 by 2 (at step 2), then at next step for number 5
-     * we'll again get i as 0, and we'll not be able to insert 5 at next location and thus we'll 
+     * we'll again get ip as 0, and we'll not be able to insert 5 at next location and thus we'll 
      * get len of LIS as still 1, which is incorrect as it should have been 2.
      */
     
