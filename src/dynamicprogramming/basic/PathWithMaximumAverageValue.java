@@ -9,64 +9,56 @@ import java.util.Arrays;
 public class PathWithMaximumAverageValue {
 
     class SimpleRecursiveSolution {
-        // T(n): Exp
-        public double maxAvgPathVal(int[][] a) {
+        // TC: O(2^(r+c)), SC: O(r+c)
+        public double maxAvg(int[][] a) {
             int n = a.length;
-            return (double) maxAvgPathValUtil(a, n-1, n-1) / (2*n - 1);
+            return (double) maxSum(a, n, n) / (2*n - 1);
         }
         
-        private int maxAvgPathValUtil(int[][] a, int row, int col) {
-            if (row < 0 || col < 0)
-                return 0;
-            if (row == 0 && col == 0)
-                return a[0][0];
-            return Math.max(maxAvgPathValUtil(a, row-1, col),
-                    maxAvgPathValUtil(a, row, col-1)) + a[row][col];
+        private int maxSum(int[][] a, int r, int c) {
+            if (r == 0 || c == 0) return 0;
+            
+            return Math.max(maxSum(a, r-1, c), maxSum(a, r, c-1)) + a[r-1][c-1];
         }
     }
     
     class DPSolution {
         // Top-down memoization
-        // T(n): O(n^2), S(n): O(n^2)
-        public double maxAvgPathValMemoized(int[][] a) {
+        // TC: O(n^2), SC: O(n^2)
+        public double maxAvgMemoized(int[][] a) {
             int n = a.length;
-            int[][] res = new int[n][n];
-            for (int i = 0; i < n; i++)
-                Arrays.fill(res[i], -1);
-            return (double) maxAvgPathValMemUtil(a, n-1, n-1, res) / (2*n - 1);
+            int[][] mem = new int[n+1][n+1];
+            for (int i = 0; i <= n; i++)
+                Arrays.fill(mem[i], -1);
+            
+            return (double) maxSumMem(a, n, n, mem) / (2*n - 1);
         }
         
-        private int maxAvgPathValMemUtil(int[][] a, int row, int col, int[][] res) {
-            if (row < 0 || col < 0)
-                return 0;
-            if (row == 0 && col == 0)
-                return a[0][0];
+        private int maxSumMem(int[][] a, int r, int c, int[][] mem) {
+            if (mem[r][c] != -1) return mem[r][c];
+            if (r == 0 || c == 0) return 0;
             
-            if (res[row][col] != -1)
-                return res[row][col];
-            res[row][col] = Math.max(maxAvgPathValMemUtil(a, row-1, col, res),
-                    maxAvgPathValMemUtil(a, row, col-1, res)) + a[row][col];
-            return res[row][col];
+            return Math.max(maxSumMem(a, r-1, c, mem), maxSumMem(a, r, c-1, mem)) + a[r-1][c-1];
         }
         
         // Bottom-up tabulation
-        // T(n): O(n^2), S(n): O(n^2)
+        // TC: O(n^2), SC: O(n^2)
         public double maxAvgPathVal(int[][] a) {
             int n = a.length;
-            int[][] dp = new int[n][n];
+            int[][] dp = new int[n+1][n+1];
             
-            dp[0][0] = a[0][0];
-            for (int i = 1; i < n; i++)
-                dp[i][0] = dp[i-1][0] + a[i][0];
-            for (int j = 1; j < n; j++)
-                dp[0][j] = dp[0][j-1] + a[0][j];
+            for (int i = 0; i <= n; i++)
+                dp[i][0] = 0;
+            for (int j = 0; j <= n; j++)
+                dp[0][j] = 0;
             
-            for (int i = 1; i < n; i++) {
-                for (int j = 1; j < n; j++) {
-                    dp[i][j] = max(dp[i-1][j], dp[i][j-1]) + a[i][j];
+            for (int i = 1; i <= n; i++) {
+                for (int j = 1; j <= n; j++) {
+                    dp[i][j] = max(dp[i-1][j], dp[i][j-1]) + a[i-1][j-1];
                 }
             }
-            return (double) dp[n-1][n-1] / (2*n - 1);
+            
+            return (double) dp[n][n] / (2*n - 1);
         }
     }
     
@@ -77,8 +69,8 @@ public class PathWithMaximumAverageValue {
                         {7, 3, 9}
                     };
         PathWithMaximumAverageValue o = new PathWithMaximumAverageValue();
-        System.out.println(o.new SimpleRecursiveSolution().maxAvgPathVal(a)); // 5.2
-        System.out.println(o.new DPSolution().maxAvgPathValMemoized(a)); // 5.2
+        System.out.println(o.new SimpleRecursiveSolution().maxAvg(a)); // 5.2
+        System.out.println(o.new DPSolution().maxAvgMemoized(a)); // 5.2
         System.out.println(o.new DPSolution().maxAvgPathVal(a)); // 5.2
     }
 }
