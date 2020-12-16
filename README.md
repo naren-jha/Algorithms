@@ -39,9 +39,9 @@ Repo to host code for learning Data Structures and Algorithms
 
 ## Dynamic Programming [Problems]
 (Sorted: Easy To Hard)
-1. [Ugly Numbers](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/UglyNumbers.java)
-2. [Super Ugly Numbers](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/SuperUglyNumbers.java)
-3. [Fibonacci Numbers](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/FibonacciNumbers.java)
+1. [Fibonacci Numbers](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/FibonacciNumbers.java)
+2. [Ugly Numbers](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/UglyNumbers.java)
+3. [Super Ugly Numbers](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/SuperUglyNumbers.java)
 4. [Tiling 2Xn Floor With 2X1 Tile](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/Tiling2XnFloorWith2X1Tile.java)
 5. [Tiling NxM Floor With 1xM Tile](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/TilingNxMFloorWith1xMTile.java)
 6. [Gold Mine Problem](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/GoldMineProblem.java)
