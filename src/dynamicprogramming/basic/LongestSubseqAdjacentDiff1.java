@@ -1,5 +1,7 @@
 package dynamicprogramming.basic;
 
+import static java.lang.Math.max;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,30 +10,36 @@ import java.util.Map;
 public class LongestSubseqAdjacentDiff1 {
     
     /*
-     * GeeksForGeeks has a O(n^2) dynamic programming solution 
-     * based on the same idea which we used in Longest Increasing
-     * Subsequence problem. This problem however can be solved in 
-     * O(n) time using a Hashtable, see the solution below.
+     * We can solve this problem in O(n^2) time and O(n) space using similar approach as LIS problem.
+     * However this problem can be solved in O(n) time as well.
+     * 
+     * Idea:
+     * For each a[i], we can append it to a subsequence which ends with either (a[i] + 1) or (a[i] - 1)
+     * so we maintain a HashMap and store {a[i] -> (max length of subsequence ending with a[i])}
+     * then for each a[i], we find length of (a[i] + 1) and (a[i] - 1) from the HashMap
+     * and add 1 to whichever is bigger (to get the max length of subsequence ending with a[i]).
      */
 
     public int countSeq(int[] a) {
         Map<Integer, Integer> map = new HashMap<Integer, Integer>();
-        int prev, next;
-        int longestSubsequence = 0;
+        // a[i] -> (max length of subsequence ending with a[i])
+        
+        int longest = 0;
         for (int key : a) {
-            prev = map.containsKey(key-1) ? map.get(key-1) : 0;
-            next = map.containsKey(key+1) ? map.get(key+1) : 0;
-            int value = Math.max(prev, next) + 1;
-            map.put(key, value);
-            if (longestSubsequence < value)
-                longestSubsequence = value;
+            int l1 = map.getOrDefault(key-1, 0);
+            int l2 = map.getOrDefault(key+1, 0);
+            int l = max(l1, l2) + 1;
+            map.put(key, l);
+            
+            longest = max(longest, l);
         }
-        return longestSubsequence;
+        
+        return longest;
     }
     
     public static void main(String[] args) {
         int[] a = {1, 2, 3, 4, 5, 3, 2};
-        LongestSubseqAdjacentDiff1 obj = new LongestSubseqAdjacentDiff1();
-        System.out.println(obj.countSeq(a)); // 6
+        LongestSubseqAdjacentDiff1 solver = new LongestSubseqAdjacentDiff1();
+        System.out.println(solver.countSeq(a)); // 6
     }
 }
