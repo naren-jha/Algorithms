@@ -82,7 +82,7 @@ Repo to host code for learning Data Structures and Algorithms
 41. [Max Path Sum With Jumps Under Div](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/MaxPathSumWithJumpsUnderDiv.java)
 42. [Min Jumps To Reach End](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/MinJumpsToReachEnd.java)
 43. [Edit Distance](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/EditDistance.java)
-44. [Longest Common Substring](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/LongestCommonSubstring.java)
+44. [**Longest Common Substring**](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/LongestCommonSubstring.java)
 45. [Sum Of All Substrings](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/SumOfAllSubstrings.java)
 46. [Count Ways To Build Street](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/WaysToBuildStreet.java)
 47. [Cover Distance](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/CoverDistance.java)
