@@ -6,44 +6,50 @@ import static java.lang.Math.min;
 
 public class MinCostPath {
 
-    class SimpleRecursiveSolution {        
-        public int minCost(int[][] cost, int m, int n) {
-            if (m < 0 || n < 0)
+    class SimpleRecursiveSolution {  
+        // TC: O(3^(m+n)), SC: O(m+n)
+        public int minCost(int[][] mat, int m, int n) {
+            if (m == 0 || n == 0)
                 return Integer.MAX_VALUE;
             
-            if (m == 0 && n == 0)
-                return cost[0][0];
+            int cost = min(minCost(mat, m-1, n-1), 
+                    min(minCost(mat, m-1, n), minCost(mat, m, n-1)));
             
-            return min(minCost(cost, m-1, n), 
-                    min(minCost(cost, m-1, n-1), minCost(cost, m, n-1))) 
-                    + cost[m][n];
+            if (cost != Integer.MAX_VALUE) cost += mat[m-1][n-1];
+            else cost = mat[m-1][n-1];
+            
+            return cost;
         }
     }
     
     class DPSolution {
-        // bottom-up
-        public int minCost(int[][] cost) {
-            int m = cost.length;
-            int n = cost[0].length;
+        // bottom-up tabulation
+        // TC: O(mn), SC: O(mn)
+        public int minCost(int[][] mat) {
+            int m = mat.length;
+            if (m == 0) throw new IllegalArgumentException("empty matrix!");
+            int n = mat[0].length;
             
-            int[][] dp = new int[m][n];
-            dp[0][0] = cost[0][0];
+            int[][] dp = new int[m+1][n+1];
+            dp[0][0] = mat[0][0];
             
-            // initialize first column
-            for (int i = 1; i < m; i++)
-                dp[i][0] = dp[i-1][0] + cost[i][0];
+            for (int i = 0; i <= m; i++)
+                dp[i][0] = Integer.MAX_VALUE;
+            for (int j = 0; j <= n; j++)
+                dp[0][j] = Integer.MAX_VALUE;
             
-            // initialize first row
-            for (int j = 1; j < n; j++)
-                dp[0][j] = dp[0][j-1] + cost[0][j];
-            
-            // construct rest of the res[]
-            for (int i = 1; i < m; i++) {
-                for (int j = 1; j < n; j++) {
-                    dp[i][j] = min(dp[i-1][j], min(dp[i-1][j-1], dp[i][j-1])) + cost[i][j];
+            for (int i = 1; i <= m; i++) {
+                for (int j = 1; j <= n; j++) {
+                    int cost = min(dp[i-1][j-1], min(dp[i-1][j], dp[i][j-1]));
+                    
+                    if (cost != Integer.MAX_VALUE) cost += mat[i-1][j-1];
+                    else cost = mat[i-1][j-1];
+                    
+                    dp[i][j] = cost;
                 }
             }
-            return dp[m-1][n-1];
+            
+            return dp[m][n];
         }
     }
     
@@ -54,7 +60,7 @@ public class MinCostPath {
                         {4, 8, 2}, 
                         {1, 5, 3}
                        };
-        System.out.println(o.new SimpleRecursiveSolution().minCost(cost, 2, 2)); // 8
+        System.out.println(o.new SimpleRecursiveSolution().minCost(cost, 3, 3)); // 8
         System.out.println(o.new DPSolution().minCost(cost)); // 8
     }
 }

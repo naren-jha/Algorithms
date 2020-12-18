@@ -3,6 +3,7 @@ package dynamicprogramming.basic;
 import java.util.Arrays;
 
 // https://www.geeksforgeeks.org/longest-common-substring-dp-29/
+// https://youtu.be/BysNXJHzCEs
 
 public class LongestCommonSubstring {
     
@@ -22,33 +23,33 @@ public class LongestCommonSubstring {
     public int lcsMem(String s1, String s2) {
         int m = s1.length();
         int n = s2.length();
-        int[][] res = new int[m+1][n+1];
+        int[][] mem = new int[m+1][n+1];
         for (int i = 0; i <= m; i++)
-            Arrays.fill(res[i], -1);
+            Arrays.fill(mem[i], -1);
         
-        lcsMem(s1, s2, s1.length(), s2.length(), res);
-        return Arrays.stream(res).flatMapToInt(Arrays::stream).max().getAsInt();
+        lcsMem(s1, s2, s1.length(), s2.length(), mem);
+        return Arrays.stream(mem).flatMapToInt(Arrays::stream).max().getAsInt();
     }
     
-    private void lcsMem(String s1, String s2, int m, int n, int[][] res) {
+    private void lcsMem(String s1, String s2, int m, int n, int[][] mem) {
         if (m == 0 || n == 0) {
-            res[m][n] = 0;
+            mem[m][n] = 0;
             return;
         }
         
-        if (res[m][n] != -1)
+        if (mem[m][n] != -1)
             return;
         
         // we always needs to calculate subproblem(m-1, n-1), 
         // subproblem(m-1, n) and subproblem(m, n-1)
-        lcsMem(s1, s2, m-1, n-1, res);
-        lcsMem(s1, s2, m, n-1, res);
-        lcsMem(s1, s2, m-1, n, res);
+        lcsMem(s1, s2, m-1, n-1, mem);
+        lcsMem(s1, s2, m, n-1, mem);
+        lcsMem(s1, s2, m-1, n, mem);
         
         if (s1.charAt(m-1) == s2.charAt(n-1))
-           res[m][n] = res[m-1][n-1] + 1; 
+           mem[m][n] = mem[m-1][n-1] + 1;
         else
-            res[m][n] = 0;
+            mem[m][n] = 0;
     }
     
     // bottom-up tabulation
@@ -57,49 +58,21 @@ public class LongestCommonSubstring {
         int m = s1.length();
         int n = s2.length();
         int lcs = 0;
-        int[][] res = new int[m+1][n+1];
+        int[][] dp = new int[m+1][n+1];
         
         // initialize base case: when (m == 0 || n == 0)
         for (int i = 0; i <= m; i++)
-            res[i][0] = 0;
+            dp[i][0] = 0;
         for (int j = 1; j <= n; j++)
-            res[0][j] = 0;
+            dp[0][j] = 0;
         
-        // fill rest of the table
+        // fill up rest of the table
         for (int i = 1; i <= m; i++) {
             for (int j = 1; j <= n; j++) {
-                if (s1.charAt(i-1) == s2.charAt(j-1)) {
-                    res[i][j] = res[i-1][j-1] + 1;
-                    lcs = Math.max(lcs, res[i][j]);
-                }
-                else
-                    res[i][j] = 0;
-            }
-        }
-        return lcs;
-    }
-    
-    // Aug 2020
-    public int lcs2(String s1, String s2) {
-        int m = s1.length();
-        int n = s2.length();
-        int lcs = 0;
-        int[][] dp = new int[m][n];
-        
-        for (int j = 0; j < n; j++)
-            dp[0][j] = (s1.charAt(0) == s2.charAt(j)) ? 1 : 0;
-        for (int i = 0; i < m; i++)
-            dp[i][0] = (s1.charAt(i) == s2.charAt(0)) ? 1 : 0;
-        
-        // fill rest of the table
-        for (int i = 1; i < m; i++) {
-            for (int j = 1; j < n; j++) {
-                if (s1.charAt(i) == s2.charAt(j)) {
-                    dp[i][j] = dp[i-1][j-1] + 1;
-                    lcs = Math.max(lcs, dp[i][j]);
-                }
-                else
-                    dp[i][j] = 0;
+                if (s1.charAt(i-1) == s2.charAt(j-1)) dp[i][j] = dp[i-1][j-1] + 1;
+                else dp[i][j] = 0;
+                
+                lcs = Math.max(lcs, dp[i][j]);
             }
         }
         
@@ -121,7 +94,5 @@ public class LongestCommonSubstring {
         LongestCommonSubstring o = new LongestCommonSubstring();
         System.out.println(o.lcsMem(s1, s2)); // 4
         System.out.println(o.lcs(s1, s2)); // 4
-        
-        System.out.println(o.lcs2(s1, s2)); // 4
     }
 }

@@ -36,14 +36,14 @@ public class PathWithMaximumAverageValue {
         
         private int maxSumMem(int[][] a, int r, int c, int[][] mem) {
             if (mem[r][c] != -1) return mem[r][c];
-            if (r == 0 || c == 0) return 0;
+            if (r == 0 || c == 0) return mem[r][c] = 0;
             
-            return Math.max(maxSumMem(a, r-1, c, mem), maxSumMem(a, r, c-1, mem)) + a[r-1][c-1];
+            return mem[r][c] = Math.max(maxSumMem(a, r-1, c, mem), maxSumMem(a, r, c-1, mem)) + a[r-1][c-1];
         }
         
         // Bottom-up tabulation
         // TC: O(n^2), SC: O(n^2)
-        public double maxAvgPathVal(int[][] a) {
+        public double maxAvg(int[][] a) {
             int n = a.length;
             int[][] dp = new int[n+1][n+1];
             
@@ -71,6 +71,6 @@ public class PathWithMaximumAverageValue {
         PathWithMaximumAverageValue o = new PathWithMaximumAverageValue();
         System.out.println(o.new SimpleRecursiveSolution().maxAvg(a)); // 5.2
         System.out.println(o.new DPSolution().maxAvgMemoized(a)); // 5.2
-        System.out.println(o.new DPSolution().maxAvgPathVal(a)); // 5.2
+        System.out.println(o.new DPSolution().maxAvg(a)); // 5.2
     }
 }

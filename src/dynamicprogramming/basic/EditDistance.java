@@ -33,27 +33,27 @@ public class EditDistance {
             int m = s1.length();
             int n = s2.length();
             
-            int[][] res = new int[m+1][n+1];
+            int[][] dp = new int[m+1][n+1];
             
             // fill first column, n == 0 case
             for (int i = 0; i <= m; i++)
-                res[i][0] = i;
+                dp[i][0] = i;
             
             // fill first row, m == 0 case
             for (int j = 0; j <= n; j++)
-                res[0][j] = j;
+                dp[0][j] = j;
             
             // fill rest of the table
             for (int i = 1; i <= m; i++) {
                 for (int j = 1; j <= n; j++) {
                     if (s1.charAt(i-1) == s2.charAt(j-1))
-                        res[i][j] = res[i-1][j-1];
+                        dp[i][j] = dp[i-1][j-1];
                     else
-                        res[i][j] = 1 + Math.min(res[i][j-1], Math.min(res[i-1][j], res[i-1][j-1]));
+                        dp[i][j] = 1 + Math.min(dp[i][j-1], Math.min(dp[i-1][j], dp[i-1][j-1]));
                 }
             }
             
-            return res[m][n];
+            return dp[m][n];
         }
         
         // we can optimize above solution on space, 

@@ -6,7 +6,7 @@ public class MaximumSizeSquareSubMatrix {
 
     public static void printMaxSubSquare(int[][] m) {
         int r = m.length, c = m[0].length;
-        int[][]    s = new int[r][c];
+        int[][] s = new int[r][c];
         
         // fill first column
         for (int i = 0; i < r; i++)
