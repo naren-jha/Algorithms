@@ -87,7 +87,7 @@ Repo to host code for learning Data Structures and Algorithms
 46. [Count Ways To Build Street](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/WaysToBuildStreet.java)
 47. [Cover Distance](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/CoverDistance.java)
 48. [Diff Ways To Sum](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/DiffWaysToSum.java)
-49. [0-1 Knapsack](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/Knapsack.java)
+49. [**0-1 Knapsack**](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/Knapsack.java)
 50. [Temple Offering Problem](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/TempleOffering.java)
 51. [Egg Dropping Problem](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/EggDropping.java)
 52. [Dice Throw Problem](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/DiceThrowProblem.java)
