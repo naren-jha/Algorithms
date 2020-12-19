@@ -3,7 +3,6 @@ package dynamicprogramming.intermediate;
 import static java.lang.Math.min;
 
 // https://www.geeksforgeeks.org/dice-throw-dp-30/
-// https://leetcode.com/problems/word-break/
 
 public class DiceThrowProblem {
     

@@ -92,7 +92,7 @@ public class Knapsack {
             // return k[n][w];
             int i = n, j = w;
             Stack<Integer> res = new Stack<Integer>();
-            while (i > 0 && k[i][j] > 0) {
+            while (i > 0 /* && k[i][j] > 0*/) {
                 if (k[i][j] != k[i-1][j]) {
                     res.push(wt[i-1]);
                     j = j - wt[i-1];
@@ -167,7 +167,7 @@ public class Knapsack {
             // return k[n][w];
             int i = n, j = w;
             Stack<Integer> res = new Stack<Integer>();
-            while (i > 0 && k[i][j] > 0) {
+            while (i > 0 /* && k[i][j] > 0*/) {
                 while (k[i][j] != k[i-1][j]) {
                     res.push(wt[i-1]);
                     j = j - wt[i-1];

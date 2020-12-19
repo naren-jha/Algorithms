@@ -42,7 +42,7 @@ public class EggDropping {
      *                        
      * We take max of two possibilities in above recurrence as 
      * we need to consider worst case solution for each subproblem
-                             
+     * 
      */
     
     /* 
@@ -65,6 +65,14 @@ public class EggDropping {
      *  The final answer is min(1st, 2nd, 3rd..... kth floor)
      *  So answer here is '2'.
      */
+    
+    /*
+     * Why take max:
+        Because when we drop an egg from floor 'i', we don't have information about whether the egg will break or not.
+        But we want to find the threshold floor with certainty. So we consider both cases (egg breaking and not 
+        breaking), and then the max of the two, so that we get the threshold floor in worst case.
+     */
+    
     class SimpleRecursiveSolution {
         // T(n): Exp
         public int eggDrop(int n, int k) {
@@ -94,32 +102,32 @@ public class EggDropping {
         public int eggDrop(int n, int k) {
             // create a 2-d array res, where res[i][j] will represent  
             // minimum number of trials needed for i eggs and j floors
-            int[][] res = new int[n+1][k+1];
+            int[][] dp = new int[n+1][k+1];
             
             // We need 1 trial for 1 floor and 0 trial for 0 floor
             for (int i = 1; i <= n; i++) {
-                res[i][0] = 0;
-                res[i][1] = 1;
+                dp[i][0] = 0;
+                dp[i][1] = 1;
             }
             
             // We always need j trials for 1 egg and j floors
             for (int j = 1; j <= k; j++) {
-                res[1][j] = j;
+                dp[1][j] = j;
             }
             
             // fill rest of the table
             int tmp;
             for (int i = 2; i <= n; i++) {
                 for (int j = 2; j <= k; j++) {
-                    res[i][j] = Integer.MAX_VALUE;
+                    dp[i][j] = Integer.MAX_VALUE;
                     for (int x = 1; x <= j; x++) {
-                        tmp = 1 + Math.max(res[i-1][x-1], res[i][j-x]);
-                        res[i][j] = Math.min(res[i][j], tmp);
+                        tmp = 1 + Math.max(dp[i-1][x-1], dp[i][j-x]);
+                        dp[i][j] = Math.min(dp[i][j], tmp);
                     }
                 }
             }
             
-            return res[n][k];
+            return dp[n][k];
         }
         
         // We should be able to space optimize above solution as at any
