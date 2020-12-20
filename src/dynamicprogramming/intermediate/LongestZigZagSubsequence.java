@@ -17,26 +17,75 @@ public class LongestZigZagSubsequence {
         int n = a.length;
         if (n == 0) return 0;
         
-        int[] dp1 = new int[n]; // dp1[i] -> longest zigzag subsequence at index 'i' such that a[i] > a[j] (previous element in subsequence)
-        int[] dp2 = new int[n]; // dp1[i] -> longest zigzag subsequence at index 'i' such that a[i] < a[j]
+        int[] up = new int[n]; // up[i] -> longest zigzag subsequence at index 'i' such that a[i] > a[i-1]
+        int[] dn = new int[n]; // dn[i] -> longest zigzag subsequence at index 'i' such that a[i] < a[i-1]
         
-        dp1[0] = dp2[0] = 1;
+        up[0] = dn[0] = 1;
         for (int i = 1; i < n; i++) {
-            dp1[i] = dp2[i] = 1;
+            up[i] = dn[i] = 1;
             for (int j = i-1; j >= 0; --j) {
                 if (a[i] > a[j])
-                    dp1[i] = max(dp1[i], dp2[j] + 1);
+                    up[i] = max(up[i], dn[j] + 1);
                 
                 if (a[i] < a[j])
-                    dp2[i] = max(dp2[i], dp1[j] + 1);
+                    dn[i] = max(dn[i], up[j] + 1);
             }
         }
         
-        int len1 = Arrays.stream(dp1).max().getAsInt();
-        int len2 = Arrays.stream(dp2).max().getAsInt();
-        return max(len1, len2);
+        int longest = 0;
+        for (int i = 0; i < n; i++) {
+            longest = max(longest, max(up[i], dn[i]));
+        }
+        
+        return longest;
     }
     
+    // O(n) time solution
+    // 2,1,4,5,6,3,3,4,8,4
+    // Since every next number will either increase (or decrease) or will remain same.
+    // therefore for each 'i', length will either remain same or increase by 1.
+    // therefore we don't need to check for all 'j', we can solve this in linear time
+    public int lzzsLT(int[] a) {
+        int n = a.length;
+        if (n == 0) return 0;
+        
+        int[] up = new int[n]; // up[i] -> longest zigzag subsequence at index 'i' such that a[i] > a[i-1]
+        int[] dn = new int[n]; // dn[i] -> longest zigzag subsequence at index 'i' such that a[i] < a[i-1]
+        
+        up[0] = dn[0] = 1;
+        for (int i = 1; i < n; i++) {
+            if (a[i] > a[i-1]) {
+                up[i] = dn[i-1] + 1;
+                dn[i] = dn[i-1];
+            }
+            else if (a[i] < a[i-1]) {
+                dn[i] = up[i-1] + 1;
+                up[i] = up[i-1];
+            }
+            else {
+                up[i] = up[i-1];
+                dn[i] = dn[i-1];
+            }
+        }
+        
+        return max(up[n-1], dn[n-1]);
+    }
+    
+    // In fact we don't need O(n) space to solve this. we can do this in O(1) space
+    public int lzzsLTCS(int[] a) {
+        int n = a.length;
+        if (n == 0) return 0;
+        
+        int up = 1, dn = 1;
+        for (int i = 1; i < n; ++i) {
+            if (a[i] > a[i-1]) up = dn + 1;
+            else if (a[i] < a[i-1]) dn = up + 1;
+        }
+        
+        return max(up, dn);
+    }
+    
+    // Old solution
     // Bottom-up tabulation
     // T(n): O(n^2), S(n): O(n)
     public int length(int[] a) {
@@ -90,9 +139,13 @@ public class LongestZigZagSubsequence {
         LongestZigZagSubsequence zigZag = new LongestZigZagSubsequence();
         System.out.println(zigZag.length(a)); // 6
         System.out.println(zigZag.lzzs(a)); // 6
+        System.out.println(zigZag.lzzsLT(a)); // 6
+        System.out.println(zigZag.lzzsLTCS(a)); // 6
         
         a = new int[] {1,17,5,10,13,15,10,5,16,8};
         System.out.println(zigZag.length(a)); // 7
         System.out.println(zigZag.lzzs(a)); // 7
+        System.out.println(zigZag.lzzsLT(a)); // 7
+        System.out.println(zigZag.lzzsLTCS(a)); // 7
     }
 }

@@ -35,7 +35,7 @@ public class LongestPalindromicSubstring {
         if (s.charAt(si) == s.charAt(ei))
            mem[si][ei] = mem[si+1][ei-1] + 2;
         else
-            mem[si][ei] = 0;
+           mem[si][ei] = 0;
     }
 
     // bottom-up tabulation

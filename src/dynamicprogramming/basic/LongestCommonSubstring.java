@@ -49,7 +49,7 @@ public class LongestCommonSubstring {
         if (s1.charAt(m-1) == s2.charAt(n-1))
            mem[m][n] = mem[m-1][n-1] + 1;
         else
-            mem[m][n] = 0;
+           mem[m][n] = 0;
     }
     
     // bottom-up tabulation
