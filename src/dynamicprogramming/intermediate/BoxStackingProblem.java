@@ -88,9 +88,10 @@ public class BoxStackingProblem {
         
         // generate different orientations of the original boxes
         for (int i = 0; i < n; i++) {
-            boxes[3*i] = new Box(max(b[i].w, b[i].d), min(b[i].w, b[i].d), b[i].h);
-            boxes[3*i + 1] = new Box(max(b[i].w, b[i].h), min(b[i].w, b[i].h), b[i].d);
-            boxes[3*i + 2] = new Box(max(b[i].d, b[i].h), min(b[i].d, b[i].h), b[i].w);
+            int w = b[i].w, d = b[i].d, h = b[i].h;
+            boxes[3*i] = new Box(max(w, d), min(w, d), h);
+            boxes[3*i + 1] = new Box(max(w, h), min(w, h), d);
+            boxes[3*i + 2] = new Box(max(d, h), min(d, h), w);
         }
         
         Arrays.sort(boxes, (b1, b2) -> b2.area - b1.area); // sort in decreasing order of area

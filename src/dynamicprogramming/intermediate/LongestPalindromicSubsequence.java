@@ -15,18 +15,16 @@ public class LongestPalindromicSubsequence {
     class SimpleRecursiveSolution {
         // T(n): Exp
         public int lps(String s) {
-            return lps(s.toCharArray(), 0, s.length()-1);
+            return lps(s, 0, s.length()-1);
         }
         
-        private int lps(char[] s, int from, int to) {
-            if (from == to)
-                return 1;
-            if (from > to)
-                return 0;
+        private int lps(String s, int si, int ei) {
+            if (si == ei) return 1;
+            if (si > ei) return 0;
             
-            if (s[from] == s[to])
-                return lps(s, from+1, to-1) + 2;
-            return Math.max(lps(s, from, to-1), lps(s, from+1, to));
+            if (s.charAt(si) == s.charAt(ei))
+                return lps(s, si+1, ei-1) + 2;
+            return Math.max(lps(s, si, ei-1), lps(s, si+1, ei));
         }
     }
     
@@ -35,27 +33,19 @@ public class LongestPalindromicSubsequence {
         // T(n): O(n^2), S(n): O(n^2)
         public int lps(String s) {
             int n = s.length();
-            char[] c = s.toCharArray();
-            
-            // create a 2D array to store intermediate results
-            // where res[i][j] indicates LPS for s[i, j]
-            int[][] res = new int[n][n];
+            int[][] dp = new int[n][n];
             
             for (int i = n-1; i >= 0; i--) {
-                // starting from j = i will also work fine, as lower diagonal 
-                // of the res[][] matrix is not utilized in the solution
-                for (int j = 0; j < n; j++) {
-                    if (i == j)
-                        res[i][j] = 1;
-                    else if (i > j)
-                        res[i][j] = 0;
-                    else if (c[i] == c[j])
-                        res[i][j] = res[i+1][j-1] + 2;
+                dp[i][i] = 1;
+                for (int j = i+1; j < n; j++) {
+                    if (s.charAt(i) == s.charAt(j))
+                        dp[i][j] = dp[i+1][j-1] + 2;
                     else
-                        res[i][j] = Math.max(res[i][j-1], res[i+1][j]);
+                        dp[i][j] = Math.max(dp[i][j-1], dp[i+1][j]);
                 }
             }
-            return res[0][n-1];
+            
+            return dp[0][n-1];
         }
         
         /*
@@ -78,36 +68,32 @@ public class LongestPalindromicSubsequence {
         // T(n): O(n^2), S(n): O(n)
         public int lpsSO(String s) {
             int n = s.length();
-            char[] c = s.toCharArray();
+            int[] dp = new int[n];
             
-            int[] res = new int[n];
             for (int i = n-1; i >= 0; i--) {
+                dp[i] = 1;
                 int backUp = 0;
-                for (int j = 0; j < n; j++) {
-                    if (i == j)
-                        res[j] = 1;
-                    else if (i > j)
-                        res[j] = 0;
-                    else if (c[i] == c[j]) {
-                        int tmp = res[j];
-                        res[j] = backUp + 2;
+                for (int j = i+1; j < n; j++) {
+                    if (s.charAt(i) == s.charAt(j)) {
+                        int tmp = dp[j];
+                        dp[j] = backUp + 2;
                         backUp = tmp;
                     }
                     else {
-                        backUp = res[j];
-                        res[j] = Math.max(res[j-1], res[j]);
+                        backUp = dp[j];
+                        dp[j] = Math.max(dp[j-1], dp[j]);
                     }
                 }
             }
-            return res[n-1];
+            return dp[n-1];
         }
     }
     
     public static void main(String[] args) {
-        LongestPalindromicSubsequence o = new LongestPalindromicSubsequence();
+        LongestPalindromicSubsequence solver = new LongestPalindromicSubsequence();
         String s = "GEEKSFORGEEKS";
-        System.out.println(o.new SimpleRecursiveSolution().lps(s)); // 5
-        System.out.println(o.new DPSolution().lps(s)); // 5
-        System.out.println(o.new DPSolution().lpsSO(s)); // 5
+        System.out.println(solver.new SimpleRecursiveSolution().lps(s)); // 5
+        System.out.println(solver.new DPSolution().lps(s)); // 5
+        System.out.println(solver.new DPSolution().lpsSO(s)); // 5
     }
 }
