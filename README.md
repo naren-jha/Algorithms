@@ -2,7 +2,7 @@
 Repo to host code for learning Data Structures and Algorithms 
 
 ## Data Structures
-* [:blue_book:](https://drive.google.com/file/d/1sa70Y2C6XUWq9g77dQtWuLKSr7ZirnCV/view?usp=sharing) [Linked Lists](https://github.com/njha-collab/Algorithms/blob/master/src/basic/ll/)
+* [:notebook_with_decorative_cover:](https://drive.google.com/file/d/1sa70Y2C6XUWq9g77dQtWuLKSr7ZirnCV/view?usp=sharing) [Linked Lists](https://github.com/njha-collab/Algorithms/blob/master/src/basic/ll/)
   - [Singly Linked Lists](https://github.com/njha-collab/Algorithms/tree/master/src/basic/ll/singly)
   - [Doubly Linked Lists](https://github.com/njha-collab/Algorithms/blob/master/src/basic/ll/doubly)
 * [:blue_book:](https://drive.google.com/file/d/18R7ab5qwcv9LBBVXZJfOCOz6_xPSsQtf/view?usp=sharing) [Stack](https://github.com/njha-collab/Algorithms/blob/master/src/basic/stack/)
