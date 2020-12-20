@@ -1,55 +1,68 @@
 package dynamicprogramming.intermediate;
 
+import java.util.Arrays;
+
 // https://www.geeksforgeeks.org/longest-palindrome-substring-set-1/
 
 public class LongestPalindromicSubstring {
+    
+    // This is similar to LongestCommonSubstring problem
+    
+    public int f(String s) {
+        int n = s.length();
+        int[][] mem = new int[n][n];
+        for (int i = 0; i < n; i++)
+            Arrays.fill(mem[i], -1);
+        
+        f(s, 0, n-1, mem);
+        return Arrays.stream(mem).flatMapToInt(Arrays::stream).max().getAsInt();
+    }
+    
+    private void f(String s, int si, int ei, int[][] mem) {
+        if (si == ei) {
+            mem[si][ei] = 1;
+            return;
+        }
+        if (ei < si) {
+            mem[si][ei] = 0;
+            return;
+        }
+        
+        f(s, si+1, ei, mem);
+        f(s, si, ei-1, mem);
+        f(s, si+1, ei-1, mem);
+        
+        if (s.charAt(si) == s.charAt(ei))
+           mem[si][ei] = mem[si+1][ei-1] + 2;
+        else
+            mem[si][ei] = 0;
+    }
 
-    // Bottom-up tabulation
+    // bottom-up tabulation
     // T(n): O(n^2), S(n): O(n^2)
     public int longestPalindromeSubstring(String s) {
         int n = s.length();
-        char[] ch = s.toCharArray();
+        int[][] dp = new int[n][n];
         
-        // create a 2D array to store intermediate results
-        // where p[i][j] indicates whether s[i, j] is a palindrome or not
-        // p[i][j] = true, => substring s[i, j] is a palindrome
-        // p[i][j] = false, => substring s[i, j] is not a palindrome
-        boolean[][] p = new boolean[n][n];
-        
-        // All substrings of length 1 are palindrome
-        int maxLength = 1;
-        for (int i = 0; i < n; i++)
-            p[i][i] = true;
-        
-        // Check for substrings of length 2
-        int start = 0;
-        for (int i = 0; i < n-1; i++) {
-            if (ch[i] == ch[i+1]) {
-                p[i][i+1] = true;
-                maxLength = 2;
-                start = i;
-            }
-        }
-        
-        // Check for lengths greater than 2
-        for (int len = 3; len <= n; len++) {
-            for (int i = 0; i < n - (len-1); i++) {
-                int j = i + (len-1);
-                if (ch[i] == ch[j] && p[i+1][j-1]) {
-                    p[i][j] = true;
-                    if (len > maxLength) {
-                        maxLength = len;
-                        start = i;
-                    }
-                }
+        int longest = 0;
+        int si = 0, ei = 0;
+        for (int i = n-1; i >= 0; i--) {
+            dp[i][i] = 1;
+            for (int j = i+1; j < n; j++) {
+                if (s.charAt(i) == s.charAt(j))
+                    dp[i][j] = dp[i+1][j-1] + 2;
                 else
-                    p[i][j] = false; // redundant in Java
+                    dp[i][j] = 0;
+                
+                if (dp[i][j] > longest) {
+                    longest = dp[i][j];
+                    si = i; ei = j;
+                }
             }
         }
         
-        System.out.print("Longest Palindrome Substring is: ");
-        System.out.println(s.substring(start, start+maxLength));
-        return maxLength;
+        System.out.println("Longest Palindrome Substring is: " + s.substring(si, ei+1));
+        return longest;
     }
     
     /*
@@ -64,10 +77,9 @@ public class LongestPalindromicSubstring {
     
     public static void main(String[] args) {
         LongestPalindromicSubstring obj = new LongestPalindromicSubstring();
-        System.out.println(obj.longestPalindromeSubstring("forgeeksskeegfor"));
-        /*
-         * Longest Palindrome Substring is: geeksskeeg
-         * 10
-         */
+        System.out.println(obj.f("forgeeksskeegfor")); // 10
+        
+        System.out.println(obj.longestPalindromeSubstring("forgeeksskeegfor")); // 10
+        // Longest Palindrome Substring is: geeksskeeg
     }
 }

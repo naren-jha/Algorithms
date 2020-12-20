@@ -20,7 +20,7 @@ public class LongestPalindromicSubsequence {
         
         private int lps(String s, int si, int ei) {
             if (si == ei) return 1;
-            if (si > ei) return 0;
+            if (ei < si) return 0;
             
             if (s.charAt(si) == s.charAt(ei))
                 return lps(s, si+1, ei-1) + 2;
