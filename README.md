@@ -46,10 +46,10 @@ Repo to host code for learning Data Structures and Algorithms
 5. [Tiling NxM Floor With 1xM Tile](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/TilingNxMFloorWith1xMTile.java)
 6. [Gold Mine Problem](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/GoldMineProblem.java)
 7. [Max Path Sum](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/MaxPathSum.java)
-8. [**Coin Change Problem**](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/CoinChangeProblem.java)
+8. [**Coin Change Problem**](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/CoinChangeProblem.java):fire:
 9. [Friends Pairing Problem](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/FriendsPairingProblem.java)
 10. [Subset Sum Problem](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/SubsetSumProblem.java)
-11. [**Perfect Sum Problem**](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/PerfectSumProblem.java)
+11. [**Perfect Sum Problem**](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/PerfectSumProblem.java):fire:
 12. [Subset Sum Divisible By M](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/SubsetSumDivisibleByM.java)
 13. [Change Making Problem](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/ChangeMakingProblem.java)
 14. [Rod Cutting Problem](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/RodCuttingProblem.java)
@@ -59,10 +59,10 @@ Repo to host code for learning Data Structures and Algorithms
 18. [Maximum Length Snake Sequence](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/MaximumLengthSnakeSequence.java)
 19. [Even Length Binary Sequence](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/EvenLengthBinarySequence.java)
 20. [Sequences Of Given Length](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/SequencesOfGivenLength.java)
-21. [**Longest Common Subsequence**](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/LongestCommonSubsequence.java)
+21. [**Longest Common Subsequence**](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/LongestCommonSubsequence.java):fire:
 22. [Longest Repeated Subsequence](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/LongestRepeatedSubsequence.java)
 23. [Lcs of 3 Strings](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/LcsOf3Strings.java)
-24. [**Longest Increasing Subsequence**](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/LongestIncreasingSubsequence.java)
+24. [**Longest Increasing Subsequence**](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/LongestIncreasingSubsequence.java):fire:
 25. [Longest Bitonic Subsequence](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/LongestBitonicSubsequence.java)
 26. [Maximum Sum Increasing Subsequence](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/MaximumSumIncreasingSubsequence.java)
 27. [Maximum Sum Bitonic Subsequence](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/MaximumSumBitonicSubsequence.java)
@@ -82,16 +82,16 @@ Repo to host code for learning Data Structures and Algorithms
 41. [Max Path Sum With Jumps Under Div](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/MaxPathSumWithJumpsUnderDiv.java)
 42. [Min Jumps To Reach End](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/MinJumpsToReachEnd.java)
 43. [Edit Distance](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/EditDistance.java)
-44. [**Longest Common Substring**](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/LongestCommonSubstring.java)
+44. [**Longest Common Substring**](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/LongestCommonSubstring.java):fire:
 45. [Sum Of All Substrings](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/SumOfAllSubstrings.java)
 46. [Count Ways To Build Street](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/WaysToBuildStreet.java)
 47. [Cover Distance](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/CoverDistance.java)
 48. [Diff Ways To Sum](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/DiffWaysToSum.java)
-49. [**0-1 Knapsack**](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/Knapsack.java)
+49. [**0-1 Knapsack**](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/Knapsack.java):fire:
 50. [Temple Offering Problem](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/TempleOffering.java)
 51. [Egg Dropping Problem](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/EggDropping.java)
 52. [Dice Throw Problem](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/DiceThrowProblem.java)
-53. [**Word Break Problem**](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/WordBreakProblem.java)
+53. [**Word Break Problem**](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/WordBreakProblem.java):fire:
 54. [Box Stacking Problem](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/BoxStackingProblem.java)
 55. [Longest Palindromic Subsequence](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/LongestPalindromicSubsequence.java)
 56. [Count All Palindromic Subsequence](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/CountAllPalindromicSubsequence.java)
@@ -116,7 +116,7 @@ Repo to host code for learning Data Structures and Algorithms
 75. [K maximum sums of non-overlapping contiguous sub-arrays](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/KmaximumSumsNonOverlappingContiguousSubArrays.java)
 76. [Maximum Product Subarray](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/MaximumProductSubarray.java)
 77. [Maximum Dot Product of Two Arrays](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/MaximumDotProductTwoArrays.java)
-78. [**Minimum Initial Points to Reach Destination (Dungeon Game)**](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/MinimumInitialPointsToReachDestination.java)
+78. [**Minimum Initial Points to Reach Destination (Dungeon Game)**](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/MinimumInitialPointsToReachDestination.java):fire:
 79. [Minimum Insertions To Form Palindrome](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/MinimumInsertionsToFormPalindrome.java)
 80. [Minimum Number of Squares Sum to Given Number](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/SquareSumToNumber.java)
 81. [Remove Minimum Elements From Either Side](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/RemoveMinElementsFromEitherSide.java)
