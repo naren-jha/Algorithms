@@ -76,7 +76,7 @@ Repo to host code for learning Data Structures and Algorithms
 35. [Min Cost Path](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/MinCostPath.java)
 36. [Max Path Sum Triangle](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/MaxPathSumTriangle.java)
 37. [Min Path Sum Triangle](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/MinPathSumTriangle.java)
-38. [Maximum Sum Subarray - Kadane’s Algorithm](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/MaximumSumSubarray.java)
+38. [**Maximum Sum Subarray - Kadane’s Algorithm**](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/MaximumSumSubarray.java):fire:
 39. [Maximum Size Square Sub Matrix](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/MaximumSizeSquareSubMatrix.java)
 40. [Max Sum 2x1 Grid](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/MaxSum2x1Grid.java)
 41. [Max Path Sum With Jumps Under Div](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/MaxPathSumWithJumpsUnderDiv.java)
