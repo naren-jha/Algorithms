@@ -38,7 +38,7 @@ Repo to host code for learning Data Structures and Algorithms
 * [:blue_book:](https://drive.google.com/file/d/1dBxCR6qKjK-6Cjs72M4-K2o-_v0TJMY7/view?usp=sharing) [LRU Cache](https://github.com/njha-collab/Algorithms/blob/master/src/advance_ds/lru_cache/LRUCache.java)
 
 ## Dynamic Programming [Problems]
-(Sorted: Easy To Hard)
+[Sorted: Easy To Hard]
 1. [Fibonacci Numbers](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/FibonacciNumbers.java)
 2. [Ugly Numbers](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/UglyNumbers.java)
 3. [Super Ugly Numbers](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/SuperUglyNumbers.java)
