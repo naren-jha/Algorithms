@@ -61,7 +61,7 @@ Repo to host code for learning Data Structures and Algorithms
 20. [Sequences Of Given Length](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/SequencesOfGivenLength.java)
 21. [**Longest Common Subsequence**](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/LongestCommonSubsequence.java):fire:
 22. [Longest Repeated Subsequence](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/LongestRepeatedSubsequence.java)
-23. [Lcs of 3 Strings](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/LcsOf3Strings.java)
+23. [LCS of 3 Strings](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/LcsOf3Strings.java)
 24. [**Longest Increasing Subsequence**](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/LongestIncreasingSubsequence.java):fire:
 25. [Longest Bitonic Subsequence](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/LongestBitonicSubsequence.java)
 26. [Maximum Sum Increasing Subsequence](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/MaximumSumIncreasingSubsequence.java)
