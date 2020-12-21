@@ -34,37 +34,30 @@ public class PartitionSetIntoKsubsets {
         // T(n): Exp
         public int countPartitions(int n, int k) {
             // Base cases
-            if (n == 0 || k > n)
+            if (n == 0)
+                return k == 0 ? 1 : 0;
+            if (k == 0)
                 return 0;
-            if (k == 1 || k == n)
-                return 1;
             
             return countPartitions(n-1, k-1) + k*countPartitions(n-1, k);
         }
     }
     
     class DPSolution {
-        // Bottom-up tabulation
+        // bottom-up tabulation
         // T(n): O(n*k), S(n): O(n*k)
         public int countPartitions(int n, int k) {
-            // create a result array to store intermediate results
-            // res[i][j] indicates the number of ways to partition 'j' 
-            // different subsets from an 'i' element set, therefore 
-            // res[n][k] will hold the final result
-            int[][] res = new int[n+1][k+1];
+            int[][] dp = new int[n+1][k+1];
             
-            // populate result table
-            for (int i = 0; i <= n; i++) {
-                for (int j = 0; j <= k; j++) {
-                    if (i == 0 || j == 0 || j > i)
-                        res[i][j] = 0;
-                    else if (j == 1 || j == i)
-                        res[i][j] = 1;
-                    else
-                        res[i][j] = res[i-1][j-1] + j*res[i-1][j];
-                }
-            }
-            return res[n][k];
+            dp[0][0] = 1;
+            for (int j = 1; j <= k; j++) dp[0][j] = 0;
+            for (int i = 1; i <= n; i++) dp[i][0] = 0;
+            
+            for (int i = 1; i <= n; i++)
+                for (int j = 1; j <= k; j++)
+                    dp[i][j] = dp[i-1][j-1] + j*dp[i-1][j];
+                
+            return dp[n][k];
         }
         
         // We can space optimize above solution to O(k), as at any time,
