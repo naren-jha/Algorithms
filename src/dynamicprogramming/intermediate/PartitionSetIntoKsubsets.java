@@ -34,9 +34,9 @@ public class PartitionSetIntoKsubsets {
         // T(n): Exp
         public int countPartitions(int n, int k) {
             // Base cases
-            if (n == 0)
-                return k == 0 ? 1 : 0;
-            if (k == 0)
+            if (n == 0 && k == 0)
+                return 1;
+            if (n == 0 || k == 0)
                 return 0;
             
             return countPartitions(n-1, k-1) + k*countPartitions(n-1, k);
@@ -61,7 +61,7 @@ public class PartitionSetIntoKsubsets {
         }
         
         // We can space optimize above solution to O(k), as at any time,
-        // we are using only two rows, so we can manage with res[2][k+1]
+        // we are using only two rows, so we can manage with dp[2][k+1]
     }
     
     public static void main(String[] args) {
