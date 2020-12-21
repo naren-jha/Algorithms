@@ -31,9 +31,11 @@ public class BoxStackingProblem {
      * The other combinations possible by rotations will basically repeat the same base area, 
      * which are of no use for us.
      * 
+     * 
      * Then since we want to find the largest possible stack height, we would want to keep boxes with larger 
      * area to the bottom of stack and boxes with smaller area to the top. 
      * And to do that, we'll sort the boxes in decreasing order of their areas.
+     * 
      * 
      * But comparison based on just area is not sufficient to tell that dimensions of a box is 
      * strictly less than the other.
@@ -45,6 +47,7 @@ public class BoxStackingProblem {
      * so that means we cannot place box2 on top of box1
      * 
      * To check the dimensions correctly, we'll use the concept of LIS (or LDS)
+     * 
      * 
      * One other thing is, while creating boxes with different orientations, we'll use larger of the
      * 2 base dimensions as width and smaller as depth. This is to make sure that 
@@ -65,9 +68,25 @@ public class BoxStackingProblem {
      * So if we didn't take larger value as width and smaller value as depth, 
      * then we'll get incorrect result in this case.
      * 
-     * We don't necessarily have to take larger of the two as width and smaller of the two as depth
-     * we can take it other way around as well, i.e., smaller of the two as width and larger of the
+     * We don't necessarily have to take larger of the two as width and smaller of the two as depth.
+     * We can take it other way around as well, i.e., smaller of the two as width and larger of the
      * two as depth. It just has to be consistent for all the boxes.
+     * 
+     * 
+     * Another question that one might have is "why do we need to sort boxes based on their base area?"
+     * Why can't we simply use the LIS logic to find longest possible height? after all, if the dimensions 
+     * are strictly lesser then base area too will be lesser.
+     * 
+     * We are allowed to arrange boxes in any order to get the maximum possible height. That means, we 
+     * can take out a box from one position and put it in another position to get the maximum height.
+     * 
+     * So if we don't sort the boxes by their base area first, then a box with larger area, found later in 
+     * original arrangement (arrangement generated after all three rotations) will not be included in
+     * stack when we perform LIS, as LIS only finds longest sequence from the given order of sequence.
+     * 
+     * In short, LIS takes given order of the sequence and uses that to find the longest possible sequence.
+     * So to make sure that boxes are in right order before we process them for LIS, we sort them by their
+     * their base area first.
      */
     
     private class Box {
@@ -86,7 +105,7 @@ public class BoxStackingProblem {
         int n = b.length;
         Box[] boxes = new Box[3*n]; // stores three different orientations of the original boxes
         
-        // generate different orientations of the original boxes
+        // generate all unique orientations of the original boxes
         for (int i = 0; i < n; i++) {
             int w = b[i].w, d = b[i].d, h = b[i].h;
             boxes[3*i] = new Box(max(w, d), min(w, d), h);

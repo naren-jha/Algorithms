@@ -2,8 +2,6 @@ package dynamicprogramming.intermediate;
 
 import static java.lang.Math.max;
 
-import java.util.Arrays;
-
 // https://www.geeksforgeeks.org/longest-zig-zag-subsequence/
 // https://www.geeksforgeeks.org/longest-alternating-subsequence/
 // https://leetcode.com/problems/wiggle-subsequence/
@@ -44,7 +42,7 @@ public class LongestZigZagSubsequence {
     // 2,1,4,5,6,3,3,4,8,4
     // Since every next number will either increase (or decrease) or will remain same.
     // therefore for each 'i', length will either remain same or increase by 1.
-    // therefore we don't need to check for all 'j', we can solve this in linear time
+    // therefore we don't need to solve for all 'j', we can solve this in linear time
     public int lzzsLT(int[] a) {
         int n = a.length;
         if (n == 0) return 0;
@@ -72,6 +70,7 @@ public class LongestZigZagSubsequence {
     }
     
     // In fact we don't need O(n) space to solve this. we can do this in O(1) space
+    // T(n): O(n), S(n): O(1)
     public int lzzsLTCS(int[] a) {
         int n = a.length;
         if (n == 0) return 0;
