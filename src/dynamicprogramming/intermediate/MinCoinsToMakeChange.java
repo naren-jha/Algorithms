@@ -7,39 +7,40 @@ public class MinCoinsToMakeChange {
     class SimpleRecursiveSolution {
         // T(n): Exp
         public int minCoin(int[] coins, int n, int sum) {
-            if (sum == 0)
-                return 0;
-            if (sum < 0)
-                // -1 so that 1 can be added in previous recursive call
-                return Integer.MAX_VALUE - 1;
-            if (n == 0)
-                // -1 so that 1 can be added in previous recursive call
-                return Integer.MAX_VALUE - 1;
+            if (sum == 0) return 0;
+            if (n == 0) return Integer.MAX_VALUE;
             
-            return Math.min(1 + minCoin(coins, n, sum-coins[n-1]), minCoin(coins, n-1, sum));
+            int count = minCoin(coins, n-1, sum);
+            if (sum >= coins[n-1]) {
+                int r = minCoin(coins, n, sum-coins[n-1]);
+                if (r != Integer.MAX_VALUE) 
+                    count = Math.min(count, r + 1);
+            }
+            return count;
         }
     }
     
     class DPSolution {
-        // Bottom-up tabulation
+        // bottom-up tabulation
         // T(n): O(n*sum), S(n): O(n*sum)
         public int minCoin(int[] coins, int sum) {
             int n = coins.length;
-            int[][] res = new int[n+1][sum+1];
+            int[][] dp = new int[n+1][sum+1];
             
             for (int i = 0; i <= n; i++)
-                res[i][0] = 0; // when sum == 0 // redundant in Java
+                dp[i][0] = 0; // when sum == 0 // redundant in Java
+            
             for (int j = 1; j <= sum; j++)
-                res[0][j] = Integer.MAX_VALUE - 1; // when n == 0, but sum is non-zero
+                dp[0][j] = Integer.MAX_VALUE; // when n == 0, but sum is non-zero
             
             for (int i = 1; i <= n; i++) {
                 for (int j = 1; j <= sum; j++) {
-                    res[i][j] = res[i-1][j];
-                    if (j >= coins[i-1])
-                        res[i][j] = Math.min(1 + res[i][j-coins[i-1]], res[i][j]);
+                    dp[i][j] = dp[i-1][j];
+                    if (j >= coins[i-1] && dp[i][j-coins[i-1]] != Integer.MAX_VALUE)
+                        dp[i][j] = Math.min(dp[i][j], 1 + dp[i][j-coins[i-1]]);
                 }
             }
-            return res[n][sum];
+            return dp[n][sum];
         }
         
         /*
@@ -51,20 +52,20 @@ public class MinCoinsToMakeChange {
         // T(n): O(n*sum), S(n): O(sum)
         public int minCoinSO(int[] coins, int sum) {
             int n = coins.length;
-            int[][] res = new int [2][sum+1];
+            int[][] dp = new int [2][sum+1];
             
-            res[0][0] = 0; res[1][0] = 0; // when sum == 0 // redundant in Java
+            dp[0][0] = 0; dp[1][0] = 0; // when sum == 0 // redundant in Java
             for (int j = 1; j <= sum; j++)
-                res[0][j] = Integer.MAX_VALUE - 1; // when n == 0, but sum is non-zero
+                dp[0][j] = Integer.MAX_VALUE; // when n == 0, but sum is non-zero
             
             for (int i = 1; i <= n; i++) {
                 for (int j = 1; j <= sum; j++) {
-                    res[i%2][j] = res[(i-1)%2][j];
-                    if (j >= coins[i-1])
-                        res[i%2][j] = Math.min(1 + res[i%2][j-coins[i-1]], res[i%2][j]);
+                    dp[i%2][j] = dp[(i-1)%2][j];
+                    if (j >= coins[i-1] && dp[i%2][j-coins[i-1]] != Integer.MAX_VALUE)
+                        dp[i%2][j] = Math.min(dp[i%2][j], 1 + dp[i%2][j-coins[i-1]]);
                 }
             }
-            return res[n%2][sum];
+            return dp[n%2][sum];
         }
     }
     
