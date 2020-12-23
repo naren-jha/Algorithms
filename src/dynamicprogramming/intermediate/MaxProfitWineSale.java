@@ -22,22 +22,22 @@ public class MaxProfitWineSale {
         public int maxProfit(int[] a) {
             int n = a.length;
             
-            // res[i][j] indicates maximum profit made by selling wines a[i...j]
-            // res[0][n-1] therefore will hold the final result
-            int[][] res = new int[n][n];
+            // dp[i][j] indicates maximum profit made by selling wines a[i...j]
+            // dp[0][n-1] therefore will hold the final result
+            int[][] dp = new int[n][n];
             
             int year;
             for (int i = n-1; i >= 0; i--) {
                 for (int j = i; j < n; j++) {
                     year = n - (j - i);
                     if (i == j) // when beg == end
-                        res[i][j] = a[i]*year;
+                        dp[i][j] = a[i]*year;
                     else
-                        res[i][j] = Math.max(res[i][j-1] + a[j]*year, 
-                                                res[i+1][j] + a[i]*year);
+                        dp[i][j] = Math.max(dp[i][j-1] + a[j]*year, 
+                                                dp[i+1][j] + a[i]*year);
                 }
             }
-            return res[0][n-1];
+            return dp[0][n-1];
         }
         
         /*
@@ -48,9 +48,9 @@ public class MaxProfitWineSale {
         public int maxProfitWithOptimumSellRes(int[] a) {
             int n = a.length;
             
-            // res[i][j] indicates maximum profit made by selling wines a[i...j]
-            // res[0][n-1] therefore will hold the final result
-            int[][] res = new int[n][n];
+            // dp[i][j] indicates maximum profit made by selling wines a[i...j]
+            // dp[0][n-1] therefore will hold the final result
+            int[][] dp = new int[n][n];
             
             // We create another array to store directions of sell made
             // we store 1 in sell[i][j] if 'beginning' element is sold to get maximum
@@ -63,19 +63,19 @@ public class MaxProfitWineSale {
                 for (int j = i; j < n; j++) {
                     year = n - (j - i);
                     if (i == j) { // when beg == end
-                        res[i][j] = a[i]*year;
+                        dp[i][j] = a[i]*year;
                         sell[i][j] = 1;
                     }
                     else {
-                        int endRes = res[i][j-1] + a[j]*year;
-                        int begRes = res[i+1][j] + a[i]*year;
+                        int end = dp[i][j-1] + a[j]*year;
+                        int beg = dp[i+1][j] + a[i]*year;
                         
-                        if (begRes > endRes) {
-                            res[i][j] = begRes;
+                        if (beg > end) {
+                            dp[i][j] = beg;
                             sell[i][j] = 1;
                         }
                         else {
-                            res[i][j] = endRes;
+                            dp[i][j] = end;
                             sell[i][j] = 0; // redundant in Java
                         }
                     }
@@ -95,7 +95,7 @@ public class MaxProfitWineSale {
             }
             System.out.println();
             
-            return res[0][n-1];
+            return dp[0][n-1];
         }
     }
     

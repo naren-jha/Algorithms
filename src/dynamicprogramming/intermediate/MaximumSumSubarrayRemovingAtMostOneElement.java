@@ -36,11 +36,13 @@ public class MaximumSumSubarrayRemovingAtMostOneElement {
         
         // populate results for maximum sum sub-array in backward direction
         currMax = maxSoFar = bw[n-1] = a[n-1];
-        for (int i = n-1; i >= 0; i--) {
+        for (int i = n-2; i >= 0; i--) {
             currMax = Math.max(a[i], currMax + a[i]);
             maxSoFar = Math.max(maxSoFar, currMax);
             bw[i] = currMax;
         }
+        //System.out.println(Arrays.toString(fw));
+        //System.out.println(Arrays.toString(bw));
         
         /* Initialize result by maxSoFar, so that the case when no element is 
          * removed to get max sum sub-array is also handled. */
@@ -50,11 +52,17 @@ public class MaximumSumSubarrayRemovingAtMostOneElement {
         for (int i = 1; i < n-1; i++) {
             result = Math.max(result, fw[i-1] + bw[i+1]);
         }
+        
+        //result = Math.max(result, bw[1]); // ignoring first element
+        //result = Math.max(result, fw[n-2]); // ignoring last element
+        // this is not needed as initializing "result = maxSoFar" 
+        // takes care of the cases "removing first or last element"
+        
         return result;
     }
     
     public static void main(String[] args) {
-        int[] a = {-2, -3, 4, -1, -2, 1, 5, -3};;
+        int[] a = {-2, -3, 4, -1, -2, 1, 5, -3};
         System.out.println(maxSum(a)); // 9
     }
 }
