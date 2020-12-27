@@ -31,15 +31,16 @@ public class LongestPathInMatrixFourDirections {
         if (dp[r][c] != -1)
             return dp[r][c];
         
+        int len = 0;
         if (r > 0 && (mat[r][c] + 1) == mat[r-1][c])
-            return dp[r][c] = 1 + findLongestPathForCell(mat, r-1, c, dp);
+            len = Math.max(len, findLongestPathForCell(mat, r-1, c, dp));
         if (r < n-1 && (mat[r][c] + 1) == mat[r+1][c])
-            return dp[r][c] = 1 + findLongestPathForCell(mat, r+1, c, dp);
+            len = Math.max(len, findLongestPathForCell(mat, r+1, c, dp));
         if (c > 0 && (mat[r][c] + 1) == mat[r][c-1])
-            return dp[r][c] = 1 + findLongestPathForCell(mat, r, c-1, dp);
+            len = Math.max(len, findLongestPathForCell(mat, r, c-1, dp));
         if (c < n-1 && (mat[r][c] + 1) == mat[r][c+1])
-            return dp[r][c] = 1 + findLongestPathForCell(mat, r, c+1, dp);
-        return dp[r][c] = 1;
+            len = Math.max(len, findLongestPathForCell(mat, r, c+1, dp));
+        return dp[r][c] = 1 + len; // 1 for current cell
     }
     
     public static void main(String[] args) {
