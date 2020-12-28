@@ -182,10 +182,6 @@ Repo to host code for learning Data Structures and Algorithms
 141. [All Ways To Add Parenthesis For Evaluation](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/hard/AllWaysToAddParenthesisForEvaluation.java)
 142. [Minimum Cost To Sort Strings Using Reversals](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/hard/MinimumCostToSortStringsUsingReversal.java)
 143. [Largest Minimum Sum Split Subarray](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/hard/LargestMinimumSumSplitSubarray.java)
-144. Travelling Salesman Problem 
-     1. [Brute-Force Approach](https://github.com/njha-collab/Algorithms/blob/master/src/graph/TspBruteForce.java) **- O(n!)**
-     2. [DP Iterative Approach](https://github.com/njha-collab/Algorithms/blob/master/src/graph/TspDynamicProgrammingIterative.java) **- O(n<sup>2</sup>2<sup>n</sup>)**
-     3. [DP Recursive Approach](https://github.com/njha-collab/Algorithms/blob/master/src/graph/TspDynamicProgrammingRecursive.java) **- O(n<sup>2</sup>2<sup>n</sup>)**
 
 ## [:blue_book:](https://drive.google.com/drive/folders/1tfkGKv_wtKX7ui36fkjfpe5XGUqlc8rc?usp=sharing) Sorting Algorithms
   * [Merge Sort](https://github.com/njha-collab/Algorithms/blob/master/src/sorting/MergeSort.java) **- O(nlgn)**
