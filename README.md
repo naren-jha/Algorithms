@@ -138,7 +138,7 @@ Repo to host code for learning Data Structures and Algorithms
 97. [Longest Substring Without Repeating Characters](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/LongestSustringWithoutRepeatingCharacters.java)
 98. [Longest Even Length Substring such that Sum of First and Second Half is same](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/LongestEvenLengthSubstr.java)
 99. [Partition Set To Subset Sum Minimum Diff](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/PartitionSetToSubsetSumMinimumDiff.java)
-100. [Matrix Chain Multiplication](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/hard/MatrixChainMultiplication.java)
+100. [Matrix Chain Multiplication](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/hard/MatrixChainMultiplication.java):fire:
 101. [Minimum and Maximum values of an expression](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/MinAndMaxValueOfExpr.java)
 102. [Optimal Binary Search Tree](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/OptimalBinarySearchTree.java)
 103. [Regular Expression Matching](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/hard/RegularExpressionMatching.java)
