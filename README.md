@@ -132,7 +132,7 @@ Repo to host code for learning Data Structures and Algorithms
 91. [Largest Divisible Pairs Subset](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/LargestDivisiblePairsSubset.java)
 92. [Sum Of Digits In Numbers From 1 To N](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/SumOfDigitsFrom1ToN.java)
 93. [Number of Non Decreasing Numbers](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/NumberOfNonDecreasingNumbers.java)
-94. [Catalan Number](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/CatalanNumber.java)
+94. [Catalan Number](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/basic/CatalanNumber.java) [:blue_book:](https://drive.google.com/file/d/1iJAoakEGHhNeFhBJ8ncW-PlO8jh0veuI/view?usp=sharing)
 95. [Non-crossing lines to connect points in a circle](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/NonCrossingHandShakes.java)
 96. [Building Bridges](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/BuildingBridges.java)
 97. [Longest Substring Without Repeating Characters](https://github.com/njha-collab/Algorithms/blob/master/src/dynamicprogramming/intermediate/LongestSustringWithoutRepeatingCharacters.java)
