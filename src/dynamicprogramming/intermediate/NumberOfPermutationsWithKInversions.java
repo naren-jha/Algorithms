@@ -59,7 +59,7 @@ public class NumberOfPermutationsWithKInversions {
         // So what if we can maintain that cumulative sum in dp array itself and use that to get rid of the 'x' loop
         
         // The 'x' loop goes from 0 to min(i-1, j). If min(i-1, j) = j, then we need sum of entire previous row
-        // If min(i-1, j) = i-1, then we need to ignore few columns from from the beginning of the previous row
+        // If min(i-1, j) = i-1, then we need to ignore few columns from the beginning of the previous row
         
         // In other words, j-(i-1) is the column from which we need to accumulate our sum, and j-i is the column 
         // before (and including) which we need to ignore the entries from previous row.
@@ -69,6 +69,7 @@ public class NumberOfPermutationsWithKInversions {
         // and then if 'j-i' is valid a index then subtract sum in dp[i-1][j-i] 
         // this will give us sum of columns [(j-(i-1)),.....j-1, j]
         
+        // TC: O(nk), SC: O(nk)
         public int countPerm(int n, int k) {
             int[][] dp = new int[n+1][k+1];
             
@@ -94,6 +95,8 @@ public class NumberOfPermutationsWithKInversions {
         
         // we can reduce space complexity of above solution from O(nk) to O(k), as at any time to calculate 
         // dp[i][j], we need to access only one immediate previous row. So we can manage with just 2 rows.
+        
+        // TC: O(nk), SC: O(k)
         public int countPermSO(int n, int k) {
             int[][] dp = new int[2][k+1];
             

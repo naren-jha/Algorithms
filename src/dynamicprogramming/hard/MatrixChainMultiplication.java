@@ -1,5 +1,7 @@
 package dynamicprogramming.hard;
 
+import static java.lang.Math.min;
+
 /**
  * @author Narendra Jha
  *
@@ -13,28 +15,45 @@ public class MatrixChainMultiplication {
         // T(n): Exponential
         public int matrixChainOrder(int[] p, int i, int j) {
             // base case
-            if (i == j)
-                return 0;
+            if (i == j) return 0;
             
             int minCost = Integer.MAX_VALUE;
+            // to find the optimal split point for A[i...j], we'll have to try all the possible split points b/w i and j
+            // k can have values ranging from k = i to k = (j-1)
+            // k = i => A[i...j] is split as A[i] and A[i+1...j]
+            // k = i+1 => A[i...j] is split as A[i...i+1] and A[i+2...j]
+            // k = i+2 => A[i...j] is split as A[i...i+2] and A[i+3...j]
+            // .
+            // .
+            // .
+            // k = j-1 => A[i...j] is split as A[i...j-1] and A[j]
+            // we cannot use k = j, as that implies no split, and represents the original problem A[i...j] that we're trying to solve
             for (int k = i; k < j; k++) {
-                int cost = matrixChainOrder(p, i, k) + matrixChainOrder(p, k+1, j)
-                           + p[i-1]*p[k]*p[j];
-                if (cost < minCost)
-                    minCost = cost;
+                minCost = min(minCost, matrixChainOrder(p, i, k) + matrixChainOrder(p, k+1, j) + p[i-1]*p[k]*p[j]);
             }
             return minCost;
         }
     }
     
     class DPSolution {
+        // In the recursive solution to this problem, we observe that 'i' starts from 1 and 'j' starts from 'n'
+        // but 'i' does not always increase OR 'j' does not always decrease in the subsequent calls for subproblems
+        // but length of the matrix chain always decreases in the subsequent calls for subproblems.
+        // So in the bottom-up approach, we'll have to solve this by starting from smaller length and then moving 
+        // towards larger length.
+        
+        // Therefore, we identify this new type of DP problem, where in the recurrence we have two varying indices (i and j)
+        // and length of the subproblems keeps getting shorter and shorter with subsequent calls (But i or j does not necessarily 
+        // increase or decrease in any particular order). In these type of problems
+        // to construct DP table (bottom-up), we have to solve them by the length of the subproblems
+        
         // Bottom-up tabulation
         // T(n): O(n^3), S(n): O(n^2)
         public int matrixChainOrder(int[] p) {
             int n = p.length - 1; // Number of matrices being multiplied
             
             // dp[i][j] stores minimum cost required to multiply matrix chain A[i..j]
-            // therefore dp[1][n] will hold the final result to multiply A[1..n]
+            // therefore dp[1][n] will hold the final result: min cost to multiply A[1..n]
             int[][] dp = new int[n+1][n+1];
             
             // initialize cost for length 1
@@ -43,13 +62,11 @@ public class MatrixChainMultiplication {
             
             // fill entries for lengths 2 to n
             for (int len = 2; len <= n; len++) {
-                for (int i = 1; i <= n - len + 1; i++) {
-                    int j = i + len - 1;
+                for (int i = 1; i <= n - (len - 1); i++) {
+                    int j = i + (len - 1);
                     dp[i][j] = Integer.MAX_VALUE;
                     for (int k = i; k < j; k++) {
-                        int cost = dp[i][k] + dp[k+1][j] + p[i-1]*p[k]*p[j];
-                        if (cost < dp[i][j])
-                            dp[i][j] = cost;
+                        dp[i][j] = Math.min(dp[i][j], dp[i][k] + dp[k+1][j] + p[i-1]*p[k]*p[j]);
                     }
                 }
             }
@@ -64,7 +81,7 @@ public class MatrixChainMultiplication {
             int n = p.length - 1; // Number of matrices being multiplied
             
             // dp[i][j] stores minimum cost required to multiply matrix chain A[i..j]
-            // therefore dp[1][n] will hold the final result to multiply A[1..n]
+            // therefore dp[1][n] will hold the final result: min cost to multiply A[1..n]
             int[][] dp = new int[n+1][n+1];
             
             // split[i][j] stores matrix number where matrix product of A[i..j]
@@ -77,8 +94,8 @@ public class MatrixChainMultiplication {
             
             // fill entries for lengths 2 to n
             for (int len = 2; len <= n; len++) {
-                for (int i = 1; i <= n - len + 1; i++) {
-                    int j = i + len - 1;
+                for (int i = 1; i <= n - (len - 1); i++) {
+                    int j = i + (len - 1);
                     dp[i][j] = Integer.MAX_VALUE;
                     for (int k = i; k < j; k++) {
                         int cost = dp[i][k] + dp[k+1][j] + p[i-1]*p[k]*p[j];
