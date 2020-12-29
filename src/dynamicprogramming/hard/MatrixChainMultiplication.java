@@ -12,7 +12,13 @@ import static java.lang.Math.min;
 public class MatrixChainMultiplication {
     
     class SimpleRecursiveSolution {
+        
         // T(n): Exponential
+        public int matrixChainOrder(int[] p) {
+            int n = p.length - 1; // Number of matrices being multiplied
+            return matrixChainOrder(p, 1, n);
+        }
+        
         public int matrixChainOrder(int[] p, int i, int j) {
             // base case
             if (i == j) return 0;
@@ -162,10 +168,9 @@ public class MatrixChainMultiplication {
     
     public static void main(String[] args) {
         int[] p = {30, 35, 15, 5, 10, 20, 25}; // matrices dimensions
-        int n = p.length - 1; // Number of matrices being multiplied
         MatrixChainMultiplication o = new MatrixChainMultiplication();
         
-        System.out.println(o.new SimpleRecursiveSolution().matrixChainOrder(p, 1, n));// 15125
+        System.out.println(o.new SimpleRecursiveSolution().matrixChainOrder(p));// 15125
         System.out.println(o.new DPSolution().matrixChainOrder(p)); // 15125
         
         o.new DPSolution().printOptimalParenthesis(p); // ((A1(A2A3))((A4A5)A6))
