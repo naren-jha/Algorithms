@@ -25,7 +25,7 @@ public class LongestSustringWithoutRepeatingCharacters {
                 j++;
             }
             else {
-                set.remove(c);
+                set.remove(s.charAt(i));
                 i++;
             }
         }
