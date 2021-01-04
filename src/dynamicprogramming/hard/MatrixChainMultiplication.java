@@ -20,10 +20,9 @@ public class MatrixChainMultiplication {
         }
         
         public int matrixChainOrder(int[] p, int i, int j) {
-            // base case
+            // base case: one matrix (no multiplication needed)
             if (i == j) return 0;
             
-            int minCost = Integer.MAX_VALUE;
             // to find the optimal split point for A[i...j], we'll have to try all the possible split points b/w i and j
             // k can have values ranging from k = i to k = (j-1)
             // k = i => A[i...j] is split as A[i] and A[i+1...j]
@@ -34,6 +33,7 @@ public class MatrixChainMultiplication {
             // .
             // k = j-1 => A[i...j] is split as A[i...j-1] and A[j]
             // we cannot use k = j, as that implies no split, and represents the original problem A[i...j] that we're trying to solve
+            int minCost = Integer.MAX_VALUE;
             for (int k = i; k < j; k++) {
                 minCost = min(minCost, matrixChainOrder(p, i, k) + matrixChainOrder(p, k+1, j) + p[i-1]*p[k]*p[j]);
             }
