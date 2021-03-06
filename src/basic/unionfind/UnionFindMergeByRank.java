@@ -1,121 +1,71 @@
 package basic.unionfind;
 
-import java.util.HashMap;
-import java.util.Map;
-
-/**
- * Implementation of Union Find (AKA Disjoint Set) data structure
- * 
- * This implementation merges components by the rank of their root nodes,
- * which should help minimize the height of the tree, consequently improving 
- * performance. However, performance improvement due to rank based merging 
- * can be debated, as we can't use array as underlying data structure, 
- * and path compression is anyway going to reduce the heights of 
- * all component trees to 1
- * 
- * WARNING:
- * This implementation has a major flaw. After path compression in find() method,
- * rank of root node is not updated, because of which there is a possibility that 
- * later a component with smaller tree height becomes parent of a component with  
- * larger tree height, which kind of defeats the purpose of this implementation 
- *
- * @author Narendra Jha, njha.sde@gmail.com
- *
- */
 public class UnionFindMergeByRank {
-
-    // Map to store nodes by their node number
-    private Map<Integer, Node> nodeMap = new HashMap<>();
+	// array to store the parent of each node, p[i] points to parent of i
+    // if p[i] = i then i is a root node
+    private int[] p;
     
     // To track number of components in union find
     private int numOfComp;
     
     // To track size of each component in union find
-    private int[] compSize;
+    private int[] rank;
     
-    class Node {
-        int data;
-        Node parent;
-        int rank;
-        
-        Node(int data) {
-            this.data = data;
-            this.parent = this;
-            this.rank = 0;
-        }
-    }
-    
-    public UnionFindMergeByRank(int size) {
-        if (size <= 0)
+    public UnionFindMergeByRank(int n) {
+        if (n <= 0)
             throw new IllegalArgumentException("size should be greater than 0");
         
-        this.numOfComp = size;
-        compSize = new int[size];
+        this.numOfComp = n;
         
-        for (int i = 0; i < size; ++i) {
-            nodeMap.put(i, new Node(i));
-            compSize[i] = 1;
+        p = new int[n];
+        rank = new int[n];
+        
+        for (int i = 0; i < n; ++i) {
+            p[i] = i; // each node is its own parent
         }
-    }
-    
-    public void addNewElement(int e) {
-        if (nodeMap.containsKey(e)) throw new IllegalArgumentException("duplicate entry");
-        nodeMap.put(e, new Node(e));
     }
     
     // Finds which component node 'n' belongs to
     public int find(int n) {
-        if (!nodeMap.containsKey(n)) throw new IllegalArgumentException("invalid node");
-        Node node = nodeMap.get(n);
-        
         // find root of 'n'
-        Node root = node;
-        while (root.parent != root) root = root.parent;
+        int r = n;
+        while (p[r] != r) r = p[r];
         
         // compress path to get amortized time complexity
-        while (node != root) {
-            Node parent = node.parent;
-            node.parent = root;
-            node = parent;
+        while (n != r) {
+            int parent = p[n];
+            p[n] = r;
+            n = parent;
         }
         
-        return root.data;
+        return r;
     }
     
     // A recursive implementation of find() method
     public int findRec(int n) {
-        if (!nodeMap.containsKey(n)) throw new IllegalArgumentException("invalid node");
-        return findRecUtil(nodeMap.get(n)).data;
-    }
-    
-    // A utility method used in recursive implementation of find operation
-    public Node findRecUtil(Node n) {
-        if (n.parent == n) return n;
-        return n.parent = findRecUtil(n.parent);
+        if (p[n] == n) return n;
+        return p[n] = findRec(p[n]);
     }
     
     // Unifies elements 'm' and 'n' into one group
     // Returns 'false' if they are already in same group, else returns 'true'
     public boolean union(int m, int n) {
-        int rm = find(m); // root on 'm'
-        int rn = find(n); // root on 'n'
+        int rm = find(m); // root of 'm'
+        int rn = find(n); // root of 'n'
         
         // if the elements are already in the same group
         if (rm == rn) return false;
         
-        Node rmNode = nodeMap.get(rm);
-        Node rnNode = nodeMap.get(rn);
-        
-        // merge by rank
-        if (rmNode.rank >= rnNode.rank) {
-            rnNode.parent = rmNode;
-            compSize[rm] += compSize[rn];
-            
-            if (rmNode.rank == rnNode.rank) rmNode.rank++;
+        // merge smaller rank group into larger rank group
+        if (rank[rm] < rank[rn]) {
+            p[rm] = rn;
+        }
+        else if (rank[rn] < rank[rm]) {
+            p[rn] = rm;
         }
         else {
-            rmNode.parent = rnNode;
-            compSize[rn] += compSize[rm];
+        	p[rn] = rm;
+        	rank[rm] += 1;
         }
         
         --numOfComp;
@@ -127,14 +77,9 @@ public class UnionFindMergeByRank {
         return find(m) == find(n);
     }
     
-    // Returns size of component node 'n' belongs to
-    public int getCompSize(int n) {
-        return compSize[find(n)];
-    }
-    
     // Returns number of elements in union find
     public int size() {
-        return nodeMap.size();
+        return p.length;
     }
     
     // Returns number of components in union find
@@ -143,7 +88,7 @@ public class UnionFindMergeByRank {
     }
     
     public static void main(String[] args) {
-        UnionFindMergeByRank uf = new UnionFindMergeByRank(12);
+        UnionFind uf = new UnionFind(12);
         
         uf.union(4, 9);
         uf.union(0, 1);
