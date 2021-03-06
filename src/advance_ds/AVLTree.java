@@ -35,7 +35,7 @@ public class AVLTree {
     }
     
     // A utility function to left rotate a subtree rooted with root
-    private Node leftRotate(Node root) {
+    private Node rotateLeft(Node root) {
         Node newRoot = root.right;
         root.right = root.right.left;
         newRoot.left = root;
@@ -48,7 +48,7 @@ public class AVLTree {
     }
     
     // A utility function to right rotate a subtree rooted with root
-    private Node rightRotate(Node root) {
+    private Node rotateRight(Node root) {
         Node newRoot = root.left;
         root.left = root.left.right;
         newRoot.right = root;
@@ -101,12 +101,12 @@ public class AVLTree {
             if (balance((root.left)) >= 0) {
                 // height(root.left.left) >= height(root.left.right)
                 // its (Left, Left) case
-                root = rightRotate(root);
+                root = rotateRight(root);
             }
             else {
                 // its (Left, Right) case
-                root.left = leftRotate(root.left);
-                root = rightRotate(root);
+                root.left = rotateLeft(root.left);
+                root = rotateRight(root);
             }
         }
         else if (balance < -1) {
@@ -115,12 +115,12 @@ public class AVLTree {
             if (balance((root.right)) <= 0) {
                 // height(root.right.right) >= height(root.right.left)
                 // its (Right, Right) case
-                root = leftRotate(root);
+                root = rotateLeft(root);
             }
             else {
                 // its (Right, Left) case
-                root.right = rightRotate(root.right);
-                root = leftRotate(root);
+                root.right = rotateRight(root.right);
+                root = rotateLeft(root);
             }
         }
 		return root;
