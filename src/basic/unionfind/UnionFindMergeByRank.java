@@ -1,7 +1,7 @@
 package basic.unionfind;
 
 public class UnionFindMergeByRank {
-	// array to store the parent of each node, p[i] points to parent of i
+    // array to store the parent of each node, p[i] points to parent of i
     // if p[i] = i then i is a root node
     private int[] p;
     
