@@ -82,10 +82,16 @@ public class AVLTree {
         else // duplicate keys are not inserted
             return root;
         
-        /* STEP 2: UPDATE HEIGHT OF THIS ANCESTOR NODE */ 
+        root = fixTree(root);
+        
+        return root;
+    }
+
+	private Node fixTree(Node root) {
+		/* STEP 2: UPDATE HEIGHT OF THIS ANCESTOR NODE */ 
         root.height = 1 + Math.max(height(root.left), height(root.right));
         
-        /* STEP 3: GET THE BALANCE FACTOR OF THIS ANCESTOR NODE 
+		/* STEP 3: GET THE BALANCE FACTOR OF THIS ANCESTOR NODE 
          * (to check whether this node is unbalanced) */
         int balance = balance(root);
         
@@ -117,9 +123,8 @@ public class AVLTree {
                 root = leftRotate(root);
             }
         }
-        
-        return root;
-    }
+		return root;
+	}
     
     // This method mainly calls recursive delete method
     public void delete(int key) {
@@ -164,41 +169,7 @@ public class AVLTree {
         if (root == null)  
             return root;
         
-        /* STEP 2: UPDATE HEIGHT OF THE CURRENT NODE */
-        root.height = 1 + Math.max(height(root.left), height(root.right));
-        
-        /* STEP 3: GET THE BALANCE FACTOR OF THIS NODE 
-         * (to check whether this node became unbalanced) */
-        int balance = balance(root);
-        
-        if (balance > 1) {
-            // this node is unbalanced, and its either (Left, Left) or (Left, Right) case
-            
-            if (balance((root.left)) >= 0) {
-                // height(root.left.left) >= height(root.left.right)
-                // its (Left, Left) case
-                root = rightRotate(root);
-            }
-            else {
-                // its (Left, Right) case
-                root.left = leftRotate(root.left);
-                root = rightRotate(root);
-            }
-        }
-        else if (balance < -1) {
-            // this node is unbalanced, and its either (Right, Right) or (Right, Left) case
-            
-            if (balance((root.right)) <= 0) {
-                // height(root.right.right) >= height(root.right.left)
-                // its (Right, Right) case
-                root = leftRotate(root);
-            }
-            else {
-                // its (Right, Left) case
-                root.right = rightRotate(root.right);
-                root = leftRotate(root);
-            }
-        }
+        root = fixTree(root);
         
         return root;
     }
