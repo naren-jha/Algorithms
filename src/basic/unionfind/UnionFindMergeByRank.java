@@ -65,8 +65,8 @@ public class UnionFindMergeByRank {
             p[rn] = rm;
         }
         else {
-        	p[rn] = rm;
-        	rank[rm] += 1;
+            p[rn] = rm;
+            rank[rm] += 1;
         }
         
         --numOfComp;
