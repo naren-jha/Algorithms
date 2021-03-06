@@ -34,6 +34,10 @@ public class AVLTree {
         return node.height;
     }
     
+    private void updateHeight(Node root) {
+    	root.height = 1 + Math.max(height(root.left), height(root.right));
+    }
+    
     // A utility function to left rotate a subtree rooted with root
     private Node rotateLeft(Node root) {
         Node newRoot = root.right;
@@ -41,8 +45,8 @@ public class AVLTree {
         newRoot.left = root;
         
         // update heights
-        root.height = 1 + Math.max(height(root.left), height(root.right));
-        newRoot.height = 1 + Math.max(height(newRoot.left), height(newRoot.right));
+        updateHeight(root);
+        updateHeight(newRoot);
         
         return newRoot;
     }
@@ -54,8 +58,8 @@ public class AVLTree {
         newRoot.right = root;
         
         // update heights
-        root.height = 1 + Math.max(height(root.left), height(root.right));
-        newRoot.height = 1 + Math.max(height(newRoot.left), height(newRoot.right));
+        updateHeight(root);
+        updateHeight(newRoot);
         
         return newRoot;
     }
@@ -82,15 +86,14 @@ public class AVLTree {
         else // duplicate keys are not inserted
             return root;
         
+        updateHeight(root);
+        
         root = fixTree(root);
         
         return root;
     }
 
 	private Node fixTree(Node root) {
-		/* STEP 2: UPDATE HEIGHT OF THIS ANCESTOR NODE */ 
-        root.height = 1 + Math.max(height(root.left), height(root.right));
-        
 		/* STEP 3: GET THE BALANCE FACTOR OF THIS ANCESTOR NODE 
          * (to check whether this node is unbalanced) */
         int balance = balance(root);
@@ -168,6 +171,8 @@ public class AVLTree {
         // If the tree had only one node then return  
         if (root == null)  
             return root;
+        
+        updateHeight(root);
         
         root = fixTree(root);
         
