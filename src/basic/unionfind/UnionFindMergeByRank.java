@@ -8,20 +8,21 @@ public class UnionFindMergeByRank {
     // To track number of components in union find
     private int numOfComp;
     
-    // To track size of each component in union find
+    // To track rank of each component in union find
     private int[] rank;
     
-    public UnionFindMergeByRank(int n) {
-        if (n <= 0)
+    public UnionFindMergeByRank(int size) {
+        if (size <= 0)
             throw new IllegalArgumentException("size should be greater than 0");
         
-        this.numOfComp = n;
+        this.numOfComp = size;
         
-        p = new int[n];
-        rank = new int[n];
+        p = new int[size];
+        rank = new int[size];
         
-        for (int i = 0; i < n; ++i) {
+        for (int i = 0; i < size; ++i) {
             p[i] = i; // each node is its own parent
+            rank[i] = 0; // all ranks are initially zero
         }
     }
     
