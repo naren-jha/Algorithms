@@ -76,10 +76,10 @@ public class AVLTree {
 
     // Insert into AVL tree
     public Node insert(Node root, int key) {
-        /* STEP 1:  PERFORM THE NORMAL BST INSERTION */
         if (root == null)
             return new Node(key);
-        else if (key < root.key)
+        
+        if (key < root.key)
             root.left = insert(root.left, key);
         else if (key > root.key)
             root.right = insert(root.right, key);
@@ -94,8 +94,6 @@ public class AVLTree {
     }
 
 	private Node fixTree(Node root) {
-		/* STEP 3: GET THE BALANCE FACTOR OF THIS ANCESTOR NODE 
-         * (to check whether this node is unbalanced) */
         int balance = balance(root);
         
         if (balance > 1) {
@@ -136,9 +134,9 @@ public class AVLTree {
     
     // A utility method to delete a node in BST
     public Node delete(Node root, int key) {
-        /* STEP 1: PERFORM STANDARD BST DELETE */
         if (root == null)
             return root;
+        
         if (key < root.key)
             root.left = delete(root.left, key);
         else if (key > root.key)
