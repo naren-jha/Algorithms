@@ -142,7 +142,8 @@ class LinkedList {
                 if (pntr == head) {
                     // when first node is the target node
                     head = head.next;
-                    head.prev = null;
+                    if (head != null)
+                        head.prev = null;
                 }
                 else {
                     pntr.prev.next = pntr.next;
@@ -201,6 +202,12 @@ public class DoublyLinkedList {
         Object e = 10;
         System.out.println(l.remove(e)); // true
         System.out.println(l); // [20, 4, 3]
+        
+        l = new LinkedList();
+        l.add(4);
+        e = 4;
+        System.out.println(l.remove(e)); // true
+        System.out.println(l); // []
     }
 
 }
