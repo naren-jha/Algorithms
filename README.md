@@ -1,5 +1,5 @@
 # [:books:](https://drive.google.com/drive/folders/0B1EMPyM0E8hzR093NjEyYm8zdjA?usp=sharing)Data Structures and Algorithms
-Repo to host code for learning Data Structures and Algorithms 
+This repository hosts implementations of most common data structures and algorithms in Java.
 
 ## Data Structures
 * [:blue_book:](https://drive.google.com/file/d/1sa70Y2C6XUWq9g77dQtWuLKSr7ZirnCV/view?usp=sharing) [Linked Lists](https://github.com/njha-collab/Algorithms/blob/master/src/basic/ll/)
@@ -21,8 +21,8 @@ Repo to host code for learning Data Structures and Algorithms
   - [Chaining](https://github.com/njha-collab/Algorithms/blob/master/src/basic/hashing/chaining/HashTableTest.java)
   - [Open Addressing](https://github.com/njha-collab/Algorithms/blob/master/src/basic/hashing/openaddressing/HashTableTest.java)
 * [:blue_book:](https://drive.google.com/file/d/1pBnFDa2iOlUfo5lcVeiRdiVnZn2sc-pc/view?usp=sharing) [Union Find](https://github.com/njha-collab/Algorithms/blob/master/src/basic/unionfind)
-  - [Union Find (Merge By Rank)](https://github.com/njha-collab/Algorithms/blob/master/src/basic/unionfind/UnionFindMergeByRank.java)
-  - [Union Find (Merge By Size)](https://github.com/njha-collab/Algorithms/blob/master/src/basic/unionfind/UnionFind.java)
+  - [Union Find - Merge By Rank](https://github.com/njha-collab/Algorithms/blob/master/src/basic/unionfind/UnionFindMergeByRank.java)
+  - [Union Find - Merge By Size](https://github.com/njha-collab/Algorithms/blob/master/src/basic/unionfind/UnionFind.java)
 * [:blue_book:](https://drive.google.com/file/d/1E2o4U1md4EK9O9Klv3BsP5bfyXYUS-2h/view?usp=sharing) [Heap (Priority Queues)](https://github.com/njha-collab/Algorithms/blob/master/src/tree/heap/)
   - [Max Heap](https://github.com/njha-collab/Algorithms/blob/master/src/tree/heap/MaxHeapTest.java)
   - [Min Heap](https://github.com/njha-collab/Algorithms/blob/master/src/tree/heap/MinHeapTest.java)
