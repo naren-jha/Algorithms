@@ -196,7 +196,7 @@ This repository hosts implementations of most common data structures and algorit
   * [Radix Sort](https://github.com/njha-collab/Algorithms/blob/master/src/sorting/RadixSort.java) **- O(d\*n)**
 
 ## [:blue_book:](https://drive.google.com/file/d/1VghYyVfJsGJsDrHWp8hv_RfNoXjw7w53/view?usp=sharing) Graph Theory
-  * [Adjacency List Representation](https://github.com/njha-collab/Algorithms/blob/master/src/graph/Graph.java)
+  * [Adjacency List Representation](https://github.com/njha-collab/Algorithms/blob/master/src/graph/Graph.java), [Adjacency List Representation 2](https://github.com/njha-collab/Algorithms/blob/master/src/graph/GraphUsingArrayOfArray.java)
   * [BFS](https://github.com/njha-collab/Algorithms/blob/master/src/graph/BreadthFirstSearch.java) **- O(V+E)**
     - [Shortest Path In Unweighted Graph](https://github.com/njha-collab/Algorithms/blob/master/src/graph/ShortestPathUnweightedGraph.java) **- O(V+E)**
     - [Shortest Path On A Grid](https://github.com/njha-collab/Algorithms/blob/master/src/graph/ShortestPathOnAGrid.java) **- O(V+E)**
