@@ -1,5 +1,5 @@
 # [:books:](https://drive.google.com/drive/folders/0B1EMPyM0E8hzR093NjEyYm8zdjA?usp=sharing)Data Structures and Algorithms
-This repository hosts implementations of most common data structures and algorithms in Java.
+Implementation of most common data structures and algorithms in Java.
 
 ## Data Structures
 * [:blue_book:](https://drive.google.com/file/d/1sa70Y2C6XUWq9g77dQtWuLKSr7ZirnCV/view?usp=sharing) [Linked Lists](https://github.com/njha-collab/Algorithms/blob/master/src/basic/ll/)
