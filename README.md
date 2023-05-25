@@ -17,7 +17,7 @@ Implementation of most common data structures and algorithms in Java.
   - [Using Array](https://github.com/njha-collab/Algorithms/blob/master/src/basic/queue/usingarray/DequeTest.java)
   - [Using Linked List](https://github.com/njha-collab/Algorithms/blob/master/src/basic/queue/using_linkedlist/DequeTest.java)
 * [:blue_book:](https://drive.google.com/file/d/1E2o4U1md4EK9O9Klv3BsP5bfyXYUS-2h/view?usp=sharing) [Binary Search Tree](https://github.com/njha-collab/Algorithms/blob/master/src/tree/bst/BstTest.java)
-* [:blue_book:](https://github.com/naren-jha/Algorithms/files/11568237/DSA.-.5.HashTable.pdf) [Hashtable](https://github.com/njha-collab/Algorithms/blob/master/src/basic/hashing/)
+* [:blue_book:](https://drive.google.com/file/d/1XQdrirRTAh_3FGP-bjyYGkY7zjA0C01S/view?usp=sharing) [Hashtable](https://github.com/njha-collab/Algorithms/blob/master/src/basic/hashing/)
   - [Chaining](https://github.com/njha-collab/Algorithms/blob/master/src/basic/hashing/chaining/HashTableTest.java)
   - [Open Addressing](https://github.com/njha-collab/Algorithms/blob/master/src/basic/hashing/openaddressing/HashTableTest.java)
 * [:blue_book:](https://drive.google.com/file/d/1pBnFDa2iOlUfo5lcVeiRdiVnZn2sc-pc/view?usp=sharing) [Union Find](https://github.com/njha-collab/Algorithms/blob/master/src/basic/unionfind)
