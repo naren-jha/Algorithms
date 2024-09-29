@@ -187,7 +187,7 @@ Implementation of most common data structures and algorithms in Java.
   * [Merge Sort](https://github.com/njha-collab/Algorithms/blob/master/src/sorting/MergeSort.java) **- O(nlgn)**
   * [QuickSort](https://github.com/njha-collab/Algorithms/blob/master/src/sorting/QuickSort.java) **- Θ(nlgn)**
   * [Heap Sort](https://github.com/njha-collab/Algorithms/blob/master/src/sorting/HeapSort.java) **- O(nlgn)**
-  * [Tim Sort](https://naren-jha.github.io/blogs/understanding-tim-sort) :blue_book: **- O(nlgn)**
+  * [Tim Sort](https://drive.google.com/file/d/1dGkNfCcXM5K8s1-mKowcUjyvsxMbQtxZ/view?usp=sharing) :blue_book: **- O(nlgn)**
   * [Bubble Sort](https://github.com/njha-collab/Algorithms/blob/master/src/sorting/BubbleSort.java) **- O(n<sup>2</sup>)**
   * [Insertion Sort](https://github.com/njha-collab/Algorithms/blob/master/src/sorting/InsertionSort.java) **- O(n<sup>2</sup>)**
   * [Shell Sort](https://github.com/njha-collab/Algorithms/blob/master/src/sorting/Shell.java) **- O(n<sup>2</sup>)**
